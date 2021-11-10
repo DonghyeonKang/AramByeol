@@ -30,7 +30,7 @@ CREATE TABLE `week`(
 
 CREATE TABLE `user` (
     `id` TEXT NOT NULL,
-    `password` TEXT NOT NULL,
+    `password` TEXT NOT NULL
 );
 
 CREATE TABLE `review` (
