@@ -1,0 +1,21 @@
+.header {
+    background-color : #5FC1C2;
+    text-align : center;
+    color : white;
+}
+
+/* 하이퍼링크 색 바꾸기 */
+a {
+text-decoration-line : none;
+color : white;
+
+}
+
+.input {
+    border-right : 1px solid #5FC1C2;
+}
+
+.container {
+    display : grid;
+    grid-template-columns: 1fr 1fr;
+}
