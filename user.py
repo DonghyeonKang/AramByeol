@@ -33,4 +33,4 @@ def login_check(input_username, input_password):
     account = cursor.fetchone()
     print(account)
     check_password = bcrypt.checkpw(input_password, account[1].encode('utf-8'))
-    return account, check_password
+    return check_password

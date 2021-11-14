@@ -10,6 +10,7 @@ from user import *
 import bcrypt
 
 app = Flask(__name__)
+app.secret_key = 'arambyeol'
 
 # page route
 @app.route('/')
@@ -34,10 +35,19 @@ def login():
     if request.method == "POST":
         id = request.form['id']
         pw = request.form['password']
-        account, check_password = login_check(id, pw)
-        print(account, check_password)
-        return render_template("./index.html")
+        check_password = login_check(id, pw)
+        print(check_password)
+        if check_password:
+            session['username'] = request.form['id']  # session id 부여
+            return "%s님 환영합니다!" % id
+        else:
+            return "비밀번호 틀림"
     return render_template("/member/login.html")
+
+@app.route('/logout')
+def logout():
+    session.pop('username', None)   # 세션 내에 id 가 있으면 지움
+    return render_template("index.html")
 
 # review request
 if __name__ == "__main__":
