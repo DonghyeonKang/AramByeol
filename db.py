@@ -111,7 +111,6 @@ try:
     
 finally:
     connection.commit() # 실행한 문장들 적용
-    cursor.close()
     connection.close()
 
 
