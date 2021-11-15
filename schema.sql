@@ -28,8 +28,9 @@ CREATE TABLE `week`(
     `date` DATE NOT NULL
 );
 
-CREATE TABLE `user` (
-    `id` TEXT NOT NULL,
+CREATE TABLE `users` (
+    `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    `username` TEXT NOT NULL,
     `password` TEXT NOT NULL
 );
 
