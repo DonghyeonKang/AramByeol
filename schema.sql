@@ -1,41 +1,41 @@
-CREATE TABLE `menuData`(
-    `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    `menu` TEXT,
-    `star` INT
+CREATE TABLE `menudata` ( 
+    `id` INT(10) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    `menu` VARCHAR(50) UNIQUE,
+    `score` INT(10),
+    `reviewcount` INT(10)
 );
 
-CREATE TABLE `dinner`(
-    `day` TEXT NOT NULL,
-    `cource` TEXT,
-    `menu` TEXT NOT NULL
+CREATE TABLE `review`(
+    `user_id` VARCHAR(50) NOT NULL,
+    `menu` VARCHAR(50) NOT NULL, 
+    `score` INT(10) NOT NULL
 );
 
-CREATE TABLE `lunch`(
-    `day` TEXT NOT NULL,
-    `cource` TEXT,
-    `menu` TEXT NOT NULL
-
-);
-
-CREATE TABLE `morning`(
-    `day` TEXT NOT NULL,
-    `cource` TEXT,
-    `menu` TEXT NOT NULL
+CREATE TABLE 'users'(
+    `id` INT(10) NOT NULL PRIMARY KEY AUTO_INCREMENT, 
+    `user_id` VARCHAR(50) NOT NULL, 
+    `user_pw` VARCHAR(50) NOT NULL
 );
 
 CREATE TABLE `week`(
-    `day` TEXT NOT NULL,
-    `date` DATE NOT NULL
+    `day` VARCHAR(2) NOT NULL primary key,
+    `date` VARCHAR(11) NOT NULL
 );
 
-CREATE TABLE `users` (
-    `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    `username` TEXT NOT NULL,
-    `password` TEXT NOT NULL
+CREATE TABLE `morning`(
+    `day` VARCHAR(2) NOT NULL,
+    `cours` VARCHAR(50),
+    `menu` VARCHAR(50) NOT NULL
 );
 
-CREATE TABLE `review` (
-    `identify` TEXT NOT NULL,
-    `menu` TEXT NOT NULL,
-    `star` INT NOT NULL
+CREATE TABLE `lunch`(
+    `day` VARCHAR(2) NOT NULL,
+    `course` VARCHAR(50),
+    `menu` VARCHAR(50) NOT NULL
+);
+
+CREATE TABLE `dinner`(
+    `day` VARCHAR(2) NOT NULL,
+    `course` VARCHAR(50),
+    `menu` VARCHAR(50) NOT NULL
 );
