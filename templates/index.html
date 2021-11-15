@@ -8,73 +8,90 @@
       rel="stylesheet"
       href="{{ url_for('static', filename='css/index.css') }}"
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap"
+      rel="stylesheet"
+    />
     <title>Document</title>
   </head>
   <body>
-    <a href="/member/register.html">회원가입</a>
-    <a href="/member/login.html">로그인</a>
-    <form action="/logout">
-      <input type="submit" value="로그아웃" />
-    </form>
-    <button class="open">modal</button>
-    <section class="modal-container" id="modal">
-      <div class="modal">
-        <img class="close-btn" id="close" src="static\images\x_icon.png" alt="x">
-        <div class="modal-header">
-          <h2>평가</h2>
+    <header id="header">
+      <div class="header-top">
+        <div class="logo-text">
+          <a href="">AramByeol</a>
         </div>
-        <div class="modal-content">
-          <div class="menu-content">
-            <h2 class="menu-header">미역국</h2>
-            <img src="" alt="mini_star">
-            <span class="menu-score" vlaue="aas"></span>
-          </div>
-          <form class="menu-evaluation" method="get" action="">
-            <ul class="star">
-              <li>
-                  <img
-                  class="no1"
-                  src="static\images\empty_star.png"
-                  alt="star1"
-                  />
-              </li>
-              <li>
-                <img
-                  class="no2"
-                  src="static\images\empty_star.png"
-                  alt="star2"
-                />
-              </li>
-              <li>
-                <img
-                  class="no3"
-                  src="static\images\empty_star.png"
-                  alt="star3"
-                />
-              </li>
-              <li>
-                <img
-                  class="no4"
-                  src="static\images\empty_star.png"
-                  alt="star4"
-                />
-              </li>
-              <li>
-                <img
-                  class="no5"
-                  src="static\images\empty_star.png"
-                  alt="star5"
-                />
-              </li>
-            </ul>
-            <a href="#" class="submit" type="submit">확인</a>
-          </form>
+        <div class="login">
+          <a href="/member/login.html">로그인</a>
         </div>
       </div>
-    </section>
+      <div class="logo-img">
+        <img src="static\images\logo.png" alt="logo" />
+      </div>
+    </header>
+    <div class="content">
+      <section class="modal-container" id="modal">
+        <div class="modal">
+          <img
+            class="close-btn"
+            id="close"
+            src="static\images\x_icon.png"
+            alt="x"
+          />
+          <div class="modal-header">
+            <h2>평가</h2>
+          </div>
+          <div class="modal-content">
+            <div class="menu-content">
+              <h2 class="menu-header">미역국</h2>
+              <img src="" alt="mini_star" />
+              <span class="menu-score" vlaue="aas"></span>
+            </div>
+            <form class="menu-evaluation" method="get" action="">
+              <ul class="star">
+                <li>
+                  <img
+                    class="no1"
+                    src="static\images\empty_star.png"
+                    alt="star1"
+                  />
+                </li>
+                <li>
+                  <img
+                    class="no2"
+                    src="static\images\empty_star.png"
+                    alt="star2"
+                  />
+                </li>
+                <li>
+                  <img
+                    class="no3"
+                    src="static\images\empty_star.png"
+                    alt="star3"
+                  />
+                </li>
+                <li>
+                  <img
+                    class="no4"
+                    src="static\images\empty_star.png"
+                    alt="star4"
+                  />
+                </li>
+                <li>
+                  <img
+                    class="no5"
+                    src="static\images\empty_star.png"
+                    alt="star5"
+                  />
+                </li>
+              </ul>
+              <a href="#" class="submit" type="submit">확인</a>
+            </form>
+          </div>
+        </div>
+      </section>
+    </div>
+    <footer></footer>
   </body>
-  <script
-    type="text/javascript"
-    src="{{ url_for('static', filename='js/index.js') }}"
-  ></script>
 </html>

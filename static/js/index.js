@@ -128,7 +128,7 @@ function get_daytable() {
                             option = 3;
                             morning_info = morning_info + "</br> 테이크아웃 </br>"
                         }
-                        morning_info = morning_info + morning[i][2] + "</br>";
+                        morning_info = morning_info + "<span class=\"open\">" +morning[i][2] + "</span>" + "</br>";
                     }
                 }
             }
