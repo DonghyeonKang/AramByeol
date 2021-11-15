@@ -1,0 +1,69 @@
+
+body{
+  margin: 0;
+}
+
+.header {
+  display: flex;
+  justify-content:  space-between;
+  align-items: center;
+  background-color: #5FC1C2;
+}
+.logo {
+  margin-left: 300px;
+}
+.logo a{
+  font-size: 36px;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+}
+.login{
+  margin: 50px 500px 0px 0px;
+  text-decoration: none;
+}
+
+.login a{
+  font-size: 36px;
+  color: black;
+  text-align:center;
+  text-decoration: none;
+}
+
+.Menu_name{
+  font-size: 24px;
+  color: #5FC1C2;
+}
+
+.Menu_title{
+  font-size: 32px;
+  color: #586fab;
+  text-align:center;
+}
+
+.Menu_Date{
+  color: #518d7d;
+  font-size: 32px;
+}
+
+
+
+
+
+table.Menu {
+  margin: 100px 300px;
+  text-align: center;
+  border-collapse: collapse;
+  border-spacing: 10px;
+
+} 
+
+table.Menu th {
+
+  border: solid 2px;
+
+}                 
+
+table.Menu td{                                                                      
+  border: solid 2px;
+}
