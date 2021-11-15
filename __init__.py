@@ -4,8 +4,6 @@ from flask import render_template # rendering
 from flask import session # session
 from flask import redirect # move page
 from flask import jsonify
-from flask import url_for
-from werkzeug.security import generate_password_hash, check_password_hash
 from db import *
 from user import *
 import bcrypt
@@ -16,7 +14,7 @@ app = Flask(__name__)
 app.secret_key = 'arambyeol'
 
 connection = pymysql.connect(host='localhost',
-                        user='opc',
+                        user='root',
                         password='111111',
                         db='arambyeol',
                         charset='utf8',

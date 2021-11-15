@@ -1,5 +1,3 @@
-import pymysql
-from db import *
 from get_data import *
 import pymysql.cursors # python과 mysql(mariadb) 연동
 
@@ -13,24 +11,24 @@ day_dinner = day_dinners
 
 # Connect to the DB
 connection = pymysql.connect(host='localhost',
-                            user='opc',
+                            user='root',
                             password='111111',
                             db='arambyeol',
                             charset='utf8',
                             cursorclass=pymysql.cursors.DictCursor
                             )
 #cursorclass=pymysql.cursors.DictCursor 딕셔너리 형태로 리턴. 없으면 그냥 배열로 리턴
-cursor = connection.cursor()    # control structure of database SQL 문장을 DB 서버에 전송하기 위한 객체
                            
 
 try:
+    cursor = connection.cursor()
     # 지속적으로 변동될 WEEK, MORNING, LUNCH, DINNER 테이블 삭제 후 다시 생성.
     def init_db_setting(): # 해당 테이블이 없으면 만들어라! menudata, review, user
         if not (cursor.execute("SHOW TABLES LIKE %s", 'menudata')):
             cursor.execute("CREATE TABLE menudata(id INT(10) NOT NULL PRIMARY KEY AUTO_INCREMENT,menu VARCHAR(50) UNIQUE,score INT(10),reviewcount INT(10))")
         if not (cursor.execute("SHOW TABLES LIKE %s", 'review')):
             cursor.execute("CREATE TABLE review(user_id VARCHAR(50) NOT NULL,menu VARCHAR(50) NOT NULL, score INT(10) NOT NULL)")
-        if not(cursor.execute("SHOW TABLES LIKE %s", 'user')):
+        if not(cursor.execute("SHOW TABLES LIKE %s", 'users')):
             cursor.execute("CREATE TABLE user(id INT(10) NOT NULL PRIMARY KEY AUTO_INCREMENT, user_id VARCHAR(50) NOT NULL, user_pw VARCHAR(50) NOT NULL)")
     
     def week_update():
