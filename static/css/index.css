@@ -103,3 +103,33 @@ body {
   padding: .3rem .5rem .3rem .5rem;
   text-decoration: none;
 }
+
+.inner{
+  text-align: center;
+}
+
+.hash-tag{
+  margin-left: 50px;
+}
+
+.today-box{
+  display: inline-block;
+  border: 5px solid #5FC1C2 ;
+  margin: 10px 20px;
+  width: 300px;
+  height: 500px;
+
+}
+
+.todoy-title{
+  display: inline-block;
+  font-size: 48px;
+  color: #5FC1C2;
+  margin: 10px 125px;
+}
+
+.line{
+  display: inline-block;
+  width: 90%;
+  margin-top: 100px;
+}
