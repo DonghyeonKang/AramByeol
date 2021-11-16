@@ -1,11 +1,13 @@
 $(document).ready(function () {
 	get_daytable();
+    event_modal();
 });
 
-function get_daytable() {
-	$.ajax({
+const get_daytable = ()  => {
+    $.ajax({
 		type: 'GET',
 		url: '/api/list',
+        async: false,
 		data: {},
 		success: function (response) {
             const date = new Date();
@@ -422,9 +424,10 @@ function get_daytable() {
             $('#doublenextdinner').append(dinner_info);
          }
     });
+    
 }
 
-window.addEventListener("load", () => {
+const event_modal = () => {
     const modal = document.querySelector("#modal");
     const open = document.querySelectorAll(".open");
     const close = document.querySelector(".close-btn");
@@ -464,4 +467,6 @@ window.addEventListener("load", () => {
             }
         });
     }
-});
+}
+
+
