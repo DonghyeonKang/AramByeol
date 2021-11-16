@@ -1,20 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <div>
-        <form action="/member/login.html" method="post">
-            <ul>
-                <li><input type="text" name="id" placeholder="id"></li>
-                <li><input type="password" name="password" placeholder="password"></li>
-            </ul>
-            <input type="submit" value="로그인">
-        </form>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <link rel="stylesheet" href="/member/login.css" />
+  </head>
+  <body>
+    <div class="header">
+      <img src="/member/img/아람별로고.png" alt="logo" height="20" />
+      <a href="/index.html"> 아람별 </a>
     </div>
-</body>
+    <br /><br />
+    <div class="container">
+      <div class="input">
+        <div>이미 아람전사라면? 로그인</div>
+        <br />
+        <label for="nameInput"></label>
+        <input type="text" placeholder="ID" id="nameInput" /><br />
+        <label for="passwordInput"></label>
+        <input type="password" placeholder="password" id="passwordInput" />
+        <br/><br/>
+        <!-- <button class = "hahaha">로그인</button> -->
+        <input type="submit" placeholder="login" id="loginInput" />
+      </div>
+
+      <div class="signup">
+        아람관이 처음이시라면?
+        <br /><br />
+        <button>create An Account</button>
+      </div>
+    </div>
+  </body>
 </html>
