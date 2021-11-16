@@ -82,8 +82,8 @@ function get_daytable() {
                         morning_info = morning_info + "<span class=\"open\">" + morning[i][2] + "</span></br>";
                     }
                     else{
-                        if (option == 2){
-                            option = 3;
+                        if (option == 3){
+                            option = 0;
                             morning_info = morning_info + "</br> 테이크아웃 </br>"
                         }
                         morning_info = morning_info + "<span class=\"open\">" +morning[i][2] + "</span>" + "</br>";
@@ -122,8 +122,8 @@ function get_daytable() {
                         lunch_info = lunch_info + "<span class=\"open\">" + lunch[i][2] + "</span></br>";
                     }
                     else{
-                        if (option == 2){
-                            option = 3;
+                        if (option == 3){
+                            option = 0;
                             lunch_info = lunch_info + "</br> 테이크아웃 </br>"
                         }
                         lunch_info = lunch_info + "<span class=\"open\">" + lunch[i][2] + "</span></br>";
@@ -162,8 +162,8 @@ function get_daytable() {
                         dinner_info = dinner_info + "<span class=\"open\">" + dinner[i][2] + "</span></br>";
                     }
                     else{
-                        if (option == 2){
-                            option = 3;
+                        if (option == 3){
+                            option = 0;
                             dinner_info = dinner_info + "</br> 테이크아웃 </br>"
                         }
                         dinner_info = dinner_info + "<span class=\"open\">" + dinner[i][2] + "</span></br>";
@@ -206,8 +206,8 @@ function get_daytable() {
                         morning_info = morning_info + "<span class=\"open\">" + morning[i][2] + "</span></br>";
                     }
                     else{
-                        if (option == 2){
-                            option = 3;
+                        if (option == 3){
+                            option = 0;
                             morning_info = morning_info + "</br> 테이크아웃 </br>"
                         }
                         morning_info = morning_info + "<span class=\"open\">" + morning[i][2] + "</span></br>";
@@ -246,8 +246,8 @@ function get_daytable() {
                         lunch_info = lunch_info + "<span class=\"open\">" + lunch[i][2] + "</span></br>";
                     }
                     else{
-                        if (option == 2){
-                            option = 3;
+                        if (option == 3){
+                            option = 0;
                             lunch_info = lunch_info + "</br> 테이크아웃 </br>"
                         }
                         lunch_info = lunch_info + "<span class=\"open\">" + lunch[i][2] + "</span></br>";
@@ -287,8 +287,8 @@ function get_daytable() {
                         dinner_info = dinner_info + "<span class=\"open\">" + dinner[i][2] + "</span></br>";
                     }
                     else{
-                        if (option == 2){
-                            option = 3;
+                        if (option == 3){
+                            option = 0;
                             dinner_info = dinner_info + "</br> 테이크아웃 </br>"
                         }
                         dinner_info = dinner_info + "<span class=\"open\">" + dinner[i][2] + "</span></br>";
@@ -332,8 +332,8 @@ function get_daytable() {
                         morning_info = morning_info + "<span class=\"open\">" + morning[i][2] + "</span></br>";
                     }
                     else{
-                        if (option == 2){
-                            option = 3;
+                        if (option == 3){
+                            option = 0;
                             morning_info = morning_info + "</br> 테이크아웃 </br>"
                         }
                         morning_info = morning_info + "<span class=\"open\">" + morning[i][2] + "</span></br>";
@@ -371,8 +371,8 @@ function get_daytable() {
                         lunch_info = lunch_info + "<span class=\"open\">" + lunch[i][2] + "</span></br>";
                     }
                     else{
-                        if (option == 2){
-                            option = 3;
+                        if (option == 3){
+                            option = 0;
                             lunch_info = lunch_info + "</br> 테이크아웃 </br>"
                         }
                         lunch_info = lunch_info + "<span class=\"open\">" + lunch[i][2] + "</span></br>";
@@ -409,8 +409,8 @@ function get_daytable() {
                         dinner_info = dinner_info + "<span class=\"open\">" + dinner[i][2] + "</span></br>";
                     }
                     else{
-                        if (option == 2){
-                            option = 3;
+                        if (option == 3){
+                            option = 0;
                             dinner_info = dinner_info + "</br> 테이크아웃 </br>"
                         }
                         dinner_info = dinner_info + "<span class=\"open\">" + dinner[i][2] + "</span></br>";
