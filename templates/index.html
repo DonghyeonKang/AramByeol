@@ -14,7 +14,7 @@
       href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap"
       rel="stylesheet"
     />
-    <title>Document</title>
+    <title>AramByeol</title>
   </head>
   <body>
     <header id="header">
@@ -94,17 +94,30 @@
     </div>
 
     <div class="hash-tag">
-      <h1>#오늘 #과제는 #내일</h1>
+      <h1>#오늘 #과제는 #내일하자</h1>
     </div>
+
     <div class="inner">
       <div class="todoy-title">아침</div>
       <div class="todoy-title">점심</div>
       <div class="todoy-title">저녁</div>
     </div>
     <div class="inner">
-      <div class="today-box">a</div>
-      <div class="today-box">a</div>
-      <div class="today-box">a</div>
+      <div class="today-box">
+        <table class="menu-table">
+            <tr id="morning"></tr>
+        </table>
+      </div>
+      <div class="today-box">
+        <table class="menu-table">
+          <tr id="lunch"></tr>
+        </table>
+      </div>
+      <div class="today-box">
+        <table class="menu-table">
+          <tr id="dinner"></tr>
+        </div>
+      </table>
     </div>
     <div class="inner">
       <div class="line">
@@ -112,7 +125,7 @@
       </div>
     </div>
     <div class="hash-tag">
-      <h1>#내일 #메뉴 #11-22</h1>
+      <h1>#내일 #메뉴</h1>
     </div>
     <div class="inner">
       <div class="todoy-title">아침</div>
@@ -120,24 +133,48 @@
       <div class="todoy-title">저녁</div>
     </div>
     <div class="inner">
-      <div class="today-box">a</div>
-      <div class="today-box">a</div>
-      <div class="today-box">a</div>
+      <div class="today-box">
+        <table class="menu-table">
+          <tr id="nextmorning"></tr>
+        </table>
+      </div>
+      <div class="today-box">
+        <table class="menu-table">
+          <tr id="nextlunch"></tr>
+        </table>
+      </div>
+      <div class="today-box">
+        <table class="menu-table">
+          <tr id="nextdinner"></tr>
+        </table>
+      </div>
     </div>
     <div class="inner">
       <div class="line"><hr size="5" noshade /></div>
     </div>
 
-    <div class="hash-tag"><h1>#내일 #메뉴 #11-22</h1></div>
+    <div class="hash-tag"><h1>#모레 #는 #멀다</h1></div>
     <div class="inner">
       <div class="todoy-title">아침</div>
       <div class="todoy-title">점심</div>
       <div class="todoy-title">저녁</div>
     </div>
     <div class="inner">
-      <div class="today-box">a</div>
-      <div class="today-box">a</div>
-      <div class="today-box">a</div>
+      <div class="today-box">
+        <table class="menu-table">
+          <tr id="doublenextmorning"></tr>
+        </table>
+      </div>
+      <div class="today-box">
+        <table class="menu-table">
+          <tr id="doublenextlunch"></tr>
+        </table>
+      </div>
+      <div class="today-box">
+        <table class="menu-table">
+          <tr id="doublenextdinner"></tr>
+        </table>
+      </div>
     </div>
     <div class="inner">
       <div class="line"><hr size="5" noshade /></div>
@@ -145,7 +182,6 @@
     <footer></footer>
   </body>
 
-  <!--
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script
     src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
@@ -156,5 +192,4 @@
     type="text/javascript"
     src="{{ url_for('static', filename='js/index.js') }}"
     ></script>
-  -->
 </html>

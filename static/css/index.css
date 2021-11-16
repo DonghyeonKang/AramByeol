@@ -118,7 +118,7 @@ body {
   margin: 10px 20px;
   width: 300px;
   height: 500px;
-
+  overflow: auto;
 }
 
 .todoy-title{
@@ -126,6 +126,11 @@ body {
   font-size: 48px;
   color: #5FC1C2;
   margin: 10px 125px;
+}
+
+.menu-table {
+  text-align: center;
+  margin: 0 auto;
 }
 
 .line{
