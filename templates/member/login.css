@@ -2,7 +2,10 @@
     background-color : #5FC1C2;
     text-align : center;
     color : white;
+    align-items: center;
 }
+
+
 
 /* 하이퍼링크 색 바꾸기 */
 a {
@@ -18,4 +21,13 @@ color : white;
 .container {
     display : grid;
     grid-template-columns: 1fr 1fr;
+}
+
+.signup {
+    text-align : center;
+}
+
+.hahaha {
+    align-items : center;
+    text-align : center;
 }
