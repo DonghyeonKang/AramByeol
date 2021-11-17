@@ -176,7 +176,7 @@ def save_score():
     cursor.execute("UPDATE menudata SET score=%s, reviewcount=%s WHERE menu=%s", (avg, db_reviewcount, name))
     connection.commit()
     connection.close()
-    return jsonify({'msg': name + "메뉴에 " + str(score) + "점 주셨습니다."})
+    return jsonify({'msg': name + " 메뉴에 " + str(score) + "점 주셨습니다."})
 
 @app.route('/api/menu_score', methods=['POST'])
 def get_score():
