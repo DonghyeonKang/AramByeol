@@ -15,6 +15,14 @@ import db_auth
 
 app = Flask(__name__)
 app.secret_key = 'arambyeol'
+if not app.debug:
+    import logging  
+    from logging.handlers import RotatingFileHandler
+    file_handler = RotatingFileHandler(
+        '../log/arambyeol_error.log', maxBytes=2000, backupCount=10)
+    file_handler.setLevel(logging.WARNING)
+    app.logger.addHandler(file_handler)
+
 
 def db_connection():
     login = db_auth.db_login
@@ -41,7 +49,7 @@ def register():
             useradd(id, pw)
         else:
             print("이미 존재하는 아이디")
-        return redirect('http://localhost:5001/member/login.html')
+        return redirect('http://localhost:5000/member/login.html')
     return render_template("/member/register.html")
 
 @app.route('/member/login.html', methods=['GET', 'POST'])
@@ -193,4 +201,4 @@ def get_score():
     return jsonify({'score':score})
 
 if __name__ == '__main__':
-    app.run('0.0.0.0',port=5000,debug=True, threaded=True)
+    app.run('0.0.0.0',port=5000,debug=False, threaded=True)
