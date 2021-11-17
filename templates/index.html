@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
       rel="stylesheet"
-      href="{{ url_for('static', filename='css/index.css') }}"
+      href="{{ url_for('static', filename='css/index.css')}}"
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -18,6 +18,7 @@
       href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap"
       rel="stylesheet"
     />
+    <link rel="shortcut icon" href="{{ url_for('static', filename='/images/favicon.ico')}}">
     <title>AramByeol</title>
   </head>
   <body>
@@ -26,12 +27,12 @@
         <div class="logo-text">
           <a href="">AramByeol</a>
         </div>
-        <div class="login">
-          <a href="/member/login.html">로그인</a>
+        <div class="login" id="login">
+          
         </div>
       </div>
       <div class="logo-img">
-        <img src="static\images\logo.png" alt="logo" />
+        <img src="/static/images/logo.png" alt="logo" />
       </div>
     </header>
     <div class="content">
@@ -40,7 +41,7 @@
           <img
             class="close-btn"
             id="close"
-            src="static\images\x_icon.png"
+            src="/static/images/x_icon.png"
             alt="x"
           />
           <div class="modal-header">
@@ -48,8 +49,7 @@
           </div>
           <div class="modal-content">
             <div class="menu-content">
-              <h2 class="menu-header">미역국</h2>
-              <img src="" alt="mini_star" />
+              <h2 class="menu-header menu-name"></h2>
               <span class="menu-score" vlaue="aas"></span>
             </div>
             <form class="menu-evaluation" method="get" action="">
@@ -57,35 +57,35 @@
                 <li>
                   <img
                     class="no1"
-                    src="static\images\empty_star.png"
+                    src="/static/images/empty_star.png"
                     alt="star1"
                   />
                 </li>
                 <li>
                   <img
                     class="no2"
-                    src="static\images\empty_star.png"
+                    src="/static/images/empty_star.png"
                     alt="star2"
                   />
                 </li>
                 <li>
                   <img
                     class="no3"
-                    src="static\images\empty_star.png"
+                    src="/static/images/empty_star.png"
                     alt="star3"
                   />
                 </li>
                 <li>
                   <img
                     class="no4"
-                    src="static\images\empty_star.png"
+                    src="/static/images/empty_star.png"
                     alt="star4"
                   />
                 </li>
                 <li>
                   <img
                     class="no5"
-                    src="static\images\empty_star.png"
+                    src="/static/images/empty_star.png"
                     alt="star5"
                   />
                 </li>
