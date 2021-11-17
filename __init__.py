@@ -13,7 +13,7 @@ import pymysql.cursors # python과 mysql(mariadb) 연동
 from datetime import datetime, timedelta
 
 app = Flask(__name__)
-app.secret_key = 'arambyeol'
+app.secret_key = 'arambyeol'    # 세션을 사용하기 위해 비밀키가 서명된 쿠키 사용
 
 def db_connection():
     connection = pymysql.connect(host='localhost',
@@ -39,7 +39,7 @@ def register():
             useradd(id, pw)
         else:
             print("이미 존재하는 아이디")
-        return redirect('http://localhost:5001/member/login.html')
+        return redirect('http://localhost:5000/member/login.html')
     return render_template("/member/register.html")
 
 @app.route('/member/login.html', methods=['GET', 'POST'])
@@ -47,20 +47,27 @@ def login():
     if request.method == "POST":
         id = request.form['id']
         pw = request.form['password']
+        check_id = check_userId(id)
         check_password = login_check(id, pw)
+        print(check_id)
         print(check_password)
-        if check_password:
-            session['username'] = request.form['id']  # session id 부여
-            return "%s님 환영합니다!" % id
+        if check_id:
+            if check_password:
+                print("로그인 성공")
+                session['username'] = request.form['id']  # session id 부여
+                return redirect(url_for('home'))
+            else:
+                print("비밀번호틀림")
+                return render_template("/member/login.html")    # 비밀번호 틀림
         else:
-            return "비밀번호 틀림"
-    return render_template("/member/login.html")
+            return render_template("/member/login.html")    # id 없음
+    return render_template("/member/login.html")    # 페이지
 
-@app.route('/logout')
+@app.route('/logout', methods=['POST'])
 def logout():
-    session.pop('username', None)   # 세션 내에 id 가 있으면 지움
-    return render_template("index.html")
-
+    session.clear()   # 세션 내에 id 가 있으면 지움
+    print("세션 지우러 옴")
+    return "1"
 # API
 @app.route('/api/list', methods=['GET'])
 def week():
@@ -189,6 +196,14 @@ def get_score():
         score = score[0]['score']
     connection.close()
     return jsonify({'score':score})
+
+# 세션 확인 API
+@app.route('/api/session_check', methods=['POST'])
+def session_check():
+    print("세션 확인", session.get('username'))
+    if session.get('username'):
+        return '1'
+    return '0'
 
 if __name__ == '__main__':
     app.run('0.0.0.0',port=5000,debug=True, threaded=True)
