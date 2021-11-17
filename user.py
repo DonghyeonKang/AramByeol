@@ -1,8 +1,10 @@
 import pymysql
 from flask_login import UserMixin
 import bcrypt
+import db_auth
 
-db = pymysql.connect(host='localhost', port=3306, user='opc', passwd='111111', database='arambyeol')
+db_login = db_auth.db_login
+db = pymysql.connect(host=db_login['host'], port=db_login['port'], user=db_login['user'], passwd=db_login['password'], database=db_login['db'])
 cursor = db.cursor()    # control structure of database SQL 문장을 DB 서버에 전송하기 위한 객체
 
 # 회원가입
