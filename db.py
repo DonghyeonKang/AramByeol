@@ -11,14 +11,13 @@ day_dinner = day_dinners
 
 # Connect to the DB
 connection = pymysql.connect(host='localhost',
-                            user='root',
+                            user='opc',
                             password='111111',
                             db='arambyeol',
                             charset='utf8',
                             cursorclass=pymysql.cursors.DictCursor
                             )
 #cursorclass=pymysql.cursors.DictCursor 딕셔너리 형태로 리턴. 없으면 그냥 배열로 리턴
-                           
 
 try:
     cursor = connection.cursor()
@@ -112,3 +111,8 @@ try:
 finally:
     connection.commit() # 실행한 문장들 적용
     connection.close()
+
+
+
+
+
