@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <meta property="og:title" content="AramByeol" />
+    <meta property="og:description" content="아람관 별점을 매겨보자!" />
+    <meta property="og:image" content="{{ url_for('static', filename='/images/logo.png') }}" />
+
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
       rel="stylesheet"
-      href="{{ url_for('static', filename='css/index.css') }}"
+      href="{{ url_for('static', filename='css/index.css')}}"
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -14,6 +18,7 @@
       href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap"
       rel="stylesheet"
     />
+    <link rel="shortcut icon" href="{{ url_for('static', filename='/images/favicon.ico')}}">
     <title>AramByeol</title>
   </head>
   <body>
@@ -44,8 +49,7 @@
           </div>
           <div class="modal-content">
             <div class="menu-content">
-              <h2 class="menu-header">미역국</h2>
-              <img src="" alt="mini_star" />
+              <h2 class="menu-header menu-name"></h2>
               <span class="menu-score" vlaue="aas"></span>
             </div>
             <form class="menu-evaluation" method="get" action="">

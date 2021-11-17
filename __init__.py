@@ -4,7 +4,9 @@ from flask import render_template # rendering
 from flask import session # session
 from flask import redirect # move page
 from flask import jsonify
-from db import *
+from flask import url_for
+from pymysql import connect
+from werkzeug.security import generate_password_hash, check_password_hash
 from user import *
 import bcrypt
 import pymysql.cursors # python과 mysql(mariadb) 연동
@@ -13,12 +15,14 @@ from datetime import datetime, timedelta
 app = Flask(__name__)
 app.secret_key = 'arambyeol'
 
-connection = pymysql.connect(host='localhost',
-                        user='root',
-                        password='111111',
-                        db='arambyeol',
-                        charset='utf8',
-                        cursorclass=pymysql.cursors.DictCursor)
+def db_connection():
+    connection = pymysql.connect(host='localhost',
+                            user='root',
+                            password='111111',
+                            db='arambyeol',
+                            charset='utf8',
+                            cursorclass=pymysql.cursors.DictCursor)
+    return connection
 
 # page route
 @app.route('/')
@@ -60,6 +64,7 @@ def logout():
 # API
 @app.route('/api/list', methods=['GET'])
 def week():
+    connection = db_connection()
     cursor = connection.cursor()
 
     sql = "select * from week"
@@ -138,10 +143,52 @@ def week():
                 temp.append(rows[i]['menu'])
                 dinner.append(temp)
     # connection.commit()
-    # connection.close()
+    connection.close()
     return jsonify({'days':days, 'morning':morning, 'lunch':lunch, 'dinner':dinner}) # js와 매칭
 
+# 별점주기 API
+@app.route('/api/score', methods=['POST'])
+def save_score():
+    connection = db_connection()
+    cursor = connection.cursor()
 
+    name = request.form['menu_name']
+    score = request.form['menu_score']
+
+    cursor.execute("SELECT reviewcount, score from menudata where menu=%s", name)
+    data = cursor.fetchall()
+    db_reviewcount = 0
+    db_score = 0
+    avg = 0
+    if data[0]['reviewcount'] == None:
+        db_reviewcount = 0
+    else:
+        db_reviewcount = data[0]['reviewcount']
+    if data[0]['score'] == None:
+        db_score = 0
+    else: 
+        db_score = data[0]['score']
+    db_score = (db_score * db_reviewcount) + int(score)
+    db_reviewcount = db_reviewcount + 1
+    avg = int(round(db_score / db_reviewcount))
+    cursor.execute("UPDATE menudata SET score=%s, reviewcount=%s WHERE menu=%s", (avg, db_reviewcount, name))
+    connection.commit()
+    connection.close()
+    return jsonify({'msg': name + "메뉴에 " + str(score) + "점 주셨습니다."})
+
+@app.route('/api/menu_score', methods=['POST'])
+def get_score():
+    menu_name = request.form['menu_name']
+    connection = db_connection()
+    cursor = connection.cursor()
+    cursor.execute("SELECT score from menudata where menu=%s", menu_name)
+    score = cursor.fetchall()
+    if score[0]['score'] == None:
+        score = 0
+    else:
+        score = score[0]['score']
+    connection.close()
+    return jsonify({'score':score})
 
 if __name__ == '__main__':
     app.run('0.0.0.0',port=5000,debug=True, threaded=True)
