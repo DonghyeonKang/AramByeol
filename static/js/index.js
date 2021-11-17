@@ -126,6 +126,7 @@ const get_daytable = ()  => {
                         if (option == 3){
                             option = 0;
                             morning_info = morning_info + "<p class=\"course\">테이크아웃</p></br>"
+
                         }
                         morning_info = morning_info + "<span class=\"open\">" +morning[i][2] + "</span>" + "</br>";
                     }
@@ -166,6 +167,7 @@ const get_daytable = ()  => {
                         if (option == 3){
                             option = 0;
                             lunch_info = lunch_info + "<p class=\"course\"> 테이크아웃 </p></br>"
+
                         }
                         lunch_info = lunch_info + "<span class=\"open\">" + lunch[i][2] + "</span></br>";
                     }
@@ -206,6 +208,7 @@ const get_daytable = ()  => {
                         if (option == 3){
                             option = 0;
                             dinner_info = dinner_info + "<p class=\"course\"> 테이크아웃 </p></br>"
+
                         }
                         dinner_info = dinner_info + "<span class=\"open\">" + dinner[i][2] + "</span></br>";
                     }
@@ -250,6 +253,7 @@ const get_daytable = ()  => {
                         if (option == 3){
                             option = 0;
                             morning_info = morning_info + "<p class=\"course\"> 테이크아웃 </p></br>"
+
                         }
                         morning_info = morning_info + "<span>" + morning[i][2] + "</span></br>";
                     }
@@ -290,6 +294,7 @@ const get_daytable = ()  => {
                         if (option == 3){
                             option = 0;
                             lunch_info = lunch_info + "<p class=\"course\"> 테이크아웃 </p></br>"
+
                         }
                         lunch_info = lunch_info + "<span>" + lunch[i][2] + "</span></br>";
                     }
@@ -331,6 +336,7 @@ const get_daytable = ()  => {
                         if (option == 3){
                             option = 0;
                             dinner_info = dinner_info + "<p class=\"course\"> 테이크아웃 </p></br>"
+
                         }
                         dinner_info = dinner_info + "<span>" + dinner[i][2] + "</span></br>";
                     }
@@ -376,6 +382,7 @@ const get_daytable = ()  => {
                         if (option == 3){
                             option = 0;
                             morning_info = morning_info + "<p class=\"course\"> 테이크아웃 </p></br>"
+
                         }
                         morning_info = morning_info + "<span>" + morning[i][2] + "</span></br>";
                     }
@@ -415,6 +422,7 @@ const get_daytable = ()  => {
                         if (option == 3){
                             option = 0;
                             lunch_info = lunch_info + "<p class=\"course\"> 테이크아웃 </p></br>"
+
                         }
                         lunch_info = lunch_info + "<span>" + lunch[i][2] + "</span></br>";
                     }
@@ -453,6 +461,7 @@ const get_daytable = ()  => {
                         if (option == 3){
                             option = 0;
                             dinner_info = dinner_info + "<p class=\"course\"> 테이크아웃 </p></br>"
+
                         }
                         dinner_info = dinner_info + "<span>" + dinner[i][2] + "</span></br>";
                     }
