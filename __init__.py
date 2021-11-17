@@ -11,16 +11,18 @@ from user import *
 import bcrypt
 import pymysql.cursors # python과 mysql(mariadb) 연동
 from datetime import datetime, timedelta
+import db_auth
 
 app = Flask(__name__)
 app.secret_key = 'arambyeol'
 
 def db_connection():
-    connection = pymysql.connect(host='localhost',
-                            user='opc',
-                            password='111111',
-                            db='arambyeol',
-                            charset='utf8',
+    login = db_auth.db_login
+    connection = pymysql.connect(host=login['host'],
+                            user=login['user'],
+                            password=login['password'],
+                            db=login['db'],
+                            charset=login['charset'],
                             cursorclass=pymysql.cursors.DictCursor)
     return connection
 
