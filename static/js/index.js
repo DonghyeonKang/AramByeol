@@ -26,10 +26,10 @@ const get_daytable = ()  => {
             let morning = response['morning'];
             let lunch = response['lunch'];
             let dinner = response['dinner'];
-            console.log(days);
-            console.log(morning);
-            console.log(lunch);
-            console.log(dinner);
+            // console.log(days);
+            // console.log(morning);
+            // console.log(lunch);
+            // console.log(dinner);
             for (let i = 0; i < days.length; i++){
                 if (days[i][1] === todays){
                     this_day = days[i][0];
@@ -42,6 +42,7 @@ const get_daytable = ()  => {
                 }
             }
             
+            // 메뉴가 없을 때. (해당 날짜가 없을 때)
             if(this_day === undefined){
                 this_day = "기다리셈";
             }
@@ -65,28 +66,28 @@ const get_daytable = ()  => {
                     else if(morning[i][1] === 'A'){
                         if (option == 0){
                             option = 1;
-                            morning_info = morning_info + " A </br>"
+                            morning_info = morning_info + "<p class=\"course\">A</p></br>"
                         }
                         morning_info = morning_info + "<span class=\"open\">" + morning[i][2] + "</span></br>";
                     }
                     else if(morning[i][1] === 'B'){
                         if (option == 1){
                             option = 2;
-                            morning_info = morning_info + "</br> B </br>"
+                            morning_info = morning_info + "<p class=\"course\">B</p></br>"
                         }
                         morning_info = morning_info + "<span class=\"open\">" + morning[i][2] + "</span></br>";
                     }
                     else if(morning[i][1] === 'C'){
                         if (option == 2){
                             option = 3;
-                            morning_info = morning_info + "</br> C </br>"
+                            morning_info = morning_info + "<p class=\"course\">C</p></br>"
                         }
                         morning_info = morning_info + "<span class=\"open\">" + morning[i][2] + "</span></br>";
                     }
                     else{
                         if (option == 3){
                             option = 0;
-                            morning_info = morning_info + "</br> 테이크아웃 </br>"
+                            morning_info = morning_info + "<p class=\"course\">테이크아웃</p></br>"
                         }
                         morning_info = morning_info + "<span class=\"open\">" +morning[i][2] + "</span>" + "</br>";
                     }
@@ -105,28 +106,28 @@ const get_daytable = ()  => {
                     else if(lunch[i][1] === 'A'){
                         if (option == 0){
                             option = 1;
-                            lunch_info = lunch_info + " A </br>"
+                            lunch_info = lunch_info + "<p class=\"course\"> A </p></br>"
                         }
                         lunch_info = lunch_info + "<span class=\"open\">" + lunch[i][2] + "</span></br>";
                     }
                     else if(lunch[i][1] === 'B'){
                         if (option == 1){
                             option = 2;
-                            lunch_info = lunch_info + "</br> B </br>"
+                            lunch_info = lunch_info + "<p class=\"course\"> B </p></br>"
                         }
                         lunch_info = lunch_info + "<span class=\"open\">" + lunch[i][2] + "</span></br>";
                     }
                     else if(lunch[i][1] === 'C'){
                         if (option == 2){
                             option = 3;
-                            lunch_info = lunch_info + "</br> C </br>"
+                            lunch_info = lunch_info + "<p class=\"course\"> C </p></br>"
                         }
                         lunch_info = lunch_info + "<span class=\"open\">" + lunch[i][2] + "</span></br>";
                     }
                     else{
                         if (option == 3){
                             option = 0;
-                            lunch_info = lunch_info + "</br> 테이크아웃 </br>"
+                            lunch_info = lunch_info + "<p class=\"course\"> 테이크아웃 </p></br>"
                         }
                         lunch_info = lunch_info + "<span class=\"open\">" + lunch[i][2] + "</span></br>";
                     }
@@ -145,28 +146,28 @@ const get_daytable = ()  => {
                     else if(dinner[i][1] === 'A'){
                         if (option == 0){
                             option = 1;
-                            dinner_info = dinner_info + "</br> A </br>"
+                            dinner_info = dinner_info + "<p class=\"course\"> A </p></br>"
                         }
                         dinner_info = dinner_info + "<span class=\"open\">" + dinner[i][2] + "</span></br>";
                     }
                     else if(dinner[i][1] === 'B'){
                         if (option == 1){
                             option = 2;
-                            dinner_info = dinner_info + "</br> B </br>"
+                            dinner_info = dinner_info + "<p class=\"course\"> B </p></br>"
                         }
                         dinner_info = dinner_info + "<span class=\"open\">" + dinner[i][2] + "</span></br>";
                     }
                     else if(dinner[i][1] === 'C'){
                         if (option == 2){
                             option = 3;
-                            dinner_info = dinner_info + "</br> C </br>"
+                            dinner_info = dinner_info + "<p class=\"course\"> C </p></br>"
                         }
                         dinner_info = dinner_info + "<span class=\"open\">" + dinner[i][2] + "</span></br>";
                     }
                     else{
                         if (option == 3){
                             option = 0;
-                            dinner_info = dinner_info + "</br> 테이크아웃 </br>"
+                            dinner_info = dinner_info + "<p class=\"course\"> 테이크아웃 </p></br>"
                         }
                         dinner_info = dinner_info + "<span class=\"open\">" + dinner[i][2] + "</span></br>";
                     }
@@ -189,28 +190,28 @@ const get_daytable = ()  => {
                     else if(morning[i][1] === 'A'){
                         if (option == 0){
                             option = 1;
-                            morning_info = morning_info + "</br> A </br>"
+                            morning_info = morning_info + "<p class=\"course\"> A </p></br>"
                         }
                         morning_info = morning_info + "<span class=\"open\">" + morning[i][2] + "</span></br>";
                     }
                     else if(morning[i][1] === 'B'){
                         if (option == 1){
                             option = 2;
-                            morning_info = morning_info + "</br> B </br>"
+                            morning_info = morning_info + "<p class=\"course\"> B </p></br>"
                         }
                         morning_info = morning_info + "<span class=\"open\">" + morning[i][2] + "</span></br>";
                     }
                     else if(morning[i][1] === 'C'){
                         if (option == 2){
                             option = 3;
-                            morning_info = morning_info + "</br> C </br>"
+                            morning_info = morning_info + "<p class=\"course\"> C </p></br>"
                         }
                         morning_info = morning_info + "<span class=\"open\">" + morning[i][2] + "</span></br>";
                     }
                     else{
                         if (option == 3){
                             option = 0;
-                            morning_info = morning_info + "</br> 테이크아웃 </br>"
+                            morning_info = morning_info + "<p class=\"course\"> 테이크아웃 </p></br>"
                         }
                         morning_info = morning_info + "<span class=\"open\">" + morning[i][2] + "</span></br>";
                     }
@@ -229,28 +230,28 @@ const get_daytable = ()  => {
                     else if(lunch[i][1] === 'A'){
                         if (option == 0){
                             option = 1;
-                            lunch_info = lunch_info + "</br> A </br>"
+                            lunch_info = lunch_info + "<p class=\"course\"> A </p></br>"
                         }
                         lunch_info = lunch_info + "<span class=\"open\">" + lunch[i][2] + "</span></br>";
                     }
                     else if(lunch[i][1] === 'B'){
                         if (option == 1){
                             option = 2;
-                            lunch_info = lunch_info + "</br> B </br>"
+                            lunch_info = lunch_info + "<p class=\"course\"> B </p></br>"
                         }
                         lunch_info = lunch_info + "<span class=\"open\">" + lunch[i][2] + "</span></br>";
                     }
                     else if(lunch[i][1] === 'C'){
                         if (option == 2){
                             option = 3;
-                            lunch_info = lunch_info + "</br> C </br>"
+                            lunch_info = lunch_info + "<p class=\"course\"> C </p></br>"
                         }
                         lunch_info = lunch_info + "<span class=\"open\">" + lunch[i][2] + "</span></br>";
                     }
                     else{
                         if (option == 3){
                             option = 0;
-                            lunch_info = lunch_info + "</br> 테이크아웃 </br>"
+                            lunch_info = lunch_info + "<p class=\"course\"> 테이크아웃 </p></br>"
                         }
                         lunch_info = lunch_info + "<span class=\"open\">" + lunch[i][2] + "</span></br>";
                     }
@@ -270,28 +271,28 @@ const get_daytable = ()  => {
                     else if(dinner[i][1] === 'A'){
                         if (option == 0){
                             option = 1;
-                            dinner_info = dinner_info + "</br> A </br>"
+                            dinner_info = dinner_info + "<p class=\"course\"> A </p></br>"
                         }
                         dinner_info = dinner_info + "<span class=\"open\">" + dinner[i][2] + "</span></br>";
                     }
                     else if(dinner[i][1] === 'B'){
                         if (option == 1){
                             option = 2;
-                            dinner_info = dinner_info + "</br> B </br>"
+                            dinner_info = dinner_info + "<p class=\"course\"> B </p></br>"
                         }
                         dinner_info = dinner_info + "<span class=\"open\">" + dinner[i][2] + "</span></br>";
                     }
                     else if(dinner[i][1] === 'C'){
                         if (option == 2){
                             option = 3;
-                            dinner_info = dinner_info + "</br> C </br>"
+                            dinner_info = dinner_info + "<p class=\"course\"> C </p></br>"
                         }
                         dinner_info = dinner_info + "<span class=\"open\">" + dinner[i][2] + "</span></br>";
                     }
                     else{
                         if (option == 3){
                             option = 0;
-                            dinner_info = dinner_info + "</br> 테이크아웃 </br>"
+                            dinner_info = dinner_info + "<p class=\"course\"> 테이크아웃 </p></br>"
                         }
                         dinner_info = dinner_info + "<span class=\"open\">" + dinner[i][2] + "</span></br>";
                     }
@@ -315,28 +316,28 @@ const get_daytable = ()  => {
                     else if(morning[i][1] === 'A'){
                         if (option == 0){
                             option = 1;
-                            morning_info = morning_info + "</br> A </br>"
+                            morning_info = morning_info + "<p class=\"course\"> A </p></br>"
                         }
                         morning_info = morning_info + "<span class=\"open\">" + morning[i][2] + "</span></br>";
                     }
                     else if(morning[i][1] === 'B'){
                         if (option == 1){
                             option = 2;
-                            morning_info = morning_info + "</br> B </br>"
+                            morning_info = morning_info + "<p class=\"course\"> B </p></br>"
                         }
                         morning_info = morning_info + "<span class=\"open\">" + morning[i][2] + "</span></br>";
                     }
                     else if(morning[i][1] === 'C'){
                         if (option == 2){
                             option = 3;
-                            morning_info = morning_info + "</br> C </br>"
+                            morning_info = morning_info + "<p class=\"course\"> C </p></br>"
                         }
                         morning_info = morning_info + "<span class=\"open\">" + morning[i][2] + "</span></br>";
                     }
                     else{
                         if (option == 3){
                             option = 0;
-                            morning_info = morning_info + "</br> 테이크아웃 </br>"
+                            morning_info = morning_info + "<p class=\"course\"> 테이크아웃 </p></br>"
                         }
                         morning_info = morning_info + "<span class=\"open\">" + morning[i][2] + "</span></br>";
                     }
@@ -354,28 +355,28 @@ const get_daytable = ()  => {
                     else if(lunch[i][1] === 'A'){
                         if (option == 0){
                             option = 1;
-                            lunch_info = lunch_info + "</br> A </br>"
+                            lunch_info = lunch_info + "<p class=\"course\"> A </p></br>"
                         }
                         lunch_info = lunch_info + "<span class=\"open\">" + lunch[i][2] + "</span></br>";
                     }
                     else if(lunch[i][1] === 'B'){
                         if (option == 1){
                             option = 2;
-                            lunch_info = lunch_info + "</br> B </br>"
+                            lunch_info = lunch_info + "<p class=\"course\"> B </p></br>"
                         }
                         lunch_info = lunch_info + "<span class=\"open\">" + lunch[i][2] + "</span></br>";
                     }
                     else if(lunch[i][1] === 'C'){
                         if (option == 2){
                             option = 3;
-                            lunch_info = lunch_info + "</br> C </br>"
+                            lunch_info = lunch_info + "<p class=\"course\"> C </p></br>"
                         }
                         lunch_info = lunch_info + "<span class=\"open\">" + lunch[i][2] + "</span></br>";
                     }
                     else{
                         if (option == 3){
                             option = 0;
-                            lunch_info = lunch_info + "</br> 테이크아웃 </br>"
+                            lunch_info = lunch_info + "<p class=\"course\"> 테이크아웃 </p></br>"
                         }
                         lunch_info = lunch_info + "<span class=\"open\">" + lunch[i][2] + "</span></br>";
                     }
@@ -392,28 +393,28 @@ const get_daytable = ()  => {
                     else if(dinner[i][1] === 'A'){
                         if (option == 0){
                             option = 1;
-                            dinner_info = dinner_info + "</br> A </br>"
+                            dinner_info = dinner_info + "<p class=\"course\"> A </p></br>"
                         }
                         dinner_info = dinner_info + "<span class=\"open\">" + dinner[i][2] + "</span></br>";
                     }
                     else if(dinner[i][1] === 'B'){
                         if (option == 1){
                             option = 2;
-                            dinner_info = dinner_info + "</br> B </br>"
+                            dinner_info = dinner_info + "<p class=\"course\"> B </p></br>"
                         }
                         dinner_info = dinner_info + "<span class=\"open\">" + dinner[i][2] + "</span></br>";
                     }
                     else if(dinner[i][1] === 'C'){
                         if (option == 2){
                             option = 3;
-                            dinner_info = dinner_info + "</br> C </br>"
+                            dinner_info = dinner_info + "<p class=\"course\"> C </p></br>"
                         }
                         dinner_info = dinner_info + "<span class=\"open\">" + dinner[i][2] + "</span></br>";
                     }
                     else{
                         if (option == 3){
                             option = 0;
-                            dinner_info = dinner_info + "</br> 테이크아웃 </br>"
+                            dinner_info = dinner_info + "<p class=\"course\"> 테이크아웃 </p></br>"
                         }
                         dinner_info = dinner_info + "<span class=\"open\">" + dinner[i][2] + "</span></br>";
                     }
@@ -431,16 +432,38 @@ const event_modal = () => {
     const modal = document.querySelector("#modal");
     const open = document.querySelectorAll(".open");
     const close = document.querySelector(".close-btn");
-    
-    console.log(open);
+    const submit = document.querySelector(".submit");
+    let name = "";
     //Show modal
     for(let i = 0; i < open.length; i++) {
         open[i].addEventListener("click", () => {
             modal.style.opacity=1;
             modal.style.visibility="visible";
+            $('.menu-name').empty();
+            temp_html = `
+            <a>${open[i].innerHTML}</a>                        
+            `;           
+            $('.menu-name').append(temp_html);
+            name = open[i].innerHTML;
+
+            $.ajax({
+                type: 'POST',
+                url: '/api/menu_score',
+                data: {menu_name:name},
+                success: function (response) {
+                    $('.menu-score').empty();
+                    const score = response['score'];
+                    for(let i=1; i<=5; i++){
+                        if (i<=score)
+                            $('.menu-score').append(`★`);
+                        else    
+                            $('.menu-score').append(`☆`);
+
+                    }
+                }
+            });
         });
     }
-    
     //Hide modal
     close.addEventListener("click", () => {
         modal.style.opacity=0;
@@ -455,7 +478,6 @@ const event_modal = () => {
     for(let i = 0;i < 5;i++) {
         star[i].addEventListener("click", () => { 
             for(let j = 0; j < 5; j++){
-                console.log(1);
                 if(j <= i && score[j] == 0) {
                     star[j].src=full_star;
                     score[j] = 1;
@@ -466,7 +488,28 @@ const event_modal = () => {
                 }
             }
         });
-    }
+    } 
+
+    submit.addEventListener("click", () =>{
+        modal.style.opacity=0;
+        modal.style.visibility="hidden";
+        let score_result = 0;
+        for(let i = 0; i < score.length; i++){
+            score_result += score[i];
+        }
+        if (score_result > 0){
+            $.ajax({
+                type: 'POST',
+                url: '/api/score',
+                data: {menu_name:name, menu_score:score_result},
+                success: function (response) {
+                    // console.log(name)
+                    alert(response['msg'])
+                    window.location.reload()
+                }
+            });
+        }
+    })
+    
+    
 }
-
-
