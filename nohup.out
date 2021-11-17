@@ -1,0 +1,376 @@
+ * Serving Flask app '__init__' (lazy loading)
+ * Environment: production
+   WARNING: This is a development server. Do not use it in a production deployment.
+   Use a production WSGI server instead.
+ * Debug mode: on
+ * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+ * Running on http://10.0.0.29:5000/ (Press CTRL+C to quit)
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 102-686-678
+45.146.164.110 - - [17/Nov/2021 19:47:40] "POST /Autodiscover/Autodiscover.xml HTTP/1.1" 404 -
+45.146.164.110 - - [17/Nov/2021 20:28:17] "GET /_ignition/execute-solution HTTP/1.1" 404 -
+79.158.168.90 - - [17/Nov/2021 20:28:38] "GET /.env HTTP/1.1" 404 -
+79.158.168.90 - - [17/Nov/2021 20:28:39] "POST / HTTP/1.1" 405 -
+ * Detected change in '/home/opc/arambyeol/__init__.py', reloading
+ * Restarting with stat
+182.31.164.169 - - [17/Nov/2021 20:36:57] "GET / HTTP/1.1" 200 -
+182.31.164.169 - - [17/Nov/2021 20:36:57] "GET /static/css/index.css HTTP/1.1" 304 -
+182.31.164.169 - - [17/Nov/2021 20:36:57] "GET /static/js/index.js HTTP/1.1" 304 -
+182.31.164.169 - - [17/Nov/2021 20:36:57] "GET /static/images/empty_star.png HTTP/1.1" 304 -
+182.31.164.169 - - [17/Nov/2021 20:36:57] "GET /static/images/x_icon.png HTTP/1.1" 304 -
+182.31.164.169 - - [17/Nov/2021 20:36:57] "GET /static/images/logo.png HTTP/1.1" 304 -
+182.31.164.169 - - [17/Nov/2021 20:36:57] "GET /api/list HTTP/1.1" 200 -
+182.31.164.169 - - [17/Nov/2021 20:36:57] "GET /static/images/favicon.ico HTTP/1.1" 304 -
+132.248.31.18 - - [17/Nov/2021 20:37:54] "GET / HTTP/1.1" 200 -
+182.31.164.169 - - [17/Nov/2021 20:38:00] "GET / HTTP/1.1" 200 -
+182.31.164.169 - - [17/Nov/2021 20:38:00] "GET /static/css/index.css HTTP/1.1" 304 -
+182.31.164.169 - - [17/Nov/2021 20:38:00] "GET /static/js/index.js HTTP/1.1" 304 -
+182.31.164.169 - - [17/Nov/2021 20:38:00] "GET /static/images/logo.png HTTP/1.1" 304 -
+182.31.164.169 - - [17/Nov/2021 20:38:00] "GET /static/images/empty_star.png HTTP/1.1" 304 -
+182.31.164.169 - - [17/Nov/2021 20:38:00] "GET /static/images/x_icon.png HTTP/1.1" 304 -
+182.31.164.169 - - [17/Nov/2021 20:38:00] "GET /api/list HTTP/1.1" 200 -
+182.31.164.169 - - [17/Nov/2021 20:38:00] "GET /static/images/favicon.ico HTTP/1.1" 304 -
+182.31.164.169 - - [17/Nov/2021 20:38:57] "GET / HTTP/1.1" 200 -
+182.31.164.169 - - [17/Nov/2021 20:38:57] "GET /static/css/index.css HTTP/1.1" 304 -
+182.31.164.169 - - [17/Nov/2021 20:38:57] "GET /static/js/index.js HTTP/1.1" 304 -
+182.31.164.169 - - [17/Nov/2021 20:38:57] "GET /static/images/x_icon.png HTTP/1.1" 304 -
+182.31.164.169 - - [17/Nov/2021 20:38:57] "GET /static/images/empty_star.png HTTP/1.1" 304 -
+182.31.164.169 - - [17/Nov/2021 20:38:57] "GET /static/images/logo.png HTTP/1.1" 304 -
+182.31.164.169 - - [17/Nov/2021 20:38:57] "GET /api/list HTTP/1.1" 200 -
+182.31.164.169 - - [17/Nov/2021 20:38:57] "GET /static/images/favicon.ico HTTP/1.1" 304 -
+182.31.164.169 - - [17/Nov/2021 20:39:10] "GET /member/login.html HTTP/1.1" 200 -
+[2021-11-17 20:39:12,642] ERROR in app: Exception on /member/login.html [POST]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 2073, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1518, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1516, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1502, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "/home/opc/arambyeol/__init__.py", line 64, in login
+    check_password = login_check(id, pw)
+  File "/home/opc/arambyeol/user.py", line 38, in login_check
+    check_password = bcrypt.checkpw(input_password, account[1].encode('utf-8'))
+TypeError: 'NoneType' object is not subscriptable
+182.31.164.169 - - [17/Nov/2021 20:39:12] "POST /member/login.html HTTP/1.1" 500 -
+[2021-11-17 20:39:12,754] ERROR in __init__: Page_not_found!
+182.31.164.169 - - [17/Nov/2021 20:39:12] "GET /favicon.ico HTTP/1.1" 404 -
+[2021-11-17 20:53:21,670] ERROR in __init__: Page_not_found!
+122.14.195.57 - - [17/Nov/2021 20:53:21] "GET /robots.txt HTTP/1.1" 404 -
+[2021-11-17 20:53:50,352] ERROR in __init__: Page_not_found!
+122.14.195.57 - - [17/Nov/2021 20:53:50] "POST /forum.php HTTP/1.1" 404 -
+[2021-11-17 20:53:50,482] ERROR in __init__: Page_not_found!
+122.14.195.57 - - [17/Nov/2021 20:53:50] "POST /forums.php HTTP/1.1" 404 -
+[2021-11-17 20:53:50,624] ERROR in __init__: Page_not_found!
+122.14.195.57 - - [17/Nov/2021 20:53:50] "POST /bbs/index.php HTTP/1.1" 404 -
+[2021-11-17 20:53:50,765] ERROR in __init__: Page_not_found!
+122.14.195.57 - - [17/Nov/2021 20:53:50] "POST /forum/index.php HTTP/1.1" 404 -
+[2021-11-17 20:53:50,898] ERROR in __init__: Page_not_found!
+122.14.195.57 - - [17/Nov/2021 20:53:50] "POST /forums/index.php HTTP/1.1" 404 -
+[2021-11-17 20:54:03,757] ERROR in __init__: Page_not_found!
+122.14.195.57 - - [17/Nov/2021 20:54:03] "POST /forum/ajax/render/widget_tabbedcontainer_tab_panel HTTP/1.1" 404 -
+[2021-11-17 20:54:59,758] ERROR in __init__: Page_not_found!
+122.14.195.57 - - [17/Nov/2021 20:54:59] "GET /test.php HTTP/1.1" 404 -
+[2021-11-17 20:55:17,961] ERROR in __init__: Page_not_found!
+122.14.195.57 - - [17/Nov/2021 20:55:17] "GET /help-e.php HTTP/1.1" 404 -
+[2021-11-17 20:55:18,094] ERROR in __init__: Page_not_found!
+122.14.195.57 - - [17/Nov/2021 20:55:18] "GET /license.php HTTP/1.1" 404 -
+[2021-11-17 20:55:23,758] ERROR in __init__: Page_not_found!
+122.14.195.57 - - [17/Nov/2021 20:55:23] "GET /hell.php HTTP/1.1" 404 -
+[2021-11-17 20:55:25,962] ERROR in __init__: Page_not_found!
+122.14.195.57 - - [17/Nov/2021 20:55:25] "GET /pmd_online.php HTTP/1.1" 404 -
+[2021-11-17 20:55:26,108] ERROR in __init__: Page_not_found!
+122.14.195.57 - - [17/Nov/2021 20:55:26] "GET /x.php HTTP/1.1" 404 -
+[2021-11-17 20:55:26,256] ERROR in __init__: Page_not_found!
+122.14.195.57 - - [17/Nov/2021 20:55:26] "GET /shell.php HTTP/1.1" 404 -
+[2021-11-17 20:55:26,403] ERROR in __init__: Page_not_found!
+122.14.195.57 - - [17/Nov/2021 20:55:26] "GET /htdocs.php HTTP/1.1" 404 -
+[2021-11-17 20:55:26,961] ERROR in __init__: Page_not_found!
+122.14.195.57 - - [17/Nov/2021 20:55:26] "GET /b.php HTTP/1.1" 404 -
+[2021-11-17 20:55:33,580] ERROR in __init__: Page_not_found!
+122.14.195.57 - - [17/Nov/2021 20:55:33] "GET /desktop.ini.php HTTP/1.1" 404 -
+[2021-11-17 20:56:03,760] ERROR in __init__: Page_not_found!
+122.14.195.57 - - [17/Nov/2021 20:56:03] "GET /muhstik.php HTTP/1.1" 404 -
+[2021-11-17 20:56:09,543] ERROR in __init__: Page_not_found!
+122.14.195.57 - - [17/Nov/2021 20:56:09] "GET /wp-config.php HTTP/1.1" 404 -
+[2021-11-17 20:56:32,648] ERROR in __init__: Page_not_found!
+122.14.195.57 - - [17/Nov/2021 20:56:32] "GET /lol.php HTTP/1.1" 404 -
+[2021-11-17 20:57:03,758] ERROR in __init__: Page_not_found!
+122.14.195.57 - - [17/Nov/2021 20:57:03] "GET /shell.php HTTP/1.1" 404 -
+[2021-11-17 20:57:09,582] ERROR in __init__: Page_not_found!
+122.14.195.57 - - [17/Nov/2021 20:57:09] "GET /scripts/setup.php HTTP/1.1" 404 -
+[2021-11-17 20:57:10,054] ERROR in __init__: Page_not_found!
+122.14.195.57 - - [17/Nov/2021 20:57:10] "GET /phpmyadmin/scripts/setup.php HTTP/1.1" 404 -
+[2021-11-17 20:57:10,197] ERROR in __init__: Page_not_found!
+122.14.195.57 - - [17/Nov/2021 20:57:10] "GET /phpMyAdmin/scripts/setup.php HTTP/1.1" 404 -
+[2021-11-17 20:57:10,339] ERROR in __init__: Page_not_found!
+122.14.195.57 - - [17/Nov/2021 20:57:10] "GET /scripts/db___.init.php HTTP/1.1" 404 -
+[2021-11-17 20:57:10,480] ERROR in __init__: Page_not_found!
+122.14.195.57 - - [17/Nov/2021 20:57:10] "GET /phpmyadmin/scripts/db___.init.php HTTP/1.1" 404 -
+[2021-11-17 20:57:10,624] ERROR in __init__: Page_not_found!
+122.14.195.57 - - [17/Nov/2021 20:57:10] "GET /phpMyAdmin/scripts/db___.init.php HTTP/1.1" 404 -
+[2021-11-17 20:57:31,257] ERROR in __init__: Page_not_found!
+122.14.195.57 - - [17/Nov/2021 20:57:31] "GET /MyAdmin/scripts/setup.php HTTP/1.1" 404 -
+[2021-11-17 20:57:38,987] ERROR in app: Exception on /member/login.html [POST]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 2073, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1518, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1516, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1502, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "/home/opc/arambyeol/__init__.py", line 64, in login
+    check_password = login_check(id, pw)
+  File "/home/opc/arambyeol/user.py", line 38, in login_check
+    check_password = bcrypt.checkpw(input_password, account[1].encode('utf-8'))
+TypeError: 'NoneType' object is not subscriptable
+182.31.164.169 - - [17/Nov/2021 20:57:38] "POST /member/login.html HTTP/1.1" 500 -
+[2021-11-17 20:58:06,460] ERROR in __init__: Page_not_found!
+122.14.195.57 - - [17/Nov/2021 20:58:06] "GET /MyAdmin/scripts/db___.init.php HTTP/1.1" 404 -
+[2021-11-17 20:58:11,741] ERROR in __init__: Page_not_found!
+122.14.195.57 - - [17/Nov/2021 20:58:11] "GET /plugins/weathermap/editor.php HTTP/1.1" 404 -
+122.14.195.57 - - [17/Nov/2021 20:58:51] "GET / HTTP/1.1" 200 -
+122.14.195.57 - - [17/Nov/2021 20:59:03] "GET / HTTP/1.1" 200 -
+[2021-11-17 20:59:13,960] ERROR in __init__: Page_not_found!
+122.14.195.57 - - [17/Nov/2021 20:59:13] "GET /1x.php HTTP/1.1" 404 -
+[2021-11-17 20:59:14,460] ERROR in __init__: Page_not_found!
+122.14.195.57 - - [17/Nov/2021 20:59:14] "GET /home.php HTTP/1.1" 404 -
+[2021-11-17 20:59:30,459] ERROR in __init__: Page_not_found!
+122.14.195.57 - - [17/Nov/2021 20:59:30] "GET /composers.php HTTP/1.1" 404 -
+[2021-11-17 20:59:39,757] ERROR in __init__: Page_not_found!
+122.14.195.57 - - [17/Nov/2021 20:59:39] "GET /composer.php HTTP/1.1" 404 -
+[2021-11-17 21:00:01,961] ERROR in __init__: Page_not_found!
+122.14.195.57 - - [17/Nov/2021 21:00:01] "GET /Drupal.php HTTP/1.1" 404 -
+[2021-11-17 21:00:03,054] ERROR in __init__: Page_not_found!
+122.14.195.57 - - [17/Nov/2021 21:00:03] "GET /lang.php?f=1 HTTP/1.1" 404 -
+[2021-11-17 21:00:22,756] ERROR in __init__: Page_not_found!
+122.14.195.57 - - [17/Nov/2021 21:00:22] "GET /images/vuln.php HTTP/1.1" 404 -
+[2021-11-17 21:00:25,589] ERROR in __init__: Page_not_found!
+122.14.195.57 - - [17/Nov/2021 21:00:25] "GET /hd.php HTTP/1.1" 404 -
+[2021-11-17 21:00:30,461] ERROR in __init__: Page_not_found!
+122.14.195.57 - - [17/Nov/2021 21:00:30] "GET /images/up.php HTTP/1.1" 404 -
+[2021-11-17 21:00:30,616] ERROR in __init__: Page_not_found!
+122.14.195.57 - - [17/Nov/2021 21:00:30] "GET /images/attari.php HTTP/1.1" 404 -
+[2021-11-17 21:00:30,756] ERROR in __init__: Page_not_found!
+122.14.195.57 - - [17/Nov/2021 21:00:30] "GET /images/jsspwneed.php HTTP/1.1" 404 -
+[2021-11-17 21:00:30,895] ERROR in __init__: Page_not_found!
+122.14.195.57 - - [17/Nov/2021 21:00:30] "GET /images/stories/cmd.php HTTP/1.1" 404 -
+[2021-11-17 21:00:57,757] ERROR in __init__: Page_not_found!
+122.14.195.57 - - [17/Nov/2021 21:00:57] "GET /huoshan.php HTTP/1.1" 404 -
+[2021-11-17 21:01:01,543] ERROR in __init__: Page_not_found!
+122.14.195.57 - - [17/Nov/2021 21:01:01] "GET /yu.php HTTP/1.1" 404 -
+[2021-11-17 21:01:07,756] ERROR in __init__: Page_not_found!
+122.14.195.57 - - [17/Nov/2021 21:01:07] "GET /ftmabc.php HTTP/1.1" 404 -
+[2021-11-17 21:01:15,757] ERROR in __init__: Page_not_found!
+122.14.195.57 - - [17/Nov/2021 21:01:15] "GET /mjx.php HTTP/1.1" 404 -
+[2021-11-17 21:01:15,896] ERROR in __init__: Page_not_found!
+122.14.195.57 - - [17/Nov/2021 21:01:15] "GET /xiaoxia.php HTTP/1.1" 404 -
+[2021-11-17 21:01:30,256] ERROR in __init__: Page_not_found!
+122.14.195.57 - - [17/Nov/2021 21:01:30] "GET /coonig.php HTTP/1.1" 404 -
+[2021-11-17 21:01:30,757] ERROR in __init__: Page_not_found!
+122.14.195.57 - - [17/Nov/2021 21:01:30] "GET /ak.php HTTP/1.1" 404 -
+[2021-11-17 21:01:30,906] ERROR in __init__: Page_not_found!
+122.14.195.57 - - [17/Nov/2021 21:01:30] "GET /baidoubi.php HTTP/1.1" 404 -
+[2021-11-17 21:01:31,460] ERROR in __init__: Page_not_found!
+122.14.195.57 - - [17/Nov/2021 21:01:31] "GET /hhhhhh.php HTTP/1.1" 404 -
+[2021-11-17 21:01:39,757] ERROR in __init__: Page_not_found!
+122.14.195.57 - - [17/Nov/2021 21:01:39] "GET /python.php HTTP/1.1" 404 -
+[2021-11-17 21:01:49,589] ERROR in __init__: Page_not_found!
+122.14.195.57 - - [17/Nov/2021 21:01:49] "GET /taisui.php HTTP/1.1" 404 -
+ * Serving Flask app '__init__' (lazy loading)
+ * Environment: production
+   WARNING: This is a development server. Do not use it in a production deployment.
+   Use a production WSGI server instead.
+ * Debug mode: off
+ * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+ * Running on http://10.0.0.29:5000/ (Press CTRL+C to quit)
+122.14.195.57 - - [17/Nov/2021 21:08:14] "GET /phpMyAdmin/phpMyAdmin/index.php HTTP/1.1" 404 -
+[2021-11-17 21:08:17,170] ERROR in app: Exception on /member/login.html [POST]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 2073, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1518, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1516, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1502, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "__init__.py", line 60, in login
+    check_password = login_check(id, pw)
+  File "/home/opc/arambyeol/user.py", line 38, in login_check
+    check_password = bcrypt.checkpw(input_password, account[1].encode('utf-8'))
+TypeError: 'NoneType' object is not subscriptable
+182.31.164.169 - - [17/Nov/2021 21:08:17] "POST /member/login.html HTTP/1.1" 500 -
+122.14.195.57 - - [17/Nov/2021 21:08:29] "GET /v/index.php HTTP/1.1" 404 -
+[2021-11-17 21:08:32,588] ERROR in app: Exception on /member/login.html [POST]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 2073, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1518, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1516, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1502, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "__init__.py", line 60, in login
+    check_password = login_check(id, pw)
+  File "/home/opc/arambyeol/user.py", line 38, in login_check
+    check_password = bcrypt.checkpw(input_password, account[1].encode('utf-8'))
+TypeError: 'NoneType' object is not subscriptable
+182.31.164.169 - - [17/Nov/2021 21:08:32] "POST /member/login.html HTTP/1.1" 500 -
+122.14.195.57 - - [17/Nov/2021 21:08:34] "GET /phpmyadm1n/index.php HTTP/1.1" 404 -
+182.31.164.169 - - [17/Nov/2021 21:08:39] "GET / HTTP/1.1" 200 -
+182.31.164.169 - - [17/Nov/2021 21:08:39] "GET /static/css/index.css HTTP/1.1" 304 -
+182.31.164.169 - - [17/Nov/2021 21:08:39] "GET /static/images/logo.png HTTP/1.1" 304 -
+182.31.164.169 - - [17/Nov/2021 21:08:39] "GET /static/js/index.js HTTP/1.1" 304 -
+182.31.164.169 - - [17/Nov/2021 21:08:39] "GET /static/images/x_icon.png HTTP/1.1" 304 -
+182.31.164.169 - - [17/Nov/2021 21:08:39] "GET /static/images/empty_star.png HTTP/1.1" 304 -
+182.31.164.169 - - [17/Nov/2021 21:08:39] "GET /api/list HTTP/1.1" 200 -
+122.14.195.57 - - [17/Nov/2021 21:08:39] "GET /shaAdmin/index.php HTTP/1.1" 404 -
+122.14.195.57 - - [17/Nov/2021 21:08:43] "GET /phpMyadmi/index.php HTTP/1.1" 404 -
+122.14.195.57 - - [17/Nov/2021 21:09:06] "GET /phpMyAdmin123/index.php HTTP/1.1" 404 -
+122.14.195.57 - - [17/Nov/2021 21:09:15] "GET /phpMyAdmina/index.php HTTP/1.1" 404 -
+122.14.195.57 - - [17/Nov/2021 21:09:17] "GET /phpMydmin/index.php HTTP/1.1" 404 -
+122.14.195.57 - - [17/Nov/2021 21:09:30] "GET /phpmyadmin2222/index.php HTTP/1.1" 404 -
+122.14.195.57 - - [17/Nov/2021 21:09:37] "GET /phpmyadmin3333/index.php HTTP/1.1" 404 -
+122.14.195.57 - - [17/Nov/2021 21:09:41] "GET /php2MyAdmin/index.php HTTP/1.1" 404 -
+122.14.195.57 - - [17/Nov/2021 21:09:45] "GET /phpNyAdmin/index.php HTTP/1.1" 404 -
+122.14.195.57 - - [17/Nov/2021 21:09:49] "GET /download/index.php HTTP/1.1" 404 -
+122.14.195.57 - - [17/Nov/2021 21:10:03] "GET /123131/index.php HTTP/1.1" 404 -
+122.14.195.57 - - [17/Nov/2021 21:10:05] "GET /phpMyAdminn/index.php HTTP/1.1" 404 -
+122.14.195.57 - - [17/Nov/2021 21:10:05] "GET /phpMyAdminhf/index.php HTTP/1.1" 404 -
+122.14.195.57 - - [17/Nov/2021 21:10:15] "GET /phpMyAdmln/index.php HTTP/1.1" 404 -
+122.14.195.57 - - [17/Nov/2021 21:10:31] "GET /program/index.php HTTP/1.1" 404 -
+122.14.195.57 - - [17/Nov/2021 21:10:45] "GET /mysql/dbadmin/index.php HTTP/1.1" 404 -
+122.14.195.57 - - [17/Nov/2021 21:10:46] "GET /mysql/sqlmanager/index.php HTTP/1.1" 404 -
+182.31.164.169 - - [17/Nov/2021 21:11:05] "GET /member/login.html HTTP/1.1" 200 -
+122.14.195.57 - - [17/Nov/2021 21:11:05] "GET /SQL/index.php HTTP/1.1" 404 -
+[2021-11-17 21:11:07,025] ERROR in app: Exception on /member/login.html [POST]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 2073, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1518, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1516, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1502, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "__init__.py", line 60, in login
+    check_password = login_check(id, pw)
+  File "/home/opc/arambyeol/user.py", line 38, in login_check
+    check_password = bcrypt.checkpw(input_password, account[1].encode('utf-8'))
+TypeError: 'NoneType' object is not subscriptable
+182.31.164.169 - - [17/Nov/2021 21:11:07] "POST /member/login.html HTTP/1.1" 500 -
+122.14.195.57 - - [17/Nov/2021 21:11:17] "GET /manager/html HTTP/1.1" 404 -
+[2021-11-17 21:12:12,922] ERROR in app: Exception on /member/login.html [POST]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 2073, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1518, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1516, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1502, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "__init__.py", line 60, in login
+    check_password = login_check(id, pw)
+  File "/home/opc/arambyeol/user.py", line 38, in login_check
+    check_password = bcrypt.checkpw(input_password, account[1].encode('utf-8'))
+TypeError: 'NoneType' object is not subscriptable
+182.31.164.169 - - [17/Nov/2021 21:12:12] "POST /member/login.html HTTP/1.1" 500 -
+182.31.164.169 - - [17/Nov/2021 21:12:32] "GET /member/register.html HTTP/1.1" 200 -
+[2021-11-17 21:12:35,094] ERROR in app: Exception on /member/register.html [POST]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 2073, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1518, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1516, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1502, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "__init__.py", line 49, in register
+    useradd(id, pw)
+  File "/home/opc/arambyeol/user.py", line 13, in useradd
+    cursor.execute(sql)
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/cursors.py", line 148, in execute
+    result = self._query(query)
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/cursors.py", line 310, in _query
+    conn.query(q)
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/connections.py", line 547, in query
+    self._execute_command(COMMAND.COM_QUERY, sql)
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/connections.py", line 793, in _execute_command
+    raise err.InterfaceError(0, "")
+pymysql.err.InterfaceError: (0, '')
+182.31.164.169 - - [17/Nov/2021 21:12:35] "POST /member/register.html HTTP/1.1" 500 -
+[2021-11-17 21:16:23,416] ERROR in app: Exception on /member/register.html [POST]
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 2073, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1518, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1516, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1502, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "__init__.py", line 48, in register
+    if(check_userId(id) != True):   # id 가 이미 존재하면 true
+  File "/home/opc/arambyeol/user.py", line 20, in check_userId
+    cursor.execute(sql)
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/cursors.py", line 148, in execute
+    result = self._query(query)
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/cursors.py", line 310, in _query
+    conn.query(q)
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/connections.py", line 547, in query
+    self._execute_command(COMMAND.COM_QUERY, sql)
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/connections.py", line 793, in _execute_command
+    raise err.InterfaceError(0, "")
+pymysql.err.InterfaceError: (0, '')
+182.31.164.169 - - [17/Nov/2021 21:16:23] "POST /member/register.html HTTP/1.1" 500 -
+182.31.164.169 - - [17/Nov/2021 21:16:29] "GET / HTTP/1.1" 200 -
+182.31.164.169 - - [17/Nov/2021 21:16:29] "GET /static/css/index.css HTTP/1.1" 304 -
+182.31.164.169 - - [17/Nov/2021 21:16:29] "GET /static/js/index.js HTTP/1.1" 304 -
+182.31.164.169 - - [17/Nov/2021 21:16:29] "GET /static/images/logo.png HTTP/1.1" 304 -
+182.31.164.169 - - [17/Nov/2021 21:16:29] "GET /static/images/empty_star.png HTTP/1.1" 304 -
+182.31.164.169 - - [17/Nov/2021 21:16:29] "GET /static/images/x_icon.png HTTP/1.1" 304 -
+182.31.164.169 - - [17/Nov/2021 21:16:29] "GET /api/list HTTP/1.1" 200 -
+182.31.164.169 - - [17/Nov/2021 21:16:50] "POST /api/menu_score HTTP/1.1" 200 -
+182.31.164.169 - - [17/Nov/2021 21:16:53] "POST /api/menu_score HTTP/1.1" 200 -
+182.31.164.169 - - [17/Nov/2021 21:16:54] "GET /static/images/full_star.png HTTP/1.1" 304 -
+182.31.164.169 - - [17/Nov/2021 21:16:55] "POST /api/score HTTP/1.1" 200 -
+182.31.164.169 - - [17/Nov/2021 21:16:56] "POST /api/menu_score HTTP/1.1" 200 -
+182.31.164.169 - - [17/Nov/2021 21:17:00] "POST /api/score HTTP/1.1" 200 -
+182.31.164.169 - - [17/Nov/2021 21:17:01] "POST /api/menu_score HTTP/1.1" 200 -
+182.31.164.169 - - [17/Nov/2021 21:17:03] "POST /api/score HTTP/1.1" 200 -
+182.31.164.169 - - [17/Nov/2021 21:17:04] "POST /api/menu_score HTTP/1.1" 200 -
+182.31.164.169 - - [17/Nov/2021 21:17:06] "POST /api/score HTTP/1.1" 200 -
+182.31.164.169 - - [17/Nov/2021 21:17:07] "POST /api/menu_score HTTP/1.1" 200 -
+182.31.164.169 - - [17/Nov/2021 21:17:08] "GET /static/images/full_star.png HTTP/1.1" 304 -
+182.31.164.169 - - [17/Nov/2021 21:17:09] "POST /api/score HTTP/1.1" 200 -
+182.31.164.169 - - [17/Nov/2021 21:17:10] "POST /api/menu_score HTTP/1.1" 200 -
+182.31.164.169 - - [17/Nov/2021 21:17:11] "POST /api/score HTTP/1.1" 200 -
+182.31.164.169 - - [17/Nov/2021 21:17:12] "POST /api/menu_score HTTP/1.1" 200 -
+182.31.164.169 - - [17/Nov/2021 21:17:14] "POST /api/score HTTP/1.1" 200 -
+182.31.164.169 - - [17/Nov/2021 21:17:14] "POST /api/menu_score HTTP/1.1" 200 -
+182.31.164.169 - - [17/Nov/2021 21:17:17] "POST /api/score HTTP/1.1" 200 -
+182.31.164.169 - - [17/Nov/2021 21:17:18] "POST /api/menu_score HTTP/1.1" 200 -
+182.31.164.169 - - [17/Nov/2021 21:17:21] "POST /api/menu_score HTTP/1.1" 200 -
+182.31.164.169 - - [17/Nov/2021 21:17:23] "GET /static/images/full_star.png HTTP/1.1" 304 -
+182.31.164.169 - - [17/Nov/2021 21:17:23] "POST /api/score HTTP/1.1" 200 -
+182.31.164.169 - - [17/Nov/2021 21:17:25] "POST /api/menu_score HTTP/1.1" 200 -
+182.31.164.169 - - [17/Nov/2021 21:17:27] "POST /api/score HTTP/1.1" 200 -
+182.31.164.169 - - [17/Nov/2021 21:17:27] "POST /api/menu_score HTTP/1.1" 200 -
+182.31.164.169 - - [17/Nov/2021 21:18:03] "POST /api/menu_score HTTP/1.1" 200 -
+182.31.164.169 - - [17/Nov/2021 21:18:04] "POST /api/score HTTP/1.1" 200 -
+182.31.164.169 - - [17/Nov/2021 21:18:06] "POST /api/menu_score HTTP/1.1" 200 -
+182.31.164.169 - - [17/Nov/2021 21:18:08] "GET /static/images/full_star.png HTTP/1.1" 304 -
+182.31.164.169 - - [17/Nov/2021 21:18:09] "POST /api/score HTTP/1.1" 200 -
+182.31.164.169 - - [17/Nov/2021 21:18:10] "POST /api/menu_score HTTP/1.1" 200 -
+182.31.164.169 - - [17/Nov/2021 21:18:12] "POST /api/score HTTP/1.1" 200 -
