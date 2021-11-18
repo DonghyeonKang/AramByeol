@@ -1,10 +1,11 @@
 $(document).ready(function () {
-	get_daytable();
-    event_modal();
-    session_check();
+    const sessionString = session_check();    // 세션체크 후
+	get_daytable(sessionString);     // 데이터 로딩 후
+    event_modal();      // 모달 이벤트 처리
 });
 
 const session_check = () => {
+    let sessionExist;
     $.ajax({
         type: 'POST',
         url: '/api/session_check',
@@ -13,11 +14,19 @@ const session_check = () => {
         success: function (response) {
             if(response == '0') {   // 세션 없음
                 $("#login").append("<a href=\"/member/login.html\" id=\"login-button\"><img src=\"/static/images/login.png\" alt=\"Login\"></a>");
+                sessionExist = 0;
             } else {    // 세션 있음
                 $("#login").append("<a id=\"logout-button\"><img src=\"/static/images/logout.png\" alt=\"Login\"></a>");
+                sessionExist = 1;
             }
         }
     });
+
+    if (sessionExist == 0) {
+        return "<span>";
+    } else {
+        return "<span class=\"open\">";
+    }
 }
 
 const logout = () => {
@@ -27,8 +36,8 @@ const logout = () => {
         async: true,
         data: {},
         success: function(answer) {
-            if(answer == '1'){
-                location.reload();
+            if(answer == '1'){  //로그아웃 성공시 새로고침
+                location.reload();  
             }
         }
     });
@@ -41,7 +50,7 @@ window.addEventListener('load', function(){
     });
 });
 
-const get_daytable = ()  => {
+const get_daytable = (sessionString)  => {
     $.ajax({
 		type: 'GET',
 		url: '/api/list',
@@ -100,27 +109,27 @@ const get_daytable = ()  => {
             for(let i = 0; i < morning.length; i++){
                 if(this_day === morning[i][0]){
                     if(morning[i][1] === 'none')
-                        morning_info = morning_info  + "<span class=\"open\">" + morning[i][2] + "</span></br>";
+                        morning_info = morning_info  + sessionString + morning[i][2] + "</span></br>";
                     else if(morning[i][1] === 'A'){
                         if (option == 0){
                             option = 1;
                             morning_info = morning_info + "<p class=\"course\">A</p></br>"
                         }
-                        morning_info = morning_info + "<span class=\"open\">" + morning[i][2] + "</span></br>";
+                        morning_info = morning_info + sessionString + morning[i][2] + "</span></br>";
                     }
                     else if(morning[i][1] === 'B'){
                         if (option == 1){
                             option = 2;
                             morning_info = morning_info + "<p class=\"course\">B</p></br>"
                         }
-                        morning_info = morning_info + "<span class=\"open\">" + morning[i][2] + "</span></br>";
+                        morning_info = morning_info + sessionString + morning[i][2] + "</span></br>";
                     }
                     else if(morning[i][1] === 'C'){
                         if (option == 2){
                             option = 3;
                             morning_info = morning_info + "<p class=\"course\">C</p></br>"
                         }
-                        morning_info = morning_info + "<span class=\"open\">" + morning[i][2] + "</span></br>";
+                        morning_info = morning_info + sessionString + morning[i][2] + "</span></br>";
                     }
                     else{
                         if (option == 3){
@@ -128,7 +137,7 @@ const get_daytable = ()  => {
                             morning_info = morning_info + "<p class=\"course\">테이크아웃</p></br>"
 
                         }
-                        morning_info = morning_info + "<span class=\"open\">" +morning[i][2] + "</span>" + "</br>";
+                        morning_info = morning_info + sessionString +morning[i][2] + "</span>" + "</br>";
                     }
                 }
             }
@@ -141,27 +150,27 @@ const get_daytable = ()  => {
             for(let i = 0; i < lunch.length; i++){
                 if(this_day === lunch[i][0]){
                     if(lunch[i][1] === 'none')
-                        lunch_info = lunch_info + "<span class=\"open\">" + lunch[i][2] + "</span></br>";
+                        lunch_info = lunch_info + sessionString + lunch[i][2] + "</span></br>";
                     else if(lunch[i][1] === 'A'){
                         if (option == 0){
                             option = 1;
                             lunch_info = lunch_info + "<p class=\"course\"> A </p></br>"
                         }
-                        lunch_info = lunch_info + "<span class=\"open\">" + lunch[i][2] + "</span></br>";
+                        lunch_info = lunch_info + sessionString + lunch[i][2] + "</span></br>";
                     }
                     else if(lunch[i][1] === 'B'){
                         if (option == 1){
                             option = 2;
                             lunch_info = lunch_info + "<p class=\"course\"> B </p></br>"
                         }
-                        lunch_info = lunch_info + "<span class=\"open\">" + lunch[i][2] + "</span></br>";
+                        lunch_info = lunch_info + sessionString + lunch[i][2] + "</span></br>";
                     }
                     else if(lunch[i][1] === 'C'){
                         if (option == 2){
                             option = 3;
                             lunch_info = lunch_info + "<p class=\"course\"> C </p></br>"
                         }
-                        lunch_info = lunch_info + "<span class=\"open\">" + lunch[i][2] + "</span></br>";
+                        lunch_info = lunch_info + sessionString + lunch[i][2] + "</span></br>";
                     }
                     else{
                         if (option == 3){
@@ -169,7 +178,7 @@ const get_daytable = ()  => {
                             lunch_info = lunch_info + "<p class=\"course\"> 테이크아웃 </p></br>"
 
                         }
-                        lunch_info = lunch_info + "<span class=\"open\">" + lunch[i][2] + "</span></br>";
+                        lunch_info = lunch_info + sessionString + lunch[i][2] + "</span></br>";
                     }
                 }
             }
@@ -182,27 +191,27 @@ const get_daytable = ()  => {
             for(let i = 0; i < dinner.length; i++){
                 if(this_day === dinner[i][0]){
                     if(dinner[i][1] === 'none')
-                        dinner_info = dinner_info + "<span class=\"open\">" + dinner[i][2] + "</span></br>";
+                        dinner_info = dinner_info + sessionString + dinner[i][2] + "</span></br>";
                     else if(dinner[i][1] === 'A'){
                         if (option == 0){
                             option = 1;
                             dinner_info = dinner_info + "<p class=\"course\"> A </p></br>"
                         }
-                        dinner_info = dinner_info + "<span class=\"open\">" + dinner[i][2] + "</span></br>";
+                        dinner_info = dinner_info + sessionString + dinner[i][2] + "</span></br>";
                     }
                     else if(dinner[i][1] === 'B'){
                         if (option == 1){
                             option = 2;
                             dinner_info = dinner_info + "<p class=\"course\"> B </p></br>"
                         }
-                        dinner_info = dinner_info + "<span class=\"open\">" + dinner[i][2] + "</span></br>";
+                        dinner_info = dinner_info + sessionString + dinner[i][2] + "</span></br>";
                     }
                     else if(dinner[i][1] === 'C'){
                         if (option == 2){
                             option = 3;
                             dinner_info = dinner_info + "<p class=\"course\"> C </p></br>"
                         }
-                        dinner_info = dinner_info + "<span class=\"open\">" + dinner[i][2] + "</span></br>";
+                        dinner_info = dinner_info +sessionString + dinner[i][2] + "</span></br>";
                     }
                     else{
                         if (option == 3){
@@ -210,7 +219,7 @@ const get_daytable = ()  => {
                             dinner_info = dinner_info + "<p class=\"course\"> 테이크아웃 </p></br>"
 
                         }
-                        dinner_info = dinner_info + "<span class=\"open\">" + dinner[i][2] + "</span></br>";
+                        dinner_info = dinner_info + sessionString + dinner[i][2] + "</span></br>";
                     }
                 }
             }
