@@ -12,7 +12,7 @@ day_dinner = day_dinners
 # Connect to the DB
 connection = pymysql.connect(host='localhost',
                             user='root',
-                            password='111111',
+                            password='456789',
                             db='arambyeol',
                             charset='utf8',
                             cursorclass=pymysql.cursors.DictCursor

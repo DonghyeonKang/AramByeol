@@ -15,7 +15,7 @@ app.secret_key = 'arambyeol'
 
 connection = pymysql.connect(host='localhost',
                         user='root',
-                        password='111111',
+                        password='456789',
                         db='arambyeol',
                         charset='utf8',
                         cursorclass=pymysql.cursors.DictCursor)
