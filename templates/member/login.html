@@ -4,32 +4,32 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Login</title>
+    <title>AramByeol</title>
     <link rel="stylesheet" href="/static/css/member/login.css" />
   </head>
   <body>
     <div class="header">
       <img src="/static/images/logo.png" alt="logo" height="20" />
-      <a href="/index.html">  </a>
+      <a href="/index.html"> 아람별 </a>
     </div>
     <br /><br />
     <div class="container">
       <div class="input">
         <div>이미라면? 로그인</div>
         <br />
-   
-        <input type="text" placeholder="ID" id="nameInput" /><br />
-
-        <input type="password" placeholder="password" id="passwordInput" />
-        <br/><br/>
-        <!-- <button class = "hahaha">로그인</button> -->
-        <input type="submit" placeholder="login" id="loginInput" />
+        <form action="/member/login.html" method="post">
+            <input type="text" placeholder="Id" name="id"/><br />
+            <input type="password" placeholder="Password" name="password"/>
+            <br /><br />
+            <!-- <button class = "hahaha">로그인</button> -->
+            <input type="submit" id="loginInput" value="Login"/>
+        </form>
       </div>
 
       <div class="signup">
         아람관이 처음이시라면?
         <br /><br />
-        <button>create An Account</button>
+        <a href="/member/register.html">create An Account</a>
       </div>
     </div>
   </body>
