@@ -5,8 +5,7 @@ from flask import session # session
 from flask import redirect # move page
 from flask import jsonify
 from flask import url_for
-from pymysql import connect
-from werkzeug.security import generate_password_hash, check_password_hash
+from flask import flash # alert
 from user import *
 import bcrypt
 import pymysql.cursors # python과 mysql(mariadb) 연동
@@ -38,8 +37,7 @@ def register():
         if(check_userId(id) != True):   # id 가 이미 존재하면 true
             useradd(id, pw)
         else:
-            print("이미 존재하는 아이디")
-        return redirect('http://localhost:5000/member/login.html')
+            flash("이미 존재하는 아이디입니다!")
     return render_template("/member/register.html")
 
 @app.route('/member/login.html', methods=['GET', 'POST'])
@@ -53,20 +51,19 @@ def login():
         print(check_password)
         if check_id:
             if check_password:
-                print("로그인 성공")
                 session['username'] = request.form['id']  # session id 부여
                 return redirect(url_for('home'))
             else:
-                print("비밀번호틀림")
+                flash("아이디 또는 비밀번호가 잘못 입력 되었습니다.")
                 return render_template("/member/login.html")    # 비밀번호 틀림
         else:
+            flash("아이디 또는 비밀번호가 잘못 입력 되었습니다.")
             return render_template("/member/login.html")    # id 없음
     return render_template("/member/login.html")    # 페이지
 
 @app.route('/logout', methods=['POST'])
 def logout():
     session.clear()   # 세션 내에 id 가 있으면 지움
-    print("세션 지우러 옴")
     return "1"
 # API
 @app.route('/api/list', methods=['GET'])
@@ -200,7 +197,6 @@ def get_score():
 # 세션 확인 API
 @app.route('/api/session_check', methods=['POST'])
 def session_check():
-    print("세션 확인", session.get('username'))
     if session.get('username'):
         return '1'
     return '0'

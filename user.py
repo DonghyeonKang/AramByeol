@@ -34,9 +34,4 @@ def login_check(input_username, input_password):
     if account == None:
         return False
     check_password = bcrypt.checkpw(input_password, account[2].encode('utf-8'))
-    print("로그인", check_password)
     return check_password
-
-def session_check():
-    
-    return 
