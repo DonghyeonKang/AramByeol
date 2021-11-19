@@ -1,3 +1,9 @@
+{% with messages = get_flashed_messages() %} {% if messages %}
+<script>
+  alert("{{messages[-1]}}");
+</script>
+{% endif %} {% endwith %}
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -10,7 +16,7 @@
   <body>
     <div class="header">
       <img src="/static/images/logo.png" alt="logo" height="20" />
-      <a href="/index.html"> 아람별 </a>
+      <a href="/"> 아람별 </a>
     </div>
     <br /><br />
     <div class="container">
@@ -18,11 +24,11 @@
         <div>이미 아람전사라면? 로그인</div>
         <br />
         <form action="/member/login.html" method="post">
-            <input type="text" placeholder="Id" name="id"/><br />
-            <input type="password" placeholder="Password" name="password"/>
-            <br /><br />
-            <!-- <button class = "hahaha">로그인</button> -->
-            <input type="submit" id="loginInput" value="Login"/>
+          <input type="text" placeholder="Id" name="id" /><br />
+          <input type="password" placeholder="Password" name="password" />
+          <br /><br />
+          <!-- <button class = "hahaha">로그인</button> -->
+          <input type="submit" id="loginInput" value="Login" />
         </form>
       </div>
 

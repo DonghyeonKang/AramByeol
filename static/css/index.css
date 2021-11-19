@@ -71,11 +71,28 @@ body {
   padding: 0.5rem 0 0.5rem 0;
 }
 
+.modal-footer .login_link {
+  display: none;
+}
+
+.modal-footer .close-btn {
+  display: none;
+  background-color: #fb9a40;
+  color: white;
+  padding: 0.3rem 0.5rem 0.3rem 0.5rem;
+  text-decoration: none;
+}
+
 .modal-content {
   text-align: center;
 }
 
-.close-btn {
+.modal_login_link {
+  display: none;
+  text-decoration: none;
+}
+
+.modal-header .close-btn {
   width: 1.5rem;
   margin: 0.3rem 0.3rem 0 0;
   position: absolute;
