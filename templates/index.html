@@ -3,7 +3,10 @@
   <head>
     <meta property="og:title" content="AramByeol" />
     <meta property="og:description" content="아람관 별점을 매겨보자!" />
-    <meta property="og:image" content="{{ url_for('static', filename='/images/logo.png') }}" />
+    <meta
+      property="og:image"
+      content="{{ url_for('static', filename='/images/logo.png') }}"
+    />
 
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -18,7 +21,10 @@
       href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap"
       rel="stylesheet"
     />
-    <link rel="shortcut icon" href="{{ url_for('static', filename='/images/favicon.ico')}}">
+    <link
+      rel="shortcut icon"
+      href="{{ url_for('static', filename='/images/favicon.ico')}}"
+    />
     <title>AramByeol</title>
   </head>
   <body>
@@ -27,9 +33,7 @@
         <div class="logo-text">
           <a href="">AramByeol</a>
         </div>
-        <div class="login" id="login">
-          
-        </div>
+        <div class="login" id="login"></div>
       </div>
       <div class="logo-img">
         <img src="/static/images/logo.png" alt="logo" />
@@ -38,14 +42,14 @@
     <div class="content">
       <section class="modal-container" id="modal">
         <div class="modal">
-          <img
-            class="close-btn"
-            id="close"
-            src="/static/images/x_icon.png"
-            alt="x"
-          />
           <div class="modal-header">
             <h2>평가</h2>
+            <img
+              class="close-btn"
+              id="close"
+              src="/static/images/x_icon.png"
+              alt="x"
+            />
           </div>
           <div class="modal-content">
             <div class="menu-content">
@@ -90,8 +94,12 @@
                   />
                 </li>
               </ul>
-              <a href="#" class="submit" type="submit">확인</a>
+              <div class="submit" type="submit">확인</div>
             </form>
+          </div>
+          <div class="modal-footer">
+            <a class="login_link" href="/member/login.html">후기는 로그인!</a>
+            <div class="close-btn">확인</div>
           </div>
         </div>
       </section>
@@ -109,7 +117,7 @@
     <div class="inner">
       <div class="today-box">
         <table class="menu-table">
-            <tr id="morning"></tr>
+          <tr id="morning"></tr>
         </table>
       </div>
       <div class="today-box">
@@ -120,8 +128,8 @@
       <div class="today-box">
         <table class="menu-table">
           <tr id="dinner"></tr>
-        </div>
-      </table>
+        </table>
+      </div>
     </div>
     <div class="inner">
       <div class="line">
@@ -180,19 +188,15 @@
         </table>
       </div>
     </div>
-    <div class="inner">
-      <div class="line"><hr size="5" noshade /></div>
-    </div>
-    <footer></footer>
   </body>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script
     src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
     integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
     crossorigin="anonymous"
-    ></script>
-    <script
+  ></script>
+  <script
     type="text/javascript"
     src="{{ url_for('static', filename='js/index.js') }}"
-    ></script>
+  ></script>
 </html>
