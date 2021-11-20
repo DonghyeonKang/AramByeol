@@ -10,37 +10,55 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>AramByeol</title>
+    <title>AramByeol Login</title>
     <link rel="stylesheet" href="/static/css/member/login.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com/" />
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Gaegu&family=Quicksand:wght@500&family=Roboto:wght@100&display=swap"
+      rel="stylesheet"
+    />
   </head>
-  
+
   <body>
     <div class="header">
-      <img src="/static/images/logo.png" alt="logo" height="60" />
-      <a href="AramByeol"> AramByeol </a>
-
+      <img src="/static/images/logo.png" alt="logo" height="80" />
+      <a href="/"> AramByeol </a>
     </div>
-    <br><br>
+    <br /><br />
     <div class="container">
       <div class="input">
-        <div>이미 아람전사라면? 로그인</div><br>
+        <div>이미 아람전사라면? 로그인</div>
+        <br />
         <form action="/member/login.html" method="post">
-
-          <!-- 서버에서 저 주소를 요청한다 (동현) -->
-          <!-- post : 입력한 내용의 길이에 제한받지 않고 사용자가 입력한 내용도 드러나지 않습니다 -->
-            <input type="text" placeholder="Id" id="nameInput"><br>
-            <input type="password" placeholder="Password" name="password"/>
-            <br><br>
-            <!-- <button class = "hahaha">로그인</button> -->
-            <input type="submit" id="loginInput" value="Login"/>
-
+          <div >
+            <input type="text" placeholder="아이디" class ="nameInput"/>
+            <br />
+          </div>
+          <div >
+            <input
+              type="password"
+              placeholder="비밀번호"
+              class = "passwordInput"
+            /><br />
+          </div>
+          <input type="submit" id="loginInput" value="로그인" />
         </form>
       </div>
       <div class="signup">
         아람관이 처음이시라면?
         <br /><br />
-        <a href="/member/register.html">create An Account</a>
-      </div>
-    </div>
+        <div class ="signupbutton">
+        <a href="/member/register.html" >회원가입</a>
+                </div>
+                <!-- <input type="submit" id="signup" value="회원가입" /> -->
+      
+    </div>   
   </body>
 </html>

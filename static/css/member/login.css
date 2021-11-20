@@ -1,38 +1,74 @@
+body {
+  margin: 0%;
+}
+/* 바디태그에 마진값을 없앤다. */
+
 .header {
-    background-color : #5FC1C2;
-    text-align : center;
-    color : white;
-    align-items: center;
-    font-size : 4rem;
+  background-color: #5fc1c2;
+  color: white;
+  align-items: center;
+  font-size: 3rem;
+  justify-content: center;
+  /* 가운데 정렬  */
+  display: flex;
+  font-family: "Quicksand", sans-serif;
 }
 
 /* /하이퍼링크 색 바꾸기 */
-a {
-text-decoration-line : none;
-color : white;
-
+.header a {
+  text-decoration-line: none;
+  color: white;
 }
 
 .input {
-    border-right : 5px solid #5FC1C2;
-    font-size: 2rem;
-    text-align:center;
+  border-right: 5px solid #5fc1c2;
+  font-size: 2rem;
+  text-align: center;
+  font-family: "Gaegu", cursive;
 }
 
-input {
-    border : 3px;
+.nameInput {
+  font-family: "Gaegu", cursive;
+  height: 33px;
+  font-size: 1.5rem;
+  text-align: center;
+  margin: 10px;
 }
+
+.passwordInput {
+  font-family: "Gaegu", cursive;
+  height: 33px;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+login-button {
+  height: 20px;
+}
+
+.buttonlogin {
+  font-family: "Gaegu", cursive;
+  margin: 50px;
+  padding: 0%;
+  border: 0%;
+  background-color: #5fc1c2;
+  color: white;
+}
+
 .container {
-    display : grid;
-    grid-template-columns: 1fr 1fr;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
 
 .signup {
-    text-align : center;
+  text-align: center;
+  font-family: "Gaegu", cursive;
+  font-size: 2rem;
 }
 
-.hahaha {
-    align-items : center;
-    text-align : center;
+#loginInput {
+  background-color: #5fc1c2;
+  font-family: "Gaegu", cursive;
+  color: white;
+  width:  300px;
 }
-

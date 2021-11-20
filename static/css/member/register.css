@@ -1,0 +1,45 @@
+body {
+    margin :0%;
+}
+
+.header2 {
+    display: grid;
+    grid-template-columns: 40px 1fr 40px;
+  }
+
+  .back{
+      background-color: #5fc1c2;
+      display : flex;
+      justify-content: center;
+      align-items: center;
+      padding-left : 30px;
+     
+  }
+
+  .home {
+    background-color: #5fc1c2;
+    display : flex;
+    justify-content: center;
+    align-items: center;
+    padding-right : 30px
+  }
+.header {
+    background-color: #5fc1c2;
+    color: white;
+    align-items: center;
+    font-size: 3rem;
+    justify-content: center;
+    /* 가운데 정렬  */
+    display: flex;
+    font-family: "Quicksand", sans-serif;
+  }
+
+  .header a {
+    text-decoration-line: none;
+    color: white;
+  }
+
+.user_information {
+    font-family: "Gaegu", cursive;
+    text-align : center;
+}
