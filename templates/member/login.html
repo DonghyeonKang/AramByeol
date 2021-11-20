@@ -1,3 +1,9 @@
+{% with messages = get_flashed_messages() %} {% if messages %}
+<script>
+  alert("{{messages[-1]}}");
+</script>
+{% endif %} {% endwith %}
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -12,12 +18,14 @@
     <div class="header">
       <img src="/static/images/logo.png" alt="logo" height="60" />
       <a href="AramByeol"> AramByeol </a>
+
     </div>
     <br><br>
     <div class="container">
       <div class="input">
         <div>이미 아람전사라면? 로그인</div><br>
         <form action="/member/login.html" method="post">
+
           <!-- 서버에서 저 주소를 요청한다 (동현) -->
           <!-- post : 입력한 내용의 길이에 제한받지 않고 사용자가 입력한 내용도 드러나지 않습니다 -->
             <input type="text" placeholder="Id" id="nameInput"><br>
@@ -25,6 +33,7 @@
             <br><br>
             <!-- <button class = "hahaha">로그인</button> -->
             <input type="submit" id="loginInput" value="Login"/>
+
         </form>
       </div>
       <div class="signup">
