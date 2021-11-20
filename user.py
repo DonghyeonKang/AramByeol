@@ -1,5 +1,4 @@
 import pymysql
-from flask_login import UserMixin
 from db import *
 import bcrypt
 
