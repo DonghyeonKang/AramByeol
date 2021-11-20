@@ -2,39 +2,29 @@ body {
   margin: 0%;
 }
 
+/* header */
 #header {
-  height: 35rem;
   background-color: #5fc1c2;
 }
 
 .header-top {
   display: flex;
-  width: calc(100% - 4rem);
-  padding: 1rem 2rem 0 2rem;
   align-items: center;
   justify-content: space-between;
-}
-
-.login a img {
-  width: 4rem;
-}
-
-.logo-text a {
-  text-decoration: none;
-  color: white;
-  font-size: 3rem;
-  font-family: "Quicksand", sans-serif;
 }
 
 .logo-img {
   text-align: center;
   margin-top: 0rem;
+  position: relative;
 }
 
 .logo-img img {
-  width: 30rem;
+  position: absolute;
+  bottom: 0;
 }
 
+/* modal */
 .modal-container {
   background: rgba(0, 0, 0, 0.5);
   display: block;
@@ -52,14 +42,14 @@ body {
   background: white;
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-  position: absolute;
+  position: relative;
   overflow: hidden;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   max-width: 35rem;
   width: 50%;
-  min-width: 23rem;
+  min-width: 20rem;
   height: 22rem;
 }
 
@@ -71,12 +61,24 @@ body {
   padding: 0.5rem 0 0.5rem 0;
 }
 
+.modal-header span {
+  font-family: "Gaegu", cursive;
+  font-size: 2rem;
+}
+
+.modal-footer {
+  text-align: center;
+  width: 100%;
+  position: absolute;
+  bottom: 1rem;
+}
+
 .modal-footer .login_link {
   display: none;
 }
 
 .modal-footer .close-btn {
-  display: none;
+  display: inline-block;
   background-color: #fb9a40;
   color: white;
   padding: 0.3rem 0.5rem 0.3rem 0.5rem;
@@ -85,6 +87,11 @@ body {
 
 .modal-content {
   text-align: center;
+}
+
+.menu-name a {
+  font-family: "Gaegu", cursive;
+  font-size: 2rem;
 }
 
 .modal_login_link {
@@ -100,10 +107,6 @@ body {
   top: 0;
 }
 
-.menu-evaluation {
-  width: 100%;
-}
-
 .star {
   display: flex;
   justify-content: center;
@@ -114,17 +117,17 @@ body {
   list-style: none;
 }
 
-.star img {
-  width: 4rem;
-}
-
 .submit {
   background-color: #fb9a40;
   color: white;
   padding: 0.3rem 0.5rem 0.3rem 0.5rem;
   text-decoration: none;
+  font-family: "Gaegu", cursive;
+  width: 4rem;
+  display: inline-block;
 }
 
+/* main contents */
 .inner {
   text-align: center;
 }
@@ -173,4 +176,119 @@ body {
 
 td {
   padding-top: 1rem;
+}
+
+/********************* Mobile *********************/
+@media all and (max-width: 767px) {
+  /* header */
+  #header {
+    height: 27rem;
+  }
+
+  .header-top {
+    padding: 0rem 1rem 0 1rem;
+    width: calc(100% - 2rem);
+    height: 4rem;
+  }
+
+  .login a img {
+    width: 3rem;
+  }
+
+  .logo-img {
+    height: calc(100% - 4rem);
+  }
+
+  .logo-img img {
+    width: 20rem;
+    left: calc(50% - 10rem);
+  }
+
+  .logo-text a {
+    text-decoration: none;
+    color: white;
+    font-size: 1.5rem;
+    font-family: "Quicksand", sans-serif;
+  }
+
+  /* modal */
+  .star img {
+    width: 3rem;
+  }
+}
+/********************* Tablet *********************/
+@media all and (min-width: 768px) and (max-width: 1024px) {
+  /* header */
+  #header {
+    height: 35rem;
+  }
+
+  .header-top {
+    padding: 0rem 2rem 0 2rem;
+    width: calc(100% - 4rem);
+    height: 4.5rem;
+  }
+
+  .login a img {
+    width: 2.5rem;
+  }
+
+  .logo-img {
+    height: calc(100% - 4.5rem);
+  }
+
+  .logo-img img {
+    width: 25rem;
+    left: calc(50% - 12.5rem);
+  }
+
+  .logo-text a {
+    text-decoration: none;
+    color: white;
+    font-size: 2.3rem;
+    font-family: "Quicksand", sans-serif;
+  }
+
+  /* modal */
+  .star img {
+    width: 4rem;
+  }
+}
+/********************* PC *********************/
+@media all and (min-width: 1025px) {
+  /* header */
+  #header {
+    height: 35rem;
+  }
+
+  .header-top {
+    padding: 0rem 2rem 0 2rem;
+    width: calc(100% - 4rem);
+    height: 5rem;
+  }
+
+  .login a img {
+    width: 4rem;
+  }
+
+  .logo-img {
+    height: calc(100% - 5rem);
+  }
+
+  .logo-img img {
+    width: 30rem;
+    left: calc(50% - 15rem);
+  }
+
+  .logo-text a {
+    text-decoration: none;
+    color: white;
+    font-size: 3rem;
+    font-family: "Quicksand", sans-serif;
+  }
+
+  /* modal */
+  .star img {
+    width: 4rem;
+  }
 }
