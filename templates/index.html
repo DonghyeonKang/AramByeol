@@ -12,9 +12,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
-      rel="stylesheet"
-      href="{{ url_for('static', filename='css/index.css')}}"
-    />
+      rel="stylesheet" 
+      href="{{ url_for('static', filename='css/index.css')}}" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -24,6 +23,12 @@
     <link
       rel="shortcut icon"
       href="{{ url_for('static', filename='/images/favicon.ico')}}"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com/" />
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Gaegu&family=Quicksand:wght@500&family=Roboto:wght@100&display=swap"
+      rel="stylesheet"
     />
     <title>AramByeol</title>
   </head>
@@ -106,30 +111,37 @@
     </div>
 
     <div class="hash-tag">
-      <h1>#오늘 #과제는 #내일하자</h1>
+      #오늘 #과제는 #내일하자
     </div>
 
     <div class="inner">
-      <div class="todoy-title">아침</div>
-      <div class="todoy-title">점심</div>
-      <div class="todoy-title">저녁</div>
-    </div>
-    <div class="inner">
+      <div class = "main-box">
+        <div class="todoy-title">아침</div>
       <div class="today-box">
         <table class="menu-table">
-          <tr id="morning"></tr>
+          <tr id="morning">ㅇㅇ</tr>
         </table>
       </div>
+    </div>
+
+    <div class = "main-box">
+      <div class="todoy-title">점심</div>
       <div class="today-box">
         <table class="menu-table">
           <tr id="lunch"></tr>
-        </table>
-      </div>
-      <div class="today-box">
+        </table> 
+      </div> 
+    </div>
+
+      <div class = "main-box">
+        <div class="todoy-title">저녁</div>
+        <div class="today-box">
         <table class="menu-table">
           <tr id="dinner"></tr>
         </table>
       </div>
+    </div>
+
     </div>
     <div class="inner">
       <div class="line">
@@ -137,56 +149,70 @@
       </div>
     </div>
     <div class="hash-tag">
-      <h1>#내일 #메뉴</h1>
+      #내일 #메뉴
     </div>
+ 
     <div class="inner">
-      <div class="todoy-title">아침</div>
-      <div class="todoy-title">점심</div>
-      <div class="todoy-title">저녁</div>
-    </div>
-    <div class="inner">
-      <div class="today-box">
+      <div class = "main-box">
+        <div class="todoy-title">아침</div>
+        <div class="today-box">
         <table class="menu-table">
           <tr id="nextmorning"></tr>
         </table>
+        </div>
       </div>
+
+      <div class = "main-box">
+        <div class="todoy-title">점심</div>
       <div class="today-box">
         <table class="menu-table">
           <tr id="nextlunch"></tr>
         </table>
       </div>
+    </div>
+
+      <div class = "main-box">
+        <div class="todoy-title">저녁</div>
       <div class="today-box">
         <table class="menu-table">
           <tr id="nextdinner"></tr>
         </table>
       </div>
     </div>
+  </div>
+    
     <div class="inner">
       <div class="line"><hr size="5" noshade /></div>
     </div>
 
-    <div class="hash-tag"><h1>#모레 #는 #멀다</h1></div>
+    <div class="hash-tag">#모레 #는 #멀다</div>
     <div class="inner">
-      <div class="todoy-title">아침</div>
-      <div class="todoy-title">점심</div>
-      <div class="todoy-title">저녁</div>
     </div>
     <div class="inner">
+      <div class = "main-box">
+        <div class="todoy-title">아침</div>
       <div class="today-box">
         <table class="menu-table">
           <tr id="doublenextmorning"></tr>
         </table>
       </div>
+    </div>
+      <div class = "main-box">
+        <div class="todoy-title">점심</div>
       <div class="today-box">
         <table class="menu-table">
           <tr id="doublenextlunch"></tr>
         </table>
       </div>
+    </div>
+      <div class = "main-box">
+        <div class="todoy-title">저녁</div>
       <div class="today-box">
         <table class="menu-table">
           <tr id="doublenextdinner"></tr>
         </table>
       </div>
+    </div>
     </div>
   </body>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

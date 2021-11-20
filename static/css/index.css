@@ -130,34 +130,45 @@ body {
 }
 
 .hash-tag {
-  margin-left: 50px;
-}
+  font-family: "Gaegu", cursive;
+  font-size: 3rem;
+  color: #444444;
+  margin: 2rem;
 
+}
+.Box-box{
+  display: inline-block;
+  display: flex;
+  align-items: center;
+}
 .today-box {
   display: inline-block;
-  border: 5px solid #5fc1c2;
-  margin: 10px 20px;
-  width: 300px;
-  height: 500px;
+  border: 0.4rem solid #5fc1c2;
+  margin: 1rem 2rem;
+  width: 25rem;
+  height: 35rem;
   overflow: auto;
 }
 
 .todoy-title {
-  display: inline-block;
-  font-size: 48px;
+  font-family: "Gaegu", cursive;
+  font-size: 5rem;
   color: #5fc1c2;
-  margin: 10px 125px;
 }
 
 .menu-table {
   text-align: center;
-  margin: 0 auto;
+  margin: auto;
+}
+
+.main-box{
+  display: inline-block;
 }
 
 .line {
   display: inline-block;
   width: 90%;
-  margin-top: 100px;
+  margin-top: 1rem;
 }
 
 .course {
