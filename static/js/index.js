@@ -628,67 +628,77 @@ const get_daytable = () => {
   });
 };
 
+// modal event
 const event_modal = (sessionExist) => {
   const modal = document.querySelector("#modal");
   const open_today = document.querySelectorAll(".open_today");
   const open_after_today = document.querySelectorAll(".open");
   const close = document.querySelectorAll(".close-btn");
   const submit = document.querySelector(".submit");
+  const menu_evaluation = document.querySelector(".menu-evaluation");
+  const modal_footer = document.querySelector(".modal-footer");
   let name = "";
 
-  // Show modal
-  // 오늘 메뉴 클릭 시
-  for (let i = 0; i < open_today.length; i++) {
+  
+  // open event
+  for (let i = 0; i < open_today.length; i++) {   // today
     open_today[i].addEventListener("click", () => {
       modal.style.opacity = 1;
       modal.style.visibility = "visible";
+      if(sessionExist == "1") {
+        menu_evaluation.style.display = "block";
+        modal_footer.style.display = "none";
+      } else {
+        menu_evaluation.style.display = "none";
+      }
+
       name = set_modal_inner_header(open_today[i]);
     });
   }
-  // 내일 메뉴 클릭 시
-  for (let i = 0; i < open_after_today.length; i++) {
+  for (let i = 0; i < open_after_today.length; i++) {   // tomorrow, the day after tomorrow
     open_after_today[i].addEventListener("click", () => {
       modal.style.opacity = 1;
       modal.style.visibility = "visible";
       menu_evaluation.style.display = "none";
+      if(sessionExist == "1") {
+        modal_footer.style.display = "inline-block";
+        menu_evaluation.style.display = "none";
+      }
       name = set_modal_inner_header(open_after_today[i]);
     });
   }
-
+  
+  // score event
   const score = set_modal_inner_content(sessionExist);
 
-  // 닫기 버튼
+  // close event
   for (let i = 0; i < close.length; i++) {
-    //2개
     close[i].addEventListener("click", () => {
       modal.style.opacity = 0;
       modal.style.visibility = "hidden";
-      // 별점 이미지 초기화
+      // initializing star and score
       clear_star();
-      // 별점 배열 초기화
       for(let i = 0; i < 5; i++){
         score[i] = 0;
       }
     });
   }
 
-  //확인 버튼
+  // submit modal
   submit.addEventListener("click", () => {
-    // 별점 제출 시 css 수정
+    // modifing css
     let score_result = 0;
     modal.style.opacity = 0;
     modal.style.visibility = "hidden";
 
-    // 별점 이미지 초기화
+    // initializing star
     clear_star();
-
-    // 별점 합산, 초기화
+    // add up the scores and initializing
     for (let i = 0; i < score.length; i++) {
       score_result += score[i];
       score[i] = 0;
     }
-
-    // 별점 서버에 전송
+    // send api
     if (score_result > 0) {
       $.ajax({
         type: "POST",
@@ -713,16 +723,17 @@ const clear_star = () => {
   }
 };
 
+// 모달 내부 헤더 부분
 const set_modal_inner_header = (open_today) => {
   let name = "";
-  // 별점 표시
   $(".menu-name").empty();
   temp_html = `
               <a>${open_today.innerHTML}</a>                        
               `;
   $(".menu-name").append(temp_html);
-  name = open_today.innerHTML;
-
+  // queryselector가 &를 가져올 때 &amp;로 가져오기 때문에 &로 변환해줘야 한다.
+  name = open_today.innerHTML.replace("&amp;", "&");
+  
   $.ajax({
     type: "POST",
     url: "/api/menu_score",
@@ -739,16 +750,15 @@ const set_modal_inner_header = (open_today) => {
   return name;
 };
 
+// 모달 내부 내용 부분
 const set_modal_inner_content = (sessionExist) => {
   const score = [0, 0, 0, 0, 0];
-  const menu_evaluation = document.querySelector(".menu-evaluation");
   const modal_footer = document.querySelector(".modal-footer");
   const login_link = document.querySelector(".login_link");
   const star = document.querySelectorAll(".star img");
 
   //세션 존재하면 별점 기능 사용, 없으면 로그인 링크 사용
   if (sessionExist == 1) {
-    menu_evaluation.style.display = "inline-block";
     modal_footer.style.display = "none";
 
     for (let i = 0; i < 5; i++) {
@@ -766,7 +776,6 @@ const set_modal_inner_content = (sessionExist) => {
       });
     }
   } else {
-    menu_evaluation.style.display = "none";
     modal_footer.style.display = "inline-block";
     login_link.style.display="block";
   }

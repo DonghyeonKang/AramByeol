@@ -5,8 +5,40 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AramByeol::Error Page!!</title>
+    <!-- 파비콘 -->
+    <link
+      rel="shortcut icon"
+      href="{{ url_for('static', filename='/images/favicon.ico')}}"
+    />
+    <!-- css -->
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/error/error.css')}}"
+    />
+    <!-- js -->
+    <script
+      type="text/javascript"
+      src="{{ url_for('static', filename='js/error/error.js') }}"
+    ></script>
+    <!-- 폰트 -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap"
+      rel="stylesheet"
+    />
 </head>
 <body>
-    <img src="/static/images/error.png" alt="logo" width=500 height=500/>
+    <header id="header">
+        <div class="header-top">
+          <div class="logo-text">
+            <a href="../">AramByeol</a>
+          </div>
+        </div>
+    </header>
+    <div class="error-content"></div>
+    <div>
+        <div class="error-image">
+            <img id="error-image0" src="/static/images/error.png" alt="error"/>
+        </div>
+    </div>
 </body>
 </html>

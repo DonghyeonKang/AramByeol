@@ -77,6 +77,12 @@ body {
   display: none;
 }
 
+.login_link{
+  font: bold;
+  font-size: 2rem;
+  margin-bottom: 10%;
+}
+
 .modal-footer .close-btn {
   display: inline-block;
   background-color: #fb9a40;
@@ -182,7 +188,7 @@ td {
 @media all and (max-width: 767px) {
   /* header */
   #header {
-    height: 27rem;
+    height: 20rem;
   }
 
   .header-top {
