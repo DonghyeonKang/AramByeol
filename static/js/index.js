@@ -49,11 +49,9 @@ const logout = () => {
 
 const setEventListener = (sessionExist) => {
   if (sessionExist == 1) {
-    window.addEventListener("load", function () {
-      logoutbutton = document.querySelector("#logout-button");
-      logoutbutton.addEventListener("click", () => {
-        logout();
-      });
+    logoutbutton = document.querySelector("#logout-button");
+    logoutbutton.addEventListener("click", () => {
+      logout();
     });
   }
 };
@@ -112,16 +110,16 @@ const get_daytable = () => {
         }
       }
 
-      // 메뉴가 없을 때. (해당 날짜가 없을 때)
+      // 메뉴가 없을 때(해당 날짜가 없을 때) 해시 태그와 있을 때 해시 태그
       if (this_day === undefined) {
-        this_day = "기다리셈";
-      }
+        $(".hash-tag1").append(`<h1>#곧 #1시에 #UPDATE!! #COMMING SOON!</h1>`);
+      } else $(".hash-tag1").append(`<h1>#오늘 #과제는 #내일하자👊</h1>`);
       if (tomorrow_day === undefined) {
-        tomorrow_day = "기다리셈";
-      }
+        $(".hash-tag2").append(`<h1>#매주 #일요일 #1시 #메뉴가 돌아온다!</h1>`);
+      } else $(".hash-tag2").append(`<h1>#내일 #메뉴</h1>`);
       if (after_day === undefined) {
-        after_day = "기다리셈";
-      }
+        $(".hash-tag3").append(`<h1>#매주 #일요일 #1시 #UPDATE FOR YOU👉</h1>`);
+      } else $(".hash-tag3").append(`<h1>#모레 #는 #멀다</h1>`);
 
       /* 오늘 */
       let morning_info = "";
@@ -630,136 +628,63 @@ const get_daytable = () => {
   });
 };
 
+// modal event
 const event_modal = (sessionExist) => {
   const modal = document.querySelector("#modal");
   const open_today = document.querySelectorAll(".open_today");
-  const open = document.querySelectorAll(".open");
+  const open_after_today = document.querySelectorAll(".open");
   const close = document.querySelectorAll(".close-btn");
   const submit = document.querySelector(".submit");
   let name = "";
-  const score = [0, 0, 0, 0, 0];
-  const menu_evaluation = document.querySelector(".menu-evaluation");
-  const modal_footer = document.querySelector(".modal-footer");
-  const footer_btn = document.querySelector(".modal-footer .close-btn");
 
-  //Show modal
-  for (let i = 0; i < open_today.length; i++) {
+  // open event
+  for (let i = 0; i < open_today.length; i++) {   // today
     open_today[i].addEventListener("click", () => {
       modal.style.opacity = 1;
       modal.style.visibility = "visible";
-
-      $(".menu-name").empty();
-      temp_html = `
-            <a>${open_today[i].innerHTML}</a>                        
-            `;
-      $(".menu-name").append(temp_html);
-      name = open_today[i].innerHTML;
-
-      $.ajax({
-        type: "POST",
-        url: "/api/menu_score",
-        data: { menu_name: name },
-        success: function (response) {
-          $(".menu-score").empty();
-          const score = response["score"];
-          for (let i = 1; i <= 5; i++) {
-            if (i <= score) $(".menu-score").append(`★`);
-            else $(".menu-score").append(`☆`);
-          }
-        },
-      });
+      name = set_modal_inner_header(open_today[i]);
     });
   }
-
-  for (let i = 0; i < open.length; i++) {
-    open[i].addEventListener("click", () => {
+  for (let i = 0; i < open_after_today.length; i++) {   // tomorrow, the day after tomorrow
+    open_after_today[i].addEventListener("click", () => {
       modal.style.opacity = 1;
       modal.style.visibility = "visible";
       menu_evaluation.style.display = "none";
-
-      $(".menu-name").empty();
-      temp_html = `
-            <a>${open[i].innerHTML}</a>                        
-            `;
-      $(".menu-name").append(temp_html);
-      name = open[i].innerHTML;
-
-      $.ajax({
-        type: "POST",
-        url: "/api/menu_score",
-        data: { menu_name: name },
-        success: function (response) {
-          $(".menu-score").empty();
-          const score = response["score"];
-          for (let i = 1; i <= 5; i++) {
-            if (i <= score) $(".menu-score").append(`★`);
-            else $(".menu-score").append(`☆`);
-          }
-        },
-      });
+      name = set_modal_inner_header(open_after_today[i]);
     });
   }
 
-  if (sessionExist == 1) {
-    //세션 존재하면 별점 기능 사용
-    menu_evaluation.style.display = "inline-block";
-    modal_footer.style.display = "none";
-    const star = [
-      document.querySelector(".star .no1"),
-      document.querySelector(".star .no2"),
-      document.querySelector(".star .no3"),
-      document.querySelector(".star .no4"),
-      document.querySelector(".star .no5"),
-    ];
-    const empty_star = "/static/images/empty_star.png";
-    const full_star = "/static/images/full_star.png";
+  // score event
+  const score = set_modal_inner_content(sessionExist);
 
-    for (let i = 0; i < 5; i++) {
-      star[i].addEventListener("click", () => {
-        for (let j = 0; j < 5; j++) {
-          if (j <= i && score[j] == 0) {
-            star[j].src = full_star;
-            score[j] = 1;
-          }
-          if (j > i && score[j] == 1) {
-            star[j].src = empty_star;
-            score[j] = 0;
-          }
-        }
-      });
-    }
-  } else {
-    // 세션 없으면, 로그인 버튼 사용
-    menu_evaluation.style.display = "none";
-    modal_footer.style.display = "inline-block";
-  }
-
-  //Hide modal
+  // close event
   for (let i = 0; i < close.length; i++) {
-    //2개
     close[i].addEventListener("click", () => {
       modal.style.opacity = 0;
       modal.style.visibility = "hidden";
+      // initializing star and score
+      clear_star();
+      for(let i = 0; i < 5; i++){
+        score[i] = 0;
+      }
     });
   }
 
-  //Submit
+  // submit modal
   submit.addEventListener("click", () => {
+    // modifing css
     let score_result = 0;
-
-    // 별점 제출 시 css 수정
     modal.style.opacity = 0;
     modal.style.visibility = "hidden";
 
-    // 별점 이미지 초기화
+    // initializing star
     clear_star();
-
-    // 별점 합산, 초기화
+    // add up the scores and initializing
     for (let i = 0; i < score.length; i++) {
       score_result += score[i];
       score[i] = 0;
     }
-    // 별점 서버에 전송
+    // send api
     if (score_result > 0) {
       $.ajax({
         type: "POST",
@@ -774,17 +699,73 @@ const event_modal = (sessionExist) => {
   });
 };
 
+// 별점 이미지 초기화
 const clear_star = () => {
-  const star = [
-    document.querySelector(".star .no1"),
-    document.querySelector(".star .no2"),
-    document.querySelector(".star .no3"),
-    document.querySelector(".star .no4"),
-    document.querySelector(".star .no5"),
-  ];
+  const star = document.querySelectorAll(".star img");
   const empty_star = "/static/images/empty_star.png";
 
   for (let i = 0; i < 5; i++) {
     star[i].src = empty_star;
   }
 };
+
+// 모달 내부 헤더 부분
+const set_modal_inner_header = (open_today) => {
+  let name = "";
+  $(".menu-name").empty();
+  temp_html = `
+              <a>${open_today.innerHTML}</a>                        
+              `;
+  $(".menu-name").append(temp_html);
+  name = open_today.innerHTML;
+
+  $.ajax({
+    type: "POST",
+    url: "/api/menu_score",
+    data: { menu_name: name },
+    success: function (response) {
+      $(".menu-score").empty();
+      const score = response["score"];
+      for (let i = 1; i <= 5; i++) {
+        if (i <= score) $(".menu-score").append(`★`);
+        else $(".menu-score").append(`☆`);
+      }
+    },
+  });
+  return name;
+};
+
+// 모달 내부 내용 부분
+const set_modal_inner_content = (sessionExist) => {
+  const score = [0, 0, 0, 0, 0];
+  const menu_evaluation = document.querySelector(".menu-evaluation");
+  const modal_footer = document.querySelector(".modal-footer");
+  const login_link = document.querySelector(".login_link");
+  const star = document.querySelectorAll(".star img");
+
+  //세션 존재하면 별점 기능 사용, 없으면 로그인 링크 사용
+  if (sessionExist == 1) {
+    menu_evaluation.style.display = "inline-block";
+    modal_footer.style.display = "none";
+
+    for (let i = 0; i < 5; i++) {
+      star[i].addEventListener("click", () => {
+        for (let j = 0; j < 5; j++) {
+          if (j <= i && score[j] == 0) {
+            star[j].src = "/static/images/full_star.png";
+            score[j] = 1;
+          }
+          if (j > i && score[j] == 1) {
+            star[j].src = "/static/images/empty_star.png";
+            score[j] = 0;
+          }
+        }
+      });
+    }
+  } else {
+    menu_evaluation.style.display = "none";
+    modal_footer.style.display = "inline-block";
+    login_link.style.display="block";
+  }
+  return score
+}

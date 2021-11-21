@@ -36,6 +36,7 @@ def register():
         pw = (bcrypt.hashpw(pw.encode('UTF-8'), bcrypt.gensalt())).decode('utf-8')  # 해싱 처리
         if(check_userId(id) != True):   # id 가 이미 존재하면 true
             useradd(id, pw)
+            return redirect(url_for('login'))
         else:
             flash("이미 존재하는 아이디입니다!")
     return render_template("/member/register.html")
