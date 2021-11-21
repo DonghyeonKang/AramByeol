@@ -1,3 +1,10 @@
+<!-- flask alert -->
+{% with messages = get_flashed_messages() %} {% if messages %}
+<script>
+  alert("{{messages[-1]}}");
+</script>
+{% endif %} {% endwith %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,17 +12,38 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="{{ url_for('static', filename='/images/favicon.ico')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/member/login.css')}}">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Gaegu&family=Quicksand:wght@500&family=Roboto:wght@100&display=swap"
+      rel="stylesheet"
+    />
     <title>로그인</title>
 </head>
 <body>
-    <div>
-        <form action="/member/login.html" method="post">
-            <ul>
-                <li><input type="text" name="id" placeholder="id"></li>
-                <li><input type="password" name="password" placeholder="password"></li>
-            </ul>
-            <input type="submit" value="로그인">
-        </form>
-    </div>
+    <div class="header">
+        <img src="/static/images/logo.png" alt="logo" height="120" width="120" style="vertical-align:middle"/>
+        <a href="/" style="font-size:60px;">아람별</a>
+      </div>
+      <br /><br />
+      <div class="container">
+        <div class="input">
+          <h3>로그인</h3>
+          <form action="/member/login.html" method="post">
+            <input type="text" placeholder="Id" name="id" /><br />
+            <input type="password" placeholder="Password" name="password" />
+            <br /><br />
+            <input type="submit" id="loginInput" value="Login"/>
+          </form>
+        </div>
+  
+        <div class="signup">
+            <h3>회원가입</h3>
+          <a href="/member/register.html" style="color:blue; font-size: 1.2rem; font: bold;">Create an Account</a>
+        </div>
+      </div>
 </body>
 </html>

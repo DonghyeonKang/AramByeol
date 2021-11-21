@@ -28,7 +28,7 @@ try:
         if not (cursor.execute("SHOW TABLES LIKE %s", 'review')):
             cursor.execute("CREATE TABLE review(user_id VARCHAR(50) NOT NULL,menu VARCHAR(50) NOT NULL, score INT(10) NOT NULL)")
         if not(cursor.execute("SHOW TABLES LIKE %s", 'users')):
-            cursor.execute("CREATE TABLE user(id INT(10) NOT NULL PRIMARY KEY AUTO_INCREMENT, user_id VARCHAR(50) NOT NULL, user_pw VARCHAR(50) NOT NULL)")
+            cursor.execute("CREATE TABLE users(id INT(10) NOT NULL PRIMARY KEY AUTO_INCREMENT, user_id VARCHAR(50) NOT NULL, user_pw TEXT NOT NULL)")
     
     def week_update():
         for i in range(0,len(day),2):
