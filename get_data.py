@@ -11,7 +11,7 @@ chrome_options.add_argument('--headless')
 chrome_options.add_argument('--no-sandbox')
 chrome_options.add_argument("--single-process")
 chrome_options.add_argument("--disable-dev-shm-usage")
-path='./chromedriver'
+path='/home/opc/arambyeol/chromedriver'
 driver = webdriver.Chrome(path, chrome_options=chrome_options)
 driver.get('https://newgh.gnu.ac.kr/dorm/ad/fm/foodmenu/selectFoodMenuView.do') # 스크래핑할 동적 웹사이트 주소
 html = driver.page_source   # 드라이버로 긁어온 정보를 html에 담음

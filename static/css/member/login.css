@@ -1,0 +1,43 @@
+.header {
+    background-color : #5FC1C2;
+    text-align : center;
+    color : white;
+    align-items: center;
+    height : 120px;
+}
+
+
+/* 하이퍼링크 색 바꾸기 */
+a {
+text-decoration-line : none;
+color : rgb(255, 255, 255);
+}
+
+.input {
+    border-right : 1px solid #5FC1C2;
+}
+
+.container {
+    display : grid;
+    grid-template-columns: 1fr 1fr;
+    text-align: center;
+}
+
+.signup {
+    text-align : center;
+}
+
+.hahaha {
+    align-items : center;
+    text-align : center;
+}
+
+#loginInput{
+    background-color:#5FC1C2;
+    font-size: 1.5rem;
+    font: bold;
+    color : white;
+    width : 100px;
+    height : 40px;
+    font-family: "Quicksand", sans-serif;
+}

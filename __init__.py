@@ -5,8 +5,7 @@ from flask import session # session
 from flask import redirect # move page
 from flask import jsonify
 from flask import url_for
-from pymysql import connect
-from werkzeug.security import generate_password_hash, check_password_hash
+from flask import flash # alert
 from user import *
 import bcrypt
 import pymysql.cursors # python과 mysql(mariadb) 연동
@@ -14,7 +13,8 @@ from datetime import datetime, timedelta
 import db_auth
 
 app = Flask(__name__)
-app.secret_key = 'arambyeol'
+app.secret_key = 'arambyeol'        # 세션을 사용하기 위해 비밀키가 서명된 쿠키 사용
+
 if not app.debug:
     import logging  
     from logging.handlers import RotatingFileHandler
@@ -23,6 +23,10 @@ if not app.debug:
     file_handler.setLevel(logging.WARNING)
     app.logger.addHandler(file_handler)
 
+
+@app.errorhandler(404)
+def page_not_found(error):
+    return render_template('/error/error.html')
 
 def db_connection():
     login = db_auth.db_login
@@ -47,9 +51,9 @@ def register():
         pw = (bcrypt.hashpw(pw.encode('UTF-8'), bcrypt.gensalt())).decode('utf-8')  # 해싱 처리
         if(check_userId(id) != True):   # id 가 이미 존재하면 true
             useradd(id, pw)
+            return redirect(url_for('login'))
         else:
-            print("이미 존재하는 아이디")
-        return redirect('http://localhost:5000/member/login.html')
+            flash("이미 존재하는 아이디입니다!")
     return render_template("/member/register.html")
 
 @app.route('/member/login.html', methods=['GET', 'POST'])
@@ -57,19 +61,24 @@ def login():
     if request.method == "POST":
         id = request.form['id']
         pw = request.form['password']
+        check_id = check_userId(id)
         check_password = login_check(id, pw)
-        print(check_password)
-        if check_password:
-            session['username'] = request.form['id']  # session id 부여
-            return "%s님 환영합니다!" % id
+        if check_id:
+            if check_password:
+                session['username'] = request.form['id'] # session id 부여
+                return redirect(url_for('home'))
+            else:
+                flash("아이디 또는 비밀번호가 잘못 입력 되었습니다.")
+                return render_template("/member/login.html") # 비밀번호 틀림
         else:
-            return "비밀번호 틀림"
-    return render_template("/member/login.html")
+            flash("아이디 또는 비밀번호가 잘못 입력 되었습니다.")
+            return render_template("/member/login.html") # id 없음
+    return render_template("/member/login.html") # 페이지
 
-@app.route('/logout')
+@app.route('/logout', methods=['POST'])
 def logout():
-    session.pop('username', None)   # 세션 내에 id 가 있으면 지움
-    return render_template("index.html")
+    session.clear()   # 세션 내에 id 가 있으면 지움
+    return "1"
 
 # API
 @app.route('/api/list', methods=['GET'])
@@ -137,7 +146,6 @@ def week():
                 temp.append(rows[i]['course'])
                 temp.append(rows[i]['menu'])
                 lunch.append(temp)
-    
 
     sql = "select * from dinner"
     cursor.execute(sql)
@@ -200,5 +208,12 @@ def get_score():
     connection.close()
     return jsonify({'score':score})
 
+# 세션 확인 API
+@app.route('/api/session_check', methods=['POST'])
+def session_check():
+    if session.get('username'):     # session에 'username' id 를 가진 session이 존재하면
+        return '1'
+    return '0'
+
 if __name__ == '__main__':
-    app.run('0.0.0.0',port=5000,debug=False, threaded=True)
+    app.run('0.0.0.0',port=5000,debug=True, threaded=True)
