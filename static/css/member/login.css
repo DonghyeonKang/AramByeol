@@ -5,12 +5,11 @@ body {
 
 .header {
   background-color: #5fc1c2;
-  color: white;
   align-items: center;
-  font-size: 3rem;
+  font-size: 3rem; 
+  display: flex;
   justify-content: center;
   /* 가운데 정렬  */
-  display: flex;
   font-family: "Quicksand", sans-serif;
 }
 
@@ -20,7 +19,12 @@ body {
   color: white;
 }
 
-.input {
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.input_info {
   border-right: 5px solid #5fc1c2;
   font-size: 2rem;
   text-align: center;
@@ -42,22 +46,13 @@ body {
   text-align: center;
 }
 
-login-button {
-  height: 20px;
-}
-
-.buttonlogin {
-  font-family: "Gaegu", cursive;
-  margin: 50px;
-  padding: 0%;
-  border: 0%;
+#loginInput {
   background-color: #5fc1c2;
+  font-family: "Gaegu", cursive;
   color: white;
-}
-
-.container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  font-size: 2rem;
+  width:  250px;
+  height : 40px;
 }
 
 .signup {
@@ -66,9 +61,13 @@ login-button {
   font-size: 2rem;
 }
 
-#loginInput {
-  background-color: #5fc1c2;
-  font-family: "Gaegu", cursive;
+.signupbutton {
+  text-decoration-line: none;
   color: white;
-  width:  300px;
+  font-family: "Gaegu", cursive;
+  font-size: 2rem;
+  background-color: #5fc1c2;
+  padding : 10px;
 }
+
+

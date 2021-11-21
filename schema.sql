@@ -13,6 +13,7 @@ CREATE TABLE `review`(
 
 CREATE TABLE 'users'(
     `id` INT(10) NOT NULL PRIMARY KEY AUTO_INCREMENT, 
+    `name` VARCHAR(50) NOT NULL,
     `user_id` VARCHAR(50) NOT NULL, 
     `user_pw` TEXT NOT NULL
 );

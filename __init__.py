@@ -30,18 +30,21 @@ def db_connection():
 def home():
     return render_template("index.html")
 
-@app.route('/member/register.html', methods=['GET', 'POST'])
+@app.route('/member/register.html')
 def register():
-    if request.method == 'POST':
-        id = request.form['id']
-        pw = request.form['password']
-        pw = (bcrypt.hashpw(pw.encode('UTF-8'), bcrypt.gensalt())).decode('utf-8')  # 해싱 처리
-        if(check_userId(id) != True):   # id 가 이미 존재하면 true
-            useradd(id, pw)
-        else:
-            print("이미 존재하는 아이디")
-        return redirect('http://localhost:5000/member/login.html')
+    # if request.method == 'POST':
+    #     print(request.form)
+    #     id = request.form['id']
+    #     pw = request.form['password']
+    #     pw = (bcrypt.hashpw(pw.encode('UTF-8'), bcrypt.gensalt())).decode('utf-8')  # 해싱 처리
+    #     if(check_userId(id) != True):   # id 가 이미 존재하면 true
+    #         useradd(id, pw)
+    #     else:
+    #         print("이미 존재하는 아이디")
+    #     return redirect('http://localhost:5000/member/login.html')
     return render_template("/member/register.html")
+
+
 
 @app.route('/member/login.html', methods=['GET', 'POST'])
 def login():

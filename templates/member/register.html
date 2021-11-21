@@ -15,34 +15,40 @@
       href="https://fonts.googleapis.com/css2?family=Gaegu&family=Quicksand:wght@500&family=Roboto:wght@100&display=swap"
       rel="stylesheet"
     />
+
     <title>회원가입</title>
   </head>
   <body>
-    <div class = header2>
-      <div class="back">
-       <a href="/member/login.html"> <img
-          src="/static/images/뒤로가기.png"
-          alt="뒤로가기"
-          height="40"
-        /></a>
-      </div>
-        <div class="header">
-          <img src="/static/images/logo.png" alt="logo" height="80" />
-          <a href="/"> AramByeol </a>
-        </div>
-        <div class = "home">
-           <a href="/"><img src="/static/images/홈_로고.png" alt="메인화면으로" height="40px">
+    <div class="header">
+      <div class="back_logo">
+        <a href="/member/login.html">
+          <img src="/static/images/뒤로가기.png" alt="뒤로가기" height="40px" />
         </a>
-        </div>
-        <br /><br /><br />
       </div>
+      <div class="logo">
+        <img src="/static/images/logo.png" alt="logo" height="80" />
+        <a href="/"> AramByeol </a>
+      </div>
+      <div class="home_logo">
+        <a href="/"
+          ><img
+            src="/static/images/홈_로고.png"
+            alt="메인화면으로"
+            height="40px"
+          />
+        </a>
+      </div>
+      <br /><br /><br />
     </div>
-    <div class="user_information">
-      <form action="/member/register.html" method="post">
-        <label for="username">이름</label>
-        <input type="text" id="username" placeholder="이름" /><br /><br />
+    <form action="/member/register.html" method="post">
+      <div class="user_information">
         <label for="nameInput">아이디</label>
-        <input type="text" placeholder="id" id="nameInput" /><br /><br />
+        <input
+          type="text"
+          placeholder="id"
+          id="nameInput"
+          name="id"
+        /><br /><br />
         <label for="pwdInput">비밀번호</label>
         <input
           type="password"
@@ -51,13 +57,23 @@
         /><br /><br />
         <label for="pwdInput">비밀번호 확인 </label>
         <input
-          type="pwdconfirm"
-          name="password"
+          type="password"
           placeholder="password"
+          id="pwdInput_chk"
         /><br /><br />
 
-        <input type="submit" value="회원가입" />
-      </form>
-    </div>
+        <input
+          type="button"
+          class="signup_button"
+          value="비밀번호확인"
+          onclick="test()"
+        />
+
+        <input type="submit" class="signup_btn" value="signup" />
+      </div>
+    </form>
+
+    <script type="text/javascript" src="/static/js/member/register.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
   </body>
 </html>
