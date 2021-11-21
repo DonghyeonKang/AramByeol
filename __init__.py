@@ -23,10 +23,19 @@ if not app.debug:
     file_handler.setLevel(logging.WARNING)
     app.logger.addHandler(file_handler)
 
-
+# Error handler
+@app.errorhandler(500)
+def internal_error(error):
+    return render_template('/error/error.html'), 500
 @app.errorhandler(404)
 def page_not_found(error):
-    return render_template('/error/error.html')
+    return render_template('/error/error.html'), 404
+@app.errorhandler(403)
+def forbidden_error(error):
+    return render_template('/error/error.html'), 403
+@app.errorhandler(401)
+def unauthorized_error(error):
+    return render_template('/error/error.html'), 401
 
 def db_connection():
     login = db_auth.db_login
@@ -197,9 +206,10 @@ def save_score():
 @app.route('/api/menu_score', methods=['POST'])
 def get_score():
     menu_name = request.form['menu_name']
+    print(menu_name)
     connection = db_connection()
     cursor = connection.cursor()
-    cursor.execute("SELECT score from menudata where menu=%s", menu_name)
+    cursor.execute('SELECT score from menudata where menu=%s', menu_name)
     score = cursor.fetchall()
     if score[0]['score'] == None:
         score = 0
