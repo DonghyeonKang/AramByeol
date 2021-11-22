@@ -1,29 +1,29 @@
-from flask import Flask # flask start 
-from flask import request # html request 
-from flask import render_template # rendering
-from flask import session # session
-from flask import redirect # move page
-from flask import jsonify
-from flask import url_for
-from flask import flash # alert
-from user import *
-import bcrypt
+from flask import Flask # Flask start 
+from flask import request # Html request 
+from flask import render_template # Rendering
+from flask import session # Session
+from flask import redirect # Move page
+from flask import jsonify # Return json form to client
+from flask import url_for # Return defined route link to client
+from flask import flash # Meassage alert to client
+from user import * # Login and Register
+import bcrypt   # Password hash encrypt and decrypt
 import pymysql.cursors # python과 mysql(mariadb) 연동
-from datetime import datetime, timedelta
-import db_auth
+from datetime import datetime, timedelta # Time generator
+import db_auth # Database login info
 
 app = Flask(__name__)
 app.secret_key = 'arambyeol'        # 세션을 사용하기 위해 비밀키가 서명된 쿠키 사용
 
-if not app.debug:
-    import logging  
+if not app.debug: # 디버그 모드가 아니면
+    import logging  # 로깅을 하기위한 모듈
     from logging.handlers import RotatingFileHandler
-    file_handler = RotatingFileHandler(
+    file_handler = RotatingFileHandler( # 2000바이트가 넘어가면 로테이팅 백업 진행. 최대 파일 10개
         '../log/arambyeol_error.log', maxBytes=2000, backupCount=10)
-    file_handler.setLevel(logging.WARNING)
+    file_handler.setLevel(logging.WARNING) # WARNING 수준의 레벨들을 로깅
     app.logger.addHandler(file_handler)
 
-# Error handler
+# Error handler 401, 403, 404, 500
 @app.errorhandler(500)
 def internal_error(error):
     return render_template('/error/error.html'), 500
@@ -37,7 +37,7 @@ def forbidden_error(error):
 def unauthorized_error(error):
     return render_template('/error/error.html'), 401
 
-def db_connection():
+def db_connection(): # Database Connection
     login = db_auth.db_login
     connection = pymysql.connect(host=login['host'],
                             user=login['user'],
@@ -52,6 +52,7 @@ def db_connection():
 def home():
     return render_template("index.html")
 
+# 회원가입 API
 @app.route('/member/register.html', methods=['GET', 'POST'])
 def register():
     if request.method == 'POST':
@@ -65,6 +66,7 @@ def register():
             flash("이미 존재하는 아이디입니다!")
     return render_template("/member/register.html")
 
+# 로그인 API
 @app.route('/member/login.html', methods=['GET', 'POST'])
 def login():
     if request.method == "POST":
@@ -84,22 +86,24 @@ def login():
             return render_template("/member/login.html") # id 없음
     return render_template("/member/login.html") # 페이지
 
+# 로그아웃 API
 @app.route('/logout', methods=['POST'])
 def logout():
     session.clear()   # 세션 내에 id 가 있으면 지움
     return "1"
 
-# API
+# 메뉴 API
 @app.route('/api/list', methods=['GET'])
-def week():
+def week(): # 한 주의 메뉴를 리턴.
     connection = db_connection()
     cursor = connection.cursor()
 
-    sql = "select * from week"
+    sql = "select * from week" # week 테이블의 모든 데이터
     cursor.execute(sql)
 
     rows = cursor.fetchall()
     days = []
+    # 한 주의 날짜를 리스트 딕셔너리 형식으로 DB에서 추출
     for i in range(len(rows)):
         temp = []
         day = rows[i]['day'] # db에서 불러올 때 [배열][딕셔너리] 형식으로 들고옴.
@@ -108,11 +112,13 @@ def week():
         temp.append(date)
         days.append(temp)
 
+    # 오늘, 내일, 모레 날짜를 계산
     day = []
     now = datetime.today().strftime("%Y-%m-%d")
     tomorrow = (datetime.today() + timedelta(1)).strftime("%Y-%m-%d")
     after = (datetime.today() + timedelta(2)).strftime("%Y-%m-%d")
 
+    # 오늘, 내일, 모레에 해당하는 날짜만 추출
     today_temp = ""
     tomorrow_temp = ""
     after_temp = ""
@@ -131,6 +137,7 @@ def week():
     cursor.execute(sql)
     rows = cursor.fetchall()
     
+    # 오늘, 내일, 모레에 해당하는 메뉴들만 추출
     morning = [] # 아침 정보를 제공해줄거얌
     for i in range(len(rows)):
         temp=[]
@@ -179,14 +186,18 @@ def save_score():
     connection = db_connection()
     cursor = connection.cursor()
 
+    # 클라이언트로부터 메뉴와 점수를 전달받음
     name = request.form['menu_name']
     score = request.form['menu_score']
 
+    # 가져온 메뉴를 DB의 메뉴와 비교하여 누적 점수를 가져옴
     cursor.execute("SELECT reviewcount, score from menudata where menu=%s", name)
     data = cursor.fetchall()
     db_reviewcount = 0
     db_score = 0
     avg = 0
+
+    # 점수가 하나도 없었다면 None이므로 0이라고 해줌.
     if data[0]['reviewcount'] == None:
         db_reviewcount = 0
     else:
@@ -195,6 +206,9 @@ def save_score():
         db_score = 0
     else: 
         db_score = data[0]['score']
+    
+    # 계산 방식 : 1. DB -> (누적점수 / 별점준 사용자 수) = 총점
+    # 2. DB <- ((총점 + 부여 점수) / 별점준 사용자 수 + 1)
     db_score = (db_score * db_reviewcount) + int(score)
     db_reviewcount = db_reviewcount + 1
     avg = int(round(db_score / db_reviewcount))
@@ -203,10 +217,10 @@ def save_score():
     connection.close()
     return jsonify({'msg': name + " 메뉴에 " + str(score) + "점 주셨습니다."})
 
+# 모달 창에 해당 메뉴의 누적 점수를 리턴
 @app.route('/api/menu_score', methods=['POST'])
 def get_score():
     menu_name = request.form['menu_name']
-    print(menu_name)
     connection = db_connection()
     cursor = connection.cursor()
     cursor.execute('SELECT score from menudata where menu=%s', menu_name)
@@ -226,4 +240,4 @@ def session_check():
     return '0'
 
 if __name__ == '__main__':
-    app.run('0.0.0.0',port=5000,debug=True, threaded=True)
+    app.run('0.0.0.0',port=5000,debug=False, threaded=True)

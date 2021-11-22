@@ -1,4 +1,3 @@
-<!-- flask alert -->
 {% with messages = get_flashed_messages() %} {% if messages %}
 <script>
   alert("{{messages[-1]}}");
@@ -7,43 +6,72 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="{{ url_for('static', filename='/images/favicon.ico')}}">
-    <link rel="stylesheet" href="{{url_for('static', filename='css/member/login.css')}}">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AramByeol Login</title>
+    <!-- css 연결 -->
+    <link rel="stylesheet" href="/static/css/member/login.css" />
+    <!-- 폰트 링크 연결 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap"
       rel="stylesheet"
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com/" />
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Gaegu&family=Quicksand:wght@500&family=Roboto:wght@100&display=swap"
       rel="stylesheet"
     />
-    <title>로그인</title>
-</head>
-<body>
+  </head>
+
+  <body>
     <div class="header">
-        <img src="/static/images/logo.png" alt="logo" height="120" width="120" style="vertical-align:middle"/>
-        <a href="/" style="font-size:60px;">AramByeol</a>
-      </div>
-      <br /><br />
-      <div class="container">
-        <div class="input">
-          <h3>로그인</h3>
+      <img src="/static/images/logo.png" alt="logo" height="80" />
+      <a href="/"> AramByeol </a>
+    </div>
+    <br /><br />
+
+    <div class="container">
+      <div class="input_info">
+        <div>
+          <div>이미 아람전사라면? 로그인</div>
+          <br />
           <form action="/member/login.html" method="post">
-            <input type="text" placeholder="Id" name="id" /><br />
-            <input type="password" placeholder="Password" name="password" />
-            <br /><br />
-            <input type="submit" id="loginInput" value="Login"/>
+            <div>
+              <input
+                type="text"
+                placeholder="아이디"
+                name="id"
+                class="nameInput"
+              />
+              <br />
+            </div>
+            <div>
+              <input
+                type="password"
+                placeholder="비밀번호"
+                name="password"
+                class="passwordInput"
+              /><br /><br />
+            </div>
+            <input type="submit" id="loginInput" value="로그인" />
+            <br />
           </form>
         </div>
-  
-        <div class="signup">
-            <h3>회원가입</h3>
-          <a href="/member/register.html" style="color:blue; font-size: 1.2rem; font: bold;">Create an Account</a>
+        <br />
+      </div>
+      <div class="signup">
+        <br />
+        아람관이 처음이시라면?
+        <br /><br />
+        <div>
+          <a href="/member/register.html" class="signupbutton">회원가입</a>
         </div>
       </div>
-</body>
+    </div>
+  </body>
 </html>
