@@ -1,0 +1,272 @@
+@media all and (min-width: 1025px) {
+  body {
+    margin: 0%;
+  }
+
+  .header {
+    display: grid;
+    grid-template-columns: 40px 1fr 40px;
+  }
+
+  .back_logo {
+    background-color: #5fc1c2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 30px;
+  }
+
+  .logo {
+    background-color: #5fc1c2;
+    color: white;
+    align-items: center;
+    font-size: 3rem;
+    justify-content: center;
+    display: flex;
+    font-family: "Quicksand", sans-serif;
+  }
+
+  .home_logo {
+    background-color: #5fc1c2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-right: 30px;
+  }
+
+  .header a {
+    text-decoration-line: none;
+    color: white;
+  }
+
+  .user_information {
+    font-family: "Gaegu", cursive;
+    text-align: center;
+    font-size: 1.5rem;
+  }
+
+  #nameInput {
+    font-size: 1rem;
+    font-family: "Gaegu", cursive;
+    text-align: center;
+    width: 15rem;
+    height: 2rem;
+  }
+
+  #pwdInput {
+    font-size: 1rem;
+    font-family: "Gaegu", cursive;
+    text-align: center;
+    width: 15rem;
+    height: 2rem;
+  }
+  #pwdInput_chk {
+    font-size: 1rem;
+    font-family: "Gaegu", cursive;
+    text-align: center;
+    width: 15rem;
+    height: 2rem;
+  }
+
+  .pwdchk_button {
+    text-decoration-line: none;
+    color: white;
+    font-family: "Gaegu", cursive;
+    font-size: 1.5rem;
+    background-color: #5fc1c2;
+    margin: 5px;
+  }
+
+  .signup_button {
+    text-decoration-line: none;
+    color: white;
+    font-family: "Gaegu", cursive;
+    font-size: 1.5rem;
+    background-color: #5fc1c2;
+    padding: 5px;
+    display: none;
+    margin: 0px 600px 0px 600px;
+  }
+}
+
+/********************* Mobile *********************/
+@media all and (max-width: 767px) {
+  body {
+    margin: 0%;
+  }
+
+  .header {
+    display: grid;
+    grid-template-columns: 40px 1fr 40px;
+  }
+
+  .back_logo {
+    background-color: #5fc1c2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 30px;
+  }
+
+  .logo {
+    background-color: #5fc1c2;
+    color: white;
+    align-items: center;
+    font-size: 1.7rem;
+    justify-content: center;
+    display: flex;
+    font-family: "Quicksand", sans-serif;
+  }
+
+  .home_logo {
+    background-color: #5fc1c2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-right: 30px;
+  }
+
+  .header a {
+    text-decoration-line: none;
+    color: white;
+  }
+
+  .user_information {
+    font-family: "Gaegu", cursive;
+    text-align: center;
+    font-size: 1.3rem;
+  }
+
+  #nameInput {
+    font-size: 1rem;
+    font-family: "Gaegu", cursive;
+    text-align: center;
+    width: 13rem;
+    height: 2rem;
+  }
+
+  #pwdInput {
+    font-size: 1rem;
+    font-family: "Gaegu", cursive;
+    text-align: center;
+    width: 13rem;
+    height: 2rem;
+  }
+  #pwdInput_chk {
+    font-size: 1rem;
+    font-family: "Gaegu", cursive;
+    text-align: center;
+    width: 13rem;
+    height: 2rem;
+  }
+  .signup_button {
+    text-decoration-line: none;
+    color: white;
+    font-family: "Gaegu", cursive;
+    font-size: 1.5rem;
+    background-color: #5fc1c2;
+    padding: 5px;
+    display: none;
+    margin: 0px 40px 0px 40px;
+  }
+
+  .pwdchk_button {
+    text-decoration-line: none;
+    color: white;
+    font-family: "Gaegu", cursive;
+    font-size: 1.5rem;
+    background-color: #5fc1c2;
+    margin: 5px;
+  }
+}
+/********************* Tablet *********************/
+@media all and (min-width: 768px) and (max-width: 1024px) {
+  body {
+    margin: 0%;
+  }
+
+  .header {
+    display: grid;
+    grid-template-columns: 40px 1fr 40px;
+  }
+
+  .back_logo {
+    background-color: #5fc1c2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 30px;
+  }
+
+  .logo {
+    background-color: #5fc1c2;
+    color: white;
+    align-items: center;
+    font-size: 3rem;
+    justify-content: center;
+    display: flex;
+    font-family: "Quicksand", sans-serif;
+  }
+
+  .home_logo {
+    background-color: #5fc1c2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-right: 30px;
+  }
+
+  .header a {
+    text-decoration-line: none;
+    color: white;
+  }
+
+  .user_information {
+    font-family: "Gaegu", cursive;
+    text-align: center;
+    font-size: 1.5rem;
+  }
+
+  #nameInput {
+    font-size: 1rem;
+    font-family: "Gaegu", cursive;
+    text-align: center;
+    width: 15rem;
+    height: 2rem;
+  }
+
+  #pwdInput {
+    font-size: 1rem;
+    font-family: "Gaegu", cursive;
+    text-align: center;
+    width: 15rem;
+    height: 2rem;
+  }
+  #pwdInput_chk {
+    font-size: 1rem;
+    font-family: "Gaegu", cursive;
+    text-align: center;
+    width: 15rem;
+    height: 2rem;
+  }
+
+  .signup_button {
+    text-decoration-line: none;
+    color: white;
+    font-family: "Gaegu", cursive;
+    font-size: 1.5rem;
+    background-color: #5fc1c2;
+    padding: 5px;
+    display: none;
+    margin: 0px 400px 0px 400px;
+  }
+
+  .pwdchk_button {
+    text-decoration-line: none;
+    color: white;
+    font-family: "Gaegu", cursive;
+    font-size: 1.5rem;
+    background-color: #5fc1c2;
+    margin: 5px;
+  }
+}

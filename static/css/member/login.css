@@ -1,43 +1,221 @@
-.header {
-    background-color : #5FC1C2;
-    text-align : center;
-    color : white;
+@media all and (min-width: 1025px) {
+  body {
+    margin: 0%;
+  }
+  /* 바디태그에 마진값을 없앤다. */
+
+  .header {
+    background-color: #5fc1c2;
+
+    font-size: 3rem;
+    display: flex;
+    justify-content: center;
     align-items: center;
-    height : 120px;
-}
-
-
-/* 하이퍼링크 색 바꾸기 */
-a {
-text-decoration-line : none;
-color : rgb(255, 255, 255);
-}
-
-.input {
-    border-right : 1px solid #5FC1C2;
-}
-
-.container {
-    display : grid;
-    grid-template-columns: 1fr 1fr;
-    text-align: center;
-}
-
-.signup {
-    text-align : center;
-}
-
-.hahaha {
-    align-items : center;
-    text-align : center;
-}
-
-#loginInput{
-    background-color:#5FC1C2;
-    font-size: 1.5rem;
-    font: bold;
-    color : white;
-    width : 100px;
-    height : 40px;
+    /* 위아래 가운데 */
+    /* 가운데 정렬  */
     font-family: "Quicksand", sans-serif;
+  }
+
+  /* /하이퍼링크 색 바꾸기 */
+  .header a {
+    text-decoration-line: none;
+    color: white;
+  }
+
+  .container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .input_info {
+    border-right: 5px solid #5fc1c2;
+    font-size: 2rem;
+    text-align: center;
+    font-family: "Gaegu", cursive;
+  }
+
+  .nameInput {
+    font-family: "Gaegu", cursive;
+    height: 33px;
+    font-size: 1.5rem;
+    text-align: center;
+    margin: 10px;
+  }
+
+  .passwordInput {
+    font-family: "Gaegu", cursive;
+    height: 33px;
+    font-size: 1.5rem;
+    text-align: center;
+  }
+
+  #loginInput {
+    background-color: #5fc1c2;
+    font-family: "Gaegu", cursive;
+    color: white;
+    font-size: 2rem;
+    width: 250px;
+    height: 40px;
+  }
+
+  .signup {
+    text-align: center;
+    font-family: "Gaegu", cursive;
+    font-size: 2rem;
+  }
+
+  .signupbutton {
+    text-decoration-line: none;
+    color: white;
+    font-family: "Gaegu", cursive;
+    font-size: 2rem;
+    background-color: #5fc1c2;
+    padding: 10px;
+  }
+}
+
+/********************* Mobile *********************/
+@media all and (max-width: 767px) {
+  body {
+    margin: 0%;
+  }
+  /* 바디태그에 마진값을 없앤다. */
+
+  .header {
+    background-color: #5fc1c2;
+    align-items: center;
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: center;
+    /* 가운데 정렬  */
+    font-family: "Quicksand", sans-serif;
+  }
+
+  /* /하이퍼링크 색 바꾸기 */
+  .header a {
+    text-decoration-line: none;
+    color: white;
+  }
+
+  .input_info {
+    border-bottom: 5px solid #5fc1c2;
+    font-size: 1.5rem;
+    text-align: center;
+    font-family: "Gaegu", cursive;
+    margin: 20px;
+  }
+
+  .nameInput {
+    font-family: "Gaegu", cursive;
+    height: 25px;
+    font-size: 1.5rem;
+    text-align: center;
+    margin: 10px;
+  }
+
+  .passwordInput {
+    font-family: "Gaegu", cursive;
+    height: 25px;
+    font-size: 1.5rem;
+    text-align: center;
+  }
+
+  #loginInput {
+    background-color: #5fc1c2;
+    font-family: "Gaegu", cursive;
+    color: white;
+    font-size: 1.5rem;
+    width: 250px;
+    height: 33px;
+    border: 0px;
+  }
+
+  .signup {
+    text-align: center;
+    font-family: "Gaegu", cursive;
+    font-size: 1.5rem;
+  }
+
+  .signupbutton {
+    text-decoration-line: none;
+    color: white;
+    font-family: "Gaegu", cursive;
+    font-size: 1.5rem;
+    background-color: #5fc1c2;
+    padding: 10px;
+  }
+}
+/********************* Tablet *********************/
+@media all and (min-width: 768px) and (max-width: 1024px) {
+  body {
+    margin: 0%;
+  }
+  /* 바디태그에 마진값을 없앤다. */
+
+  .header {
+    background-color: #5fc1c2;
+    align-items: center;
+    font-size: 2.3rem;
+    display: flex;
+    justify-content: center;
+    /* 가운데 정렬  */
+    font-family: "Quicksand", sans-serif;
+  }
+
+  /* /하이퍼링크 색 바꾸기 */
+  .header a {
+    text-decoration-line: none;
+    color: white;
+  }
+
+  .container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .input_info {
+    border-right: 5px solid #5fc1c2;
+    font-size: 2rem;
+    text-align: center;
+    font-family: "Gaegu", cursive;
+  }
+
+  .nameInput {
+    font-family: "Gaegu", cursive;
+    height: 33px;
+    font-size: 1.5rem;
+    text-align: center;
+    margin: 10px;
+  }
+
+  .passwordInput {
+    font-family: "Gaegu", cursive;
+    height: 33px;
+    font-size: 1.5rem;
+    text-align: center;
+  }
+
+  #loginInput {
+    background-color: #5fc1c2;
+    font-family: "Gaegu", cursive;
+    color: white;
+    font-size: 2rem;
+    width: 250px;
+    height: 40px;
+  }
+
+  .signup {
+    text-align: center;
+    font-family: "Gaegu", cursive;
+    font-size: 2rem;
+  }
+
+  .signupbutton {
+    text-decoration-line: none;
+    color: white;
+    font-family: "Gaegu", cursive;
+    font-size: 2rem;
+    background-color: #5fc1c2;
+    padding: 10px;
+  }
 }

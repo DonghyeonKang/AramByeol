@@ -1,3 +1,4 @@
+// 페이지가 로딩될 때 바로 실행할 함수들
 $(document).ready(function () {
   const sessionExist = session_check(); // 세션체크 후
   setEventListener(sessionExist);
@@ -56,6 +57,7 @@ const setEventListener = (sessionExist) => {
   }
 };
 
+// 메뉴 테이블에 메뉴들을 받아오는 함수
 const get_daytable = () => {
   $.ajax({
     type: "GET",
@@ -63,11 +65,13 @@ const get_daytable = () => {
     async: false,
     data: {},
     success: function (response) {
+      // 오늘, 내일, 모레 날짜 생성
       const date = new Date();
       const day = new Date();
       const tomorrow = new Date(date.setDate(date.getDate() + 1));
       const after_tomorrow = new Date(date.setDate(date.getDate() + 1));
 
+      // 날짜 가공
       const todays =
         day.getFullYear() +
         "-" +
@@ -90,14 +94,13 @@ const get_daytable = () => {
       let tomorrow_day;
       let after_day;
 
+      // 서버로부터 전달 받은 날짜들..
       let days = response["days"];
       let morning = response["morning"];
       let lunch = response["lunch"];
       let dinner = response["dinner"];
-      // console.log(days);
-      // console.log(morning);
-      // console.log(lunch);
-      // console.log(dinner);
+     
+      // 오늘, 내일, 모레 날짜를 서버에서 가져온 날짜와 비교.
       for (let i = 0; i < days.length; i++) {
         if (days[i][1] === todays) {
           this_day = days[i][0];
@@ -121,11 +124,13 @@ const get_daytable = () => {
         $(".hash-tag3").append(`<h1>#매주 #일요일 #1시 #UPDATE FOR YOU👉</h1>`);
       } else $(".hash-tag3").append(`<h1>#모레 #는 #멀다</h1>`);
 
-      /* 오늘 */
+      /* 오늘메뉴 가져오기 */
       let morning_info = "";
       let lunch_info = "";
       let dinner_info = "";
-      let option = 0;
+      let option = 0; // 코스 A: 0, B: 1, C: 2, 테이크아웃: 3
+
+      // 아침
       morning_info = morning_info + "<td>";
       for (let i = 0; i < morning.length; i++) {
         if (this_day === morning[i][0]) {
@@ -185,6 +190,7 @@ const get_daytable = () => {
       morning_info = morning_info + "<td>";
       $("#morning").append(morning_info);
 
+      // 점심
       lunch_info = lunch_info + "<td>";
       for (let i = 0; i < lunch.length; i++) {
         if (this_day === lunch[i][0]) {
@@ -243,6 +249,7 @@ const get_daytable = () => {
       lunch_info = lunch_info + "<td>";
       $("#lunch").append(lunch_info);
 
+      // 저녁
       dinner_info = dinner_info + "<td>";
       for (let i = 0; i < dinner.length; i++) {
         if (this_day === dinner[i][0]) {
@@ -305,6 +312,8 @@ const get_daytable = () => {
       morning_info = "";
       lunch_info = "";
       dinner_info = "";
+
+       // 아침
       morning_info = morning_info + "<td>";
       for (let i = 0; i < morning.length; i++) {
         if (tomorrow_day === morning[i][0]) {
@@ -363,6 +372,7 @@ const get_daytable = () => {
       morning_info = morning_info + "<td>";
       $("#nextmorning").append(morning_info);
 
+      // 점심
       lunch_info = lunch_info + "<td>";
       for (let i = 0; i < lunch.length; i++) {
         if (tomorrow_day === lunch[i][0]) {
@@ -407,6 +417,7 @@ const get_daytable = () => {
       lunch_info = lunch_info + "<td>";
       $("#nextlunch").append(lunch_info);
 
+      // 저녁
       dinner_info = dinner_info + "<td>";
       for (let i = 0; i < dinner.length; i++) {
         if (tomorrow_day === dinner[i][0]) {
@@ -470,6 +481,7 @@ const get_daytable = () => {
       lunch_info = "";
       dinner_info = "";
 
+      //아침
       morning_info = morning_info + "<td>";
       for (let i = 0; i < morning.length; i++) {
         if (after_day === morning[i][0]) {
@@ -527,6 +539,7 @@ const get_daytable = () => {
       morning_info = morning_info + "</td>";
       $("#doublenextmorning").append(morning_info);
 
+      //점심
       lunch_info = lunch_info + "<td>";
       for (let i = 0; i < lunch.length; i++) {
         if (after_day === lunch[i][0]) {
@@ -568,6 +581,8 @@ const get_daytable = () => {
       option = 0;
       lunch_info = lunch_info + "</td>";
       $("#doublenextlunch").append(lunch_info);
+
+      //저녁
       dinner_info = dinner_info + "<td>";
       for (let i = 0; i < dinner.length; i++) {
         if (after_day === dinner[i][0]) {
@@ -698,7 +713,7 @@ const event_modal = (sessionExist) => {
       score_result += score[i];
       score[i] = 0;
     }
-    // send api
+    // send api, 별점주기
     if (score_result > 0) {
       $.ajax({
         type: "POST",
@@ -706,7 +721,6 @@ const event_modal = (sessionExist) => {
         data: { menu_name: name, menu_score: score_result },
         success: function (response) {
           alert(response["msg"]);
-          window.location.reload();
         },
       });
     }
@@ -731,9 +745,11 @@ const set_modal_inner_header = (open_today) => {
               <a>${open_today.innerHTML}</a>                        
               `;
   $(".menu-name").append(temp_html);
+
   // queryselector가 &를 가져올 때 &amp;로 가져오기 때문에 &로 변환해줘야 한다.
   name = open_today.innerHTML.replace("&amp;", "&");
   
+  // DB에서 누적 별점 가져오기
   $.ajax({
     type: "POST",
     url: "/api/menu_score",
