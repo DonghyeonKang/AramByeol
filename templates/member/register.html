@@ -54,12 +54,14 @@
           type="text"
           placeholder="영문자+숫자, 15자 이하"
           id="nameInput"
+          name = "id"
         /><br /><br />
         <label for="pwdInput">비밀번호</label>
         <input
           type="password"
           placeholder=" 6-16자리 영문, 숫자, 특수문자"
           id="pwdInput"
+          name="password"
         /><br /><br />
         <label for="pwdInput">비밀번호 확인 </label>
         <input
@@ -73,7 +75,8 @@
           value="비밀번호확인"
           onclick="playsignup()"
         />
-        <a href="/" class="signup_button">Sign up</a>
+        <!-- <a href="/" class="signup_button" type="submit">Sign up</a> -->
+        <input class="signup_button" type="submit" value="Sign up">
       </div>
     </form>
     <script type="text/javascript" src="/static/js/member/register.js"></script>
