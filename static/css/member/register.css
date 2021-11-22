@@ -86,6 +86,7 @@
     padding: 5px;
     display: none;
     margin: 0px 600px 0px 600px;
+    width: 300px;
   }
 }
 
@@ -168,6 +169,7 @@
     padding: 5px;
     display: none;
     margin: 0px 40px 0px 40px;
+    width: 300px;
   }
 
   .pwdchk_button {
@@ -259,6 +261,7 @@
     padding: 5px;
     display: none;
     margin: 0px 400px 0px 400px;
+    width: 300px;
   }
 
   .pwdchk_button {
