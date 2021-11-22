@@ -1,3 +1,4 @@
+
 body {
   margin: 0%;
 }
@@ -145,8 +146,8 @@ body {
   display: inline-block;
   border: 0.4rem solid #5fc1c2;
   margin: 1rem 2rem;
-  width: 25rem;
-  height: 35rem;
+  width: 90%;
+  min-height: 30rem;
   overflow: auto;
 }
 
@@ -163,6 +164,7 @@ body {
 
 .main-box{
   display: inline-block;
+  width: 30%;
 }
 
 .line {
@@ -185,3 +187,31 @@ body {
 td {
   padding-top: 1rem;
 }
+
+@media (max-width: 720px){
+
+  .main-box{
+    width: 80%;
+  }
+
+  .hash-tag{
+    font-size: 2rem;
+    text-align: center;
+  }
+
+  .today-box{
+    margin: 0;
+  }
+
+    
+  .todoy-title{
+    font-size: 3rem;
+    margin: 1rem;
+  }
+
+  .line{
+    margin-top: 5rem;
+  }
+}
+
+
