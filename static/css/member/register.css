@@ -22,7 +22,6 @@
     align-items: center;
     font-size: 3rem;
     justify-content: center;
-    /* 가운데 정렬  */
     display: flex;
     font-family: "Quicksand", sans-serif;
   }
@@ -69,15 +68,13 @@
     height: 2rem;
   }
 
-  .signup_btn {
+  .pwdchk_button {
     text-decoration-line: none;
     color: white;
     font-family: "Gaegu", cursive;
     font-size: 1.5rem;
     background-color: #5fc1c2;
-    padding: 5px;
-    display: none;
-    text-align: center;
+    margin: 5px;
   }
 
   .signup_button {
@@ -87,6 +84,8 @@
     font-size: 1.5rem;
     background-color: #5fc1c2;
     padding: 5px;
+    display: none;
+    margin: 0px 600px 0px 600px;
   }
 }
 
@@ -113,9 +112,8 @@
     background-color: #5fc1c2;
     color: white;
     align-items: center;
-    font-size: 1.5rem;
+    font-size: 1.7rem;
     justify-content: center;
-    /* 가운데 정렬  */
     display: flex;
     font-family: "Quicksand", sans-serif;
   }
@@ -136,14 +134,14 @@
   .user_information {
     font-family: "Gaegu", cursive;
     text-align: center;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
   }
 
   #nameInput {
     font-size: 1rem;
     font-family: "Gaegu", cursive;
     text-align: center;
-    width: 15rem;
+    width: 13rem;
     height: 2rem;
   }
 
@@ -151,7 +149,7 @@
     font-size: 1rem;
     font-family: "Gaegu", cursive;
     text-align: center;
-    width: 15rem;
+    width: 13rem;
     height: 2rem;
   }
   #pwdInput_chk {
@@ -161,18 +159,6 @@
     width: 13rem;
     height: 2rem;
   }
-
-  .signup_btn {
-    text-decoration-line: none;
-    color: white;
-    font-family: "Gaegu", cursive;
-    font-size: 1.5rem;
-    background-color: #5fc1c2;
-    padding: 5px;
-    display: none;
-    text-align: center;
-  }
-
   .signup_button {
     text-decoration-line: none;
     color: white;
@@ -180,6 +166,17 @@
     font-size: 1.5rem;
     background-color: #5fc1c2;
     padding: 5px;
+    display: none;
+    margin: 0px 40px 0px 40px;
+  }
+
+  .pwdchk_button {
+    text-decoration-line: none;
+    color: white;
+    font-family: "Gaegu", cursive;
+    font-size: 1.5rem;
+    background-color: #5fc1c2;
+    margin: 5px;
   }
 }
 /********************* Tablet *********************/
@@ -207,7 +204,6 @@
     align-items: center;
     font-size: 3rem;
     justify-content: center;
-    /* 가운데 정렬  */
     display: flex;
     font-family: "Quicksand", sans-serif;
   }
@@ -254,17 +250,6 @@
     height: 2rem;
   }
 
-  .signup_btn {
-    text-decoration-line: none;
-    color: white;
-    font-family: "Gaegu", cursive;
-    font-size: 1.5rem;
-    background-color: #5fc1c2;
-    padding: 5px;
-    display: none;
-    text-align: center;
-  }
-
   .signup_button {
     text-decoration-line: none;
     color: white;
@@ -272,5 +257,16 @@
     font-size: 1.5rem;
     background-color: #5fc1c2;
     padding: 5px;
+    display: none;
+    margin: 0px 400px 0px 400px;
+  }
+
+  .pwdchk_button {
+    text-decoration-line: none;
+    color: white;
+    font-family: "Gaegu", cursive;
+    font-size: 1.5rem;
+    background-color: #5fc1c2;
+    margin: 5px;
   }
 }

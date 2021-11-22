@@ -100,7 +100,7 @@
 
   .input_info {
     border-bottom: 5px solid #5fc1c2;
-    font-size: 2rem;
+    font-size: 1.5rem;
     text-align: center;
     font-family: "Gaegu", cursive;
     margin : 20px;
@@ -108,7 +108,7 @@
 
   .nameInput {
     font-family: "Gaegu", cursive;
-    height:33px;
+    height:25px;
     font-size: 1.5rem;
     text-align: center;
     margin: 10px;
@@ -117,7 +117,7 @@
 
   .passwordInput {
     font-family: "Gaegu", cursive;
-    height: 33px;
+    height: 25px;
     font-size: 1.5rem;
     text-align: center;
   }
@@ -126,22 +126,23 @@
     background-color: #5fc1c2;
     font-family: "Gaegu", cursive;
     color: white;
-    font-size: 2rem;
+    font-size: 1.5rem;
     width: 250px;
-    height: 40px;
+    height: 33px;
+    border : 0px;
   }
 
   .signup {
     text-align: center;
-    font-family: "Gaegu", cursive;
-    font-size: 2rem;
+    font-family:"Gaegu", cursive;
+    font-size: 1.5rem;
   }
 
   .signupbutton {
     text-decoration-line: none;
     color: white;
     font-family: "Gaegu", cursive;
-    font-size: 2rem;
+    font-size: 1.5rem;
     background-color: #5fc1c2;
     padding: 10px;
   }
