@@ -34,8 +34,8 @@ body {
     
     #error-image0{
         margin-top: 1rem;
-        width: 350px;
-        height: 350px;
+        width: 20rem;
+        height: 20rem;
     }
 
     .error-content{
@@ -68,8 +68,8 @@ body {
     }
     
     #error-image0{
-        width: 650px;
-        height: 650px;
+        width: 40rem;
+        height: 40rem;
     }
 
     .error-content{
@@ -101,8 +101,8 @@ body {
     }
     
     #error-image0{
-        width: 650px;
-        height: 650px;
+        width: 40rem;
+        height: 40rem;
     }
 
     .error-content{

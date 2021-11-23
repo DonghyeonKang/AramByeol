@@ -2,21 +2,16 @@
   body {
     margin: 0%;
   }
-  /* 바디태그에 마진값을 없앤다. */
 
   .header {
     background-color: #5fc1c2;
-
     font-size: 3rem;
     display: flex;
     justify-content: center;
     align-items: center;
-    /* 위아래 가운데 */
-    /* 가운데 정렬  */
     font-family: "Quicksand", sans-serif;
   }
 
-  /* /하이퍼링크 색 바꾸기 */
   .header a {
     text-decoration-line: none;
     color: white;
@@ -25,13 +20,22 @@
   .container {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    margin-top: 7rem;
   }
 
-  .input_info {
-    border-right: 5px solid #5fc1c2;
+  li {
+    list-style: none;
+  }
+
+  #input_info {
+    border-right: 5px dotted #5fc1c2;
     font-size: 2rem;
-    text-align: center;
     font-family: "Gaegu", cursive;
+    text-align: center;
+  }
+
+  .input_info_head {
+    margin-bottom: 2rem;
   }
 
   .nameInput {
@@ -39,7 +43,7 @@
     height: 33px;
     font-size: 1.5rem;
     text-align: center;
-    margin: 10px;
+    margin-bottom: 1.5rem;
   }
 
   .passwordInput {
@@ -47,6 +51,7 @@
     height: 33px;
     font-size: 1.5rem;
     text-align: center;
+    margin-bottom: 1.5rem;
   }
 
   #loginInput {
@@ -54,14 +59,21 @@
     font-family: "Gaegu", cursive;
     color: white;
     font-size: 2rem;
-    width: 250px;
+    width: 10rem;
     height: 40px;
+    border: 0px;
+    border-radius: 10px;
   }
 
   .signup {
     text-align: center;
     font-family: "Gaegu", cursive;
     font-size: 2rem;
+  }
+
+  .signup_head {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
   }
 
   .signupbutton {
@@ -71,6 +83,7 @@
     font-size: 2rem;
     background-color: #5fc1c2;
     padding: 10px;
+    border-radius: 10px;
   }
 }
 
@@ -79,70 +92,92 @@
   body {
     margin: 0%;
   }
-  /* 바디태그에 마진값을 없앤다. */
 
   .header {
     background-color: #5fc1c2;
-    align-items: center;
-    font-size: 1.5rem;
+    font-size: 2rem;
     display: flex;
     justify-content: center;
-    /* 가운데 정렬  */
+    align-items: center;
     font-family: "Quicksand", sans-serif;
   }
 
-  /* /하이퍼링크 색 바꾸기 */
   .header a {
     text-decoration-line: none;
     color: white;
   }
 
-  .input_info {
-    border-bottom: 5px solid #5fc1c2;
-    font-size: 1.5rem;
-    text-align: center;
+  .container {
+    margin-right: 2rem;
+    margin-left: 2rem;
+  }
+
+  li {
+    list-style: none;
+  }
+
+  #input_info {
+    border-bottom: 5px dotted #5fc1c2;
+    font-size: 1.6rem;
     font-family: "Gaegu", cursive;
-    margin: 20px;
+    text-align: center;
+    padding: 0;
+  }
+
+  .input_info_head {
+    margin-bottom: 2rem;
   }
 
   .nameInput {
     font-family: "Gaegu", cursive;
-    height: 25px;
+    height: 2rem;
     font-size: 1.5rem;
     text-align: center;
-    margin: 10px;
+    margin-bottom: 1.5rem;
+    width : 80%;
   }
 
   .passwordInput {
     font-family: "Gaegu", cursive;
-    height: 25px;
+    height: 2rem;
     font-size: 1.5rem;
     text-align: center;
+    margin-bottom: 1.5rem;
+    width : 80%;
   }
 
   #loginInput {
     background-color: #5fc1c2;
     font-family: "Gaegu", cursive;
     color: white;
-    font-size: 1.5rem;
-    width: 250px;
-    height: 33px;
+    font-size: 2rem;
+    width: 12rem;
+    height: 3rem;
     border: 0px;
+    border-radius: 10px;
+    margin-bottom: 2rem;
   }
 
   .signup {
     text-align: center;
     font-family: "Gaegu", cursive;
-    font-size: 1.5rem;
+    font-size: 2rem;
+    padding: 0;
+  }
+
+  .signup_head {
+    margin-top: 5rem;
+    margin-bottom: 3rem;
   }
 
   .signupbutton {
     text-decoration-line: none;
     color: white;
     font-family: "Gaegu", cursive;
-    font-size: 1.5rem;
+    font-size: 2rem;
     background-color: #5fc1c2;
     padding: 10px;
+    border-radius: 10px;
   }
 }
 /********************* Tablet *********************/
@@ -150,19 +185,16 @@
   body {
     margin: 0%;
   }
-  /* 바디태그에 마진값을 없앤다. */
 
   .header {
     background-color: #5fc1c2;
-    align-items: center;
-    font-size: 2.3rem;
+    font-size: 3rem;
     display: flex;
     justify-content: center;
-    /* 가운데 정렬  */
+    align-items: center;
     font-family: "Quicksand", sans-serif;
   }
 
-  /* /하이퍼링크 색 바꾸기 */
   .header a {
     text-decoration-line: none;
     color: white;
@@ -171,28 +203,40 @@
   .container {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    margin-top: 7rem;
   }
 
-  .input_info {
-    border-right: 5px solid #5fc1c2;
+  li {
+    list-style: none;
+  }
+
+  #input_info {
+    border-right: 5px dotted #5fc1c2;
     font-size: 2rem;
-    text-align: center;
     font-family: "Gaegu", cursive;
+    text-align: center;
+  }
+
+  .input_info_head {
+    margin-bottom: 2rem;
   }
 
   .nameInput {
     font-family: "Gaegu", cursive;
-    height: 33px;
+    height: 2.6rem;
     font-size: 1.5rem;
     text-align: center;
-    margin: 10px;
+    margin-bottom: 1.5rem;
+    width : 80%;
   }
 
   .passwordInput {
     font-family: "Gaegu", cursive;
-    height: 33px;
+    height: 2.5rem;
     font-size: 1.5rem;
     text-align: center;
+    margin-bottom: 1.5rem;
+    width : 80%;
   }
 
   #loginInput {
@@ -200,14 +244,21 @@
     font-family: "Gaegu", cursive;
     color: white;
     font-size: 2rem;
-    width: 250px;
+    width: 12rem;
     height: 40px;
+    border: 0px;
+    border-radius: 10px;
   }
 
   .signup {
     text-align: center;
     font-family: "Gaegu", cursive;
     font-size: 2rem;
+  }
+
+  .signup_head {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
   }
 
   .signupbutton {
@@ -217,5 +268,6 @@
     font-size: 2rem;
     background-color: #5fc1c2;
     padding: 10px;
+    border-radius: 10px;
   }
 }

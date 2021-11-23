@@ -23,7 +23,7 @@ const session_check = () => {
       } else {
         // 세션 있음
         $("#login").append(
-          '<a href="" id="logout-button"><img src="/static/images/logout.png" alt="Login"></a>'
+          '<a href="" id="logout-button"><img src="/static/images/logout.png" alt="Logout"></a>'
         );
         sessionExist = 1;
       }
@@ -370,7 +370,7 @@ const get_daytable = () => {
       A=B=C=T=0;
       morning_info = morning_info + "</td>";
       morning_info = morning_info + "<td>";
-      $("#nextmorning").append(morning_info);
+      $("#next-morning").append(morning_info);
 
       // 점심
       lunch_info = lunch_info + "<td>";
@@ -415,7 +415,7 @@ const get_daytable = () => {
       A=B=C=T=0;
       lunch_info = lunch_info + "</td>";
       lunch_info = lunch_info + "<td>";
-      $("#nextlunch").append(lunch_info);
+      $("#next-lunch").append(lunch_info);
 
       // 저녁
       dinner_info = dinner_info + "<td>";
@@ -474,7 +474,7 @@ const get_daytable = () => {
       A=B=C=T=0;
       dinner_info = dinner_info + "</td>";
       dinner_info = dinner_info + "<td>";
-      $("#nextdinner").append(dinner_info);
+      $("#next-dinner").append(dinner_info);
 
       /* 모레 */
       morning_info = "";
@@ -537,7 +537,7 @@ const get_daytable = () => {
       }
       A=B=C=T=0;
       morning_info = morning_info + "</td>";
-      $("#doublenextmorning").append(morning_info);
+      $("#double-next-morning").append(morning_info);
 
       //점심
       lunch_info = lunch_info + "<td>";
@@ -580,7 +580,7 @@ const get_daytable = () => {
       }
       A=B=C=T=0;
       lunch_info = lunch_info + "</td>";
-      $("#doublenextlunch").append(lunch_info);
+      $("#double-next-lunch").append(lunch_info);
 
       //저녁
       dinner_info = dinner_info + "<td>";
@@ -638,12 +638,12 @@ const get_daytable = () => {
       }
       A=B=C=T=0;
       dinner_info = dinner_info + "</td>";
-      $("#doublenextdinner").append(dinner_info);
+      $("#double-next-dinner").append(dinner_info);
     },
   });
 };
 
-// modal event
+// modal event = open, close, score, submit
 const event_modal = (sessionExist) => {
   const modal = document.querySelector("#modal");
   const open_today = document.querySelectorAll(".open_today");
@@ -654,7 +654,6 @@ const event_modal = (sessionExist) => {
   const modal_footer = document.querySelector(".modal-footer");
   let name = "";
 
-  
   // open event
   for (let i = 0; i < open_today.length; i++) {   // today
     open_today[i].addEventListener("click", () => {
@@ -699,7 +698,7 @@ const event_modal = (sessionExist) => {
     });
   }
 
-  // submit modal
+  // submit event
   submit.addEventListener("click", () => {
     // modifing css
     let score_result = 0;
@@ -708,7 +707,7 @@ const event_modal = (sessionExist) => {
 
     // initializing star
     clear_star();
-    // add up the scores and initializing
+    // add up the scores and initialize score
     for (let i = 0; i < score.length; i++) {
       score_result += score[i];
       score[i] = 0;
@@ -727,7 +726,7 @@ const event_modal = (sessionExist) => {
   });
 };
 
-// 별점 이미지 초기화
+// initialize star images
 const clear_star = () => {
   const star = document.querySelectorAll(".star img");
   const empty_star = "/static/images/empty_star.png";
@@ -737,7 +736,7 @@ const clear_star = () => {
   }
 };
 
-// 모달 내부 헤더 부분
+// set modal inner header
 const set_modal_inner_header = (open_today) => {
   let name = "";
   $(".menu-name").empty();
@@ -766,13 +765,13 @@ const set_modal_inner_header = (open_today) => {
   return name;
 };
 
-// 모달 내부 내용 부분
+// set modal inner content
 const set_modal_inner_content = (sessionExist) => {
   const score = [0, 0, 0, 0, 0];
   const modal_footer = document.querySelector(".modal-footer");
-  const login_link = document.querySelector(".login_link");
+  const login_link = document.querySelector(".login-link");
   const star = document.querySelectorAll(".star img");
-
+  const modal = document.querySelector(".modal");
   //세션 존재하면 별점 기능 사용, 없으면 로그인 링크 사용
   if (sessionExist == 1) {
     modal_footer.style.display = "none";

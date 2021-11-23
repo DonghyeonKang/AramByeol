@@ -11,9 +11,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>AramByeol Login</title>
-    <!-- css 연결 -->
     <link rel="stylesheet" href="/static/css/member/login.css" />
-    <!-- 폰트 링크 연결 -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -29,49 +27,44 @@
   </head>
 
   <body>
-    <div class="header">
+    <header class="header">
       <img src="/static/images/logo.png" alt="logo" height="80" />
       <a href="/"> AramByeol </a>
-    </div>
-    <br /><br />
+    </header>
 
     <div class="container">
-      <div class="input_info">
-        <div>
-          <div>이미 아람전사라면? 로그인</div>
-          <br />
-          <form action="/member/login.html" method="post">
-            <div>
-              <input
-                type="text"
-                placeholder="아이디"
-                name="id"
-                class="nameInput"
-              />
-              <br />
-            </div>
-            <div>
-              <input
-                type="password"
-                placeholder="비밀번호"
-                name="password"
-                class="passwordInput"
-              /><br /><br />
-            </div>
+      <ul id="input_info">
+        <li class="input_info_head">이미 아람전사라면? 로그인</li>
+
+        <form action="/member/login.html" method="post">
+          <li >
+            <input
+              type="text"
+              placeholder="아이디"
+              name="id"
+             class="nameInput"
+            />
+          </li>
+          <li >
+            <input
+              type="password"
+              placeholder="비밀번호"
+              name="password"
+              class="passwordInput"
+            />
+          </li>
+          <li>
             <input type="submit" id="loginInput" value="로그인" />
-            <br />
-          </form>
-        </div>
-        <br />
-      </div>
-      <div class="signup">
-        <br />
-        아람관이 처음이시라면?
-        <br /><br />
-        <div>
+          </li>
+        </form>
+      </ul>
+
+      <ul class="signup">
+        <li class="signup_head">아람관이 처음이시라면?</li>
+        <li>
           <a href="/member/register.html" class="signupbutton">회원가입</a>
-        </div>
-      </div>
+        </li>
+      </ul>
     </div>
   </body>
 </html>
