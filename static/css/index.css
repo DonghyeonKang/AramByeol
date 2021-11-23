@@ -40,8 +40,8 @@ body {
 
 .modal {
   background: white;
-  border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  border-radius: 0.5rem;
+  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.3);
   position: relative;
   overflow: hidden;
   top: 50%;
@@ -49,7 +49,7 @@ body {
   transform: translate(-50%, -50%);
   max-width: 35rem;
   width: 50%;
-  min-width: 20rem;
+  min-width: 17rem;
   height: 22rem;
 }
 
@@ -73,11 +73,11 @@ body {
   bottom: 1rem;
 }
 
-.modal-footer .login_link {
+.modal-footer .login-link {
   display: none;
 }
 
-.login_link{
+.login-link {
   font: bold;
   font-size: 2rem;
   margin-bottom: 10%;
@@ -136,59 +136,74 @@ body {
 /* main contents */
 .inner {
   text-align: center;
+  max-width: 90rem;
+  margin: 0 auto;
 }
 
-.hash-tag {
-  margin-left: 50px;
+.hash-tag h1 {
+  font-family: "Gaegu", cursive;
+  font-size: 2.7rem;
+  color: black;
+  margin: 2rem 5rem;
+  font-weight: 200;
 }
 
 .today-box {
   display: inline-block;
-  border: 5px solid #5fc1c2;
-  margin: 10px 20px;
-  width: 300px;
-  height: 400px;
+  border: 0.4rem solid #5fc1c2;
+  width: 90%;
+  max-width: 19rem;
   overflow: auto;
-}
-
-.todoy-title {
-  display: inline-block;
-  font-size: 48px;
-  color: #5fc1c2;
-  margin: 10px 125px;
 }
 
 .menu-table {
   text-align: center;
-  margin: 0 auto;
+  margin: auto;
+}
+
+.main-box {
+  display: inline-block;
+  width: 30%;
 }
 
 .line {
   display: inline-block;
-  width: 90%;
-  margin-top: 100px;
+  width: 100%;
 }
 
 .course {
   display: inline-block;
   margin-bottom: 0.25rem;
   padding: 0 0.5rem;
-  border: 1px solid #22499d;
-  background: #f7faff;
-  color: #000;
+  border: 2px solid #5fc1c2;
+  background: #5fc1c2;
+  color: rgb(255, 255, 255);
   line-height: 25px;
-  font-weight: 500;
+  font-size: 1.5rem;
+  border-radius: 15%;
 }
 
 td {
   padding-top: 1rem;
 }
 
+.today-title {
+  font-family: "Gaegu", cursive;
+  font-weight: 600;
+  color: #000000;
+}
+
+.line hr{
+  background-color: #e5e5e5;
+  border: none;
+  width: 95%;
+}
+
 /********************* Mobile *********************/
 @media all and (max-width: 767px) {
   /* header */
   #header {
-    height: 20rem;
+    height: 25rem;
   }
 
   .header-top {
@@ -221,12 +236,34 @@ td {
   .star img {
     width: 3rem;
   }
+  /* inner section */
+  .main-box {
+    width: 80%;
+    margin-bottom: 2rem;
+  }
+
+  .hash-tag h1 {
+    font-size: 1.7rem;
+    text-align: center;
+    margin: 2rem 1.875rem;
+  }
+
+  .today-box {
+    margin: 0;
+    min-height: 10rem;
+    max-height: 40rem;
+  }
+
+  .today-title {
+    font-size: 1.5rem;
+  }
 }
 /********************* Tablet *********************/
 @media all and (min-width: 768px) and (max-width: 1024px) {
   /* header */
   #header {
-    height: 35rem;
+    height: 27rem;
+    padding-bottom: 3rem;
   }
 
   .header-top {
@@ -259,12 +296,26 @@ td {
   .star img {
     width: 4rem;
   }
+
+  /* inner section */
+  .today-box {
+    height: 30rem;
+  }
+
+  .today-title {
+    font-size: 1.5rem;
+  }
+
+  .line {
+    margin: 3rem 0;
+  }
 }
 /********************* PC *********************/
 @media all and (min-width: 1025px) {
   /* header */
   #header {
-    height: 22rem;
+    height: 30rem;
+    padding-bottom: 5rem;
   }
 
   .header-top {
@@ -282,8 +333,8 @@ td {
   }
 
   .logo-img img {
-    width: 23rem;
-    left: calc(50% - 15rem);
+    width: 26rem;
+    left: calc(50% - 13rem);
   }
 
   .logo-text a {
@@ -296,5 +347,18 @@ td {
   /* modal */
   .star img {
     width: 4rem;
+  }
+
+  /* inner section */
+  .today-box {
+    height: 30rem;
+  }
+
+  .today-title{
+    font-size: 2rem;
+  }
+
+  .line {
+    margin: 3rem 0;
   }
 }

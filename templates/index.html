@@ -34,6 +34,7 @@
     <title>AramByeol</title>
   </head>
   <body>
+    <!-- header -->
     <header id="header">
       <div class="header-top">
         <div class="logo-text">
@@ -45,6 +46,7 @@
         <img src="/static/images/logo.png" alt="logo" />
       </div>
     </header>
+    <!-- content -->
     <div class="content">
       <!-- Modal section -->
       <section class="modal-container" id="modal">
@@ -66,41 +68,26 @@
             <form class="menu-evaluation" method="get" action="">
               <ul class="star">
                 <li>
-                  <img
-                    src="/static/images/empty_star.png"
-                    alt="star1"
-                  />
+                  <img src="/static/images/empty_star.png" alt="star1" />
                 </li>
                 <li>
-                  <img
-                    src="/static/images/empty_star.png"
-                    alt="star2"
-                  />
+                  <img src="/static/images/empty_star.png" alt="star2" />
                 </li>
                 <li>
-                  <img
-                    src="/static/images/empty_star.png"
-                    alt="star3"
-                  />
+                  <img src="/static/images/empty_star.png" alt="star3" />
                 </li>
                 <li>
-                  <img
-                    src="/static/images/empty_star.png"
-                    alt="star4"
-                  />
+                  <img src="/static/images/empty_star.png" alt="star4" />
                 </li>
                 <li>
-                  <img
-                    src="/static/images/empty_star.png"
-                    alt="star5"
-                  />
+                  <img src="/static/images/empty_star.png" alt="star5" />
                 </li>
               </ul>
               <div class="submit" type="submit">확인</div>
             </form>
           </div>
           <div class="modal-footer">
-            <a class="login_link" href="/member/login.html">🤦‍♂️후기는 로그인!</a>
+            <a class="login-link" href="/member/login.html">🤦‍♂️후기는 로그인!</a>
             <div class="close-btn">확인</div>
           </div>
         </div>
@@ -109,79 +96,88 @@
       <section>
         <div class="hash-tag hash-tag1"></div>
         <div class="inner">
-          <div class="todoy-title">아침</div>
-          <div class="todoy-title">점심</div>
-          <div class="todoy-title">저녁</div>
+          <div class="main-box">
+            <div class="today-title">아침</div>
+            <div class="today-box">
+              <table class="menu-table">
+                <tr id="morning"></tr>
+              </table>
+            </div>
+          </div>
+          <div class="main-box">
+            <div class="today-title">점심</div>
+            <div class="today-box">
+              <table class="menu-table">
+                <tr id="lunch"></tr>
+              </table>
+            </div>
+          </div>
+          <div class="main-box">
+            <div class="today-title">저녁</div>
+            <div class="today-box">
+              <table class="menu-table">
+                <tr id="dinner"></tr>
+              </table>
+            </div>
+          </div>
         </div>
-        <div class="inner">
-          <div class="today-box">
-            <table class="menu-table">
-              <tr id="morning"></tr>
-            </table>
-          </div>
-          <div class="today-box">
-            <table class="menu-table">
-              <tr id="lunch"></tr>
-            </table>
-          </div>
-          <div class="today-box">
-            <table class="menu-table">
-              <tr id="dinner"></tr>
-            </table>
-          </div>
-        </div>
-        <div class="inner">
-          <div class="line">
-            <hr size="5" noshade />
-          </div>
+        <div class="line">
+          <hr size="5" noshade />
         </div>
         <div class="hash-tag hash-tag2"></div>
         <div class="inner">
-          <div class="todoy-title">아침</div>
-          <div class="todoy-title">점심</div>
-          <div class="todoy-title">저녁</div>
-        </div>
-        <div class="inner">
-          <div class="today-box">
-            <table class="menu-table">
-              <tr id="nextmorning"></tr>
-            </table>
+          <div class="main-box">
+            <div class="today-title">아침</div>
+            <div class="today-box">
+              <table class="menu-table">
+                <tr id="next-morning"></tr>
+              </table>
+            </div>
           </div>
-          <div class="today-box">
-            <table class="menu-table">
-              <tr id="nextlunch"></tr>
-            </table>
+          <div class="main-box">
+            <div class="today-title">점심</div>
+            <div class="today-box">
+              <table class="menu-table">
+                <tr id="next-lunch"></tr>
+              </table>
+            </div>
           </div>
-          <div class="today-box">
-            <table class="menu-table">
-              <tr id="nextdinner"></tr>
-            </table>
+          <div class="main-box">
+            <div class="today-title">저녁</div>
+            <div class="today-box">
+              <table class="menu-table">
+                <tr id="next-dinner"></tr>
+              </table>
+            </div>
           </div>
         </div>
-        <div class="inner">
-          <div class="line"><hr size="5" noshade /></div>
-        </div>
+        <div class="line"><hr size="5" noshade /></div>
         <div class="hash-tag hash-tag3"></div>
+        <div class="inner"></div>
         <div class="inner">
-          <div class="todoy-title">아침</div>
-          <div class="todoy-title">점심</div>
-          <div class="todoy-title">저녁</div>
-        </div>
-        <div class="inner">
-          <div class="today-box">
-            <table class="menu-table">
-              <tr id="doublenextmorning"></tr>
-            </table>
+          <div class="main-box">
+            <div class="today-title">아침</div>
+            <div class="today-box">
+              <table class="menu-table">
+                <tr id="double-next-morning"></tr>
+              </table>
+            </div>
           </div>
-          <div class="today-box">
-            <table class="menu-table">
-              <tr id="doublenextlunch"></tr>
-            </table>
+          <div class="main-box">
+            <div class="today-title">점심</div>
+            <div class="today-box">
+              <table class="menu-table">
+                <tr id="double-next-lunch"></tr>
+              </table>
+            </div>
           </div>
-          <div class="today-box">
-            <table class="menu-table">
-              <tr id="doublenextdinner"></tr>
-            </table>
+          <div class="main-box">
+            <div class="today-title">저녁</div>
+            <div class="today-box">
+              <table class="menu-table">
+                <tr id="double-next-dinner"></tr>
+              </table>
+            </div>
           </div>
         </div>
       </section>

@@ -1,10 +1,3 @@
-<!-- flask alert -->
-{% with messages = get_flashed_messages() %} {% if messages %}
-<script>
-  alert("{{messages[-1]}}");
-</script>
-{% endif %} {% endwith %}
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -26,59 +19,64 @@
     <title>회원가입</title>
   </head>
   <body>
-    <div class="header">
-      <div class="back_logo">
+    <header class="header">
+      <span class="back_logo">
         <a href="/member/login.html">
           <img src="/static/images/뒤로가기.png" alt="뒤로가기" height="40px" />
         </a>
-      </div>
-      <div class="logo">
-        <img src="/static/images/logo.png" alt="logo" height="80" />
+      </span>
+      <span class="logo">
+        <img src="/static/images/logo.png" alt="logo"  height="80"/>
         <a href="/"> AramByeol </a>
-      </div>
-      <div class="home_logo">
+      </span>
+      <span class="home_logo">
         <a href="/"
           ><img
             src="/static/images/홈_로고.png"
             alt="메인화면으로"
             height="45px"
-          />
-        </a>
-      </div>
-      <br /><br /><br />
-    </div>
+        /></a>
+      </span>
+    </header>
+
     <form action="/member/register.html" method="post">
-      <div class="user_information">
-        <label for="nameInput">아이디</label>
-        <input
-          type="text"
-          placeholder="영문자+숫자, 15자 이하"
-          id="nameInput"
-          name = "id"
-        /><br /><br />
-        <label for="pwdInput">비밀번호</label>
-        <input
-          type="password"
-          placeholder=" 6-16자리 영문, 숫자, 특수문자"
-          id="pwdInput"
-          name="password"
-        /><br /><br />
-        <label for="pwdInput">비밀번호 확인 </label>
-        <input
-          type="password"
-          placeholder="비밀번호확인"
-          id="pwdInput_chk"
-        /><br /><br />
-        <input
-          type="button"
-          class="pwdchk_button"
-          value="비밀번호확인"
-          onclick="playsignup()"
-        />
-        <!-- <a href="/" class="signup_button" type="submit">Sign up</a> -->
-        <input class="signup_button" type="submit" value="Sign up">
-      </div>
+      <ul class="user_information">
+        <li>
+          <label for="nameInput">아이디</label>
+          <input
+            type="text"
+            placeholder="영문자+숫자, 15자 이하"
+            id="nameInput"
+            name="id"
+          />
+        </li>
+        <li>
+          <label for="pwdInput">비밀번호</label>
+          <input
+            type="password"
+            placeholder=" 6-16자리 영문, 숫자, 특수문자"
+            id="pwdInput"
+            name="password"
+          />
+        </li>
+        <li>
+          <label for="pwdInput">비밀번호 확인 </label>
+          <input type="password" placeholder="비밀번호확인" id="pwdInput_chk" />
+        </li>
+        <li>
+          <input
+            type="button"
+            class="pwdchk_button"
+            value="비밀번호확인"
+            onclick="playsignup()"
+          />
+        </li>
+        <li>
+          <input class="signup_button" type="submit" value="Sign up">
+        </li>
+      </ul>
     </form>
+
     <script type="text/javascript" src="/static/js/member/register.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
   </body>
