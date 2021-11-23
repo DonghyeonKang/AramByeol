@@ -1,11 +1,11 @@
 function idchk(id) {
-  let id_chk = /^[A-za-z0-9]{5,15}/g;
+  const id_chk = /^[A-za-z0-9]{5,15}/g;
   return id_chk.test(id);
 }
 
 function password_chk(pwd) {
-  let pwd_chk = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{6,16}/;
-  return pwd_chk.test(pwd);
+  const pwd_chk = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{6,16}/;
+  return pwd_chk.test(pwd); 
 }
 
 function playsignup() {
@@ -19,7 +19,7 @@ function playsignup() {
     if (password_chk(pwd)) {
       if (pwd == pwdchk) {
         pwd_chkbtn.style.display = "none";
-        signup_btn.style.display = "block";
+        signup_btn.style.display = "inline-block";
       } else {
         alert("비밀번호가 일치하지 않습니다.");
       }
