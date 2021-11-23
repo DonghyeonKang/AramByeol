@@ -211,7 +211,7 @@ const get_daytable = () => {
               lunch[i][2] +
               "</span></br>";
           } else if (lunch[i][1] === "B") {
-            if (B == 1) {
+            if (B == 0) {
               B = 1;
               lunch_info = lunch_info + '<p class="course"> B </p></br>';
             }
