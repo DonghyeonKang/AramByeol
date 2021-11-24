@@ -771,15 +771,14 @@ const set_modal_inner_content = (sessionExist) => {
   const modal_footer = document.querySelector(".modal-footer");
   const login_link = document.querySelector(".login-link");
   const star = document.querySelectorAll(".star img");
-  const modal = document.querySelector(".modal");
   //세션 존재하면 별점 기능 사용, 없으면 로그인 링크 사용
   if (sessionExist == 1) {
     modal_footer.style.display = "none";
 
-    for (let i = 0; i < 5; i++) {
-      star[i].addEventListener("click", () => {
+    for (let i = 0; i < 5; i++) {   // for 문으로 5개 별의 클릭 이벤트를 설정한다. 
+      star[i].addEventListener("click", () => {   // 별 클릭시 이벤트
         for (let j = 0; j < 5; j++) {
-          if (j <= i && score[j] == 0) {
+          if (j <= i && score[j] == 0) {    //클릭한 별의 인덱스(i)
             star[j].src = "/static/images/full_star.png";
             score[j] = 1;
           }
