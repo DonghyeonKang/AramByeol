@@ -77,6 +77,7 @@ def login():
         if check_id:
             if check_password:
                 session['username'] = request.form['id'] # session id 부여
+                session.permanent = True    # 브라우저가 종료되어도 session이 사라지지 않도록 설정. 시간을 설정하지 않으면, default 값은 31일.
                 return redirect(url_for('home'))
             else:
                 flash("아이디 또는 비밀번호가 잘못 입력 되었습니다.")
@@ -89,7 +90,7 @@ def login():
 # 로그아웃 API
 @app.route('/logout', methods=['POST'])
 def logout():
-    session.clear()   # 세션 내에 id 가 있으면 지움
+    session.clear()   # 로그인 세션만 존재하므로 세션을 모두 없앤다.
     return "1"
 
 # 메뉴 API
@@ -240,4 +241,4 @@ def session_check():
     return '0'
 
 if __name__ == '__main__':
-    app.run('0.0.0.0',port=5000,debug=True, threaded=True)
+    app.run('0.0.0.0',port=5000,debug=False, threaded=True)
