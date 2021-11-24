@@ -31,9 +31,8 @@ def check_userId(userid):
     cursor.execute(sql)
     connection.commit()
     answer = cursor.fetchall()
-    print("아이디", answer)
     connection.close()
-    if(len(answer) == 0):
+    if(len(answer) == 0):   
         return False
     else:
         return True

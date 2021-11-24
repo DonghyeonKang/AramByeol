@@ -1,3 +1,9 @@
+{% with messages = get_flashed_messages() %} {% if messages %}
+<script>
+  alert("{{messages[-1]}}");
+</script>
+{% endif %} {% endwith %}
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -45,7 +51,7 @@
           <label for="nameInput">아이디</label>
           <input
             type="text"
-            placeholder="영문자+숫자, 15자 이하"
+            placeholder="5-15자리 영문, 숫자"
             id="nameInput"
             name="id"
           />

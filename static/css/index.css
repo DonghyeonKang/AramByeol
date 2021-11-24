@@ -1,5 +1,5 @@
 body {
-  margin: 0%;
+  margin: 0 0 5rem 0;
 }
 
 /* header */
@@ -221,7 +221,7 @@ td {
   }
 
   .logo-img img {
-    width: 20rem;
+    height: 100%;
     left: calc(50% - 10rem);
   }
 
@@ -281,7 +281,7 @@ td {
   }
 
   .logo-img img {
-    width: 25rem;
+    height: 100%;
     left: calc(50% - 12.5rem);
   }
 
@@ -315,7 +315,7 @@ td {
   /* header */
   #header {
     height: 30rem;
-    padding-bottom: 5rem;
+    margin-bottom: 3rem;
   }
 
   .header-top {
@@ -333,7 +333,7 @@ td {
   }
 
   .logo-img img {
-    width: 26rem;
+    height: 100%;
     left: calc(50% - 13rem);
   }
 

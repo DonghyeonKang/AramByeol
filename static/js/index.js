@@ -1,4 +1,4 @@
-// 페이지가 로딩될 때 바로 실행할 함수들
+// DOM 생성후 바로 실행할 함수들
 $(document).ready(function () {
   const sessionExist = session_check(); // 세션체크 후
   setEventListener(sessionExist);
