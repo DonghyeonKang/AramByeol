@@ -1,7 +1,6 @@
 // DOM 생성후 바로 실행할 함수들
 $(document).ready(function () {
   const sessionExist = session_check(); // 세션체크 후
-  setEventListener(sessionExist);
   get_daytable(); // 데이터 로딩 후
   event_modal(sessionExist); // 모달 이벤트 처리
 });
@@ -11,9 +10,10 @@ const session_check = () => {
   $.ajax({
     type: "POST",
     url: "/api/session_check",
-    async: false,
+    async: false,   // 세션 체크 후 반환되는 값에 따라 페이지 로딩을 달리해야하므로 동기식으로 처리
     data: {},
     success: function (response) {
+      // alert(response)
       if (response == "0") {
         // 세션 없음
         $("#login").append(
@@ -26,6 +26,10 @@ const session_check = () => {
           '<a href="" id="logout-button"><img src="/static/images/logout.png" alt="Logout"></a>'
         );
         sessionExist = 1;
+        logoutbutton = document.querySelector("#logout-button");
+        logoutbutton.addEventListener("click", () => {
+          logout();
+        });
       }
     },
   });
@@ -37,7 +41,7 @@ const logout = () => {
   $.ajax({
     type: "POST",
     url: "/logout",
-    async: true,
+    async: false, //비동기로 하니 오히려 더 잘된다!
     data: {},
     success: function (answer) {
       if (answer == "1") {
@@ -48,14 +52,6 @@ const logout = () => {
   });
 };
 
-const setEventListener = (sessionExist) => {
-  if (sessionExist == 1) {
-    logoutbutton = document.querySelector("#logout-button");
-    logoutbutton.addEventListener("click", () => {
-      logout();
-    });
-  }
-};
 
 // 메뉴 테이블에 메뉴들을 받아오는 함수
 const get_daytable = () => {
@@ -771,27 +767,28 @@ const set_modal_inner_content = (sessionExist) => {
   const modal_footer = document.querySelector(".modal-footer");
   const login_link = document.querySelector(".login-link");
   const star = document.querySelectorAll(".star img");
-  //세션 존재하면 별점 기능 사용, 없으면 로그인 링크 사용
+
+  //세션 존재하면 별점 기능 사용
   if (sessionExist == 1) {
-    modal_footer.style.display = "none";
+    modal_footer.style.display = "none";    // .modal-footer css none으로 설정
 
     for (let i = 0; i < 5; i++) {   // for 문으로 5개 별의 클릭 이벤트를 설정한다. 
-      star[i].addEventListener("click", () => {   // 별 클릭시 이벤트
-        for (let j = 0; j < 5; j++) {
-          if (j <= i && score[j] == 0) {    //클릭한 별의 인덱스(i)
+      star[i].addEventListener("click", () => {
+        for (let j = 0; j < 5; j++) {   // 바뀌어야 하는 부분만 바뀌도록 score 배열을 이용한다. score 배열의 값이 1이면, 꽉찬 별, 0이면 빈 별 이미지를 의미한다. 
+          if (j <= i && score[j] == 0) {    // score 배열의 클릭한 별의 인덱스(i)까지 0이면 1로 설정하고, star[j] img 태그의 src를 꽉찬 별로 설정한다. 
             star[j].src = "/static/images/full_star.png";
             score[j] = 1;
           }
-          if (j > i && score[j] == 1) {
+          if (j > i && score[j] == 1) {     // score 배열의 클릭한 별의 인덱스(i)를 넘어가서 1이면 0으로 설정하고, star[j] img 태그의 src를 빈 별로 설정한다. 
             star[j].src = "/static/images/empty_star.png";
             score[j] = 0;
           }
         }
       });
     }
-  } else {
-    modal_footer.style.display = "inline-block";
-    login_link.style.display="block";
+  } else {    // 세션이 존재하지 않으면 로그인 링크 사용
+    modal_footer.style.display = "inline-block";    // .modal-footer css inline-block으로 설정
+    login_link.style.display="block";   // .login-link css block으로 설정
   }
-  return score
+  return score  // score 배열 리턴
 }
