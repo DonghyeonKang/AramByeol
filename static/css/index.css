@@ -4,7 +4,7 @@ body {
 
 /* header */
 #header {
-  background-color: #5fc1c2;        /* 헤더 배경색 */
+  background-color: #5fc1c2; /* 헤더 배경색 */
 }
 
 .header-top {
@@ -186,7 +186,7 @@ td {
   color: #000000;
 }
 
-.line hr{
+.line hr {
   background-color: #e5e5e5;
   border: none;
   width: 95%;
@@ -210,7 +210,9 @@ td {
   }
 
   .logo-img-box {
-    height: calc(100% - 4rem); /* 로고 이미지 들어가는 박스크기 header top 4rem을 뺀 높이 */
+    height: calc(
+      100% - 4rem
+    ); /* 로고 이미지 들어가는 박스크기 header top 4rem을 뺀 높이 */
   }
 
   .logo-img-box img {
@@ -269,7 +271,9 @@ td {
   }
 
   .logo-img-box {
-    height: calc(100% - 4.5rem); /* 로고 이미지 들어가는 박스크기 header top 4.5rem을 뺀 높이 */
+    height: calc(
+      100% - 4.5rem
+    ); /* 로고 이미지 들어가는 박스크기 header top 4.5rem을 뺀 높이 */
   }
 
   .logo-img-box img {
@@ -319,12 +323,14 @@ td {
   }
 
   .logo-img-box {
-    height: calc(100% - 5rem); /* 로고 이미지 들어가는 박스크기 header top 5rem을 뺀 높이 */
+    height: calc(
+      100% - 5rem
+    ); /* 로고 이미지 들어가는 박스크기 header top 5rem을 뺀 높이 */
   }
 
   .logo-img-box img {
     height: 100%; /* 로고 이미지 크기 */
-  } 
+  }
 
   .logo-text a {
     text-decoration: none; /* a tag decoration을 사용 안 함 */
@@ -343,7 +349,7 @@ td {
     height: 30rem;
   }
 
-  .today-title{
+  .today-title {
     font-size: 2rem;
   }
 
