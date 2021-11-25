@@ -1,21 +1,56 @@
+{% with messages = get_flashed_messages() %} {% if messages %}
+<script>
+  alert("{{messages[-1]}}");
+</script>
+{% endif %} {% endwith %}
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="{{ url_for('static', filename='/images/favicon.ico')}}">
-    <title>로그인</title>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AramByeol Login</title>
+  <link rel="stylesheet" href="/static/css/member/login.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com/" />
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Gaegu&family=Quicksand:wght@500&family=Roboto:wght@100&display=swap"
+    rel="stylesheet" />
 </head>
+
 <body>
-    <div>
-        <form action="/member/login.html" method="post">
-            <ul>
-                <li><input type="text" name="id" placeholder="id"></li>
-                <li><input type="password" name="password" placeholder="password"></li>
-            </ul>
-            <input type="submit" value="로그인">
-        </form>
-    </div>
+  <header class="header">
+    <img src="/static/images/logo.png" alt="logo" height="80" />
+    <a href="/"> AramByeol </a>
+  </header>
+  <div class="container">
+    <ul id="input_info">
+      <li class="input_info_head">이미 아람전사라면? 로그인</li>
+
+      <form action="/member/login.html" method="post">
+        <li>
+          <input type="text" placeholder="아이디" name="id" class="nameInput" />
+        </li>
+        <li>
+          <input type="password" placeholder="비밀번호" name="password" class="passwordInput" />
+        </li>
+        <li>
+          <input type="submit" id="loginInput" value="로그인" />
+        </li>
+      </form>
+    </ul>
+    <ul class="signup">
+      <li class="signup_head">아람관이 처음이시라면?</li>
+      <li>
+        <a href="/member/register.html" class="signupbutton">회원가입</a>
+      </li>
+    </ul>
+  </div>
 </body>
+
 </html>

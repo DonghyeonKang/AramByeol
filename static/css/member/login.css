@@ -1,0 +1,273 @@
+@media all and (min-width: 1025px) {
+  body {
+    margin: 0%;
+  }
+
+  .header {
+    background-color: #5fc1c2;
+    font-size: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Quicksand", sans-serif;
+  }
+
+  .header a {
+    text-decoration-line: none;
+    color: white;
+  }
+
+  .container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-top: 7rem;
+  }
+
+  li {
+    list-style: none;
+  }
+
+  #input_info {
+    border-right: 5px dotted #5fc1c2;
+    font-size: 2rem;
+    font-family: "Gaegu", cursive;
+    text-align: center;
+  }
+
+  .input_info_head {
+    margin-bottom: 2rem;
+  }
+
+  .nameInput {
+    font-family: "Gaegu", cursive;
+    height: 33px;
+    font-size: 1.5rem;
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+
+  .passwordInput {
+    font-family: "Gaegu", cursive;
+    height: 33px;
+    font-size: 1.5rem;
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+
+  #loginInput {
+    background-color: #5fc1c2;
+    font-family: "Gaegu", cursive;
+    color: white;
+    font-size: 2rem;
+    width: 10rem;
+    height: 40px;
+    border: 0px;
+    border-radius: 10px;
+  }
+
+  .signup {
+    text-align: center;
+    font-family: "Gaegu", cursive;
+    font-size: 2rem;
+  }
+
+  .signup_head {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .signupbutton {
+    text-decoration-line: none;
+    color: white;
+    font-family: "Gaegu", cursive;
+    font-size: 2rem;
+    background-color: #5fc1c2;
+    padding: 10px;
+    border-radius: 10px;
+  }
+}
+
+/********************* Mobile *********************/
+@media all and (max-width: 767px) {
+  body {
+    margin: 0%;
+  }
+
+  .header {
+    background-color: #5fc1c2;
+    font-size: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Quicksand", sans-serif;
+  }
+
+  .header a {
+    text-decoration-line: none;
+    color: white;
+  }
+
+  .container {
+    margin-right: 2rem;
+    margin-left: 2rem;
+  }
+
+  li {
+    list-style: none;
+  }
+
+  #input_info {
+    border-bottom: 5px dotted #5fc1c2;
+    font-size: 1.6rem;
+    font-family: "Gaegu", cursive;
+    text-align: center;
+    padding: 0;
+  }
+
+  .input_info_head {
+    margin-bottom: 2rem;
+  }
+
+  .nameInput {
+    font-family: "Gaegu", cursive;
+    height: 2rem;
+    font-size: 1.5rem;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    width: 80%;
+  }
+
+  .passwordInput {
+    font-family: "Gaegu", cursive;
+    height: 2rem;
+    font-size: 1.5rem;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    width: 80%;
+  }
+
+  #loginInput {
+    background-color: #5fc1c2;
+    font-family: "Gaegu", cursive;
+    color: white;
+    font-size: 2rem;
+    width: 12rem;
+    height: 3rem;
+    border: 0px;
+    border-radius: 10px;
+    margin-bottom: 2rem;
+  }
+
+  .signup {
+    text-align: center;
+    font-family: "Gaegu", cursive;
+    font-size: 2rem;
+    padding: 0;
+  }
+
+  .signup_head {
+    margin-top: 5rem;
+    margin-bottom: 3rem;
+  }
+
+  .signupbutton {
+    text-decoration-line: none;
+    color: white;
+    font-family: "Gaegu", cursive;
+    font-size: 2rem;
+    background-color: #5fc1c2;
+    padding: 10px;
+    border-radius: 10px;
+  }
+}
+/********************* Tablet *********************/
+@media all and (min-width: 768px) and (max-width: 1024px) {
+  body {
+    margin: 0%;
+  }
+
+  .header {
+    background-color: #5fc1c2;
+    font-size: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Quicksand", sans-serif;
+  }
+
+  .header a {
+    text-decoration-line: none;
+    color: white;
+  }
+
+  .container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-top: 7rem;
+  }
+
+  li {
+    list-style: none;
+  }
+
+  #input_info {
+    border-right: 5px dotted #5fc1c2;
+    font-size: 2rem;
+    font-family: "Gaegu", cursive;
+    text-align: center;
+  }
+
+  .input_info_head {
+    margin-bottom: 2rem;
+  }
+
+  .nameInput {
+    font-family: "Gaegu", cursive;
+    height: 2.6rem;
+    font-size: 1.5rem;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    width: 80%;
+  }
+
+  .passwordInput {
+    font-family: "Gaegu", cursive;
+    height: 2.5rem;
+    font-size: 1.5rem;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    width: 80%;
+  }
+
+  #loginInput {
+    background-color: #5fc1c2;
+    font-family: "Gaegu", cursive;
+    color: white;
+    font-size: 2rem;
+    width: 12rem;
+    height: 40px;
+    border: 0px;
+    border-radius: 10px;
+  }
+
+  .signup {
+    text-align: center;
+    font-family: "Gaegu", cursive;
+    font-size: 2rem;
+  }
+
+  .signup_head {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .signupbutton {
+    text-decoration-line: none;
+    color: white;
+    font-family: "Gaegu", cursive;
+    font-size: 2rem;
+    background-color: #5fc1c2;
+    padding: 10px;
+    border-radius: 10px;
+  }
+}

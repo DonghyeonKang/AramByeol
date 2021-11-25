@@ -1,199 +1,179 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta property="og:title" content="AramByeol" />
-    <meta property="og:description" content="아람관 별점을 매겨보자!" />
-    <meta property="og:image" content="{{ url_for('static', filename='/images/logo.png') }}" />
 
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="stylesheet"
-      href="{{ url_for('static', filename='css/index.css')}}"
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="shortcut icon" href="{{ url_for('static', filename='/images/favicon.ico')}}">
-    <title>AramByeol</title>
-  </head>
-  <body>
-    <header id="header">
-      <div class="header-top">
-        <div class="logo-text">
-          <a href="">AramByeol</a>
+<head>
+  <meta property="og:title" content="AramByeol" />
+  <meta property="og:description" content="아람관 별점을 매겨보자!" />
+  <meta property="og:image" content="{{ url_for('static', filename='/images/logo.png') }}" />
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- css -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css')}}" />
+  <!-- 폰트 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Gaegu&family=Quicksand:wght@500&family=Roboto:wght@100&display=swap"
+    rel="stylesheet" />
+  <!-- 파비콘 -->
+  <link rel="shortcut icon" href="{{ url_for('static', filename='/images/favicon.ico')}}" />
+  <title>AramByeol</title>
+</head>
+
+<body>
+  <!-- header -->
+  <header id="header">
+    <div class="header-top">
+      <span class="logo-text">
+        <a href="">AramByeol</a>
+      </span>
+      <span class="login" id="login"></span>
+    </div>
+    <div class="logo-img-box">
+      <img src="/static/images/logo.png" alt="logo" />
+    </div>
+  </header>
+  <!-- content -->
+  <div class="content">
+    <!-- Modal section -->
+    <section class="modal-container" id="modal">
+      <div class="modal">
+        <div class="modal-header">
+          <span>평가</span>
+          <img class="close-btn" id="close" src="/static/images/x_icon.png" alt="x" />
         </div>
-        <div class="login">
-          <a href="/member/login.html">로그인</a>
-        </div>
-      </div>
-      <div class="logo-img">
-        <img src="static\images\logo.png" alt="logo" />
-      </div>
-    </header>
-    <div class="content">
-      <section class="modal-container" id="modal">
-        <div class="modal">
-          <img
-            class="close-btn"
-            id="close"
-            src="static\images\x_icon.png"
-            alt="x"
-          />
-          <div class="modal-header">
-            <h2>평가</h2>
+        <div class="modal-content">
+          <div class="menu-header">
+            <h2 class="menu-name"></h2>
+            <span class="menu-score"></span>
           </div>
-          <div class="modal-content">
-            <div class="menu-content">
-              <h2 class="menu-header menu-name"></h2>
-              <span class="menu-score" vlaue="aas"></span>
-            </div>
-            <form class="menu-evaluation" method="get" action="">
-              <ul class="star">
-                <li>
-                  <img
-                    class="no1"
-                    src="static\images\empty_star.png"
-                    alt="star1"
-                  />
-                </li>
-                <li>
-                  <img
-                    class="no2"
-                    src="static\images\empty_star.png"
-                    alt="star2"
-                  />
-                </li>
-                <li>
-                  <img
-                    class="no3"
-                    src="static\images\empty_star.png"
-                    alt="star3"
-                  />
-                </li>
-                <li>
-                  <img
-                    class="no4"
-                    src="static\images\empty_star.png"
-                    alt="star4"
-                  />
-                </li>
-                <li>
-                  <img
-                    class="no5"
-                    src="static\images\empty_star.png"
-                    alt="star5"
-                  />
-                </li>
-              </ul>
-              <a href="#" class="submit" type="submit">확인</a>
-            </form>
+          <form class="menu-evaluation" method="get" action="">
+            <ul class="star">
+              <li>
+                <img src="/static/images/empty_star.png" alt="star1" />
+              </li>
+              <li>
+                <img src="/static/images/empty_star.png" alt="star2" />
+              </li>
+              <li>
+                <img src="/static/images/empty_star.png" alt="star3" />
+              </li>
+              <li>
+                <img src="/static/images/empty_star.png" alt="star4" />
+              </li>
+              <li>
+                <img src="/static/images/empty_star.png" alt="star5" />
+              </li>
+            </ul>
+            <div class="submit" type="submit">확인</div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <a class="login-link" href="/member/login.html">🤦‍♂️후기는 로그인!</a>
+          <div class="close-btn">확인</div>
+        </div>
+      </div>
+    </section>
+    <!-- inner section -->
+    <section>
+      <div class="hash-tag hash-tag1"></div>
+      <div class="inner">
+        <div class="main-box">
+          <div class="today-title">아침</div>
+          <div class="today-box">
+            <table class="menu-table">
+              <tr id="morning"></tr>
+            </table>
           </div>
         </div>
-      </section>
-    </div>
-
-    <div class="hash-tag">
-      <h1>#오늘 #과제는 #내일하자</h1>
-    </div>
-
-    <div class="inner">
-      <div class="todoy-title">아침</div>
-      <div class="todoy-title">점심</div>
-      <div class="todoy-title">저녁</div>
-    </div>
-    <div class="inner">
-      <div class="today-box">
-        <table class="menu-table">
-            <tr id="morning"></tr>
-        </table>
-      </div>
-      <div class="today-box">
-        <table class="menu-table">
-          <tr id="lunch"></tr>
-        </table>
-      </div>
-      <div class="today-box">
-        <table class="menu-table">
-          <tr id="dinner"></tr>
+        <div class="main-box">
+          <div class="today-title">점심</div>
+          <div class="today-box">
+            <table class="menu-table">
+              <tr id="lunch"></tr>
+            </table>
+          </div>
         </div>
-      </table>
-    </div>
-    <div class="inner">
+        <div class="main-box">
+          <div class="today-title">저녁</div>
+          <div class="today-box">
+            <table class="menu-table">
+              <tr id="dinner"></tr>
+            </table>
+          </div>
+        </div>
+      </div>
       <div class="line">
         <hr size="5" noshade />
       </div>
-    </div>
-    <div class="hash-tag">
-      <h1>#내일 #메뉴</h1>
-    </div>
-    <div class="inner">
-      <div class="todoy-title">아침</div>
-      <div class="todoy-title">점심</div>
-      <div class="todoy-title">저녁</div>
-    </div>
-    <div class="inner">
-      <div class="today-box">
-        <table class="menu-table">
-          <tr id="nextmorning"></tr>
-        </table>
+      <div class="hash-tag hash-tag2"></div>
+      <div class="inner">
+        <div class="main-box">
+          <div class="today-title">아침</div>
+          <div class="today-box">
+            <table class="menu-table">
+              <tr id="next-morning"></tr>
+            </table>
+          </div>
+        </div>
+        <div class="main-box">
+          <div class="today-title">점심</div>
+          <div class="today-box">
+            <table class="menu-table">
+              <tr id="next-lunch"></tr>
+            </table>
+          </div>
+        </div>
+        <div class="main-box">
+          <div class="today-title">저녁</div>
+          <div class="today-box">
+            <table class="menu-table">
+              <tr id="next-dinner"></tr>
+            </table>
+          </div>
+        </div>
       </div>
-      <div class="today-box">
-        <table class="menu-table">
-          <tr id="nextlunch"></tr>
-        </table>
+      <div class="line">
+        <hr size="5" noshade />
       </div>
-      <div class="today-box">
-        <table class="menu-table">
-          <tr id="nextdinner"></tr>
-        </table>
+      <div class="hash-tag hash-tag3"></div>
+      <div class="inner"></div>
+      <div class="inner">
+        <div class="main-box">
+          <div class="today-title">아침</div>
+          <div class="today-box">
+            <table class="menu-table">
+              <tr id="double-next-morning"></tr>
+            </table>
+          </div>
+        </div>
+        <div class="main-box">
+          <div class="today-title">점심</div>
+          <div class="today-box">
+            <table class="menu-table">
+              <tr id="double-next-lunch"></tr>
+            </table>
+          </div>
+        </div>
+        <div class="main-box">
+          <div class="today-title">저녁</div>
+          <div class="today-box">
+            <table class="menu-table">
+              <tr id="double-next-dinner"></tr>
+            </table>
+          </div>
+        </div>
       </div>
-    </div>
-    <div class="inner">
-      <div class="line"><hr size="5" noshade /></div>
-    </div>
-
-    <div class="hash-tag"><h1>#모레 #는 #멀다</h1></div>
-    <div class="inner">
-      <div class="todoy-title">아침</div>
-      <div class="todoy-title">점심</div>
-      <div class="todoy-title">저녁</div>
-    </div>
-    <div class="inner">
-      <div class="today-box">
-        <table class="menu-table">
-          <tr id="doublenextmorning"></tr>
-        </table>
-      </div>
-      <div class="today-box">
-        <table class="menu-table">
-          <tr id="doublenextlunch"></tr>
-        </table>
-      </div>
-      <div class="today-box">
-        <table class="menu-table">
-          <tr id="doublenextdinner"></tr>
-        </table>
-      </div>
-    </div>
-    <div class="inner">
-      <div class="line"><hr size="5" noshade /></div>
-    </div>
-    <footer></footer>
-  </body>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script
-    src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    </section>
+  </div>
+  <!-- js -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
     integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-    crossorigin="anonymous"
-    ></script>
-    <script
-    type="text/javascript"
-    src="{{ url_for('static', filename='js/index.js') }}"
-    ></script>
+    crossorigin="anonymous"></script>
+  <script type="text/javascript" src="{{ url_for('static', filename='js/index.js') }}"></script>
+</body>
+
 </html>
