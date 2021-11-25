@@ -1,7 +1,6 @@
 // DOM 생성후 바로 실행할 함수들
 $(document).ready(function () {
   const sessionExist = session_check(); // 세션체크 후
-  setEventListener(sessionExist);
   get_daytable(); // 데이터 로딩 후
   event_modal(sessionExist); // 모달 이벤트 처리
 });
@@ -11,9 +10,10 @@ const session_check = () => {
   $.ajax({
     type: "POST",
     url: "/api/session_check",
-    async: false,
+    async: false, // 세션 체크 후 반환되는 값에 따라 페이지 로딩을 달리해야하므로 동기식으로 처리
     data: {},
     success: function (response) {
+      // alert(response)
       if (response == "0") {
         // 세션 없음
         $("#login").append(
@@ -26,6 +26,10 @@ const session_check = () => {
           '<a href="" id="logout-button"><img src="/static/images/logout.png" alt="Logout"></a>'
         );
         sessionExist = 1;
+        logoutbutton = document.querySelector("#logout-button");
+        logoutbutton.addEventListener("click", () => {
+          logout();
+        });
       }
     },
   });
@@ -37,7 +41,7 @@ const logout = () => {
   $.ajax({
     type: "POST",
     url: "/logout",
-    async: true,
+    async: false, //비동기로 하니 오히려 더 잘된다!
     data: {},
     success: function (answer) {
       if (answer == "1") {
@@ -46,15 +50,6 @@ const logout = () => {
       }
     },
   });
-};
-
-const setEventListener = (sessionExist) => {
-  if (sessionExist == 1) {
-    logoutbutton = document.querySelector("#logout-button");
-    logoutbutton.addEventListener("click", () => {
-      logout();
-    });
-  }
 };
 
 // 메뉴 테이블에 메뉴들을 받아오는 함수
@@ -99,7 +94,7 @@ const get_daytable = () => {
       const morning = response["morning"];
       const lunch = response["lunch"];
       const dinner = response["dinner"];
-     
+
       // 오늘, 내일, 모레 날짜를 서버에서 가져온 날짜와 비교.
       for (let i = 0; i < days.length; i++) {
         if (days[i][1] === todays) {
@@ -128,7 +123,7 @@ const get_daytable = () => {
       let morning_info = "";
       let lunch_info = "";
       let dinner_info = "";
-      let A=B=C=T=0;
+      let A = (B = C = T = 0);
 
       // 아침
       morning_info = morning_info + "<td>";
@@ -141,7 +136,7 @@ const get_daytable = () => {
               morning[i][2] +
               "</span></br>";
           else if (morning[i][1] === "A") {
-            if (A==0) {
+            if (A == 0) {
               A = 1;
               morning_info = morning_info + '<p class="course">A</p></br>';
             }
@@ -185,7 +180,7 @@ const get_daytable = () => {
           }
         }
       }
-      A=B=C=T=0;
+      A = B = C = T = 0;
       morning_info = morning_info + "</td>";
       morning_info = morning_info + "<td>";
       $("#morning").append(morning_info);
@@ -244,7 +239,7 @@ const get_daytable = () => {
           }
         }
       }
-      A=B=C=T=0;
+      A = B = C = T = 0;
       lunch_info = lunch_info + "</td>";
       lunch_info = lunch_info + "<td>";
       $("#lunch").append(lunch_info);
@@ -303,7 +298,7 @@ const get_daytable = () => {
           }
         }
       }
-      A=B=C=T=0;
+      A = B = C = T = 0;
       dinner_info = dinner_info + "</td>";
       dinner_info = dinner_info + "<td>";
       $("#dinner").append(dinner_info);
@@ -313,7 +308,7 @@ const get_daytable = () => {
       lunch_info = "";
       dinner_info = "";
 
-       // 아침
+      // 아침
       morning_info = morning_info + "<td>";
       for (let i = 0; i < morning.length; i++) {
         if (tomorrow_day === morning[i][0]) {
@@ -367,7 +362,7 @@ const get_daytable = () => {
           }
         }
       }
-      A=B=C=T=0;
+      A = B = C = T = 0;
       morning_info = morning_info + "</td>";
       morning_info = morning_info + "<td>";
       $("#next-morning").append(morning_info);
@@ -412,7 +407,7 @@ const get_daytable = () => {
         }
       }
 
-      A=B=C=T=0;
+      A = B = C = T = 0;
       lunch_info = lunch_info + "</td>";
       lunch_info = lunch_info + "<td>";
       $("#next-lunch").append(lunch_info);
@@ -471,7 +466,7 @@ const get_daytable = () => {
           }
         }
       }
-      A=B=C=T=0;
+      A = B = C = T = 0;
       dinner_info = dinner_info + "</td>";
       dinner_info = dinner_info + "<td>";
       $("#next-dinner").append(dinner_info);
@@ -535,7 +530,7 @@ const get_daytable = () => {
           }
         }
       }
-      A=B=C=T=0;
+      A = B = C = T = 0;
       morning_info = morning_info + "</td>";
       $("#double-next-morning").append(morning_info);
 
@@ -578,7 +573,7 @@ const get_daytable = () => {
           }
         }
       }
-      A=B=C=T=0;
+      A = B = C = T = 0;
       lunch_info = lunch_info + "</td>";
       $("#double-next-lunch").append(lunch_info);
 
@@ -636,7 +631,7 @@ const get_daytable = () => {
           }
         }
       }
-      A=B=C=T=0;
+      A = B = C = T = 0;
       dinner_info = dinner_info + "</td>";
       $("#double-next-dinner").append(dinner_info);
     },
@@ -655,11 +650,12 @@ const event_modal = (sessionExist) => {
   let name = "";
 
   // open event
-  for (let i = 0; i < open_today.length; i++) {   // today
+  for (let i = 0; i < open_today.length; i++) {
+    // today
     open_today[i].addEventListener("click", () => {
       modal.style.opacity = 1;
       modal.style.visibility = "visible";
-      if(sessionExist == "1") {
+      if (sessionExist == "1") {
         menu_evaluation.style.display = "block";
         modal_footer.style.display = "none";
       } else {
@@ -669,19 +665,20 @@ const event_modal = (sessionExist) => {
       name = set_modal_inner_header(open_today[i]);
     });
   }
-  for (let i = 0; i < open_after_today.length; i++) {   // tomorrow, the day after tomorrow
+  for (let i = 0; i < open_after_today.length; i++) {
+    // tomorrow, the day after tomorrow
     open_after_today[i].addEventListener("click", () => {
       modal.style.opacity = 1;
       modal.style.visibility = "visible";
       menu_evaluation.style.display = "none";
-      if(sessionExist == "1") {
+      if (sessionExist == "1") {
         modal_footer.style.display = "inline-block";
         menu_evaluation.style.display = "none";
       }
       name = set_modal_inner_header(open_after_today[i]);
     });
   }
-  
+
   // score event
   const score = set_modal_inner_content(sessionExist);
 
@@ -692,7 +689,7 @@ const event_modal = (sessionExist) => {
       modal.style.visibility = "hidden";
       // initializing star and score
       clear_star();
-      for(let i = 0; i < 5; i++){
+      for (let i = 0; i < 5; i++) {
         score[i] = 0;
       }
     });
@@ -747,7 +744,7 @@ const set_modal_inner_header = (open_today) => {
 
   // queryselector가 &를 가져올 때 &amp;로 가져오기 때문에 &로 변환해줘야 한다.
   name = open_today.innerHTML.replace("&amp;", "&");
-  
+
   // DB에서 누적 별점 가져오기
   $.ajax({
     type: "POST",
@@ -771,18 +768,23 @@ const set_modal_inner_content = (sessionExist) => {
   const modal_footer = document.querySelector(".modal-footer");
   const login_link = document.querySelector(".login-link");
   const star = document.querySelectorAll(".star img");
-  //세션 존재하면 별점 기능 사용, 없으면 로그인 링크 사용
-  if (sessionExist == 1) {
-    modal_footer.style.display = "none";
 
-    for (let i = 0; i < 5; i++) {   // for 문으로 5개 별의 클릭 이벤트를 설정한다. 
-      star[i].addEventListener("click", () => {   // 별 클릭시 이벤트
+  //세션 존재하면 별점 기능 사용
+  if (sessionExist == 1) {
+    modal_footer.style.display = "none"; // .modal-footer css none으로 설정
+
+    for (let i = 0; i < 5; i++) {
+      // for 문으로 5개 별의 클릭 이벤트를 설정한다.
+      star[i].addEventListener("click", () => {
         for (let j = 0; j < 5; j++) {
-          if (j <= i && score[j] == 0) {    //클릭한 별의 인덱스(i)
+          // 바뀌어야 하는 부분만 바뀌도록 score 배열을 이용한다. score 배열의 값이 1이면, 꽉찬 별, 0이면 빈 별 이미지를 의미한다.
+          if (j <= i && score[j] == 0) {
+            // score 배열의 클릭한 별의 인덱스(i)까지 0이면 1로 설정하고, star[j] img 태그의 src를 꽉찬 별로 설정한다.
             star[j].src = "/static/images/full_star.png";
             score[j] = 1;
           }
           if (j > i && score[j] == 1) {
+            // score 배열의 클릭한 별의 인덱스(i)를 넘어가서 1이면 0으로 설정하고, star[j] img 태그의 src를 빈 별로 설정한다.
             star[j].src = "/static/images/empty_star.png";
             score[j] = 0;
           }
@@ -790,8 +792,9 @@ const set_modal_inner_content = (sessionExist) => {
       });
     }
   } else {
-    modal_footer.style.display = "inline-block";
-    login_link.style.display="block";
+    // 세션이 존재하지 않으면 로그인 링크 사용
+    modal_footer.style.display = "inline-block"; // .modal-footer css inline-block으로 설정
+    login_link.style.display = "block"; // .login-link css block으로 설정
   }
-  return score
-}
+  return score; // score 배열 리턴
+};
