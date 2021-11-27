@@ -1,6 +1,6 @@
+// DOM 생성후 바로 실행할 함수들
 $(document).ready(function () {
   const sessionExist = session_check(); // 세션체크 후
-  setEventListener(sessionExist);
   get_daytable(); // 데이터 로딩 후
   event_modal(sessionExist); // 모달 이벤트 처리
 });
@@ -10,9 +10,10 @@ const session_check = () => {
   $.ajax({
     type: "POST",
     url: "/api/session_check",
-    async: false,
+    async: false, // 세션 체크 후 반환되는 값에 따라 페이지 로딩을 달리해야하므로 동기식으로 처리
     data: {},
     success: function (response) {
+      // alert(response)
       if (response == "0") {
         // 세션 없음
         $("#login").append(
@@ -22,9 +23,13 @@ const session_check = () => {
       } else {
         // 세션 있음
         $("#login").append(
-          '<a href="" id="logout-button"><img src="/static/images/logout.png" alt="Login"></a>'
+          '<a href="" id="logout-button"><img src="/static/images/logout.png" alt="Logout"></a>'
         );
         sessionExist = 1;
+        logoutbutton = document.querySelector("#logout-button");
+        logoutbutton.addEventListener("click", () => {
+          logout();
+        });
       }
     },
   });
@@ -36,7 +41,7 @@ const logout = () => {
   $.ajax({
     type: "POST",
     url: "/logout",
-    async: true,
+    async: false, //비동기로 하니 오히려 더 잘된다!
     data: {},
     success: function (answer) {
       if (answer == "1") {
@@ -47,15 +52,7 @@ const logout = () => {
   });
 };
 
-const setEventListener = (sessionExist) => {
-  if (sessionExist == 1) {
-    logoutbutton = document.querySelector("#logout-button");
-    logoutbutton.addEventListener("click", () => {
-      logout();
-    });
-  }
-};
-
+// 메뉴 테이블에 메뉴들을 받아오는 함수
 const get_daytable = () => {
   $.ajax({
     type: "GET",
@@ -63,11 +60,13 @@ const get_daytable = () => {
     async: false,
     data: {},
     success: function (response) {
+      // 오늘, 내일, 모레 날짜 생성
       const date = new Date();
       const day = new Date();
       const tomorrow = new Date(date.setDate(date.getDate() + 1));
       const after_tomorrow = new Date(date.setDate(date.getDate() + 1));
 
+      // 날짜 가공
       const todays =
         day.getFullYear() +
         "-" +
@@ -90,14 +89,13 @@ const get_daytable = () => {
       let tomorrow_day;
       let after_day;
 
-      let days = response["days"];
-      let morning = response["morning"];
-      let lunch = response["lunch"];
-      let dinner = response["dinner"];
-      // console.log(days);
-      // console.log(morning);
-      // console.log(lunch);
-      // console.log(dinner);
+      // 서버로부터 전달 받은 날짜들..
+      const days = response["days"];
+      const morning = response["morning"];
+      const lunch = response["lunch"];
+      const dinner = response["dinner"];
+
+      // 오늘, 내일, 모레 날짜를 서버에서 가져온 날짜와 비교.
       for (let i = 0; i < days.length; i++) {
         if (days[i][1] === todays) {
           this_day = days[i][0];
@@ -121,11 +119,13 @@ const get_daytable = () => {
         $(".hash-tag3").append(`<h1>#매주 #일요일 #1시 #UPDATE FOR YOU👉</h1>`);
       } else $(".hash-tag3").append(`<h1>#모레 #는 #멀다</h1>`);
 
-      /* 오늘 */
+      /* 오늘메뉴 가져오기 */
       let morning_info = "";
       let lunch_info = "";
       let dinner_info = "";
-      let option = 0;
+      let A = (B = C = T = 0);
+
+      // 아침
       morning_info = morning_info + "<td>";
       for (let i = 0; i < morning.length; i++) {
         if (this_day === morning[i][0]) {
@@ -136,8 +136,8 @@ const get_daytable = () => {
               morning[i][2] +
               "</span></br>";
           else if (morning[i][1] === "A") {
-            if (option == 0) {
-              option = 1;
+            if (A == 0) {
+              A = 1;
               morning_info = morning_info + '<p class="course">A</p></br>';
             }
             morning_info =
@@ -146,8 +146,8 @@ const get_daytable = () => {
               morning[i][2] +
               "</span></br>";
           } else if (morning[i][1] === "B") {
-            if (option == 1) {
-              option = 2;
+            if (B == 0) {
+              B = 1;
               morning_info = morning_info + '<p class="course">B</p></br>';
             }
             morning_info =
@@ -156,8 +156,8 @@ const get_daytable = () => {
               morning[i][2] +
               "</span></br>";
           } else if (morning[i][1] === "C") {
-            if (option == 2) {
-              option = 3;
+            if (C == 0) {
+              C = 1;
               morning_info = morning_info + '<p class="course">C</p></br>';
             }
             morning_info =
@@ -166,8 +166,8 @@ const get_daytable = () => {
               morning[i][2] +
               "</span></br>";
           } else {
-            if (option == 3) {
-              option = 0;
+            if (T == 0) {
+              T = 1;
               morning_info =
                 morning_info + '<p class="course">테이크아웃</p></br>';
             }
@@ -180,11 +180,12 @@ const get_daytable = () => {
           }
         }
       }
-      option = 0;
+      A = B = C = T = 0;
       morning_info = morning_info + "</td>";
       morning_info = morning_info + "<td>";
       $("#morning").append(morning_info);
 
+      // 점심
       lunch_info = lunch_info + "<td>";
       for (let i = 0; i < lunch.length; i++) {
         if (this_day === lunch[i][0]) {
@@ -195,8 +196,8 @@ const get_daytable = () => {
               lunch[i][2] +
               "</span></br>";
           else if (lunch[i][1] === "A") {
-            if (option == 0) {
-              option = 1;
+            if (A == 0) {
+              A = 1;
               lunch_info = lunch_info + '<p class="course"> A </p></br>';
             }
             lunch_info =
@@ -205,8 +206,8 @@ const get_daytable = () => {
               lunch[i][2] +
               "</span></br>";
           } else if (lunch[i][1] === "B") {
-            if (option == 1) {
-              option = 2;
+            if (B == 0) {
+              B = 1;
               lunch_info = lunch_info + '<p class="course"> B </p></br>';
             }
             lunch_info =
@@ -215,8 +216,8 @@ const get_daytable = () => {
               lunch[i][2] +
               "</span></br>";
           } else if (lunch[i][1] === "C") {
-            if (option == 2) {
-              option = 3;
+            if (C == 0) {
+              C = 1;
               lunch_info = lunch_info + '<p class="course"> C </p></br>';
             }
             lunch_info =
@@ -225,8 +226,8 @@ const get_daytable = () => {
               lunch[i][2] +
               "</span></br>";
           } else {
-            if (option == 3) {
-              option = 0;
+            if (T == 0) {
+              T = 1;
               lunch_info =
                 lunch_info + '<p class="course"> 테이크아웃 </p></br>';
             }
@@ -238,11 +239,12 @@ const get_daytable = () => {
           }
         }
       }
-      option = 0;
+      A = B = C = T = 0;
       lunch_info = lunch_info + "</td>";
       lunch_info = lunch_info + "<td>";
       $("#lunch").append(lunch_info);
 
+      // 저녁
       dinner_info = dinner_info + "<td>";
       for (let i = 0; i < dinner.length; i++) {
         if (this_day === dinner[i][0]) {
@@ -253,8 +255,8 @@ const get_daytable = () => {
               dinner[i][2] +
               "</span></br>";
           else if (dinner[i][1] === "A") {
-            if (option == 0) {
-              option = 1;
+            if (A == 0) {
+              A = 1;
               dinner_info = dinner_info + '<p class="course"> A </p></br>';
             }
             dinner_info =
@@ -263,8 +265,8 @@ const get_daytable = () => {
               dinner[i][2] +
               "</span></br>";
           } else if (dinner[i][1] === "B") {
-            if (option == 1) {
-              option = 2;
+            if (B == 0) {
+              B = 1;
               dinner_info = dinner_info + '<p class="course"> B </p></br>';
             }
             dinner_info =
@@ -273,8 +275,8 @@ const get_daytable = () => {
               dinner[i][2] +
               "</span></br>";
           } else if (dinner[i][1] === "C") {
-            if (option == 2) {
-              option = 3;
+            if (C == 0) {
+              C = 1;
               dinner_info = dinner_info + '<p class="course"> C </p></br>';
             }
             dinner_info =
@@ -283,8 +285,8 @@ const get_daytable = () => {
               dinner[i][2] +
               "</span></br>";
           } else {
-            if (option == 3) {
-              option = 0;
+            if (T == 0) {
+              T = 1;
               dinner_info =
                 dinner_info + '<p class="course"> 테이크아웃 </p></br>';
             }
@@ -296,7 +298,7 @@ const get_daytable = () => {
           }
         }
       }
-      option = 0;
+      A = B = C = T = 0;
       dinner_info = dinner_info + "</td>";
       dinner_info = dinner_info + "<td>";
       $("#dinner").append(dinner_info);
@@ -305,6 +307,8 @@ const get_daytable = () => {
       morning_info = "";
       lunch_info = "";
       dinner_info = "";
+
+      // 아침
       morning_info = morning_info + "<td>";
       for (let i = 0; i < morning.length; i++) {
         if (tomorrow_day === morning[i][0]) {
@@ -315,8 +319,8 @@ const get_daytable = () => {
               morning[i][2] +
               "</span></br>";
           else if (morning[i][1] === "A") {
-            if (option == 0) {
-              option = 1;
+            if (A == 0) {
+              A = 1;
               morning_info = morning_info + '<p class="course"> A </p></br>';
             }
             morning_info =
@@ -325,8 +329,8 @@ const get_daytable = () => {
               morning[i][2] +
               "</span></br>";
           } else if (morning[i][1] === "B") {
-            if (option == 1) {
-              option = 2;
+            if (B == 0) {
+              B = 1;
               morning_info = morning_info + '<p class="course"> B </p></br>';
             }
             morning_info =
@@ -335,8 +339,8 @@ const get_daytable = () => {
               morning[i][2] +
               "</span></br>";
           } else if (morning[i][1] === "C") {
-            if (option == 2) {
-              option = 3;
+            if (C == 0) {
+              C = 1;
               morning_info = morning_info + '<p class="course"> C </p></br>';
             }
             morning_info =
@@ -345,8 +349,8 @@ const get_daytable = () => {
               morning[i][2] +
               "</span></br>";
           } else {
-            if (option == 3) {
-              option = 0;
+            if (T == 0) {
+              T = 1;
               morning_info =
                 morning_info + '<p class="course"> 테이크아웃 </p></br>';
             }
@@ -358,11 +362,12 @@ const get_daytable = () => {
           }
         }
       }
-      option = 0;
+      A = B = C = T = 0;
       morning_info = morning_info + "</td>";
       morning_info = morning_info + "<td>";
-      $("#nextmorning").append(morning_info);
+      $("#next-morning").append(morning_info);
 
+      // 점심
       lunch_info = lunch_info + "<td>";
       for (let i = 0; i < lunch.length; i++) {
         if (tomorrow_day === lunch[i][0]) {
@@ -370,29 +375,29 @@ const get_daytable = () => {
             lunch_info =
               lunch_info + '<span class="open">' + lunch[i][2] + "</span></br>";
           else if (lunch[i][1] === "A") {
-            if (option == 0) {
-              option = 1;
+            if (A == 0) {
+              A = 1;
               lunch_info = lunch_info + '<p class="course"> A </p></br>';
             }
             lunch_info =
               lunch_info + '<span class="open">' + lunch[i][2] + "</span></br>";
           } else if (lunch[i][1] === "B") {
-            if (option == 1) {
-              option = 2;
+            if (B == 0) {
+              B = 1;
               lunch_info = lunch_info + '<p class="course"> B </p></br>';
             }
             lunch_info =
               lunch_info + '<span class="open">' + lunch[i][2] + "</span></br>";
           } else if (lunch[i][1] === "C") {
-            if (option == 2) {
-              option = 3;
+            if (C == 0) {
+              C = 1;
               lunch_info = lunch_info + '<p class="course"> C </p></br>';
             }
             lunch_info =
               lunch_info + '<span class="open">' + lunch[i][2] + "</span></br>";
           } else {
-            if (option == 3) {
-              option = 0;
+            if (T == 0) {
+              T = 1;
               lunch_info =
                 lunch_info + '<p class="course"> 테이크아웃 </p></br>';
             }
@@ -402,11 +407,12 @@ const get_daytable = () => {
         }
       }
 
-      option = 0;
+      A = B = C = T = 0;
       lunch_info = lunch_info + "</td>";
       lunch_info = lunch_info + "<td>";
-      $("#nextlunch").append(lunch_info);
+      $("#next-lunch").append(lunch_info);
 
+      // 저녁
       dinner_info = dinner_info + "<td>";
       for (let i = 0; i < dinner.length; i++) {
         if (tomorrow_day === dinner[i][0]) {
@@ -417,8 +423,8 @@ const get_daytable = () => {
               dinner[i][2] +
               "</span></br>";
           else if (dinner[i][1] === "A") {
-            if (option == 0) {
-              option = 1;
+            if (A == 0) {
+              A = 1;
               dinner_info = dinner_info + '<p class="course"> A </p></br>';
             }
             dinner_info =
@@ -427,8 +433,8 @@ const get_daytable = () => {
               dinner[i][2] +
               "</span></br>";
           } else if (dinner[i][1] === "B") {
-            if (option == 1) {
-              option = 2;
+            if (B == 0) {
+              B = 1;
               dinner_info = dinner_info + '<p class="course"> B </p></br>';
             }
             dinner_info =
@@ -437,8 +443,8 @@ const get_daytable = () => {
               dinner[i][2] +
               "</span></br>";
           } else if (dinner[i][1] === "C") {
-            if (option == 2) {
-              option = 3;
+            if (C == 0) {
+              C = 1;
               dinner_info = dinner_info + '<p class="course"> C </p></br>';
             }
             dinner_info =
@@ -447,8 +453,9 @@ const get_daytable = () => {
               dinner[i][2] +
               "</span></br>";
           } else {
-            if (option == 3) {
-              option = 0;
+            if (T == 0) {
+              T = 1;
+
               dinner_info =
                 dinner_info + '<p class="course"> 테이크아웃 </p></br>';
             }
@@ -460,16 +467,17 @@ const get_daytable = () => {
           }
         }
       }
-      option = 0;
+      A = B = C = T = 0;
       dinner_info = dinner_info + "</td>";
       dinner_info = dinner_info + "<td>";
-      $("#nextdinner").append(dinner_info);
+      $("#next-dinner").append(dinner_info);
 
       /* 모레 */
       morning_info = "";
       lunch_info = "";
       dinner_info = "";
 
+      //아침
       morning_info = morning_info + "<td>";
       for (let i = 0; i < morning.length; i++) {
         if (after_day === morning[i][0]) {
@@ -480,8 +488,8 @@ const get_daytable = () => {
               morning[i][2] +
               "</span></br>";
           else if (morning[i][1] === "A") {
-            if (option == 0) {
-              option = 1;
+            if (A == 0) {
+              A = 1;
               morning_info = morning_info + '<p class="course"> A </p></br>';
             }
             morning_info =
@@ -490,8 +498,9 @@ const get_daytable = () => {
               morning[i][2] +
               "</span></br>";
           } else if (morning[i][1] === "B") {
-            if (option == 1) {
-              option = 2;
+            if (B == 0) {
+              B = 1;
+
               morning_info = morning_info + '<p class="course"> B </p></br>';
             }
             morning_info =
@@ -500,8 +509,8 @@ const get_daytable = () => {
               morning[i][2] +
               "</span></br>";
           } else if (morning[i][1] === "C") {
-            if (option == 2) {
-              option = 3;
+            if (C == 0) {
+              C = 1;
               morning_info = morning_info + '<p class="course"> C </p></br>';
             }
             morning_info =
@@ -510,8 +519,8 @@ const get_daytable = () => {
               morning[i][2] +
               "</span></br>";
           } else {
-            if (option == 3) {
-              option = 0;
+            if (T == 0) {
+              T = 1;
               morning_info =
                 morning_info + '<p class="course"> 테이크아웃 </p></br>';
             }
@@ -523,10 +532,11 @@ const get_daytable = () => {
           }
         }
       }
-      option = 0;
+      A = B = C = T = 0;
       morning_info = morning_info + "</td>";
-      $("#doublenextmorning").append(morning_info);
+      $("#double-next-morning").append(morning_info);
 
+      //점심
       lunch_info = lunch_info + "<td>";
       for (let i = 0; i < lunch.length; i++) {
         if (after_day === lunch[i][0]) {
@@ -534,29 +544,31 @@ const get_daytable = () => {
             lunch_info =
               lunch_info + '<span class="open">' + lunch[i][2] + "</span></br>";
           else if (lunch[i][1] === "A") {
-            if (option == 0) {
-              option = 1;
+            if (A == 0) {
+              A = 1;
+
               lunch_info = lunch_info + '<p class="course"> A </p></br>';
             }
             lunch_info =
               lunch_info + '<span class="open">' + lunch[i][2] + "</span></br>";
           } else if (lunch[i][1] === "B") {
-            if (option == 1) {
-              option = 2;
+            if (B == 0) {
+              B = 1;
               lunch_info = lunch_info + '<p class="course"> B </p></br>';
             }
             lunch_info =
               lunch_info + '<span class="open">' + lunch[i][2] + "</span></br>";
           } else if (lunch[i][1] === "C") {
-            if (option == 2) {
-              option = 3;
+            if (C == 0) {
+              C = 1;
               lunch_info = lunch_info + '<p class="course"> C </p></br>';
             }
             lunch_info =
               lunch_info + '<span class="open">' + lunch[i][2] + "</span></br>";
           } else {
-            if (option == 3) {
-              option = 0;
+            if (T == 0) {
+              T = 1;
+
               lunch_info =
                 lunch_info + '<p class="course"> 테이크아웃 </p></br>';
             }
@@ -565,9 +577,11 @@ const get_daytable = () => {
           }
         }
       }
-      option = 0;
+      A = B = C = T = 0;
       lunch_info = lunch_info + "</td>";
-      $("#doublenextlunch").append(lunch_info);
+      $("#double-next-lunch").append(lunch_info);
+
+      //저녁
       dinner_info = dinner_info + "<td>";
       for (let i = 0; i < dinner.length; i++) {
         if (after_day === dinner[i][0]) {
@@ -578,8 +592,8 @@ const get_daytable = () => {
               dinner[i][2] +
               "</span></br>";
           else if (dinner[i][1] === "A") {
-            if (option == 0) {
-              option = 1;
+            if (A == 0) {
+              A = 1;
               dinner_info = dinner_info + '<p class="course"> A </p></br>';
             }
             dinner_info =
@@ -588,8 +602,8 @@ const get_daytable = () => {
               dinner[i][2] +
               "</span></br>";
           } else if (dinner[i][1] === "B") {
-            if (option == 1) {
-              option = 2;
+            if (B == 0) {
+              B = 1;
               dinner_info = dinner_info + '<p class="course"> B </p></br>';
             }
             dinner_info =
@@ -598,8 +612,8 @@ const get_daytable = () => {
               dinner[i][2] +
               "</span></br>";
           } else if (dinner[i][1] === "C") {
-            if (option == 2) {
-              option = 3;
+            if (C == 0) {
+              C = 1;
               dinner_info = dinner_info + '<p class="course"> C </p></br>';
             }
             dinner_info =
@@ -608,8 +622,9 @@ const get_daytable = () => {
               dinner[i][2] +
               "</span></br>";
           } else {
-            if (option == 3) {
-              option = 0;
+            if (T == 0) {
+              T = 1;
+
               dinner_info =
                 dinner_info + '<p class="course"> 테이크아웃 </p></br>';
             }
@@ -621,35 +636,50 @@ const get_daytable = () => {
           }
         }
       }
-      option = 0;
+      A = B = C = T = 0;
       dinner_info = dinner_info + "</td>";
-      $("#doublenextdinner").append(dinner_info);
+      $("#double-next-dinner").append(dinner_info);
     },
   });
 };
 
-// modal event
+// modal event = open, close, score, submit
 const event_modal = (sessionExist) => {
   const modal = document.querySelector("#modal");
   const open_today = document.querySelectorAll(".open_today");
   const open_after_today = document.querySelectorAll(".open");
   const close = document.querySelectorAll(".close-btn");
   const submit = document.querySelector(".submit");
+  const menu_evaluation = document.querySelector(".menu-evaluation");
+  const modal_footer = document.querySelector(".modal-footer");
   let name = "";
 
   // open event
-  for (let i = 0; i < open_today.length; i++) {   // today
+  for (let i = 0; i < open_today.length; i++) {
+    // today
     open_today[i].addEventListener("click", () => {
       modal.style.opacity = 1;
       modal.style.visibility = "visible";
+      if (sessionExist == "1") {
+        menu_evaluation.style.display = "block";
+        modal_footer.style.display = "none";
+      } else {
+        menu_evaluation.style.display = "none";
+      }
+
       name = set_modal_inner_header(open_today[i]);
     });
   }
-  for (let i = 0; i < open_after_today.length; i++) {   // tomorrow, the day after tomorrow
+  for (let i = 0; i < open_after_today.length; i++) {
+    // tomorrow, the day after tomorrow
     open_after_today[i].addEventListener("click", () => {
       modal.style.opacity = 1;
       modal.style.visibility = "visible";
       menu_evaluation.style.display = "none";
+      if (sessionExist == "1") {
+        modal_footer.style.display = "inline-block";
+        menu_evaluation.style.display = "none";
+      }
       name = set_modal_inner_header(open_after_today[i]);
     });
   }
@@ -664,13 +694,13 @@ const event_modal = (sessionExist) => {
       modal.style.visibility = "hidden";
       // initializing star and score
       clear_star();
-      for(let i = 0; i < 5; i++){
+      for (let i = 0; i < 5; i++) {
         score[i] = 0;
       }
     });
   }
 
-  // submit modal
+  // submit event
   submit.addEventListener("click", () => {
     // modifing css
     let score_result = 0;
@@ -679,12 +709,12 @@ const event_modal = (sessionExist) => {
 
     // initializing star
     clear_star();
-    // add up the scores and initializing
+    // add up the scores and initialize score
     for (let i = 0; i < score.length; i++) {
       score_result += score[i];
       score[i] = 0;
     }
-    // send api
+    // send api, 별점주기
     if (score_result > 0) {
       $.ajax({
         type: "POST",
@@ -692,14 +722,13 @@ const event_modal = (sessionExist) => {
         data: { menu_name: name, menu_score: score_result },
         success: function (response) {
           alert(response["msg"]);
-          window.location.reload();
         },
       });
     }
   });
 };
 
-// 별점 이미지 초기화
+// initialize star images
 const clear_star = () => {
   const star = document.querySelectorAll(".star img");
   const empty_star = "/static/images/empty_star.png";
@@ -709,7 +738,7 @@ const clear_star = () => {
   }
 };
 
-// 모달 내부 헤더 부분
+// set modal inner header
 const set_modal_inner_header = (open_today) => {
   let name = "";
   $(".menu-name").empty();
@@ -717,8 +746,11 @@ const set_modal_inner_header = (open_today) => {
               <a>${open_today.innerHTML}</a>                        
               `;
   $(".menu-name").append(temp_html);
-  name = open_today.innerHTML;
 
+  // queryselector가 &를 가져올 때 &amp;로 가져오기 때문에 &로 변환해줘야 한다.
+  name = open_today.innerHTML.replace("&amp;", "&");
+
+  // DB에서 누적 별점 가져오기
   $.ajax({
     type: "POST",
     url: "/api/menu_score",
@@ -735,27 +767,29 @@ const set_modal_inner_header = (open_today) => {
   return name;
 };
 
-// 모달 내부 내용 부분
+// set modal inner content
 const set_modal_inner_content = (sessionExist) => {
   const score = [0, 0, 0, 0, 0];
-  const menu_evaluation = document.querySelector(".menu-evaluation");
   const modal_footer = document.querySelector(".modal-footer");
-  const login_link = document.querySelector(".login_link");
+  const login_link = document.querySelector(".login-link");
   const star = document.querySelectorAll(".star img");
 
-  //세션 존재하면 별점 기능 사용, 없으면 로그인 링크 사용
+  //세션 존재하면 별점 기능 사용
   if (sessionExist == 1) {
-    menu_evaluation.style.display = "inline-block";
-    modal_footer.style.display = "none";
+    modal_footer.style.display = "none"; // .modal-footer css none으로 설정
 
     for (let i = 0; i < 5; i++) {
+      // for 문으로 5개 별의 클릭 이벤트를 설정한다.
       star[i].addEventListener("click", () => {
         for (let j = 0; j < 5; j++) {
+          // 바뀌어야 하는 부분만 바뀌도록 score 배열을 이용한다. score 배열의 값이 1이면, 꽉찬 별, 0이면 빈 별 이미지를 의미한다.
           if (j <= i && score[j] == 0) {
+            // score 배열의 클릭한 별의 인덱스(i)까지 0이면 1로 설정하고, star[j] img 태그의 src를 꽉찬 별로 설정한다.
             star[j].src = "/static/images/full_star.png";
             score[j] = 1;
           }
           if (j > i && score[j] == 1) {
+            // score 배열의 클릭한 별의 인덱스(i)를 넘어가서 1이면 0으로 설정하고, star[j] img 태그의 src를 빈 별로 설정한다.
             star[j].src = "/static/images/empty_star.png";
             score[j] = 0;
           }
@@ -763,9 +797,9 @@ const set_modal_inner_content = (sessionExist) => {
       });
     }
   } else {
-    menu_evaluation.style.display = "none";
-    modal_footer.style.display = "inline-block";
-    login_link.style.display="block";
+    // 세션이 존재하지 않으면 로그인 링크 사용
+    modal_footer.style.display = "inline-block"; // .modal-footer css inline-block으로 설정
+    login_link.style.display = "block"; // .login-link css block으로 설정
   }
-  return score
-}
+  return score; // score 배열 리턴
+};
