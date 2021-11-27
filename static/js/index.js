@@ -455,6 +455,7 @@ const get_daytable = () => {
           } else {
             if (T == 0) {
               T = 1;
+
               dinner_info =
                 dinner_info + '<p class="course"> 테이크아웃 </p></br>';
             }
@@ -499,6 +500,7 @@ const get_daytable = () => {
           } else if (morning[i][1] === "B") {
             if (B == 0) {
               B = 1;
+
               morning_info = morning_info + '<p class="course"> B </p></br>';
             }
             morning_info =
@@ -544,6 +546,7 @@ const get_daytable = () => {
           else if (lunch[i][1] === "A") {
             if (A == 0) {
               A = 1;
+
               lunch_info = lunch_info + '<p class="course"> A </p></br>';
             }
             lunch_info =
@@ -565,6 +568,7 @@ const get_daytable = () => {
           } else {
             if (T == 0) {
               T = 1;
+
               lunch_info =
                 lunch_info + '<p class="course"> 테이크아웃 </p></br>';
             }
@@ -620,6 +624,7 @@ const get_daytable = () => {
           } else {
             if (T == 0) {
               T = 1;
+
               dinner_info =
                 dinner_info + '<p class="course"> 테이크아웃 </p></br>';
             }
