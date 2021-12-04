@@ -68,8 +68,9 @@ def split_menu_data(args):
                 continue    # 건너 뛰어라
 
             if count >=5 :  # 공백 개수가 연속으로 5와 같거나 크면
-                day.append([])  # 요일 바뀜
-                day_count += 1  # 요일 바꾸기
+                if not(element == "B" or element == "C" or element == "테이크아웃"): # 같은 요일의 바로 다음 코스인데 공백 개수가 5보다 클 때
+                    day.append([])  # 요일 바뀜
+                    day_count += 1  # 요일 바꾸기
             count = 0   # 공백 개수 초기화
             day[day_count].append(element)
         return day
