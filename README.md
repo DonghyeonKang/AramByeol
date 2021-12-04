@@ -1,5 +1,4 @@
 # [AramByeol](http://arambyeol.kro.kr/)
-# Introduction
 아람별은 🏫경상대학교 컴퓨터 과학과 학생들이 만든 기숙사 식단 제공 웹페이지입니다! 
 감자별과 기숙사 식당인 아람관을 더해 아람별이 탄생했습니다!!
 페이지 주소는 http://arambyeol.kro.kr/ 
