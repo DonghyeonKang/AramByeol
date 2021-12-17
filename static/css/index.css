@@ -1,41 +1,23 @@
-
 body {
-  margin: 0%;
+  margin: 0 0 5rem 0;
 }
 
+/* header */
 #header {
-  height: 35rem;
-  background-color: #5fc1c2;
+  background-color: #5fc1c2; /* 헤더 배경색 */
 }
 
 .header-top {
-  display: flex;
-  width: calc(100% - 4rem);
-  padding: 1rem 2rem 0 2rem;
-  align-items: center;
-  justify-content: space-between;
+  display: flex; /* 가로 배치 */
+  align-items: center; /* 상하 가운데 정렬 */
+  justify-content: space-between; /* 가로 좌우 끝 배치 */
 }
 
-.login a img {
-  width: 4rem;
+.logo-img-box {
+  text-align: center; /* 이미지 가운데 정렬 */
 }
 
-.logo-text a {
-  text-decoration: none;
-  color: white;
-  font-size: 3rem;
-  font-family: "Quicksand", sans-serif;
-}
-
-.logo-img {
-  text-align: center;
-  margin-top: 0rem;
-}
-
-.logo-img img {
-  width: 30rem;
-}
-
+/* modal */
 .modal-container {
   background: rgba(0, 0, 0, 0.5);
   display: block;
@@ -51,16 +33,16 @@ body {
 
 .modal {
   background: white;
-  border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-  position: absolute;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.3);
+  position: relative;
   overflow: hidden;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   max-width: 35rem;
   width: 50%;
-  min-width: 23rem;
+  min-width: 17rem;
   height: 22rem;
 }
 
@@ -72,12 +54,30 @@ body {
   padding: 0.5rem 0 0.5rem 0;
 }
 
-.modal-footer .login_link {
+.modal-header span {
+  font-family: "Gaegu", cursive;
+  font-size: 2rem;
+}
+
+.modal-footer {
+  text-align: center;
+  width: 100%;
+  position: absolute;
+  bottom: 1rem;
+}
+
+.modal-footer .login-link {
   display: none;
 }
 
+.login-link {
+  font: bold;
+  font-size: 2rem;
+  margin-bottom: 10%;
+}
+
 .modal-footer .close-btn {
-  display: none;
+  display: inline-block;
   background-color: #fb9a40;
   color: white;
   padding: 0.3rem 0.5rem 0.3rem 0.5rem;
@@ -86,6 +86,11 @@ body {
 
 .modal-content {
   text-align: center;
+}
+
+.menu-name a {
+  font-family: "Gaegu", cursive;
+  font-size: 2rem;
 }
 
 .modal_login_link {
@@ -101,10 +106,6 @@ body {
   top: 0;
 }
 
-.menu-evaluation {
-  width: 100%;
-}
-
 .star {
   display: flex;
   justify-content: center;
@@ -115,46 +116,37 @@ body {
   list-style: none;
 }
 
-.star img {
-  width: 4rem;
-}
-
 .submit {
   background-color: #fb9a40;
   color: white;
   padding: 0.3rem 0.5rem 0.3rem 0.5rem;
   text-decoration: none;
+  font-family: "Gaegu", cursive;
+  width: 4rem;
+  display: inline-block;
 }
 
+/* main contents */
 .inner {
   text-align: center;
+  max-width: 90rem;
+  margin: 0 auto;
 }
 
-.hash-tag {
+.hash-tag h1 {
   font-family: "Gaegu", cursive;
-  font-size: 3rem;
-  color: #444444;
-  margin: 2rem;
+  font-size: 2.7rem;
+  color: black;
+  margin: 2rem 5rem;
+  font-weight: 200;
+}
 
-}
-.Box-box{
-  display: inline-block;
-  display: flex;
-  align-items: center;
-}
 .today-box {
   display: inline-block;
   border: 0.4rem solid #5fc1c2;
-  margin: 1rem 2rem;
   width: 90%;
-  min-height: 30rem;
+  max-width: 19rem;
   overflow: auto;
-}
-
-.todoy-title {
-  font-family: "Gaegu", cursive;
-  font-size: 5rem;
-  color: #5fc1c2;
 }
 
 .menu-table {
@@ -162,56 +154,207 @@ body {
   margin: auto;
 }
 
-.main-box{
+.main-box {
   display: inline-block;
   width: 30%;
 }
 
 .line {
   display: inline-block;
-  width: 90%;
-  margin-top: 1rem;
+  width: 100%;
 }
 
 .course {
   display: inline-block;
   margin-bottom: 0.25rem;
   padding: 0 0.5rem;
-  border: 1px solid #22499d;
-  background: #f7faff;
-  color: #000;
+  border: 2px solid #5fc1c2;
+  background: #5fc1c2;
+  color: rgb(255, 255, 255);
   line-height: 25px;
-  font-weight: 500;
+  font-size: 1.5rem;
+  border-radius: 15%;
 }
 
 td {
   padding-top: 1rem;
 }
 
-@media (max-width: 720px){
-
-  .main-box{
-    width: 80%;
-  }
-
-  .hash-tag{
-    font-size: 2rem;
-    text-align: center;
-  }
-
-  .today-box{
-    margin: 0;
-  }
-
-    
-  .todoy-title{
-    font-size: 3rem;
-    margin: 1rem;
-  }
-
-  .line{
-    margin-top: 5rem;
-  }
+.today-title {
+  font-family: "Gaegu", cursive;
+  font-weight: 600;
+  color: #000000;
 }
 
+.line hr {
+  background-color: #e5e5e5;
+  border: none;
+  width: 95%;
+}
 
+/********************* Mobile *********************/
+@media all and (max-width: 767px) {
+  /* header */
+  #header {
+    height: 25rem; /* 헤더 높이 */
+  }
+
+  .header-top {
+    padding: 0rem 1rem 0 1rem; /* header top padding */
+    width: calc(100% - 2rem); /* header top padding을 뺀 너비 */
+    height: 4rem; /* header top 높이 */
+  }
+
+  .login a img {
+    width: 3rem; /* 로그인 버튼 이미지 너비*/
+  }
+
+  .logo-img-box {
+    height: calc(
+      100% - 4rem
+    ); /* 로고 이미지 들어가는 박스크기 header top 4rem을 뺀 높이 */
+  }
+
+  .logo-img-box img {
+    max-width: 21rem; /* 로고 이미지 최대 크기 */
+    width: 95%; /* 로고 이미지 크기 */
+  }
+
+  .logo-text a {
+    text-decoration: none; /* a tag decoration을 사용 안 함 */
+    color: white; /* 로고 색 */
+    font-size: 1.5rem; /* 로고 폰트 크기 */
+    font-family: "Quicksand", sans-serif; /* 폰트 종류 */
+  }
+
+  /* modal */
+  .star img {
+    width: 3rem;
+  }
+
+  /* inner section */
+  .main-box {
+    width: 80%;
+    margin-bottom: 2rem;
+  }
+
+  .hash-tag h1 {
+    font-size: 1.7rem;
+    text-align: center;
+    margin: 2rem 1.875rem;
+  }
+
+  .today-box {
+    margin: 0;
+    min-height: 10rem;
+    max-height: 40rem;
+  }
+
+  .today-title {
+    font-size: 1.5rem;
+  }
+}
+/********************* Tablet *********************/
+@media all and (min-width: 768px) and (max-width: 1024px) {
+  /* header */
+  #header {
+    height: 27rem; /* 헤더 높이 */
+  }
+
+  .header-top {
+    padding: 0rem 2rem 0 2rem; /* header top padding */
+    width: calc(100% - 4rem); /* header top padding을 뺀 너비 */
+    height: 4.5rem; /* header top 높이 */
+  }
+
+  .login a img {
+    width: 2.5rem; /* 로그인 버튼 이미지 너비*/
+  }
+
+  .logo-img-box {
+    height: calc(
+      100% - 4.5rem
+    ); /* 로고 이미지 들어가는 박스크기 header top 4.5rem을 뺀 높이 */
+  }
+
+  .logo-img-box img {
+    height: 100%; /* 로고 이미지 크기 */
+  }
+
+  .logo-text a {
+    text-decoration: none; /* a tag decoration을 사용 안 함 */
+    color: white; /* 로고 색 */
+    font-size: 2.3rem; /* 로고 폰트 크기 */
+    font-family: "Quicksand", sans-serif; /* 폰트 종류 */
+  }
+
+  /* modal */
+  .star img {
+    width: 4rem;
+  }
+
+  /* inner section */
+  .today-box {
+    height: 30rem;
+  }
+
+  .today-title {
+    font-size: 1.5rem;
+  }
+
+  .line {
+    margin: 3rem 0;
+  }
+}
+/********************* PC *********************/
+@media all and (min-width: 1025px) {
+  /* header */
+  #header {
+    height: 30rem; /* 헤더 높이 */
+  }
+
+  .header-top {
+    padding: 0rem 2rem 0 2rem; /* header top padding */
+    width: calc(100% - 4rem); /* header top padding을 뺀 너비 */
+    height: 5rem; /* header top 높이 */
+  }
+
+  .login a img {
+    width: 4rem; /* 로그인 버튼 이미지 너비*/
+  }
+
+  .logo-img-box {
+    height: calc(
+      100% - 5rem
+    ); /* 로고 이미지 들어가는 박스크기 header top 5rem을 뺀 높이 */
+  }
+
+  .logo-img-box img {
+    height: 100%; /* 로고 이미지 크기 */
+  }
+
+  .logo-text a {
+    text-decoration: none; /* a tag decoration을 사용 안 함 */
+    color: white; /* 로고 색 */
+    font-size: 3rem; /* 로고 폰트 크기 */
+    font-family: "Quicksand", sans-serif; /* 폰트 종류 */
+  }
+
+  /* modal */
+  .star img {
+    width: 4rem;
+  }
+
+  /* inner section */
+  .today-box {
+    height: 30rem;
+  }
+
+  .today-title {
+    font-size: 2rem;
+  }
+
+  .line {
+    margin: 3rem 0;
+  }
+}
