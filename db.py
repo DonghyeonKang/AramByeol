@@ -1,6 +1,6 @@
 from get_data import *
 import pymysql.cursors # python과 mysql(mariadb) 연동
-
+import db_auth
 ## 일주일에 한 번 씩 실행될 것임. ##
 
 # get_menu_data에서 스크래핑한 값들을 가져옴
@@ -10,15 +10,14 @@ day_lunch = day_lunchs
 day_dinner = day_dinners
 
 # Connect to the DB
-connection = pymysql.connect(host='localhost',
-                            user='root',
-                            password='456789',
-                            db='arambyeol',
-                            charset='utf8',
-                            cursorclass=pymysql.cursors.DictCursor
-                            )
+login = db_auth.db_login
+connection = pymysql.connect(host=login['host'],
+                        user=login['user'],
+                        password=login['password'],
+                        db=login['db'],
+                        charset=login['charset'],
+                        cursorclass=pymysql.cursors.DictCursor)
 #cursorclass=pymysql.cursors.DictCursor 딕셔너리 형태로 리턴. 없으면 그냥 배열로 리턴
-                           
 
 try:
     cursor = connection.cursor()
@@ -29,7 +28,7 @@ try:
         if not (cursor.execute("SHOW TABLES LIKE %s", 'review')):
             cursor.execute("CREATE TABLE review(user_id VARCHAR(50) NOT NULL,menu VARCHAR(50) NOT NULL, score INT(10) NOT NULL)")
         if not(cursor.execute("SHOW TABLES LIKE %s", 'users')):
-            cursor.execute("CREATE TABLE user(id INT(10) NOT NULL PRIMARY KEY AUTO_INCREMENT, user_id VARCHAR(50) NOT NULL, user_pw VARCHAR(50) NOT NULL)")
+            cursor.execute("CREATE TABLE users(id INT(10) NOT NULL PRIMARY KEY AUTO_INCREMENT, user_id VARCHAR(50) NOT NULL, user_pw TEXT NOT NULL)")
     
     def week_update():
         for i in range(0,len(day),2):
@@ -112,3 +111,8 @@ try:
 finally:
     connection.commit() # 실행한 문장들 적용
     connection.close()
+
+
+
+
+

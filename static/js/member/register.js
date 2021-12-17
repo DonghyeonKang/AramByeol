@@ -5,7 +5,7 @@ function idchk(id) {
 
 function password_chk(pwd) {
   const pwd_chk = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{6,16}/;
-  return pwd_chk.test(pwd); 
+  return pwd_chk.test(pwd);
 }
 
 function playsignup() {
