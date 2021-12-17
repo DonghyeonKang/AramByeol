@@ -2,6 +2,7 @@ import pymysql
 import bcrypt
 import db_auth
 
+
 login = db_auth.db_login
 def db_connection():
     login = db_auth.db_login
