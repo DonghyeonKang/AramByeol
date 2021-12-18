@@ -44,7 +44,7 @@ body {
 
 #footer .inner span {
   font-size: 1.7rem;
-  font-family: "Gaegu", cursive;
+  font-family: 'Poor Story', cursive;
 }
 
 /* modal */
@@ -85,8 +85,12 @@ body {
 }
 
 .modal-header span {
-  font-family: "Gaegu", cursive;
+  font-family: "poor story", cursive;
   font-size: 2rem;
+}
+
+.menu-score {
+  color: #eee56b;
 }
 
 .modal-footer {
@@ -101,7 +105,7 @@ body {
 }
 
 .login-link {
-  font: bold;
+  font-family: 'poor story', cursive;
   font-size: 2rem;
   margin-bottom: 10%;
 }
@@ -112,6 +116,7 @@ body {
   color: white;
   padding: 0.3rem 0.5rem 0.3rem 0.5rem;
   text-decoration: none;
+  font-family: 'poor story', cursive;
 }
 
 .modal-content {
@@ -119,7 +124,7 @@ body {
 }
 
 .menu-name a {
-  font-family: "Gaegu", cursive;
+  font-family: "poor story", cursive;
   font-size: 2rem;
 }
 
@@ -220,6 +225,11 @@ td {
   background-color: #e5e5e5;
   border: none;
   width: 95%;
+}
+
+.menu-table span{
+  font-family: 'Poor Story', cursive;
+  font-weight: bold;
 }
 
 /********************* Mobile *********************/
