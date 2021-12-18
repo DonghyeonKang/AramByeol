@@ -1,5 +1,5 @@
 body {
-  margin: 0 0 5rem 0;
+  margin: 0 0;
 }
 
 /* header */
@@ -15,6 +15,36 @@ body {
 
 .logo-img-box {
   text-align: center; /* 이미지 가운데 정렬 */
+}
+
+/* content */
+.content {
+  margin-bottom: 5rem;
+}
+
+/* footer */
+#footer {
+  width: 100%;
+  background-color: #5fc1c2;
+  color: #e5e5e5;
+}
+
+#footer .inner {
+  padding-top: 3rem;
+}
+
+#footer .inner ul {
+  padding: 0;
+  margin: 0.7rem 2rem;
+}
+
+#footer .inner li {
+  list-style: none;
+}
+
+#footer .inner span {
+  font-size: 1.7rem;
+  font-family: "Gaegu", cursive;
 }
 
 /* modal */
@@ -232,6 +262,19 @@ td {
     width: 3rem;
   }
 
+  /* footer */
+  #footer {
+    height: 30rem;
+  }
+
+  .weekday {
+    margin-bottom: 2rem;
+  }
+
+  #footer .inner li {
+    text-align: center;
+  }
+
   /* inner section */
   .main-box {
     width: 80%;
@@ -293,6 +336,19 @@ td {
     width: 4rem;
   }
 
+  /* footer */
+  #footer {
+    height: 20rem;
+  }
+
+  #footer .inner {
+    display: flex;
+    justify-content: center;
+  }
+
+  #footer .inner li {
+    text-align: right;
+  }
   /* inner section */
   .today-box {
     height: 30rem;
@@ -343,6 +399,20 @@ td {
   /* modal */
   .star img {
     width: 4rem;
+  }
+
+  /* footer */
+  #footer {
+    height: 20rem;
+  }
+
+  #footer .inner {
+    display: flex;
+    justify-content: center;
+  }
+  
+  #footer .inner li {
+    text-align: right;
   }
 
   /* inner section */
