@@ -6,7 +6,7 @@
 
 Developer: [DonghyeonKang](https://github.com/DonghyeonKang), [SanghyeonKim](https://github.com/limetimeline), [JEONJEYUN](https://github.com/JEONJEYUN), [CooAnt](https://github.com/CooAnt)
 
-Recent Update: 2021-11-26
+Recent Update: 2021-12-18
 # UpdateNotes
 2021-11-26 - release version 1.0
 - 초기 버전 완성 및 배포
