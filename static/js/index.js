@@ -123,7 +123,7 @@ const get_daytable = () => {
       let morning_info = "";
       let lunch_info = "";
       let dinner_info = "";
-      let A = (B = C = T = 0);
+      let A = (B = C = T = H = I = T2 = 0); //코스 출력 위한 변수 A=A B=B C=C T=T/O H=한식 I=일품 T2=T/O
 
       // 아침
       morning_info = morning_info + "<td>";
@@ -165,11 +165,43 @@ const get_daytable = () => {
               '<span class="open_today">' +
               morning[i][2] +
               "</span></br>";
-          } else {
+          } else if (morning[i][1] === "T/O") {
             if (T == 0) {
               T = 1;
-              morning_info =
-                morning_info + '<p class="course">테이크아웃</p></br>';
+              morning_info = morning_info + '<p class="course">T/O</p></br>';
+            }
+            morning_info =
+              morning_info +
+              '<span class="open_today">' +
+              morning[i][2] +
+              "</span>" +
+              "</br>";
+          } else if (morning[i][1] === "한식") {
+            if (H == 0) {
+              H = 1;
+              morning_info = morning_info + '<p class="course">한식</p></br>';
+            }
+            morning_info =
+              morning_info +
+              '<span class="open_today">' +
+              morning[i][2] +
+              "</span>" +
+              "</br>";
+          } else if (morning[i][1] === "일품") {
+            if (I == 0) {
+              I = 1;
+              morning_info = morning_info + '<p class="course">일품</p></br>';
+            }
+            morning_info =
+              morning_info +
+              '<span class="open_today">' +
+              morning[i][2] +
+              "</span>" +
+              "</br>";
+          } else {
+            if (T2 == 0) {
+              T2 = 1;
+              morning_info = morning_info + '<p class="course">T/O</p></br>';
             }
             morning_info =
               morning_info +
@@ -180,7 +212,8 @@ const get_daytable = () => {
           }
         }
       }
-      A = B = C = T = 0;
+
+      A = B = C = T = H = I = T2 = 0;
       morning_info = morning_info + "</td>";
       morning_info = morning_info + "<td>";
       $("#morning").append(morning_info);
@@ -225,21 +258,54 @@ const get_daytable = () => {
               '<span class="open_today">' +
               lunch[i][2] +
               "</span></br>";
-          } else {
+          } else if (lunch[i][1] === "T/O") {
             if (T == 0) {
               T = 1;
-              lunch_info =
-                lunch_info + '<p class="course"> 테이크아웃 </p></br>';
+              lunch_info = lunch_info + '<p class="course">T/O</p></br>';
             }
             lunch_info =
               lunch_info +
               '<span class="open_today">' +
               lunch[i][2] +
-              "</span></br>";
+              "</span>" +
+              "</br>";
+          } else if (lunch[i][1] === "한식") {
+            if (H == 0) {
+              H = 1;
+              lunch_info = lunch_info + '<p class="course">한식</p></br>';
+            }
+            lunch_info =
+              lunch_info +
+              '<span class="open_today">' +
+              lunch[i][2] +
+              "</span>" +
+              "</br>";
+          } else if (lunch[i][1] === "일품") {
+            if (I == 0) {
+              I = 1;
+              lunch_info = lunch_info + '<p class="course">일품</p></br>';
+            }
+            lunch_info =
+              lunch_info +
+              '<span class="open_today">' +
+              lunch[i][2] +
+              "</span>" +
+              "</br>";
+          } else {
+            if (T2 == 0) {
+              T2 = 1;
+              lunch_info = lunch_info + '<p class="course">T/O</p></br>';
+            }
+            lunch_info =
+              lunch_info +
+              '<span class="open_today">' +
+              lunch[i][2] +
+              "</span>" +
+              "</br>";
           }
         }
       }
-      A = B = C = T = 0;
+      A = B = C = T = H = I = T2 = 0;
       lunch_info = lunch_info + "</td>";
       lunch_info = lunch_info + "<td>";
       $("#lunch").append(lunch_info);
@@ -284,21 +350,54 @@ const get_daytable = () => {
               '<span class="open_today">' +
               dinner[i][2] +
               "</span></br>";
-          } else {
+          } else if (dinner[i][1] === "T/O") {
             if (T == 0) {
               T = 1;
-              dinner_info =
-                dinner_info + '<p class="course"> 테이크아웃 </p></br>';
+              dinner_info = dinner_info + '<p class="course">T/O</p></br>';
             }
             dinner_info =
               dinner_info +
               '<span class="open_today">' +
               dinner[i][2] +
-              "</span></br>";
+              "</span>" +
+              "</br>";
+          } else if (dinner[i][1] === "한식") {
+            if (H == 0) {
+              H = 1;
+              dinner_info = dinner_info + '<p class="course">한식</p></br>';
+            }
+            dinner_info =
+              dinner_info +
+              '<span class="open_today">' +
+              dinner[i][2] +
+              "</span>" +
+              "</br>";
+          } else if (dinner[i][1] === "일품") {
+            if (I == 0) {
+              I = 1;
+              dinner_info = dinner_info + '<p class="course">일품</p></br>';
+            }
+            dinner_info =
+              dinner_info +
+              '<span class="open_today">' +
+              dinner[i][2] +
+              "</span>" +
+              "</br>";
+          } else {
+            if (T2 == 0) {
+              T2 = 1;
+              dinner_info = dinner_info + '<p class="course">T/O</p></br>';
+            }
+            dinner_info =
+              dinner_info +
+              '<span class="open_today">' +
+              dinner[i][2] +
+              "</span>" +
+              "</br>";
           }
         }
       }
-      A = B = C = T = 0;
+      A = B = C = T = H = I = T2 = 0;
       dinner_info = dinner_info + "</td>";
       dinner_info = dinner_info + "<td>";
       $("#dinner").append(dinner_info);
@@ -348,11 +447,41 @@ const get_daytable = () => {
               '<span class="open">' +
               morning[i][2] +
               "</span></br>";
+          } else if (morning[i][1] === "T/O") {
+            if (T2 == 0) {
+              T2 = 1;
+              morning_info = morning_info + '<p class="course"> T/O </p></br>';
+            }
+            morning_info =
+              morning_info +
+              '<span class="open">' +
+              morning[i][2] +
+              "</span></br>";
+          } else if (morning[i][1] === "일품") {
+            if (I == 0) {
+              I = 1;
+              morning_info = morning_info + '<p class="course"> 일품 </p></br>';
+            }
+            morning_info =
+              morning_info +
+              '<span class="open">' +
+              morning[i][2] +
+              "</span></br>";
+          } else if (morning[i][1] === "한식") {
+            if (H == 0) {
+              H = 1;
+              morning_info = morning_info + '<p class="course"> 한식 </p></br>';
+            }
+            morning_info =
+              morning_info +
+              '<span class="open">' +
+              morning[i][2] +
+              "</span></br>";
           } else {
             if (T == 0) {
               T = 1;
               morning_info =
-                morning_info + '<p class="course"> 테이크아웃 </p></br>';
+                morning_info + '<p class="course"> T/O </p></br>';
             }
             morning_info =
               morning_info +
@@ -362,7 +491,7 @@ const get_daytable = () => {
           }
         }
       }
-      A = B = C = T = 0;
+      A = B = C = T = H = I = T2 = 0;
       morning_info = morning_info + "</td>";
       morning_info = morning_info + "<td>";
       $("#next-morning").append(morning_info);
@@ -395,11 +524,32 @@ const get_daytable = () => {
             }
             lunch_info =
               lunch_info + '<span class="open">' + lunch[i][2] + "</span></br>";
+          } else if (lunch[i][1] === "T/O") {
+            if (T2 == 0) {
+              T2 = 1;
+              lunch_info = lunch_info + '<p class="course"> T/O </p></br>';
+            }
+            lunch_info =
+              lunch_info + '<span class="open">' + lunch[i][2] + "</span></br>";
+          } else if (lunch[i][1] === "일품") {
+            if (I == 0) {
+              I = 1;
+              lunch_info = lunch_info + '<p class="course"> 일품 </p></br>';
+            }
+            lunch_info =
+              lunch_info + '<span class="open">' + lunch[i][2] + "</span></br>";
+          } else if (lunch[i][1] === "한식") {
+            if (H == 0) {
+              H = 1;
+              lunch_info = lunch_info + '<p class="course"> 한식 </p></br>';
+            }
+            lunch_info =
+              lunch_info + '<span class="open">' + lunch[i][2] + "</span></br>";
           } else {
             if (T == 0) {
               T = 1;
               lunch_info =
-                lunch_info + '<p class="course"> 테이크아웃 </p></br>';
+                lunch_info + '<p class="course"> T/O </p></br>';
             }
             lunch_info =
               lunch_info + '<span class="open">' + lunch[i][2] + "</span></br>";
@@ -407,7 +557,7 @@ const get_daytable = () => {
         }
       }
 
-      A = B = C = T = 0;
+      A = B = C = T = H = I = T2 = 0;
       lunch_info = lunch_info + "</td>";
       lunch_info = lunch_info + "<td>";
       $("#next-lunch").append(lunch_info);
@@ -452,12 +602,42 @@ const get_daytable = () => {
               '<span class="open">' +
               dinner[i][2] +
               "</span></br>";
+          } else if (dinner[i][1] === "T/O") {
+            if (T2 == 0) {
+              T2 = 1;
+              dinner_info = dinner_info + '<p class="course"> T/O </p></br>';
+            }
+            dinner_info =
+              dinner_info +
+              '<span class="open">' +
+              dinner[i][2] +
+              "</span></br>";
+          } else if (dinner[i][1] === "일품") {
+            if (I == 0) {
+              I = 1;
+              dinner_info = dinner_info + '<p class="course"> 일품 </p></br>';
+            }
+            dinner_info =
+              dinner_info +
+              '<span class="open">' +
+              dinner[i][2] +
+              "</span></br>";
+          } else if (dinner[i][1] === "한식") {
+            if (H == 0) {
+              H = 1;
+              dinner_info = dinner_info + '<p class="course"> 한식 </p></br>';
+            }
+            dinner_info =
+              dinner_info +
+              '<span class="open">' +
+              dinner[i][2] +
+              "</span></br>";
           } else {
             if (T == 0) {
               T = 1;
 
               dinner_info =
-                dinner_info + '<p class="course"> 테이크아웃 </p></br>';
+                dinner_info + '<p class="course"> T/O </p></br>';
             }
             dinner_info =
               dinner_info +
@@ -467,7 +647,8 @@ const get_daytable = () => {
           }
         }
       }
-      A = B = C = T = 0;
+
+      A = B = C = T = H = I = T2 = 0;
       dinner_info = dinner_info + "</td>";
       dinner_info = dinner_info + "<td>";
       $("#next-dinner").append(dinner_info);
@@ -518,11 +699,40 @@ const get_daytable = () => {
               '<span class="open">' +
               morning[i][2] +
               "</span></br>";
-          } else {
+          } else if (morning[i][1] === "T/O") {
             if (T == 0) {
               T = 1;
-              morning_info =
-                morning_info + '<p class="course"> 테이크아웃 </p></br>';
+              morning_info = morning_info + '<p class="course"> T/O </p></br>';
+            }
+            morning_info =
+              morning_info +
+              '<span class="open">' +
+              morning[i][2] +
+              "</span></br>";
+          } else if (morning[i][1] === "한식") {
+            if (H == 0) {
+              H = 1;
+              morning_info = morning_info + '<p class="course"> 한식 </p></br>';
+            }
+            morning_info =
+              morning_info +
+              '<span class="open">' +
+              morning[i][2] +
+              "</span></br>";
+          } else if (morning[i][1] === "일품") {
+            if (I == 0) {
+              I = 1;
+              morning_info = morning_info + '<p class="course"> 일품 </p></br>';
+            }
+            morning_info =
+              morning_info +
+              '<span class="open">' +
+              morning[i][2] +
+              "</span></br>";
+          } else {
+            if (T2 == 0) {
+              T2 = 1;
+              morning_info = morning_info + '<p class="course"> T/O </p></br>';
             }
             morning_info =
               morning_info +
@@ -532,7 +742,8 @@ const get_daytable = () => {
           }
         }
       }
-      A = B = C = T = 0;
+
+      A = B = C = T = H = I = T2 = 0;
       morning_info = morning_info + "</td>";
       $("#double-next-morning").append(morning_info);
 
@@ -565,19 +776,40 @@ const get_daytable = () => {
             }
             lunch_info =
               lunch_info + '<span class="open">' + lunch[i][2] + "</span></br>";
-          } else {
+          } else if (lunch[i][1] === "T/O") {
             if (T == 0) {
               T = 1;
+              lunch_info = lunch_info + '<p class="course"> T/O </p></br>';
+            }
+            lunch_info =
+              lunch_info + '<span class="open">' + lunch[i][2] + "</span></br>";
+          } else if (lunch[i][1] === "일품") {
+            if (I == 0) {
+              I = 1;
+              lunch_info = lunch_info + '<p class="course"> 일품 </p></br>';
+            }
+            lunch_info =
+              lunch_info + '<span class="open">' + lunch[i][2] + "</span></br>";
+          } else if (lunch[i][1] === "한식") {
+            if (H == 0) {
+              H = 1;
+              lunch_info = lunch_info + '<p class="course"> 한식 </p></br>';
+            }
+            lunch_info =
+              lunch_info + '<span class="open">' + lunch[i][2] + "</span></br>";
+          } else {
+            if (T2 == 0) {
+              T2 = 1;
 
-              lunch_info =
-                lunch_info + '<p class="course"> 테이크아웃 </p></br>';
+              lunch_info = lunch_info + '<p class="course"> T/O </p></br>';
             }
             lunch_info =
               lunch_info + '<span class="open">' + lunch[i][2] + "</span></br>";
           }
         }
       }
-      A = B = C = T = 0;
+
+      A = B = C = T = H = I = T2 = 0;
       lunch_info = lunch_info + "</td>";
       $("#double-next-lunch").append(lunch_info);
 
@@ -621,12 +853,42 @@ const get_daytable = () => {
               '<span class="open">' +
               dinner[i][2] +
               "</span></br>";
+          } else if (dinner[i][1] === "T/O") {
+            if (T2 == 0) {
+              T2 = 1;
+              dinner_info = dinner_info + '<p class="course"> T/O </p></br>';
+            }
+            dinner_info =
+              dinner_info +
+              '<span class="open">' +
+              dinner[i][2] +
+              "</span></br>";
+          } else if (dinner[i][1] === "일품") {
+            if (I == 0) {
+              I = 1;
+              dinner_info = dinner_info + '<p class="course"> 일품 </p></br>';
+            }
+            dinner_info =
+              dinner_info +
+              '<span class="open">' +
+              dinner[i][2] +
+              "</span></br>";
+          } else if (dinner[i][1] === "한식") {
+            if (H == 0) {
+              H = 1;
+              dinner_info = dinner_info + '<p class="course"> 한식 </p></br>';
+            }
+            dinner_info =
+              dinner_info +
+              '<span class="open">' +
+              dinner[i][2] +
+              "</span></br>";
           } else {
             if (T == 0) {
               T = 1;
 
               dinner_info =
-                dinner_info + '<p class="course"> 테이크아웃 </p></br>';
+                dinner_info + '<p class="course"> T/O </p></br>';
             }
             dinner_info =
               dinner_info +
@@ -636,7 +898,7 @@ const get_daytable = () => {
           }
         }
       }
-      A = B = C = T = 0;
+      A = B = C = T = H = I = T2 = 0;
       dinner_info = dinner_info + "</td>";
       $("#double-next-dinner").append(dinner_info);
     },
