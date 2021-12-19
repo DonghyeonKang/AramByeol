@@ -979,11 +979,11 @@ const event_modal = (sessionExist) => {
     // send api, 별점주기
     if (score_result > 0) {
       $.ajax({
-        type: "POST",
-        url: "/api/score",
-        data: { menu_name: name, menu_score: score_result },
-        success: function (response) {
-          alert(response["msg"]);
+        type: "POST", // post 방식 
+        url: "/api/score", // url
+        data: { menu_name: name, menu_score: score_result }, //데이터 전송
+        success: function (response) { // 성공하면
+          alert(response["msg"]); // 메세지 출력
         },
       });
     }
