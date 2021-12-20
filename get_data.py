@@ -62,11 +62,13 @@ def split_menu_data(args):
         day_count = 0   # 요일 카운트 [요일][메뉴]
         menu_count = 0  # 메뉴 카운트
 
+        print(args)
+
         for element in args:
             if element == '': # 공백 인덱스면
                 count += 1  # 공백 개수를 세고
                 continue    # 건너 뛰어라
-            if count >=5 :  # 공백 개수가 연속으로 5와 같거나 크면
+            if count >= 4 :  # 공백 개수가 연속으로 5와 같거나 크면
                 if not(element == "B" or element == "C" or element == "테이크아웃"): # 같은 요일의 바로 다음 코스인데 공백 개수가 5보다 클 때
                     day.append([])  # 요일 바뀜
                     day_count += 1  # 요일 바꾸기
