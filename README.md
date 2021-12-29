@@ -15,11 +15,57 @@ Recent Update: 2021-12-18
 - 식단 스크래핑
 - 식단 정보 제공
 
-2021-12-18 - release verdion 1.1
+2021-12-18 - release version 1.1
 - 메인화면 폰트 수정
 - 메인화면 Footer 추가
+
 # Usage
 - 페이지 접속 시 아람관 식단을 확인 할 수 있습니다
 - 메뉴 클릭시 메뉴의 별점을 확인할 수 있습니다 
 - 로그인 시 메뉴에 대한 별점을 남길 수 있습니다
+
+# Directory Structure
+```bash
+📂/
+├─__init__.py
+├─chromedriver
+├─db.py
+├─get_data.py
+├─get_auth.py
+├─schema.sql
+├─user.py
+├─📂/static
+│   ├─📂/static/css
+│   │   ├─📂/static/css/error
+│   │   │   └─error.css
+│   │   ├─📂/static/css/member
+│   │   │   ├─login.css
+│   │   │   └─register.css
+│   │   └─index.css
+│   ├─📂/static/js
+│   │   ├─📂/static/js/error
+│   │   │   └─error.js
+│   │   ├─📂/static/js/member
+│   │   │   └─register.js
+│   │   └─index.js
+│   └─📂/static/images
+│       ├─empty_star.png
+│       ├─error.png
+│       ├─favicon.ico
+│       ├─full_star.png
+│       ├─login.png
+│       ├─logo.png
+│       ├─logout.png
+│       ├─x_icon.png
+│       ├─뒤로가기.png
+│       └─홈_로고.png
+└─📂/templates
+    ├─📂/templates/member
+    │   ├─login.html
+    │   └─register.html
+    ├─📂/templates/error
+    │   └─error.html
+    └─index.html
+```
+    
 # Requirements
