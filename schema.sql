@@ -11,11 +11,11 @@ CREATE TABLE `dinner`(
     `menu` varchar(50) NOT NULL
 );
 
+
 CREATE TABLE `lunch`(
     `day` varchar(2) NOT NULL,
     `cource` varchar(50),
     `menu` varchar(50) NOT NULL
-
 );
 
 CREATE TABLE `morning`(

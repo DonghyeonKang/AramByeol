@@ -74,12 +74,15 @@ try:
                 day = '금'
             elif i==6:
                 day = '토'
+
+            courseList = ['A', 'B' ,'C' ,'테이크아웃' ,'T/O', '한식', '일품']   # 새로운 코스 등장하면 여기에 추가!
             for j in range(len(arg[i])): # 두번째는 요일별 전체 메뉴
-                if(arg[i][j]=='A' or arg[i][j]=='B' or arg[i][j]=='C' or arg[i][j]=='테이크아웃'):
+                if(arg[i][j] in courseList):
                     tag = arg[i][j] # A,B,C,테이크아웃 코스인 경우 tag에 저장하고 건너뛰기
                     continue
-                elif not(arg[i][0]=='A' or arg[i][0]=='B' or arg[i][0]=='C' or arg[i][0]=='테이크아웃'):
+                elif not arg[i][0] in courseList:
                     tag = 'none'    # 코스가 아닌경우 tag에 none
+
                 arr = (day, tag, arg[i][j])
                 if(opt==0): # MORNING 테이블에 저장
                     cursor.execute("INSERT INTO morning (day, course, menu) VALUES(%s, %s, %s)", arr)

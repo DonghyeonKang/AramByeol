@@ -66,6 +66,7 @@ def register():
             flash("이미 존재하는 아이디입니다!") # 알림
     return render_template("/member/register.html") # 회원가입 화면으로 redirect
 
+
 # 로그인 API
 @app.route('/member/login.html', methods=['GET', 'POST'])
 def login():
@@ -241,4 +242,4 @@ def get_score():
     return jsonify({'score':score})
 
 if __name__ == '__main__':
-    app.run('0.0.0.0',port=5000,debug=True, threaded=True)
+    app.run('0.0.0.0',port=5000,debug=False, threaded=True)
