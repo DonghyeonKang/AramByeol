@@ -25,6 +25,7 @@ Recent Update: 2021-12-18
 - 로그인 시 메뉴에 대한 별점을 남길 수 있습니다
 
 # Directory Structure
+```bash
 📂/
 ├─__init__.py
 ├─chromedriver
@@ -65,5 +66,6 @@ Recent Update: 2021-12-18
     ├─📂/templates/error
     │   └─error.html
     └─index.html
+```
     
 # Requirements
