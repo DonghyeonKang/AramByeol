@@ -114,796 +114,89 @@ const get_daytable = () => {
       } else $(".hash-tag1").append(`<h1>#오늘 #과제는 #내일하자👊</h1>`);
       if (tomorrow_day === undefined) {
         $(".hash-tag2").append(`<h1>#매주 #일요일 #1시 #메뉴가 돌아온다!</h1>`);
-      } else $(".hash-tag2").append(`<h1>#내일 #메뉴</h1>`);
+      } else $(".hash-tag2").append(`<h1>#내일 #부터 #다이어트 #할거임!</h1>`);
       if (after_day === undefined) {
         $(".hash-tag3").append(`<h1>#매주 #일요일 #1시 #UPDATE FOR YOU👉</h1>`);
       } else $(".hash-tag3").append(`<h1>#모레 #는 #멀다</h1>`);
 
       /* 오늘메뉴 가져오기 */
-      let morning_info = "";
-      let lunch_info = "";
-      let dinner_info = "";
-      let A = (B = C = T = H = I = T2 = 0); //코스 출력 위한 변수 A=A B=B C=C T=T/O H=한식 I=일품 T2=T/O
+      let meal_info = "";
 
-      // 아침
-      morning_info = morning_info + "<td>";
-      for (let i = 0; i < morning.length; i++) {
-        if (this_day === morning[i][0]) {
-          if (morning[i][1] === "none")
-            morning_info =
-              morning_info +
-              '<span class="open_today">' +
-              morning[i][2] +
-              "</span></br>";
-          else if (morning[i][1] === "A") {
-            if (A == 0) {
-              A = 1;
-              morning_info = morning_info + '<p class="course">A</p></br>';
-            }
-            morning_info =
-              morning_info +
-              '<span class="open_today">' +
-              morning[i][2] +
-              "</span></br>";
-          } else if (morning[i][1] === "B") {
-            if (B == 0) {
-              B = 1;
-              morning_info = morning_info + '<p class="course">B</p></br>';
-            }
-            morning_info =
-              morning_info +
-              '<span class="open_today">' +
-              morning[i][2] +
-              "</span></br>";
-          } else if (morning[i][1] === "C") {
-            if (C == 0) {
-              C = 1;
-              morning_info = morning_info + '<p class="course">C</p></br>';
-            }
-            morning_info =
-              morning_info +
-              '<span class="open_today">' +
-              morning[i][2] +
-              "</span></br>";
-          } else if (morning[i][1] === "T/O") {
-            if (T == 0) {
-              T = 1;
-              morning_info = morning_info + '<p class="course">T/O</p></br>';
-            }
-            morning_info =
-              morning_info +
-              '<span class="open_today">' +
-              morning[i][2] +
-              "</span>" +
-              "</br>";
-          } else if (morning[i][1] === "한식") {
-            if (H == 0) {
-              H = 1;
-              morning_info = morning_info + '<p class="course">한식</p></br>';
-            }
-            morning_info =
-              morning_info +
-              '<span class="open_today">' +
-              morning[i][2] +
-              "</span>" +
-              "</br>";
-          } else if (morning[i][1] === "일품") {
-            if (I == 0) {
-              I = 1;
-              morning_info = morning_info + '<p class="course">일품</p></br>';
-            }
-            morning_info =
-              morning_info +
-              '<span class="open_today">' +
-              morning[i][2] +
-              "</span>" +
-              "</br>";
-          } else {
-            if (T2 == 0) {
-              T2 = 1;
-              morning_info = morning_info + '<p class="course">T/O</p></br>';
-            }
-            morning_info =
-              morning_info +
-              '<span class="open_today">' +
-              morning[i][2] +
-              "</span>" +
-              "</br>";
-          }
-        }
-      }
-
-      A = B = C = T = H = I = T2 = 0;
-      morning_info = morning_info + "</td>";
-      morning_info = morning_info + "<td>";
-      $("#morning").append(morning_info);
+      meal_info = edit_menu(morning, this_day)
+      $("#morning").append(meal_info);
 
       // 점심
-      lunch_info = lunch_info + "<td>";
-      for (let i = 0; i < lunch.length; i++) {
-        if (this_day === lunch[i][0]) {
-          if (lunch[i][1] === "none")
-            lunch_info =
-              lunch_info +
-              '<span class="open_today">' +
-              lunch[i][2] +
-              "</span></br>";
-          else if (lunch[i][1] === "A") {
-            if (A == 0) {
-              A = 1;
-              lunch_info = lunch_info + '<p class="course"> A </p></br>';
-            }
-            lunch_info =
-              lunch_info +
-              '<span class="open_today">' +
-              lunch[i][2] +
-              "</span></br>";
-          } else if (lunch[i][1] === "B") {
-            if (B == 0) {
-              B = 1;
-              lunch_info = lunch_info + '<p class="course"> B </p></br>';
-            }
-            lunch_info =
-              lunch_info +
-              '<span class="open_today">' +
-              lunch[i][2] +
-              "</span></br>";
-          } else if (lunch[i][1] === "C") {
-            if (C == 0) {
-              C = 1;
-              lunch_info = lunch_info + '<p class="course"> C </p></br>';
-            }
-            lunch_info =
-              lunch_info +
-              '<span class="open_today">' +
-              lunch[i][2] +
-              "</span></br>";
-          } else if (lunch[i][1] === "T/O") {
-            if (T == 0) {
-              T = 1;
-              lunch_info = lunch_info + '<p class="course">T/O</p></br>';
-            }
-            lunch_info =
-              lunch_info +
-              '<span class="open_today">' +
-              lunch[i][2] +
-              "</span>" +
-              "</br>";
-          } else if (lunch[i][1] === "한식") {
-            if (H == 0) {
-              H = 1;
-              lunch_info = lunch_info + '<p class="course">한식</p></br>';
-            }
-            lunch_info =
-              lunch_info +
-              '<span class="open_today">' +
-              lunch[i][2] +
-              "</span>" +
-              "</br>";
-          } else if (lunch[i][1] === "일품") {
-            if (I == 0) {
-              I = 1;
-              lunch_info = lunch_info + '<p class="course">일품</p></br>';
-            }
-            lunch_info =
-              lunch_info +
-              '<span class="open_today">' +
-              lunch[i][2] +
-              "</span>" +
-              "</br>";
-          } else {
-            if (T2 == 0) {
-              T2 = 1;
-              lunch_info = lunch_info + '<p class="course">T/O</p></br>';
-            }
-            lunch_info =
-              lunch_info +
-              '<span class="open_today">' +
-              lunch[i][2] +
-              "</span>" +
-              "</br>";
-          }
-        }
-      }
-      A = B = C = T = H = I = T2 = 0;
-      lunch_info = lunch_info + "</td>";
-      lunch_info = lunch_info + "<td>";
-      $("#lunch").append(lunch_info);
-
+      meal_info = edit_menu(lunch, this_day)
+      $("#lunch").append(meal_info);
+      
       // 저녁
-      dinner_info = dinner_info + "<td>";
-      for (let i = 0; i < dinner.length; i++) {
-        if (this_day === dinner[i][0]) {
-          if (dinner[i][1] === "none")
-            dinner_info =
-              dinner_info +
-              '<span class="open_today">' +
-              dinner[i][2] +
-              "</span></br>";
-          else if (dinner[i][1] === "A") {
-            if (A == 0) {
-              A = 1;
-              dinner_info = dinner_info + '<p class="course"> A </p></br>';
-            }
-            dinner_info =
-              dinner_info +
-              '<span class="open_today">' +
-              dinner[i][2] +
-              "</span></br>";
-          } else if (dinner[i][1] === "B") {
-            if (B == 0) {
-              B = 1;
-              dinner_info = dinner_info + '<p class="course"> B </p></br>';
-            }
-            dinner_info =
-              dinner_info +
-              '<span class="open_today">' +
-              dinner[i][2] +
-              "</span></br>";
-          } else if (dinner[i][1] === "C") {
-            if (C == 0) {
-              C = 1;
-              dinner_info = dinner_info + '<p class="course"> C </p></br>';
-            }
-            dinner_info =
-              dinner_info +
-              '<span class="open_today">' +
-              dinner[i][2] +
-              "</span></br>";
-          } else if (dinner[i][1] === "T/O") {
-            if (T == 0) {
-              T = 1;
-              dinner_info = dinner_info + '<p class="course">T/O</p></br>';
-            }
-            dinner_info =
-              dinner_info +
-              '<span class="open_today">' +
-              dinner[i][2] +
-              "</span>" +
-              "</br>";
-          } else if (dinner[i][1] === "한식") {
-            if (H == 0) {
-              H = 1;
-              dinner_info = dinner_info + '<p class="course">한식</p></br>';
-            }
-            dinner_info =
-              dinner_info +
-              '<span class="open_today">' +
-              dinner[i][2] +
-              "</span>" +
-              "</br>";
-          } else if (dinner[i][1] === "일품") {
-            if (I == 0) {
-              I = 1;
-              dinner_info = dinner_info + '<p class="course">일품</p></br>';
-            }
-            dinner_info =
-              dinner_info +
-              '<span class="open_today">' +
-              dinner[i][2] +
-              "</span>" +
-              "</br>";
-          } else {
-            if (T2 == 0) {
-              T2 = 1;
-              dinner_info = dinner_info + '<p class="course">T/O</p></br>';
-            }
-            dinner_info =
-              dinner_info +
-              '<span class="open_today">' +
-              dinner[i][2] +
-              "</span>" +
-              "</br>";
-          }
-        }
-      }
-      A = B = C = T = H = I = T2 = 0;
-      dinner_info = dinner_info + "</td>";
-      dinner_info = dinner_info + "<td>";
-      $("#dinner").append(dinner_info);
+      meal_info = edit_menu(dinner, this_day)
+      $("#dinner").append(meal_info);
 
       /* 내일 */
-      morning_info = "";
-      lunch_info = "";
-      dinner_info = "";
-
       // 아침
-      morning_info = morning_info + "<td>";
-      for (let i = 0; i < morning.length; i++) {
-        if (tomorrow_day === morning[i][0]) {
-          if (morning[i][1] === "none")
-            morning_info =
-              morning_info +
-              '<span class="open">' +
-              morning[i][2] +
-              "</span></br>";
-          else if (morning[i][1] === "A") {
-            if (A == 0) {
-              A = 1;
-              morning_info = morning_info + '<p class="course"> A </p></br>';
-            }
-            morning_info =
-              morning_info +
-              '<span class="open">' +
-              morning[i][2] +
-              "</span></br>";
-          } else if (morning[i][1] === "B") {
-            if (B == 0) {
-              B = 1;
-              morning_info = morning_info + '<p class="course"> B </p></br>';
-            }
-            morning_info =
-              morning_info +
-              '<span class="open">' +
-              morning[i][2] +
-              "</span></br>";
-          } else if (morning[i][1] === "C") {
-            if (C == 0) {
-              C = 1;
-              morning_info = morning_info + '<p class="course"> C </p></br>';
-            }
-            morning_info =
-              morning_info +
-              '<span class="open">' +
-              morning[i][2] +
-              "</span></br>";
-          } else if (morning[i][1] === "T/O") {
-            if (T2 == 0) {
-              T2 = 1;
-              morning_info = morning_info + '<p class="course"> T/O </p></br>';
-            }
-            morning_info =
-              morning_info +
-              '<span class="open">' +
-              morning[i][2] +
-              "</span></br>";
-          } else if (morning[i][1] === "일품") {
-            if (I == 0) {
-              I = 1;
-              morning_info = morning_info + '<p class="course"> 일품 </p></br>';
-            }
-            morning_info =
-              morning_info +
-              '<span class="open">' +
-              morning[i][2] +
-              "</span></br>";
-          } else if (morning[i][1] === "한식") {
-            if (H == 0) {
-              H = 1;
-              morning_info = morning_info + '<p class="course"> 한식 </p></br>';
-            }
-            morning_info =
-              morning_info +
-              '<span class="open">' +
-              morning[i][2] +
-              "</span></br>";
-          } else {
-            if (T == 0) {
-              T = 1;
-              morning_info =
-                morning_info + '<p class="course"> T/O </p></br>';
-            }
-            morning_info =
-              morning_info +
-              '<span class="open">' +
-              morning[i][2] +
-              "</span></br>";
-          }
-        }
-      }
-      A = B = C = T = H = I = T2 = 0;
-      morning_info = morning_info + "</td>";
-      morning_info = morning_info + "<td>";
-      $("#next-morning").append(morning_info);
+      meal_info = edit_menu(morning, tomorrow_day)
+      $("#next-morning").append(meal_info);
 
       // 점심
-      lunch_info = lunch_info + "<td>";
-      for (let i = 0; i < lunch.length; i++) {
-        if (tomorrow_day === lunch[i][0]) {
-          if (lunch[i][1] === "none")
-            lunch_info =
-              lunch_info + '<span class="open">' + lunch[i][2] + "</span></br>";
-          else if (lunch[i][1] === "A") {
-            if (A == 0) {
-              A = 1;
-              lunch_info = lunch_info + '<p class="course"> A </p></br>';
-            }
-            lunch_info =
-              lunch_info + '<span class="open">' + lunch[i][2] + "</span></br>";
-          } else if (lunch[i][1] === "B") {
-            if (B == 0) {
-              B = 1;
-              lunch_info = lunch_info + '<p class="course"> B </p></br>';
-            }
-            lunch_info =
-              lunch_info + '<span class="open">' + lunch[i][2] + "</span></br>";
-          } else if (lunch[i][1] === "C") {
-            if (C == 0) {
-              C = 1;
-              lunch_info = lunch_info + '<p class="course"> C </p></br>';
-            }
-            lunch_info =
-              lunch_info + '<span class="open">' + lunch[i][2] + "</span></br>";
-          } else if (lunch[i][1] === "T/O") {
-            if (T2 == 0) {
-              T2 = 1;
-              lunch_info = lunch_info + '<p class="course"> T/O </p></br>';
-            }
-            lunch_info =
-              lunch_info + '<span class="open">' + lunch[i][2] + "</span></br>";
-          } else if (lunch[i][1] === "일품") {
-            if (I == 0) {
-              I = 1;
-              lunch_info = lunch_info + '<p class="course"> 일품 </p></br>';
-            }
-            lunch_info =
-              lunch_info + '<span class="open">' + lunch[i][2] + "</span></br>";
-          } else if (lunch[i][1] === "한식") {
-            if (H == 0) {
-              H = 1;
-              lunch_info = lunch_info + '<p class="course"> 한식 </p></br>';
-            }
-            lunch_info =
-              lunch_info + '<span class="open">' + lunch[i][2] + "</span></br>";
-          } else {
-            if (T == 0) {
-              T = 1;
-              lunch_info =
-                lunch_info + '<p class="course"> T/O </p></br>';
-            }
-            lunch_info =
-              lunch_info + '<span class="open">' + lunch[i][2] + "</span></br>";
-          }
-        }
-      }
-
-      A = B = C = T = H = I = T2 = 0;
-      lunch_info = lunch_info + "</td>";
-      lunch_info = lunch_info + "<td>";
-      $("#next-lunch").append(lunch_info);
+      meal_info = edit_menu(lunch, tomorrow_day)
+      $("#next-lunch").append(meal_info);
 
       // 저녁
-      dinner_info = dinner_info + "<td>";
-      for (let i = 0; i < dinner.length; i++) {
-        if (tomorrow_day === dinner[i][0]) {
-          if (dinner[i][1] === "none")
-            dinner_info =
-              dinner_info +
-              '<span class="open">' +
-              dinner[i][2] +
-              "</span></br>";
-          else if (dinner[i][1] === "A") {
-            if (A == 0) {
-              A = 1;
-              dinner_info = dinner_info + '<p class="course"> A </p></br>';
-            }
-            dinner_info =
-              dinner_info +
-              '<span class="open">' +
-              dinner[i][2] +
-              "</span></br>";
-          } else if (dinner[i][1] === "B") {
-            if (B == 0) {
-              B = 1;
-              dinner_info = dinner_info + '<p class="course"> B </p></br>';
-            }
-            dinner_info =
-              dinner_info +
-              '<span class="open">' +
-              dinner[i][2] +
-              "</span></br>";
-          } else if (dinner[i][1] === "C") {
-            if (C == 0) {
-              C = 1;
-              dinner_info = dinner_info + '<p class="course"> C </p></br>';
-            }
-            dinner_info =
-              dinner_info +
-              '<span class="open">' +
-              dinner[i][2] +
-              "</span></br>";
-          } else if (dinner[i][1] === "T/O") {
-            if (T2 == 0) {
-              T2 = 1;
-              dinner_info = dinner_info + '<p class="course"> T/O </p></br>';
-            }
-            dinner_info =
-              dinner_info +
-              '<span class="open">' +
-              dinner[i][2] +
-              "</span></br>";
-          } else if (dinner[i][1] === "일품") {
-            if (I == 0) {
-              I = 1;
-              dinner_info = dinner_info + '<p class="course"> 일품 </p></br>';
-            }
-            dinner_info =
-              dinner_info +
-              '<span class="open">' +
-              dinner[i][2] +
-              "</span></br>";
-          } else if (dinner[i][1] === "한식") {
-            if (H == 0) {
-              H = 1;
-              dinner_info = dinner_info + '<p class="course"> 한식 </p></br>';
-            }
-            dinner_info =
-              dinner_info +
-              '<span class="open">' +
-              dinner[i][2] +
-              "</span></br>";
-          } else {
-            if (T == 0) {
-              T = 1;
-
-              dinner_info =
-                dinner_info + '<p class="course"> T/O </p></br>';
-            }
-            dinner_info =
-              dinner_info +
-              '<span class="open">' +
-              dinner[i][2] +
-              "</span></br>";
-          }
-        }
-      }
-
-      A = B = C = T = H = I = T2 = 0;
-      dinner_info = dinner_info + "</td>";
-      dinner_info = dinner_info + "<td>";
-      $("#next-dinner").append(dinner_info);
+      meal_info = edit_menu(dinner, tomorrow_day)
+      $("#next-dinner").append(meal_info);
 
       /* 모레 */
-      morning_info = "";
-      lunch_info = "";
-      dinner_info = "";
+      // 아침
+      meal_info = edit_menu(morning, after_day)
+      $("#double-next-morning").append(meal_info);
 
-      //아침
-      morning_info = morning_info + "<td>";
-      for (let i = 0; i < morning.length; i++) {
-        if (after_day === morning[i][0]) {
-          if (morning[i][1] === "none")
-            morning_info =
-              morning_info +
-              '<span class="open">' +
-              morning[i][2] +
-              "</span></br>";
-          else if (morning[i][1] === "A") {
-            if (A == 0) {
-              A = 1;
-              morning_info = morning_info + '<p class="course"> A </p></br>';
-            }
-            morning_info =
-              morning_info +
-              '<span class="open">' +
-              morning[i][2] +
-              "</span></br>";
-          } else if (morning[i][1] === "B") {
-            if (B == 0) {
-              B = 1;
+      // 점심
+      meal_info = edit_menu(lunch, after_day)
+      $("#double-next-lunch").append(meal_info);
 
-              morning_info = morning_info + '<p class="course"> B </p></br>';
-            }
-            morning_info =
-              morning_info +
-              '<span class="open">' +
-              morning[i][2] +
-              "</span></br>";
-          } else if (morning[i][1] === "C") {
-            if (C == 0) {
-              C = 1;
-              morning_info = morning_info + '<p class="course"> C </p></br>';
-            }
-            morning_info =
-              morning_info +
-              '<span class="open">' +
-              morning[i][2] +
-              "</span></br>";
-          } else if (morning[i][1] === "T/O") {
-            if (T == 0) {
-              T = 1;
-              morning_info = morning_info + '<p class="course"> T/O </p></br>';
-            }
-            morning_info =
-              morning_info +
-              '<span class="open">' +
-              morning[i][2] +
-              "</span></br>";
-          } else if (morning[i][1] === "한식") {
-            if (H == 0) {
-              H = 1;
-              morning_info = morning_info + '<p class="course"> 한식 </p></br>';
-            }
-            morning_info =
-              morning_info +
-              '<span class="open">' +
-              morning[i][2] +
-              "</span></br>";
-          } else if (morning[i][1] === "일품") {
-            if (I == 0) {
-              I = 1;
-              morning_info = morning_info + '<p class="course"> 일품 </p></br>';
-            }
-            morning_info =
-              morning_info +
-              '<span class="open">' +
-              morning[i][2] +
-              "</span></br>";
-          } else {
-            if (T2 == 0) {
-              T2 = 1;
-              morning_info = morning_info + '<p class="course"> T/O </p></br>';
-            }
-            morning_info =
-              morning_info +
-              '<span class="open">' +
-              morning[i][2] +
-              "</span></br>";
-          }
-        }
-      }
-
-      A = B = C = T = H = I = T2 = 0;
-      morning_info = morning_info + "</td>";
-      $("#double-next-morning").append(morning_info);
-
-      //점심
-      lunch_info = lunch_info + "<td>";
-      for (let i = 0; i < lunch.length; i++) {
-        if (after_day === lunch[i][0]) {
-          if (lunch[i][1] === "none")
-            lunch_info =
-              lunch_info + '<span class="open">' + lunch[i][2] + "</span></br>";
-          else if (lunch[i][1] === "A") {
-            if (A == 0) {
-              A = 1;
-
-              lunch_info = lunch_info + '<p class="course"> A </p></br>';
-            }
-            lunch_info =
-              lunch_info + '<span class="open">' + lunch[i][2] + "</span></br>";
-          } else if (lunch[i][1] === "B") {
-            if (B == 0) {
-              B = 1;
-              lunch_info = lunch_info + '<p class="course"> B </p></br>';
-            }
-            lunch_info =
-              lunch_info + '<span class="open">' + lunch[i][2] + "</span></br>";
-          } else if (lunch[i][1] === "C") {
-            if (C == 0) {
-              C = 1;
-              lunch_info = lunch_info + '<p class="course"> C </p></br>';
-            }
-            lunch_info =
-              lunch_info + '<span class="open">' + lunch[i][2] + "</span></br>";
-          } else if (lunch[i][1] === "T/O") {
-            if (T == 0) {
-              T = 1;
-              lunch_info = lunch_info + '<p class="course"> T/O </p></br>';
-            }
-            lunch_info =
-              lunch_info + '<span class="open">' + lunch[i][2] + "</span></br>";
-          } else if (lunch[i][1] === "일품") {
-            if (I == 0) {
-              I = 1;
-              lunch_info = lunch_info + '<p class="course"> 일품 </p></br>';
-            }
-            lunch_info =
-              lunch_info + '<span class="open">' + lunch[i][2] + "</span></br>";
-          } else if (lunch[i][1] === "한식") {
-            if (H == 0) {
-              H = 1;
-              lunch_info = lunch_info + '<p class="course"> 한식 </p></br>';
-            }
-            lunch_info =
-              lunch_info + '<span class="open">' + lunch[i][2] + "</span></br>";
-          } else {
-            if (T2 == 0) {
-              T2 = 1;
-
-              lunch_info = lunch_info + '<p class="course"> T/O </p></br>';
-            }
-            lunch_info =
-              lunch_info + '<span class="open">' + lunch[i][2] + "</span></br>";
-          }
-        }
-      }
-
-      A = B = C = T = H = I = T2 = 0;
-      lunch_info = lunch_info + "</td>";
-      $("#double-next-lunch").append(lunch_info);
-
-      //저녁
-      dinner_info = dinner_info + "<td>";
-      for (let i = 0; i < dinner.length; i++) {
-        if (after_day === dinner[i][0]) {
-          if (dinner[i][1] === "none")
-            dinner_info =
-              dinner_info +
-              '<span class="open">' +
-              dinner[i][2] +
-              "</span></br>";
-          else if (dinner[i][1] === "A") {
-            if (A == 0) {
-              A = 1;
-              dinner_info = dinner_info + '<p class="course"> A </p></br>';
-            }
-            dinner_info =
-              dinner_info +
-              '<span class="open">' +
-              dinner[i][2] +
-              "</span></br>";
-          } else if (dinner[i][1] === "B") {
-            if (B == 0) {
-              B = 1;
-              dinner_info = dinner_info + '<p class="course"> B </p></br>';
-            }
-            dinner_info =
-              dinner_info +
-              '<span class="open">' +
-              dinner[i][2] +
-              "</span></br>";
-          } else if (dinner[i][1] === "C") {
-            if (C == 0) {
-              C = 1;
-              dinner_info = dinner_info + '<p class="course"> C </p></br>';
-            }
-            dinner_info =
-              dinner_info +
-              '<span class="open">' +
-              dinner[i][2] +
-              "</span></br>";
-          } else if (dinner[i][1] === "T/O") {
-            if (T2 == 0) {
-              T2 = 1;
-              dinner_info = dinner_info + '<p class="course"> T/O </p></br>';
-            }
-            dinner_info =
-              dinner_info +
-              '<span class="open">' +
-              dinner[i][2] +
-              "</span></br>";
-          } else if (dinner[i][1] === "일품") {
-            if (I == 0) {
-              I = 1;
-              dinner_info = dinner_info + '<p class="course"> 일품 </p></br>';
-            }
-            dinner_info =
-              dinner_info +
-              '<span class="open">' +
-              dinner[i][2] +
-              "</span></br>";
-          } else if (dinner[i][1] === "한식") {
-            if (H == 0) {
-              H = 1;
-              dinner_info = dinner_info + '<p class="course"> 한식 </p></br>';
-            }
-            dinner_info =
-              dinner_info +
-              '<span class="open">' +
-              dinner[i][2] +
-              "</span></br>";
-          } else {
-            if (T == 0) {
-              T = 1;
-
-              dinner_info =
-                dinner_info + '<p class="course"> T/O </p></br>';
-            }
-            dinner_info =
-              dinner_info +
-              '<span class="open">' +
-              dinner[i][2] +
-              "</span></br>";
-          }
-        }
-      }
-      A = B = C = T = H = I = T2 = 0;
-      dinner_info = dinner_info + "</td>";
-      $("#double-next-dinner").append(dinner_info);
-    },
+      // 저녁
+      meal_info = edit_menu(dinner, after_day)
+      $("#double-next-dinner").append(meal_info);
+    }
   });
 };
+
+// 메뉴 출력 함수
+const edit_menu = (meal, this_day) => {
+  let menu_info = "";
+  const courseList = ['none', 'A', 'B', 'C', '테이크아웃', 'T/O', '일품', '한식', 'A코스', 'B코스', 'C코스'];
+  let courseMode = new Array(courseList.length).fill(0);
+
+  menu_info = menu_info + "<td>";
+  for (let i = 0; i < meal.length; i++) {
+    if (this_day === meal[i][0]) {
+      if (courseList.indexOf(meal[i][1]) !== -1) {
+        const idx = courseList.indexOf(meal[i][1]);
+        if (courseMode[idx] == 0) {
+          courseMode[idx] = 1;
+          menu_info = menu_info + '<p class="course">' + meal[i][1] +'</p></br>';
+        }
+        menu_info =
+          menu_info +
+          '<span class="open_today">' +
+          meal[i][2] +
+          "</span></br>";
+      } 
+      if (meal[i][1] === "none") { // none이면 
+        menu_info =
+        menu_info +
+        '<span class="open_today">' +
+        meal[i][2] +
+        "</span></br>";
+      }
+    }
+  }
+  menu_info = menu_info + "</td>";
+  menu_info = menu_info + "<td>";
+  return menu_info;
+}
+
 
 // modal event = open, close, score, submit
 const event_modal = (sessionExist) => {
