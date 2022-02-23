@@ -43,9 +43,20 @@ def double_quorts_del(arg): # 각각의 인덱스 속 쌍따옴표를 찾아서 
 
 
 first_index_del(days)
-first_index_del(morning,3)
-first_index_del(lunch,3)
-first_index_del(dinner,3)
+if len(morning) > 1:
+    first_index_del(morning,3)
+else:
+    first_index_del(morning,1)
+
+if len(lunch) > 1:
+    first_index_del(lunch,3)
+else:
+    first_index_del(lunch,1)
+
+if len(dinner) > 1:
+    first_index_del(dinner,3)
+else:
+    first_index_del(dinner,1)
 
 double_quorts_del(morning)
 double_quorts_del(lunch)

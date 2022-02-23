@@ -165,7 +165,7 @@ const get_daytable = () => {
 // 메뉴 출력 함수
 const edit_menu = (meal, this_day) => {
   let menu_info = "";
-  const courseList = ['none', 'A', 'B', 'C', '테이크아웃', 'T/O', '일품', '한식', 'A코스', 'B코스', 'C코스'];
+  const courseList = ['A', 'B', 'C', '테이크아웃', 'T/O', '일품', '한식', 'A코스', 'B코스', 'C코스'];
   let courseMode = new Array(courseList.length).fill(0);
 
   menu_info = menu_info + "<td>";
