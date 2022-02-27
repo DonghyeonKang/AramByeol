@@ -111,6 +111,7 @@ def week(): # 한 주의 메뉴를 리턴.
     cursor.execute(sql)
 
     rows = cursor.fetchall()
+
     days = []
     # 한 주의 날짜를 리스트 딕셔너리 형식으로 DB에서 추출
     for i in range(len(rows)):
@@ -120,12 +121,12 @@ def week(): # 한 주의 메뉴를 리턴.
         temp.append(day)
         temp.append(date)
         days.append(temp)
-
+    
     # 오늘, 내일, 모레 날짜를 계산
     day = []
-    now = datetime.today().strftime("%Y-%m-%d")
-    tomorrow = (datetime.today() + timedelta(1)).strftime("%Y-%m-%d")
-    after = (datetime.today() + timedelta(2)).strftime("%Y-%m-%d")
+    now = (datetime.today() + timedelta(1)).strftime("%Y-%m-%d")
+    tomorrow = (datetime.today() + timedelta(2)).strftime("%Y-%m-%d")
+    after = (datetime.today() + timedelta(3)).strftime("%Y-%m-%d")
 
     # 오늘, 내일, 모레에 해당하는 날짜만 추출
     today_temp = ""
@@ -145,7 +146,7 @@ def week(): # 한 주의 메뉴를 리턴.
     sql = "select * from morning"
     cursor.execute(sql)
     rows = cursor.fetchall()
-    
+
     # 오늘, 내일, 모레에 해당하는 메뉴들만 추출
     morning = [] # 아침 정보를 제공해줄거얌
     for i in range(len(rows)):
@@ -242,4 +243,4 @@ def get_score():
     return jsonify({'score':score})
 
 if __name__ == '__main__':
-    app.run('0.0.0.0',port=5000,debug=False, threaded=True)
+    app.run('0.0.0.0',port=5000,debug=True, threaded=True)

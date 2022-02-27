@@ -65,7 +65,6 @@ const get_daytable = () => {
       const day = new Date();
       const tomorrow = new Date(date.setDate(date.getDate() + 1));
       const after_tomorrow = new Date(date.setDate(date.getDate() + 1));
-
       // 날짜 가공
       const todays =
         day.getFullYear() +
@@ -165,7 +164,7 @@ const get_daytable = () => {
 // 메뉴 출력 함수
 const edit_menu = (meal, this_day) => {
   let menu_info = "";
-  const courseList = ['A', 'B', 'C', '테이크아웃', 'T/O', '일품', '한식', 'A코스', 'B코스', 'C코스'];
+  const courseList = ['A', 'B', 'C', '테이크아웃', 'T/O', '일품', '한식', 'A코스', 'B코스', 'C코스', 'A코스/한식', 'B코스/베이커리', 'C코스/죽', '◆공지◆', 'B코스/일품'];
   let courseMode = new Array(courseList.length).fill(0);
 
   menu_info = menu_info + "<td>";

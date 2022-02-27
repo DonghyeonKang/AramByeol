@@ -15,7 +15,6 @@ path='/home/opc/arambyeol/chromedriver'
 driver = webdriver.Chrome(path, chrome_options=chrome_options)
 driver.get('https://newgh.gnu.ac.kr/dorm/ad/fm/foodmenu/selectFoodMenuView.do') # 스크래핑할 동적 웹사이트 주소
 html = driver.page_source   # 드라이버로 긁어온 정보를 html에 담음
-
 driver.close()
 display.stop()
 subprocess.call("pkill -9 chrome", shell=True) # chrome driver 제대로 안꺼지면 꺼야함
@@ -72,12 +71,7 @@ def split_menu_data(args):
 
 
         for element in args:
-
-            if count >= 4 and element != '':  # 공백 개수가 연속으로 4이고, 5번째가 공백이 아니라면
-                day.append([])  # 요일 바뀜
-                day_count += 1  # 요일 바꾸기
-                count = 0   # 공백 개수 초기화
-            elif count >= 5 and element == '':
+            if count >= 4 and element != '' and 'A' in element:  # 공백 개수가 연속으로 4이고, 5번째가 공백이 아니라면
                 day.append([])  # 요일 바뀜
                 day_count += 1  # 요일 바꾸기
                 count = 0   # 공백 개수 초기화
