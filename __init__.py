@@ -124,9 +124,9 @@ def week(): # 한 주의 메뉴를 리턴.
     
     # 오늘, 내일, 모레 날짜를 계산
     day = []
-    now = (datetime.today() + timedelta(1)).strftime("%Y-%m-%d")
-    tomorrow = (datetime.today() + timedelta(2)).strftime("%Y-%m-%d")
-    after = (datetime.today() + timedelta(3)).strftime("%Y-%m-%d")
+    now = datetime.today().strftime("%Y-%m-%d")
+    tomorrow = (datetime.today() + timedelta(1)).strftime("%Y-%m-%d")
+    after = (datetime.today() + timedelta(2)).strftime("%Y-%m-%d")
 
     # 오늘, 내일, 모레에 해당하는 날짜만 추출
     today_temp = ""
