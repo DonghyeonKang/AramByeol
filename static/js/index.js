@@ -3,7 +3,20 @@ $(document).ready(function () {
   const sessionExist = session_check(); // 세션체크 후
   get_daytable(); // 데이터 로딩 후
   event_modal(sessionExist); // 모달 이벤트 처리
+  get_Views();
 });
+
+const get_Views = () => {
+  $.ajax({
+    type: "GET",
+    url: "/api/views",
+    async: false,
+    data: {},
+    success: function (response) {
+      console.log(response);
+    },
+  });
+}
 
 const session_check = () => {
   let sessionExist;

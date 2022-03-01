@@ -40,3 +40,9 @@ CREATE TABLE `review` (
     `menu` varchar(50) NOT NULL,
     `score` INT(10) NOT NULL
 );
+
+CREATE TABLE `views` (
+    `views` BIGINT(5)
+);
+
+INSERT INTO views(views) VALUE(0);
