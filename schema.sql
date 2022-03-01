@@ -44,3 +44,5 @@ CREATE TABLE `review` (
 CREATE TABLE `views` (
     `views` BIGINT(5)
 );
+
+INSERT INTO views(views) VALUE(0);
