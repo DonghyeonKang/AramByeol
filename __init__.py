@@ -242,5 +242,25 @@ def get_score():
     connection.close()
     return jsonify({'score':score})
 
+@app.route('/api/views', methods=['GET'])
+def getViews():
+    connection = db_connection()
+    cursor = connection.cursor()
+    cursor.execute('SELECT views from views')
+    views = cursor.fetchall()
+    connection.close()
+    addViews(views)
+    return jsonify({'views':views})
+
+def addViews(views):
+    print("views")
+    print(views[0]['views'])
+    connection = db_connection()
+    cursor = connection.cursor()
+    cursor.execute('UPDATE views SET views=%s', views[0]['views'] + 1)
+    connection.commit()
+    connection.close()
+
+
 if __name__ == '__main__':
     app.run('0.0.0.0',port=5000,debug=False, threaded=True)
