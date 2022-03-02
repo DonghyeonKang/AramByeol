@@ -5,6 +5,7 @@ body {
 /* header */
 #header {
   background-color: #5fc1c2; /* 헤더 배경색 */
+  height: auto; /* 헤더 높이 */
 }
 
 .header-top {
@@ -13,13 +14,26 @@ body {
   justify-content: space-between; /* 가로 좌우 끝 배치 */
 }
 
+.header-bottom {
+  height: 100%;
+}
+
 .logo-img-box {
   text-align: center; /* 이미지 가운데 정렬 */
+  position: relative;
+}
+
+.views {
+  text-align: end;
+  color: #ececec;
+  font-size: 1.2rem;
+  font-family: "Quicksand", sans-serif;
+  margin-right: 1rem;
 }
 
 /* content */
 .content {
-  margin-bottom: 5rem;
+  padding-bottom: 5rem;
 }
 
 /* footer */
@@ -44,7 +58,7 @@ body {
 
 #footer .inner span {
   font-size: 1.7rem;
-  font-family: 'Poor Story', cursive;
+  font-family: "Poor Story", cursive;
 }
 
 /* modal */
@@ -105,7 +119,7 @@ body {
 }
 
 .login-link {
-  font-family: 'poor story', cursive;
+  font-family: "poor story", cursive;
   font-size: 2rem;
   margin-bottom: 10%;
 }
@@ -116,7 +130,7 @@ body {
   color: white;
   padding: 0.3rem 0.5rem 0.3rem 0.5rem;
   text-decoration: none;
-  font-family: 'poor story', cursive;
+  font-family: "poor story", cursive;
 }
 
 .modal-content {
@@ -227,18 +241,13 @@ td {
   width: 95%;
 }
 
-.menu-table span{
-  font-family: 'Poor Story', cursive;
+.menu-table span {
+  font-family: "Poor Story", cursive;
   font-weight: bold;
 }
 
 /********************* Mobile *********************/
 @media all and (max-width: 767px) {
-  /* header */
-  #header {
-    height: 25rem; /* 헤더 높이 */
-  }
-
   .header-top {
     padding: 0rem 1rem 0 1rem; /* header top padding */
     width: calc(100% - 2rem); /* header top padding을 뺀 너비 */
@@ -247,12 +256,6 @@ td {
 
   .login a img {
     width: 3rem; /* 로그인 버튼 이미지 너비*/
-  }
-
-  .logo-img-box {
-    height: calc(
-      100% - 4rem
-    ); /* 로고 이미지 들어가는 박스크기 header top 4rem을 뺀 높이 */
   }
 
   .logo-img-box img {
@@ -309,11 +312,6 @@ td {
 }
 /********************* Tablet *********************/
 @media all and (min-width: 768px) and (max-width: 1024px) {
-  /* header */
-  #header {
-    height: 27rem; /* 헤더 높이 */
-  }
-
   .header-top {
     padding: 0rem 2rem 0 2rem; /* header top padding */
     width: calc(100% - 4rem); /* header top padding을 뺀 너비 */
@@ -324,14 +322,8 @@ td {
     width: 2.5rem; /* 로그인 버튼 이미지 너비*/
   }
 
-  .logo-img-box {
-    height: calc(
-      100% - 4.5rem
-    ); /* 로고 이미지 들어가는 박스크기 header top 4.5rem을 뺀 높이 */
-  }
-
   .logo-img-box img {
-    height: 100%; /* 로고 이미지 크기 */
+    height: 27rem;
   }
 
   .logo-text a {
@@ -374,11 +366,6 @@ td {
 }
 /********************* PC *********************/
 @media all and (min-width: 1025px) {
-  /* header */
-  #header {
-    height: 30rem; /* 헤더 높이 */
-  }
-
   .header-top {
     padding: 0rem 2rem 0 2rem; /* header top padding */
     width: calc(100% - 4rem); /* header top padding을 뺀 너비 */
@@ -389,14 +376,9 @@ td {
     width: 4rem; /* 로그인 버튼 이미지 너비*/
   }
 
-  .logo-img-box {
-    height: calc(
-      100% - 5rem
-    ); /* 로고 이미지 들어가는 박스크기 header top 5rem을 뺀 높이 */
-  }
-
   .logo-img-box img {
-    height: 100%; /* 로고 이미지 크기 */
+    height: 25rem;
+    display: inline-block;
   }
 
   .logo-text a {
@@ -420,7 +402,7 @@ td {
     display: flex;
     justify-content: center;
   }
-  
+
   #footer .inner li {
     text-align: right;
   }

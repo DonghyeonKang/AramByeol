@@ -13,7 +13,7 @@ const get_Views = () => {
     async: false,
     data: {},
     success: function (response) {
-      console.log(response);
+      $(".views").append(`Total ${response["views"][0]["views"]}`)
     },
   });
 }
