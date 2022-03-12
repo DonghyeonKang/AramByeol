@@ -6,6 +6,7 @@ from flask import redirect # Move page
 from flask import jsonify # Return json form to client
 from flask import url_for # Return defined route link to client
 from flask import flash
+from flask import make_response
 from user import * # Login and Register
 import bcrypt   # Password hash encrypt and decrypt
 import pymysql.cursors # python과 mysql(mariadb) 연동
@@ -50,7 +51,7 @@ def db_connection(): # Database Connection
 # page route
 @app.route('/')
 def home():
-    return render_template("index.html")
+    return render_template("/error/index.html")
 
 # 회원가입 API
 @app.route('/member/register.html', methods=['GET', 'POST'])
@@ -77,8 +78,8 @@ def login():
         check_password = check_userPassword(id, pw) # 비밀번호가 틀리면 false
         if check_id:
             if check_password:
-                session['username'] = request.form['id'] # session 에 userid 넣기
                 session.permanent = True # 브라우저가 종료되어도 session이 사라지지 않도록 설정. 시간을 설정하지 않으면, default 값은 31일.
+                session['username'] = request.form['id'] # session 에 userid 넣기
                 return redirect(url_for('home')) # index.html로 redirect 한다. 
             else:
                 flash("아이디 또는 비밀번호가 잘못 입력 되었습니다.") # 알림
@@ -121,13 +122,11 @@ def week(): # 한 주의 메뉴를 리턴.
         temp.append(day)
         temp.append(date)
         days.append(temp)
-    
     # 오늘, 내일, 모레 날짜를 계산
     day = []
     now = datetime.today().strftime("%Y-%m-%d")
     tomorrow = (datetime.today() + timedelta(1)).strftime("%Y-%m-%d")
     after = (datetime.today() + timedelta(2)).strftime("%Y-%m-%d")
-
     # 오늘, 내일, 모레에 해당하는 날짜만 추출
     today_temp = ""
     tomorrow_temp = ""
@@ -142,7 +141,6 @@ def week(): # 한 주의 메뉴를 리턴.
     day.append(today_temp)
     day.append(tomorrow_temp)
     day.append(after_temp)
-
     sql = "select * from morning"
     cursor.execute(sql)
     rows = cursor.fetchall()
@@ -253,14 +251,20 @@ def getViews():
     return jsonify({'views':views})
 
 def addViews(views):
-    print("views")
-    print(views[0]['views'])
     connection = db_connection()
     cursor = connection.cursor()
     cursor.execute('UPDATE views SET views=%s', views[0]['views'] + 1)
     connection.commit()
     connection.close()
 
+@app.route('/api/setcookie', methods=['POST'])
+def setCookie():
+    if request.method == 'POST':
+        user = request.form["nm"]
+    
+    resp = make_response()
+    resp.set_cookie("userid", user)
+    return resp
 
 if __name__ == '__main__':
     app.run('0.0.0.0',port=5000,debug=False, threaded=True)

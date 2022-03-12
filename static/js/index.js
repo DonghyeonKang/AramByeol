@@ -1,12 +1,20 @@
 // DOM 생성후 바로 실행할 함수들
+
 $(document).ready(function () {
-  const sessionExist = session_check(); // 세션체크 후
-  get_daytable(); // 데이터 로딩 후
-  event_modal(sessionExist); // 모달 이벤트 처리
-  get_Views();
+  const errorStatus = 0; // 서버 에러시 상태코드 0 == 에러 1 == 정상
+  if(errorStatus) {
+    const sessionExist = session_check(); // 세션체크 후
+    get_daytable(); // 데이터 로딩 후
+    event_modal(sessionExist); // 모달 이벤트 처리
+    get_views();
+    set_cookie();
+  }
+  else{
+    console.log("");
+  }
 });
 
-const get_Views = () => {
+const get_views = () => {
   $.ajax({
     type: "GET",
     url: "/api/views",
@@ -16,6 +24,10 @@ const get_Views = () => {
       $(".views").append(`Total ${response["views"][0]["views"]}`)
     },
   });
+}
+
+const set_cookie = () => {
+  
 }
 
 const session_check = () => {
@@ -106,9 +118,13 @@ const get_daytable = () => {
       const morning = response["morning"];
       const lunch = response["lunch"];
       const dinner = response["dinner"];
-
+      console.log(days);
+      console.log(todays);
       // 오늘, 내일, 모레 날짜를 서버에서 가져온 날짜와 비교.
       for (let i = 0; i < days.length; i++) {
+        console.log(days[i][1]);
+        console.log("내일 날짜" + tomorrows);
+        console.log("모레 날짜" + after_tomorrows);
         if (days[i][1] === todays) {
           this_day = days[i][0];
         }
@@ -125,11 +141,11 @@ const get_daytable = () => {
         $(".hash-tag1").append(`<h1>#곧 #1시에 #UPDATE!! #COMMING SOON!</h1>`);
       } else $(".hash-tag1").append(`<h1>#오늘 #과제는 #내일하자👊</h1>`);
       if (tomorrow_day === undefined) {
-        $(".hash-tag2").append(`<h1>#매주 #일요일 #1시 #메뉴가 돌아온다!</h1>`);
+        $(".hash-tag2").append(`<h1>#매주 #월요일 #1시 #메뉴가 돌아온다!</h1>`);
       } else $(".hash-tag2").append(`<h1>#내일 #부터 #다이어트 #할거임!</h1>`);
       if (after_day === undefined) {
-        $(".hash-tag3").append(`<h1>#매주 #일요일 #1시 #UPDATE FOR YOU👉</h1>`);
-      } else $(".hash-tag3").append(`<h1>#모레 #는 #멀다</h1>`);
+        $(".hash-tag3").append(`<h1>#매주 #월요일 #1시 #UPDATE FOR YOU👉</h1>`);
+      } else $(".hash-tag3").append(`<h1>#모레 #는 #맛있을까?</h1>`);
 
       /* 오늘메뉴 가져오기 */
       let meal_info = "";
@@ -177,11 +193,12 @@ const get_daytable = () => {
 // 메뉴 출력 함수
 const edit_menu = (meal, this_day) => {
   let menu_info = "";
-  const courseList = ['A', 'B', 'C', '테이크아웃', 'T/O', '일품', '한식', 'A코스', 'B코스', 'C코스', 'A코스/한식', 'B코스/베이커리', 'C코스/죽', '◆공지◆', 'B코스/일품'];
+  const courseList = ['A', 'B', 'C', '테이크아웃', 'T/O', '일품', '한식', 'A코스', 'B코스', 'C코스', 'A코스/한식', 'B코스/베이커리', 'C코스/죽', '◆공지◆', 'B코스/일품', '공지'];
   let courseMode = new Array(courseList.length).fill(0);
 
   menu_info = menu_info + "<td>";
   for (let i = 0; i < meal.length; i++) {
+    console.log(this_day);
     if (this_day === meal[i][0]) {
       if (courseList.indexOf(meal[i][1]) !== -1) {
         const idx = courseList.indexOf(meal[i][1]);

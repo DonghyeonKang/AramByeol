@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta property="og:title" content="AramByeol" />
+  <meta property="og:description" content="아람관 별점을 매겨보자!" />
+  <meta property="og:image" content="{{ url_for('static', filename='/images/logo.png') }}" />
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name=”keywords” content="경상대, 아람별, 기숙사, 아람관, 식당, 식단">
+  <meta name=“description” content="경상대학교 아람관 식단과 별점을 제공합니다.">
+  <!-- css -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css')}}" />
+  <!-- 폰트 -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Gaegu&family=Poor+Story&family=Quicksand:wght@500&family=Roboto:wght@100&display=swap"
+    rel="stylesheet">
+  <!-- 파비콘 -->
+  <link rel="shortcut icon" href="{{ url_for('static', filename='/images/favicon.ico')}}" />
+  <title>AramByeol</title>
+</head>
+
+<body>
+  <!-- header -->
+  <header id="header">
+    <div class="header-top">
+      <span class="logo-text">
+        <a href="">AramByeol</a>
+      </span>
+      <span class="login" id="login"><a href="/member/login.html" id="login-button"><img src="/static/images/login.png"
+            alt="Login"></a></span>
+    </div>
+    <div class="header-bottom">
+      <div class="logo-img-box">
+        <img src="/static/images/logo.png" alt="logo">
+      </div>
+      <div class="views">서버 장애로, 별점 기능이 하루정도 중지됩니당.. ㅠㅠ</div>
+    </div>
+  </header>
+  <!-- content -->
+  <div class="content">
+    <!-- Modal section -->
+    <section class="modal-container" id="modal">
+      <div class="modal">
+        <div class="modal-header">
+          <span>평가</span>
+          <img class="close-btn" id="close" src="/static/images/x_icon.png" alt="x">
+        </div>
+        <div class="modal-content">
+          <div class="menu-header">
+            <h2 class="menu-name"></h2>
+            <span class="menu-score"></span>
+          </div>
+          <form class="menu-evaluation" method="get" action="">
+            <ul class="star">
+              <li>
+                <img src="/static/images/empty_star.png" alt="star1">
+              </li>
+              <li>
+                <img src="/static/images/empty_star.png" alt="star2">
+              </li>
+              <li>
+                <img src="/static/images/empty_star.png" alt="star3">
+              </li>
+              <li>
+                <img src="/static/images/empty_star.png" alt="star4">
+              </li>
+              <li>
+                <img src="/static/images/empty_star.png" alt="star5">
+              </li>
+            </ul>
+            <div class="submit" type="submit">확인</div>
+          </form>
+        </div>
+        <div class="modal-footer" style="display: inline-block;">
+          <a class="login-link" href="/member/login.html" style="display: block;">🤦‍♂️후기는 로그인!</a>
+          <div class="close-btn">확인</div>
+        </div>
+      </div>
+    </section>
+    <!-- inner section -->
+    <section>
+      <div class="hash-tag hash-tag1">
+        <h1>#오늘 #과제는 #내일하자👊</h1>
+      </div>
+      <div class="inner">
+        <div class="main-box">
+          <div class="today-title">아침</div>
+          <div class="today-box">
+            <table class="menu-table">
+              <tbody>
+                <tr id="morning">
+                  <td>
+                    <p class="course">A코스/한식</p><br><span class="open_today">쌀밥/누룽지</span><br><span
+                      class="open_today">쇠고기국</span><br><span class="open_today">햄전*케찹</span><br><span
+                      class="open_today">알감자조림</span><br><span class="open_today">다시마채젓갈무침</span><br><span
+                      class="open_today">배추김치</span><br><span class="open_today">모듬우유</span><br>
+                  </td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="main-box">
+          <div class="today-title">점심</div>
+          <div class="today-box">
+            <table class="menu-table">
+              <tbody>
+                <tr id="lunch">
+                  <td>
+                    <p class="course">A코스/한식</p><br><span class="open_today">쌀밥</span><br><span
+                      class="open_today">짬뽕국</span><br><span class="open_today">꿔바로우탕수육</span><br><span
+                      class="open_today">유부겨자냉채</span><br><span class="open_today">깻잎지</span><br><span
+                      class="open_today">배추김치</span><br><span class="open_today">레몬아이스티</span><br>
+                  </td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="main-box">
+          <div class="today-title">저녁</div>
+          <div class="today-box">
+            <table class="menu-table">
+              <tbody>
+                <tr id="dinner">
+                  <td>
+                    <p class="course">A코스/한식</p><br><span class="open_today">쌀밥</span><br><span
+                      class="open_today">들깨시락국</span><br><span class="open_today">돈육김치찜</span><br><span
+                      class="open_today">새송이장조림</span><br><span class="open_today">단배추겉절이</span><br><span
+                      class="open_today">깍두기</span><br><span class="open_today">옥수수차</span><br>
+                    </td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="line">
+        <hr size="5" noshade="">
+      </div>
+      <div class="hash-tag hash-tag2">
+        <h1>#매주 #월요일 #1시 #메뉴가 돌아온다!</h1>
+      </div>
+      <div class="inner">
+        <div class="main-box">
+          <div class="today-title">아침</div>
+          <div class="today-box">
+            <table class="menu-table">
+              <tbody>
+                <!-- <tr id="next-morning">
+                  <td>
+                    <p class="course">A코스/한식</p><br><span class="open_today">쌀밥/누룽지</span><br><span
+                      class="open_today">차돌된장찌개</span><br><span class="open_today">숯불바베큐바조림</span><br><span
+                      class="open_today">건새우무조림</span><br><span class="open_today">오이생채</span><br><span
+                      class="open_today">배추김치</span><br><span class="open_today">모듬우유</span><br>
+                    <p class="course">B코스/베이커리</p><br><span class="open_today">모닝빵&amp;딸기잼</span><br><span
+                      class="open_today">브로컬리스프</span><br><span class="open_today">숯불바베큐바조림</span><br><span
+                      class="open_today">에그마요샐러드</span><br><span class="open_today">모듬우유</span><br>
+                    <p class="course">C코스/죽</p><br><span class="open_today">누룽지닭죽</span><br><span
+                      class="open_today">숯불바베큐바조림</span><br><span class="open_today">오이생채</span><br><span
+                      class="open_today">배추김치</span><br><span class="open_today">모듬우유</span><br>
+                    <p class="course">테이크아웃</p><br><span class="open_today">요구트르크림빵</span><br><span
+                      class="open_today">꿀오란다바</span><br><span class="open_today">모듬우유</span><br>
+                    <p class="course">공지</p><br><span class="open_today">어플연동시</span><br><span class="open_today">당일 메뉴
+                      오류가 빈번하게 발생합니다. 학생생활관 홈페이지에서 메뉴를 확인해주세요</span><br>
+                  </td>
+                  <td></td>
+                </tr> -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="main-box">
+          <div class="today-title">점심</div>
+          <div class="today-box">
+            <table class="menu-table">
+              <tbody>
+                <!-- <tr id="next-lunch">
+                  <td>
+                    <p class="course">A코스/한식</p><br><span class="open_today">쌀밥</span><br><span
+                      class="open_today">미역국</span><br><span class="open_today">돈육간장불고기</span><br><span
+                      class="open_today">충무식어묵무침</span><br><span class="open_today">청경채겉절이</span><br><span
+                      class="open_today">배추김치</span><br><span class="open_today">살구주스</span><br>
+                    <p class="course">B코스/일품</p><br><span class="open_today">가락국수</span><br><span
+                      class="open_today">소떡소떡</span><br><span class="open_today">단무지</span><br><span
+                      class="open_today">배추김치</span><br><span class="open_today">살구주스</span><br>
+                  </td>
+                  <td></td>
+                </tr> -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="main-box">
+          <div class="today-title">저녁</div>
+          <div class="today-box">
+            <table class="menu-table">
+              <tbody>
+                <!-- <tr id="next-dinner">
+                  <td>
+                    <p class="course">A코스/한식</p><br><span class="open_today">쌀밥</span><br><span
+                      class="open_today">사골떡만둣국</span><br><span class="open_today">완자전*케찹</span><br><span
+                      class="open_today">도토리묵무침</span><br><span class="open_today">고추지</span><br><span
+                      class="open_today">깍두기</span><br><span class="open_today">오미자주스</span><br>
+                    <p class="course">공지</p><br><span class="open_today">어플연동시</span><br><span class="open_today">당일 메뉴
+                      오류가 빈번하게 발생합니다. 학생생활관 홈페이지에서 메뉴를 확인해주세요</span><br>
+                  </td>
+                  <td></td>
+                </tr> -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="line">
+        <hr size="5" noshade="">
+      </div>
+      <div class="hash-tag hash-tag3">
+        <h1>#매주 #월요일 #1시 #UPDATE FOR YOU👉</h1>
+      </div>
+      <div class="inner"></div>
+      <div class="inner">
+        <div class="main-box">
+          <div class="today-title">아침</div>
+          <div class="today-box">
+            <table class="menu-table">
+              <tbody>
+                <!-- <tr id="double-next-morning">
+                  <td>
+                    <p class="course">A코스/한식</p><br><span class="open_today">쌀밥/누룽지</span><br><span
+                      class="open_today">콩나물국</span><br><span class="open_today">닭살바베큐떡조림</span><br><span
+                      class="open_today">멸치땅콩볶음</span><br><span class="open_today">김가루쪽파무침</span><br><span
+                      class="open_today">배추김치</span><br><span class="open_today">모듬우유</span><br>
+                    <p class="course">B코스/베이커리</p><br><span class="open_today">수제갈릭토스트</span><br><span
+                      class="open_today">아몬드후레이크</span><br><span class="open_today">치킨너겟</span><br><span
+                      class="open_today">콘샐러드</span><br><span class="open_today">모듬우유</span><br>
+                    <p class="course">C코스/죽</p><br><span class="open_today">흑임자영양죽</span><br><span
+                      class="open_today">닭살바베큐떡조림</span><br><span class="open_today">김가루쪽파무침</span><br><span
+                      class="open_today">배추김치</span><br><span class="open_today">모듬우유</span><br>
+                    <p class="course">테이크아웃</p><br><span class="open_today">녹차크림단팥빵</span><br><span
+                      class="open_today">콘요구르트바모듬우유</span><br>
+                    <p class="course">공지</p><br><span class="open_today">어플연동시</span><br><span class="open_today">당일 메뉴
+                      오류가 빈번하게 발생합니다. 학생생활관 홈페이지에서 메뉴를 확인해주세요</span><br>
+                  </td>
+                  <td></td>
+                </tr> -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="main-box">
+          <div class="today-title">점심</div>
+          <div class="today-box">
+            <table class="menu-table">
+              <tbody>
+                <!-- <tr id="double-next-lunch">
+                  <td>
+                    <p class="course">A코스/한식</p><br><span class="open_today">♥특식데이♥</span><br><span
+                      class="open_today">쌀밥</span><br><span class="open_today">크림스프</span><br><span
+                      class="open_today">고메함박스테이크</span><br><span class="open_today">봉골레파스타</span><br><span
+                      class="open_today">수제무피클</span><br><span class="open_today">배추김치</span><br><span
+                      class="open_today">오렌지</span><br>
+                  </td>
+                  <td></td>
+                </tr> -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="main-box">
+          <div class="today-title">저녁</div>
+          <div class="today-box">
+            <table class="menu-table">
+              <tbody>
+                <!-- <tr id="double-next-dinner">
+                  <td>
+                    <p class="course">A코스/한식</p><br><span class="open_today">쌀밥</span><br><span
+                      class="open_today">어묵국</span><br><span class="open_today">삼치데리야끼구이</span><br><span
+                      class="open_today">계란찜</span><br><span class="open_today">콩나물무침</span><br><span
+                      class="open_today">배추김치</span><br><span class="open_today">식혜</span><br>
+                    <p class="course">공지</p><br><span class="open_today">어플연동시</span><br><span class="open_today">당일 메뉴
+                      오류가 빈번하게 발생합니다. 학생생활관 홈페이지에서 메뉴를 확인해주세요</span><br>
+                  </td>
+                  <td></td>
+                </tr> -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  <footer id="footer">
+    <div class="inner">
+      <section class="weekday">
+        <span>평일</span>
+        <ul>
+          <li>
+            <span>아침: 07:30 - 09:00</span>
+          </li>
+          <li>
+            <span>Take Out: 08:30 - 09:30</span>
+          </li>
+          <li>
+            <span>점심: 11:30 - 13:30</span>
+          </li>
+          <li>
+            <span>저녁: 17:30 - 19:00</span>
+          </li>
+        </ul>
+      </section>
+      <section class="weekend">
+        <span>주말</span>
+        <ul>
+          <li>
+            <span>아침: 08:00 - 09:00</span>
+          </li>
+          <li>
+            <span>점심: 12:00 - 13:30</span>
+          </li>
+          <li>
+            <span>저녁: 17:30 - 18:40</span>
+          </li>
+        </ul>
+      </section>
+    </div>
+  </footer>
+  <!-- js -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script type="text/javascript" src="/static/js/index.js"></script>
+
+
+</body>
+
+</html>
