@@ -73,22 +73,22 @@ try:
         for i in range(len(arg)):   # 2차원 배열이므로 첫번째는 요일
             tag = ''    # 코스 기록
             if i == 0:    # 0:일, 1:월, 2:화, 3:수, 4:목, 5:금, 6:토
-                day = '일'
-            elif i == 1:
                 day = '월'
-            elif i == 2:
+            elif i == 1:
                 day = '화'
-            elif i == 3:
+            elif i == 2:
                 day = '수'
-            elif i == 4:
+            elif i == 3:
                 day = '목'
-            elif i == 5:
+            elif i == 4:
                 day = '금'
-            elif i == 6:
+            elif i == 5:
                 day = '토'
+            elif i == 6:
+                day = '일'
 
             courseList = ['A', 'B', 'C', '테이크아웃', 'T/O', '한식', '일품', 'A코스', 'B코스', 'C코스',
-                          'A코스/한식', 'B코스/베이커리', 'C코스/죽', '◆공지◆', 'B코스/일품']   # 새로운 코스 등장하면 여기에 추가!
+                          'A코스/한식', 'B코스/베이커리', 'C코스/죽', '◆공지◆', 'B코스/일품', '공지']   # 새로운 코스 등장하면 여기에 추가!
             for j in range(len(arg[i])):  # 두번째는 요일별 전체 메뉴
                 if(arg[i][j] in courseList):
                     tag = arg[i][j]  # A,B,C,테이크아웃 코스인 경우 tag에 저장하고 건너뛰기
