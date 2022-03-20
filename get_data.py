@@ -85,7 +85,7 @@ def split_menu_data(args):
 
 def data_blocking(args):
     data = []
-    blockingList = ["공지", "어플연동시", "당일 메뉴 오류가 빈번하게 발생합니다.  학생생활관 홈페이지에서 메뉴를 확인해주세요"]
+    blockingList = ["공지", "어플연동시", "당일 메뉴 오류가 빈번하게 발생합니다. 학생생활관 홈페이지에서 메뉴를 확인해주세요"]
     for i in args:
         if i not in blockingList:
             data.append(i)
