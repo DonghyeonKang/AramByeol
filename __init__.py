@@ -145,6 +145,9 @@ def week(): # 한 주의 메뉴를 리턴.
     cursor.execute(sql)
     rows = cursor.fetchall()
 
+    # cursor.execute('SELECT score from menudata where menu=%s', )
+    # score = cursor.fetchall()
+
     # 오늘, 내일, 모레에 해당하는 메뉴들만 추출
     morning = [] # 아침 정보를 제공해줄거얌
     for i in range(len(rows)):
@@ -153,7 +156,10 @@ def week(): # 한 주의 메뉴를 리턴.
             if day[j] == rows[i]['day'] :
                 temp.append(rows[i]['day'])
                 temp.append(rows[i]['course'])
-                temp.append(rows[i]['menu'])
+                temp.append(rows[i]['menu'])                
+                cursor.execute('SELECT score from menudata where menu=%s', temp[2])
+                test = cursor.fetchall()
+                temp.append(test[0]['score'])
                 morning.append(temp)
 
 
@@ -169,6 +175,9 @@ def week(): # 한 주의 메뉴를 리턴.
                 temp.append(rows[i]['day'])
                 temp.append(rows[i]['course'])
                 temp.append(rows[i]['menu'])
+                cursor.execute('SELECT score from menudata where menu=%s', temp[2])
+                test = cursor.fetchall()
+                temp.append(test[0]['score'])
                 lunch.append(temp)
 
     sql = "select * from dinner"
@@ -183,8 +192,10 @@ def week(): # 한 주의 메뉴를 리턴.
                 temp.append(rows[i]['day'])
                 temp.append(rows[i]['course'])
                 temp.append(rows[i]['menu'])
+                cursor.execute('SELECT score from menudata where menu=%s', temp[2])
+                test = cursor.fetchall()
+                temp.append(test[0]['score'])
                 dinner.append(temp)
-    # connection.commit()
     connection.close()
     return jsonify({'days':days, 'morning':morning, 'lunch':lunch, 'dinner':dinner}) # js와 매칭
 
@@ -231,6 +242,7 @@ def get_score():
     menu_name = request.form['menu_name']
     connection = db_connection()
     cursor = connection.cursor()
+    print(menu_name)
     cursor.execute('SELECT score from menudata where menu=%s', menu_name)
     score = cursor.fetchall()
     if score[0]['score'] == None:
