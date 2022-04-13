@@ -6,9 +6,9 @@
 
 Developer: [DonghyeonKang](https://github.com/DonghyeonKang), [SanghyeonKim](https://github.com/limetimeline), [JEONJEYUN](https://github.com/JEONJEYUN), [CooAnt](https://github.com/CooAnt)
 
-Release Version 1.1.3
+Release Version 1.1.5
 
-Recent Update: 2022-2-24
+Recent Update: 2022-04-13
 # UpdateNotes
 2021-11-26 - release version 1.0.0
 - 초기 버전 완성 및 배포
@@ -31,6 +31,12 @@ Recent Update: 2022-2-24
 
 2022-02-24 - release version 1.1.3
 - 식단 전체가 공백일 경우 스크래핑 후 처리 로직 에러 수정
+
+2022-03-13 - release version 1.1.4
+- 비상 에러 페이지 추가
+
+2022-04-13 - release version 1.1.5
+- 메인화면 메뉴에 별점도 동시에 출력하도록 수정
 
 # Usage
 - 페이지 접속 시 아람관 식단을 확인 할 수 있습니다
