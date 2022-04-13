@@ -118,13 +118,8 @@ const get_daytable = () => {
       const morning = response["morning"];
       const lunch = response["lunch"];
       const dinner = response["dinner"];
-      console.log(days);
-      console.log(todays);
       // 오늘, 내일, 모레 날짜를 서버에서 가져온 날짜와 비교.
       for (let i = 0; i < days.length; i++) {
-        console.log(days[i][1]);
-        console.log("내일 날짜" + tomorrows);
-        console.log("모레 날짜" + after_tomorrows);
         if (days[i][1] === todays) {
           this_day = days[i][0];
         }
@@ -198,7 +193,6 @@ const edit_menu = (meal, this_day) => {
 
   menu_info = menu_info + "<td>";
   for (let i = 0; i < meal.length; i++) {
-    console.log(this_day);
     if (this_day === meal[i][0]) {
       if (courseList.indexOf(meal[i][1]) !== -1) {
         const idx = courseList.indexOf(meal[i][1]);
@@ -206,11 +200,21 @@ const edit_menu = (meal, this_day) => {
           courseMode[idx] = 1;
           menu_info = menu_info + '<p class="course">' + meal[i][1] +'</p></br>';
         }
-        menu_info =
+        if (meal[i][3] == null) {
+          menu_info =
           menu_info +
           '<span class="open_today">' +
-          meal[i][2] +
+          meal[i][2] + 
+          "</span> </br>";
+        } else {
+          menu_info =
+          menu_info +
+          '<span class="open_today">' +
+          meal[i][2] + 
+          '</span><span class="score_menu"> ' +
+          meal[i][3] +
           "</span></br>";
+        }
       } 
       if (meal[i][1] === "none") { // none이면 
         menu_info =
@@ -250,7 +254,6 @@ const event_modal = (sessionExist) => {
       } else {
         menu_evaluation.style.display = "none";
       }
-
       name = set_modal_inner_header(open_today[i]);
     });
   }
@@ -333,7 +336,6 @@ const set_modal_inner_header = (open_today) => {
 
   // queryselector가 &를 가져올 때 &amp;로 가져오기 때문에 &로 변환해줘야 한다.
   name = open_today.innerHTML.replace("&amp;", "&");
-
   // DB에서 누적 별점 가져오기
   $.ajax({
     type: "POST",

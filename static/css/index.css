@@ -258,6 +258,10 @@ td {
   font-weight: bold;
 }
 
+.score_menu {
+  color: #eee56b;
+}
+
 /********************* Mobile *********************/
 @media all and (max-width: 767px) {
   .header-top {
