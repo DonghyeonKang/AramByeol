@@ -67,11 +67,9 @@ def split_menu_data(args):
         day=[]
         day.append([])
         day_count = 0   # 요일 카운트 [요일][메뉴]
-        menu_count = 0  # 메뉴 카운트
-
 
         for element in args:
-            if count >= 4 and element != '' and 'A' in element:  # 공백 개수가 연속으로 4이고, 5번째가 공백이 아니라면
+            if count >= 4 and element != '' in element:  # 공백 개수가 연속으로 4 이상이고, 5번째가 공백이 아니라면
                 day.append([])  # 요일 바뀜
                 day_count += 1  # 요일 바꾸기
                 count = 0   # 공백 개수 초기화
