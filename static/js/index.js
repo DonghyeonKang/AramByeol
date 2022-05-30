@@ -1,7 +1,7 @@
 // DOM 생성후 바로 실행할 함수들
 
 $(document).ready(function () {
-  const errorStatus = 1; // 서버 에러시 상태코드 0 == 에러 1 == 정상
+  const errorStatus = 0; // 서버 에러시 상태코드 0 == 에러 1 == 정상
   if(errorStatus) {
     const sessionExist = session_check(); // 세션체크 후
     get_daytable(); // 데이터 로딩 후

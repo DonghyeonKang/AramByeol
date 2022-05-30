@@ -51,7 +51,8 @@ def db_connection(): # Database Connection
 # page route
 @app.route('/')
 def home():
-    return render_template("index.html")
+    return render_template("/error/index.html")
+#    return render_template("index.html")
 
 # 회원가입 API
 @app.route('/member/register.html', methods=['GET', 'POST'])
