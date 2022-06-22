@@ -1,248 +1,278 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta property="og:title" content="AramByeol" />
+    <meta property="og:description" content="아람관 별점을 매겨보자!" />
+    <meta
+      property="og:image"
+      content="{{ url_for('static', filename='/images/logo.png') }}"
+    />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="”keywords”"
+      content="경상대, 아람별, 기숙사, 아람관, 식당, 식단"
+    />
+    <meta
+      name="“description”"
+      content="경상대학교 아람관 식단과 별점을 제공합니다."
+    />
+    <!-- css -->
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/index.css')}}"
+    />
+    <!-- 폰트 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Gaegu&family=Poor+Story&family=Quicksand:wght@500&family=Roboto:wght@100&display=swap"
+      rel="stylesheet"
+    />
+    <!-- 파비콘 -->
+    <link
+      rel="shortcut icon"
+      href="{{ url_for('static', filename='/images/favicon.ico')}}"
+    />
+    <title>아람별</title>
+  </head>
 
-<head>
-  <meta property="og:title" content="AramByeol" />
-  <meta property="og:description" content="아람관 별점을 매겨보자!" />
-  <meta property="og:image" content="{{ url_for('static', filename='/images/logo.png') }}" />
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name=”keywords” content = "경상대, 아람별, 기숙사, 아람관, 식당, 식단">
-  <meta name = “description” content = "경상대학교 아람관 식단과 별점을 제공합니다.">
-  <!-- css -->
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css')}}" />
-  <!-- 폰트 -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Gaegu&family=Poor+Story&family=Quicksand:wght@500&family=Roboto:wght@100&display=swap" rel="stylesheet">
-  <!-- 파비콘 -->
-  <link rel="shortcut icon" href="{{ url_for('static', filename='/images/favicon.ico')}}" />
-  <title>아람별</title>
-</head>
-
-<body>
-  <!-- header -->
-  <header id="header">
-    <div class="header-top">
-      <span class="logo-text">
-        <a href="">AramByeol</a>
-      </span>
-      <span class="login" id="login"></span>
-    </div>
-    <div class="header-bottom">
-      <div class="logo-img-box">
-        <img src="/static/images/logo.png" alt="logo" />
+  <body>
+    <!-- header -->
+    <header id="header">
+      <div class="header-top">
+        <span class="logo-text">
+          <a href="">AramByeol</a>
+        </span>
+        <span class="login" id="login"></span>
       </div>
-      <a class="eatGNU" href="https://eatgnu.kro.kr/">아람관이 별로 안 땡긴다면?</a>
-      <div class="views"></div>
-    </div>
-  </header>
-  <!-- content -->
-  <div class="content">
-    <!-- Modal section -->
-    <section class="modal-container" id="modal">
-      <div class="modal">
-        <div class="modal-header">
-          <span>평가</span>
-          <img class="close-btn" id="close" src="/static/images/x_icon.png" alt="x" />
+      <div class="header-bottom">
+        <div class="logo-img-box">
+          <img src="/static/images/logo.png" alt="logo" />
         </div>
-        <div class="modal-content">
-          <div class="menu-header">
-            <h2 class="menu-name"></h2>
-            <span class="menu-score"></span>
-          </div>
-          <form class="menu-evaluation" method="get" action="">
-            <ul class="star">
-              <li>
-                <img src="/static/images/empty_star.png" alt="star1" />
-              </li>
-              <li>
-                <img src="/static/images/empty_star.png" alt="star2" />
-              </li>
-              <li>
-                <img src="/static/images/empty_star.png" alt="star3" />
-              </li>
-              <li>
-                <img src="/static/images/empty_star.png" alt="star4" />
-              </li>
-              <li>
-                <img src="/static/images/empty_star.png" alt="star5" />
-              </li>
-            </ul>
-            <div class="submit" type="submit">확인</div>
-          </form>
-        </div>
-        <div class="modal-footer">
-          <a class="login-link" href="/member/login.html">🤦‍♂️후기는 로그인!</a>
-          <div class="close-btn">확인</div>
-        </div>
+        <a class="eatGNU" href="https://eatgnu.kro.kr/"
+          >아람관이 별로 안 땡긴다면?</a
+        >
+        <div class="views"></div>
       </div>
-    </section>
-    <!-- inner section -->
-    <section>
-      <div class="hash-tag hash-tag1"></div>
-      <div class="inner">
-        <div class="main-box">
-          <div class="today-title">아침</div>
-          <div class="today-box">
-            <table class="menu-table">
-              <tr id="morning"></tr>
-            </table>
+    </header>
+    <!-- content -->
+    <div class="content">
+      <!-- Modal section -->
+      <section class="modal-container" id="modal">
+        <div class="modal">
+          <div class="modal-header">
+            <span>평가</span>
+            <img
+              class="close-btn"
+              id="close"
+              src="/static/images/x_icon.png"
+              alt="x"
+            />
+          </div>
+          <div class="modal-content">
+            <div class="menu-header">
+              <h2 class="menu-name"></h2>
+              <span class="menu-score"></span>
+            </div>
+            <form class="menu-evaluation" method="get" action="">
+              <ul class="star">
+                <li>
+                  <img src="/static/images/empty_star.png" alt="star1" />
+                </li>
+                <li>
+                  <img src="/static/images/empty_star.png" alt="star2" />
+                </li>
+                <li>
+                  <img src="/static/images/empty_star.png" alt="star3" />
+                </li>
+                <li>
+                  <img src="/static/images/empty_star.png" alt="star4" />
+                </li>
+                <li>
+                  <img src="/static/images/empty_star.png" alt="star5" />
+                </li>
+              </ul>
+              <div class="submit" type="submit">확인</div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <a class="login-link" href="/member/login.html">🤦‍♂️후기는 로그인!</a>
+            <div class="close-btn">확인</div>
           </div>
         </div>
-        <div class="main-box">
-          <div class="today-title">점심</div>
-          <div class="today-box">
-            <table class="menu-table">
-              <tr id="lunch"></tr>
-            </table>
-          </div>
-        </div>
-        <div class="main-box">
-          <div class="today-title">저녁</div>
-          <div class="today-box">
-            <table class="menu-table">
-              <tr id="dinner"></tr>
-            </table>
-          </div>
-        </div>
-      </div>
-      <div class="line">
-        <hr size="5" noshade />
-      </div>
-      <div class="hash-tag hash-tag2"></div>
-      <div class="inner">
-        <div class="main-box">
-          <div class="today-title">아침</div>
-          <div class="today-box">
-            <table class="menu-table">
-              <tr id="next-morning"></tr>
-            </table>
-          </div>
-        </div>
-        <div class="main-box">
-          <div class="today-title">점심</div>
-          <div class="today-box">
-            <table class="menu-table">
-              <tr id="next-lunch"></tr>
-            </table>
-          </div>
-        </div>
-        <div class="main-box">
-          <div class="today-title">저녁</div>
-          <div class="today-box">
-            <table class="menu-table">
-              <tr id="next-dinner"></tr>
-            </table>
-          </div>
-        </div>
-      </div>
-      <div class="line">
-        <hr size="5" noshade />
-      </div>
-      <div class="hash-tag hash-tag3"></div>
-      <div class="inner"></div>
-      <div class="inner">
-        <div class="main-box">
-          <div class="today-title">아침</div>
-          <div class="today-box">
-            <table class="menu-table">
-              <tr id="double-next-morning"></tr>
-            </table>
-          </div>
-        </div>
-        <div class="main-box">
-          <div class="today-title">점심</div>
-          <div class="today-box">
-            <table class="menu-table">
-              <tr id="double-next-lunch"></tr>
-            </table>
-          </div>
-        </div>
-        <div class="main-box">
-          <div class="today-title">저녁</div>
-          <div class="today-box">
-            <table class="menu-table">
-              <tr id="double-next-dinner"></tr>
-            </table>
-          </div>
-        </div>
-      </div>
-    </section>
-  </div>
-  <footer id="footer">
-    <div class="inner">
-      <section class="weekday">
-        <span>평일</span>
-        <ul>
-          <li>
-            <span>아침: 07:30 - 09:00</span>
-          </li>
-          <li>
-            <span>Take Out: 08:30 - 09:30</span>
-          </li>
-          <li>
-            <span>점심: 11:30 - 13:30</span>
-          </li>
-          <li>
-            <span>저녁: 17:30 - 19:00</span>
-          </li>
-        </ul>
       </section>
-      <section class="weekend">
-        <span>주말</span>
-        <ul>
-          <li>
-            <span>아침: 08:00 - 09:00</span>
-          </li>
-          <li>
-            <span>점심: 12:00 - 13:30</span>
-          </li>
-          <li>
-            <span>저녁: 17:30 - 18:40</span>
-          </li>
-        </ul>
-      </section>
-      <section class="weekday">
-        <span> 방학 평일</span>
-        <ul>
-          <li>
-            <span>아침: 08:00 - 09:00</span>
-          </li>
-          <li>
-            <span>Take Out: 08:30 - 09:30</span>
-          </li>
-          <li>
-            <span>점심: 12:00 - 13:30</span>
-          </li>
-          <li>
-            <span>저녁: 17:30 - 18:30</span>
-          </li>
-        </ul>
-      </section>
-      <section class="weekend">
-        <span>방학 주말</span>
-        <ul>
-          <li>
-            <span>아침: 08:00 - 09:00</span>
-          </li>
-          <li>
-            <span>점심: 12:00 - 13:30</span>
-          </li>
-          <li>
-            <span>저녁: 17:30 - 18:30</span>
-          </li>
-        </ul>
+      <!-- inner section -->
+      <section>
+        <div class="hash-tag hash-tag1"></div>
+        <div class="inner">
+          <div class="main-box">
+            <div class="today-title">아침</div>
+            <div class="today-box">
+              <table class="menu-table">
+                <tr id="morning"></tr>
+              </table>
+            </div>
+          </div>
+          <div class="main-box">
+            <div class="today-title">점심</div>
+            <div class="today-box">
+              <table class="menu-table">
+                <tr id="lunch"></tr>
+              </table>
+            </div>
+          </div>
+          <div class="main-box">
+            <div class="today-title">저녁</div>
+            <div class="today-box">
+              <table class="menu-table">
+                <tr id="dinner"></tr>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="line">
+          <hr size="5" noshade />
+        </div>
+        <div class="hash-tag hash-tag2"></div>
+        <div class="inner">
+          <div class="main-box">
+            <div class="today-title">아침</div>
+            <div class="today-box">
+              <table class="menu-table">
+                <tr id="next-morning"></tr>
+              </table>
+            </div>
+          </div>
+          <div class="main-box">
+            <div class="today-title">점심</div>
+            <div class="today-box">
+              <table class="menu-table">
+                <tr id="next-lunch"></tr>
+              </table>
+            </div>
+          </div>
+          <div class="main-box">
+            <div class="today-title">저녁</div>
+            <div class="today-box">
+              <table class="menu-table">
+                <tr id="next-dinner"></tr>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="line">
+          <hr size="5" noshade />
+        </div>
+        <div class="hash-tag hash-tag3"></div>
+        <div class="inner"></div>
+        <div class="inner">
+          <div class="main-box">
+            <div class="today-title">아침</div>
+            <div class="today-box">
+              <table class="menu-table">
+                <tr id="double-next-morning"></tr>
+              </table>
+            </div>
+          </div>
+          <div class="main-box">
+            <div class="today-title">점심</div>
+            <div class="today-box">
+              <table class="menu-table">
+                <tr id="double-next-lunch"></tr>
+              </table>
+            </div>
+          </div>
+          <div class="main-box">
+            <div class="today-title">저녁</div>
+            <div class="today-box">
+              <table class="menu-table">
+                <tr id="double-next-dinner"></tr>
+              </table>
+            </div>
+          </div>
+        </div>
       </section>
     </div>
-  </footer>
-  <!-- js -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-    crossorigin="anonymous"></script>
-  <script type="text/javascript" src="{{ url_for('static', filename='js/index.js') }}"></script>
-</body>
-
+    <footer id="footer">
+      <div class="inner">
+        <div class="item weekday">
+          <span>평일</span>
+          <ul>
+            <li>
+              <span>아침: 07:30 - 09:00</span>
+            </li>
+            <li>
+              <span>Take Out: 08:30 - 09:30</span>
+            </li>
+            <li>
+              <span>점심: 11:30 - 13:30</span>
+            </li>
+            <li>
+              <span>저녁: 17:30 - 19:00</span>
+            </li>
+          </ul>
+        </div>
+        <div class="item weekend">
+          <span>주말</span>
+          <ul>
+            <li>
+              <span>아침: 08:00 - 09:00</span>
+            </li>
+            <li>
+              <span>점심: 12:00 - 13:30</span>
+            </li>
+            <li>
+              <span>저녁: 17:30 - 18:40</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="inner">
+        <div class="item weekday">
+          <span> 방학 평일</span>
+          <ul>
+            <li>
+              <span>아침: 08:00 - 09:00</span>
+            </li>
+            <li>
+              <span>Take Out: 08:30 - 09:30</span>
+            </li>
+            <li>
+              <span>점심: 12:00 - 13:30</span>
+            </li>
+            <li>
+              <span>저녁: 17:30 - 18:30</span>
+            </li>
+          </ul>
+        </div>
+        <div class="item weekend">
+          <span>방학 주말</span>
+          <ul>
+            <li>
+              <span>아침: 08:00 - 09:00</span>
+            </li>
+            <li>
+              <span>점심: 12:00 - 13:30</span>
+            </li>
+            <li>
+              <span>저녁: 17:30 - 18:30</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+    <!-- js -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      type="text/javascript"
+      src="{{ url_for('static', filename='js/index.js') }}"
+    ></script>
+  </body>
 </html>

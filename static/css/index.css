@@ -57,6 +57,7 @@ body {
 
 #footer .inner {
   padding-top: 3rem;
+  padding-bottom: 1rem;
 }
 
 #footer .inner ul {
@@ -293,7 +294,7 @@ td {
 
   /* footer */
   #footer {
-    height: 30rem;
+    height: auto;
   }
 
   .weekday {
@@ -356,9 +357,9 @@ td {
 
   /* footer */
   #footer {
-    height: 20rem;
+    height: auto;
   }
-
+  
   #footer .inner {
     display: flex;
     justify-content: center;
@@ -411,7 +412,7 @@ td {
 
   /* footer */
   #footer {
-    height: 20rem;
+    height: auto;
   }
 
   #footer .inner {
