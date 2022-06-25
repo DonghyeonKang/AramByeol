@@ -2,6 +2,7 @@ from bs4 import BeautifulSoup   # selenium으로 스크래핑한 것을 1차 가
 from selenium import webdriver  # google webdriver를 사용할거임
 from pyvirtualdisplay import Display # 가상 디스플레이
 import subprocess   # OS 명령어 연동
+import test
 
 display = Display(visible=0, size=(1920, 1080))
 display.start()
@@ -94,5 +95,8 @@ lunch = data_blocking(lunch)
 dinner = data_blocking(dinner)
 
 day_mornings = split_menu_data(morning)
-day_lunchs = split_menu_data(lunch)
+day_lunches = split_menu_data(lunch)
 day_dinners = split_menu_data(dinner)
+
+# slack 으로 데이터 전송
+test.sendData(day_mornings, day_lunches, day_dinners)
