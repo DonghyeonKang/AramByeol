@@ -3,6 +3,7 @@ from selenium import webdriver  # google webdriver를 사용할거임
 from pyvirtualdisplay import Display # 가상 디스플레이
 import subprocess   # OS 명령어 연동
 import test
+from send_data_to_slack import *
 
 display = Display(visible=0, size=(1920, 1080))
 display.start()
@@ -25,10 +26,14 @@ for elem in soup.find_all(["br"]):
     elem.append('\n')
 
 # days : 날짜 및 요일, morning : 아침, lunch : 점심, dinner : 저녁
-days = soup.select_one('#detailForm > div > table > thead > tr').text.strip().replace(" ", "").split('\n')      # NoneType 이면 IP 차단 되었을 가능성 있음
-morning = soup.select_one('#detailForm > div > table > tbody > tr:nth-child(1)').text.strip().split('\n')
-lunch = soup.select_one('#detailForm > div > table > tbody > tr:nth-child(2)').text.strip().split('\n')
-dinner = soup.select_one('#detailForm > div > table > tbody > tr:nth-child(3)').text.strip().split('\n')
+try:
+    days = soup.select_one('#detailForm > div > table > thead > tr').text.strip().replace(" ", "").split('\n')      # NoneType 이면 IP 차단 되었을 가능성 있음
+    morning = soup.select_one('#detailForm > div > table > tbody > tr:nth-child(1)').text.strip().split('\n')
+    lunch = soup.select_one('#detailForm > div > table > tbody > tr:nth-child(2)').text.strip().split('\n')
+    dinner = soup.select_one('#detailForm > div > table > tbody > tr:nth-child(3)').text.strip().split('\n')
+except Exception as e:  # 데이터를 가져옴에 있어서 에러가 발생한다면, 에러 내용을 slack으로 전송
+    sendData(str(e))
+
 def first_index_del(arg, repeat=1):   # 첫번째 인덱스를 삭제. ('아침', '점심', '저녁')
         for i in range(repeat):
             del arg[0]
@@ -99,4 +104,4 @@ day_lunches = split_menu_data(lunch)
 day_dinners = split_menu_data(dinner)
 
 # slack 으로 데이터 전송
-test.sendData(day_mornings, day_lunches, day_dinners)
+test.mealDataTest(day_mornings, day_lunches, day_dinners)
