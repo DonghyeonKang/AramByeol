@@ -6,7 +6,7 @@ import db_auth
 # get_menu_data에서 스크래핑한 값들을 가져옴
 day = days
 day_morning = day_mornings
-day_lunch = day_lunchs
+day_lunch = day_lunches
 day_dinner = day_dinners
 
 # Connect to the DB
