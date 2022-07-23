@@ -1,10 +1,7 @@
 import requests
 
-def sendData(text):
-    token = "xoxb-3707654943089-3694992446515-iUBiqQvZIYjWS2bb4Oi8vKuO"
-    channel = "#aram_data"
-
-    for i in text:
-        requests.post("https://slack.com/api/chat.postMessage",
-            headers={"Authorization": "Bearer "+token},
-            data={"channel": channel,"text": i})
+def sendData(msg):
+    url='https://hooks.slack.com/services/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'
+    data = {'text':msg}
+    resp = requests.post(url=url, json=data)
+    return resp
