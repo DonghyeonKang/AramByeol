@@ -48,7 +48,7 @@ const session_check = () => {
       } else {
         // 세션 있음
         $("#login").append(
-          '<a href="" id="logout-button">로그아웃</a>'
+          '<a href="" id="login-button">로그아웃</a>'
         );
         sessionExist = 1;
         logoutbutton = document.querySelector("#logout-button");
