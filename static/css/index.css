@@ -265,10 +265,10 @@ html::-webkit-scrollbar-thumb:hover {background: #dbb543;}
 .course {
   display: inline-block;
   margin-bottom: 0.25rem;
-  padding: 0 0.5rem;
+  padding: 0.5rem 0.5rem 0;
   border: 2px solid #ffbf619e;
   background: #ffbf619e;
-  color: rgb(255, 255, 255);
+  color: #1a1a1a;
   line-height: 25px;
   font-size: 1.5rem;
   border-radius: 10px 10px;
