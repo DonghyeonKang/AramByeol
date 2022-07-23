@@ -30,7 +30,7 @@ html::-webkit-scrollbar-thumb:hover {background: #dbb543;}
   height: 100%;
 }
 
-#login-button {
+.login-button {
   text-decoration: none;
   font-family: "Poor Story", cursive;
   color: #FAED7D;
