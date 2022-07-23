@@ -42,13 +42,13 @@ const session_check = () => {
       if (response == "0") {
         // 세션 없음
         $("#login").append(
-          '<a href="/member/login.html" id="login-button"><img src="/static/images/login.png" alt="Login"></a>'
+          '<a href="/member/login.html" id="login-button">로그인</a>'
         );
         sessionExist = 0;
       } else {
         // 세션 있음
         $("#login").append(
-          '<a href="" id="logout-button"><img src="/static/images/logout.png" alt="Logout"></a>'
+          '<a href="" id="logout-button">로그아웃</a>'
         );
         sessionExist = 1;
         logoutbutton = document.querySelector("#logout-button");
