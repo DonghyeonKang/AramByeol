@@ -1,11 +1,10 @@
 from send_data_to_slack import *
 
 def mealDataTest(day_mornings, day_lunches, day_dinners):
+    sendData("이번주 식단")
     text_morning = []
     text_lunch = []
     text_dinner = []
-
-
 
     for i in range(len(day_mornings)):
         text_morning.append(" ".join(day_mornings[i]))
@@ -27,5 +26,4 @@ def mealDataTest(day_mornings, day_lunches, day_dinners):
         text.append(text_lunch[i])
         text.append('저녁')
         text.append(text_dinner[i])
-
-    sendData(text)
+        print(text[i])
