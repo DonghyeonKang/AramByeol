@@ -9,10 +9,15 @@ body {
   margin: 0 0;
 }
 
+html::-webkit-scrollbar{width: 14px;}
+html::-webkit-scrollbar-track {background-color:#393b37;}
+html::-webkit-scrollbar-thumb {background-color:#5e6265; border-radius: 16px;}
+html::-webkit-scrollbar-thumb:hover {background: #dbb543;}
+
 /* header */
 #header {
-  background-color: #393b37; /* 헤더 배경색 */
   height: auto; /* 헤더 높이 */
+  background-image: url(../images/header_background.jpg);
 }
 
 .header-top {
@@ -220,7 +225,7 @@ body {
 
 .today-box {
   display: inline-block;
-  border: 0.4rem solid #60AE91;
+  border: 0.4rem solid #ffbf619e;
   width: 90%;
   max-width: 19rem;
   overflow: auto;
@@ -261,8 +266,8 @@ body {
   display: inline-block;
   margin-bottom: 0.25rem;
   padding: 0 0.5rem;
-  border: 2px solid #60AE91;
-  background: #60AE91;
+  border: 2px solid #ffbf619e;
+  background: #ffbf619e;
   color: rgb(255, 255, 255);
   line-height: 25px;
   font-size: 1.5rem;
@@ -420,6 +425,10 @@ td {
     padding: 0rem 2rem 0 2rem; /* header top padding */
     width: calc(100% - 4rem); /* header top padding을 뺀 너비 */
     height: 5rem; /* header top 높이 */
+  }
+
+  .header_background {
+    height: 100%;
   }
 
   .login a img {
