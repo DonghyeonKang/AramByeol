@@ -1,10 +1,17 @@
+@font-face {
+  font-family: 'GangwonEdu_OTFBoldA';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/GangwonEdu_OTFBoldA.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
 @media all and (min-width: 1025px) {
   body {
     margin: 0%;
   }
 
   .header {
-    background-color: #5fc1c2;
+    background-color: #393b37;
     font-size: 3rem;
     display: flex;
     justify-content: center;
@@ -28,9 +35,9 @@
   }
 
   #input_info {
-    border-right: 5px dotted #5fc1c2;
+    border-right: 5px dotted #60AE91;
     font-size: 2rem;
-    font-family: "Gaegu", cursive;
+    font-family: GangwonEdu_OTFBoldA, cursive;
     text-align: center;
   }
 
@@ -39,7 +46,7 @@
   }
 
   .nameInput {
-    font-family: "Gaegu", cursive;
+    font-family: GangwonEdu_OTFBoldA, cursive;
     height: 33px;
     font-size: 1.5rem;
     text-align: center;
@@ -47,7 +54,7 @@
   }
 
   .passwordInput {
-    font-family: "Gaegu", cursive;
+    font-family: GangwonEdu_OTFBoldA, cursive;
     height: 33px;
     font-size: 1.5rem;
     text-align: center;
@@ -55,8 +62,8 @@
   }
 
   #loginInput {
-    background-color: #5fc1c2;
-    font-family: "Gaegu", cursive;
+    background-color: #60AE91;
+    font-family: GangwonEdu_OTFBoldA, cursive;
     color: white;
     font-size: 2rem;
     width: 10rem;
@@ -67,7 +74,7 @@
 
   .signup {
     text-align: center;
-    font-family: "Gaegu", cursive;
+    font-family: GangwonEdu_OTFBoldA, cursive;
     font-size: 2rem;
   }
 
@@ -79,9 +86,9 @@
   .signupbutton {
     text-decoration-line: none;
     color: white;
-    font-family: "Gaegu", cursive;
+    font-family: GangwonEdu_OTFBoldA, cursive;
     font-size: 2rem;
-    background-color: #5fc1c2;
+    background-color: #60AE91;
     padding: 10px;
     border-radius: 10px;
   }
@@ -94,7 +101,7 @@
   }
 
   .header {
-    background-color: #5fc1c2;
+    background-color: #393b37;
     font-size: 2rem;
     display: flex;
     justify-content: center;
@@ -117,9 +124,9 @@
   }
 
   #input_info {
-    border-bottom: 5px dotted #5fc1c2;
+    border-bottom: 5px dotted #60AE91;
     font-size: 1.6rem;
-    font-family: "Gaegu", cursive;
+    font-family: GangwonEdu_OTFBoldA, cursive;
     text-align: center;
     padding: 0;
   }
@@ -129,7 +136,7 @@
   }
 
   .nameInput {
-    font-family: "Gaegu", cursive;
+    font-family: GangwonEdu_OTFBoldA, cursive;
     height: 2rem;
     font-size: 1.5rem;
     text-align: center;
@@ -138,7 +145,7 @@
   }
 
   .passwordInput {
-    font-family: "Gaegu", cursive;
+    font-family: GangwonEdu_OTFBoldA, cursive;
     height: 2rem;
     font-size: 1.5rem;
     text-align: center;
@@ -147,8 +154,8 @@
   }
 
   #loginInput {
-    background-color: #5fc1c2;
-    font-family: "Gaegu", cursive;
+    background-color: #60AE91;
+    font-family: GangwonEdu_OTFBoldA, cursive;
     color: white;
     font-size: 2rem;
     width: 12rem;
@@ -160,7 +167,7 @@
 
   .signup {
     text-align: center;
-    font-family: "Gaegu", cursive;
+    font-family: GangwonEdu_OTFBoldA, cursive;
     font-size: 2rem;
     padding: 0;
   }
@@ -173,9 +180,9 @@
   .signupbutton {
     text-decoration-line: none;
     color: white;
-    font-family: "Gaegu", cursive;
+    font-family: GangwonEdu_OTFBoldA, cursive;
     font-size: 2rem;
-    background-color: #5fc1c2;
+    background-color: #60AE91;
     padding: 10px;
     border-radius: 10px;
   }
@@ -187,7 +194,7 @@
   }
 
   .header {
-    background-color: #5fc1c2;
+    background-color: #393b37;
     font-size: 3rem;
     display: flex;
     justify-content: center;
@@ -211,9 +218,9 @@
   }
 
   #input_info {
-    border-right: 5px dotted #5fc1c2;
+    border-right: 5px dotted #60AE91;
     font-size: 2rem;
-    font-family: "Gaegu", cursive;
+    font-family: GangwonEdu_OTFBoldA, cursive;
     text-align: center;
   }
 
@@ -222,7 +229,7 @@
   }
 
   .nameInput {
-    font-family: "Gaegu", cursive;
+    font-family: GangwonEdu_OTFBoldA, cursive;
     height: 2.6rem;
     font-size: 1.5rem;
     text-align: center;
@@ -231,7 +238,7 @@
   }
 
   .passwordInput {
-    font-family: "Gaegu", cursive;
+    font-family: GangwonEdu_OTFBoldA, cursive;
     height: 2.5rem;
     font-size: 1.5rem;
     text-align: center;
@@ -240,8 +247,8 @@
   }
 
   #loginInput {
-    background-color: #5fc1c2;
-    font-family: "Gaegu", cursive;
+    background-color: #60AE91;
+    font-family: GangwonEdu_OTFBoldA, cursive;
     color: white;
     font-size: 2rem;
     width: 12rem;
@@ -252,7 +259,7 @@
 
   .signup {
     text-align: center;
-    font-family: "Gaegu", cursive;
+    font-family: GangwonEdu_OTFBoldA, cursive;
     font-size: 2rem;
   }
 
@@ -264,9 +271,9 @@
   .signupbutton {
     text-decoration-line: none;
     color: white;
-    font-family: "Gaegu", cursive;
+    font-family: GangwonEdu_OTFBoldA, cursive;
     font-size: 2rem;
-    background-color: #5fc1c2;
+    background-color: #60AE91;
     padding: 10px;
     border-radius: 10px;
   }
