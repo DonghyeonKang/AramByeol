@@ -87,10 +87,11 @@ try:
             elif i == 6:
                 day = '일'
 
-            courseList = ['A', 'B', 'C', '테이크아웃', 'T/O', '한식', '일품', 'A코스', 'B코스', 'C코스', '베이커리', '죽'
+            courseList = ['A', 'B', 'C', '테이크아웃', 'T/O', '한식', '일품', 'A코스', 'B코스', 'C코스', '베이커리', '죽',
                           'A코스/한식', 'B코스/베이커리', 'C코스/죽', '◆공지◆', 'B코스/일품', '공지']   # 새로운 코스 등장하면 여기에 추가!
             for j in range(len(arg[i])):  # 두번째는 요일별 전체 메뉴
-                print(arg[i][j])
+                print("'" + arg[i][j] + "'", end=" ")
+                print(arg[i][j] in courseList)
                 if(arg[i][j] in courseList):
                     tag = arg[i][j]  # A,B,C,테이크아웃 코스인 경우 tag에 저장하고 건너뛰기
                     continue
@@ -126,7 +127,6 @@ try:
     for i in range(len(menu)):
         temp = menu[i]['menu']
         str.append(temp)
-
 
 finally:
     connection.commit()  # 실행한 문장들 적용
