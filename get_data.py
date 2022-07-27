@@ -9,6 +9,7 @@ display = Display(visible=0, size=(1920, 1080))
 display.start()
 
 chrome_options = webdriver.ChromeOptions()
+chrome_options.add_argument('--incognito')
 chrome_options.add_argument('--headless')
 chrome_options.add_argument('--no-sandbox')
 chrome_options.add_argument("--single-process")
@@ -33,6 +34,8 @@ try:
     dinner = soup.select_one('#detailForm > div > table > tbody > tr:nth-child(3)').text.strip().split('\n')
 except Exception as e:  # 데이터를 가져옴에 있어서 에러가 발생한다면, 에러 내용을 slack으로 전송
     sendData(str(e))
+
+
 
 def first_index_del(arg, repeat=1):   # 첫번째 인덱스를 삭제. ('아침', '점심', '저녁')
         for i in range(repeat):
