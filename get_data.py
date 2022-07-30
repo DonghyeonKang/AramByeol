@@ -3,7 +3,7 @@ from selenium import webdriver  # google webdriver를 사용할거임
 from pyvirtualdisplay import Display # 가상 디스플레이
 import subprocess   # OS 명령어 연동
 import test
-from send_data_to_slack import *
+from send_to_slack import *
 
 display = Display(visible=0, size=(1920, 1080))
 display.start()
@@ -107,4 +107,4 @@ day_lunches = split_menu_data(lunch)
 day_dinners = split_menu_data(dinner)
 
 # slack 으로 데이터 전송
-test.mealDataTest(day_mornings, day_lunches, day_dinners)
+sendData(day_mornings, day_lunches, day_dinners)

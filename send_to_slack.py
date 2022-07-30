@@ -1,7 +1,13 @@
-from send_data_to_slack import *
+import requests
 
-def mealDataTest(day_mornings, day_lunches, day_dinners):
-    sendData("이번주 식단")
+def slackCommit(msg):
+    url='https://hooks.slack.com/services/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'
+    payload={"text": msg}
+    resp = requests.post(url=url, json=payload)
+    return resp
+
+def sendData(day_mornings, day_lunches, day_dinners):
+    sendData("******************* 이번주 식단 *******************")
     text_morning = []
     text_lunch = []
     text_dinner = []
@@ -26,4 +32,6 @@ def mealDataTest(day_mornings, day_lunches, day_dinners):
         text.append(text_lunch[i])
         text.append('저녁')
         text.append(text_dinner[i])
-        print(text[i])
+        for i in text:
+            slackCommit(i)
+        text = []
