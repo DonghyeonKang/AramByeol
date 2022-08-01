@@ -93,18 +93,27 @@ def login():
     return render_template("/member/login.html") # 로그인 페이지로 redirect
 
 # 앱 로그인
+from flask_jwt_extended import *
+from flask_jwt_extended import JWTManager
+
+app.config.update(
+			DEBUG = True,
+			JWT_SECRET_KEY = "adswoern!@#rwlenf@#$13rweT#^DSfsrtwer"
+		)
+jwt = JWTManager(app)
+
 @app.route('/loginbyapp', methods=['POST'])
 def loginByApp():
-    # username userpassword 검증 
-    # 앱에서 Post body에 id, passwd 실어서 보낼텐데 이건 보안화 해야하지 않은가?
-    auth = request.authorization
-    
-    # 토큰 생성
-    if auth and auth.password == 'password':
-        token = jwt.encode({'user': auth.username, 'exp' : datetime.utcnow() + timedelta(minutes=30)}, app.config['SECRET_KEY'])
+    # 클라이언트로부터 요청된 값
+    input_data = request.get_json()
+    user_id = input_data['id']
+    user_pw = input_data['password']
 
-        return jsonify({'token' : token})
-    return make_response('Could not verify!', 401, {'WWW-Authenticate' : 'Basic realm="Login Required""'})
+    if(check_userId(user_id) and check_userPassword(user_id, user_pw)):
+        return jsonify(result = "success",
+                       access_token = create_access_token(identity = user_id, expires_delta = False))
+    else:
+        return jsonify(result = "Invalid Params!")
 
 # 로그아웃 API
 @app.route('/logout', methods=['POST'])
