@@ -12,6 +12,7 @@ import bcrypt   # Password hash encrypt and decrypt
 import pymysql.cursors # python과 mysql(mariadb) 연동
 from datetime import datetime, timedelta # Time generator
 import db_auth # Database login info
+import jwt
 
 
 app = Flask(__name__)
@@ -70,7 +71,7 @@ def register():
     return render_template("/member/register.html") # 회원가입 화면으로 redirect
 
 
-# 로그인 API
+# 웹 로그인
 @app.route('/member/login.html', methods=['GET', 'POST'])
 def login():
     if request.method == "POST": # post 방식으로 받아옴
@@ -90,6 +91,20 @@ def login():
             flash("아이디 또는 비밀번호가 잘못 입력 되었습니다.") # 알림
             return render_template("/member/login.html") # 로그인 창으로 redirect
     return render_template("/member/login.html") # 로그인 페이지로 redirect
+
+# 앱 로그인
+@app.route('/loginbyapp', methods=['POST'])
+def loginByApp():
+    # username userpassword 검증 
+    # 앱에서 Post body에 id, passwd 실어서 보낼텐데 이건 보안화 해야하지 않은가?
+    auth = request.authorization
+    
+    # 토큰 생성
+    if auth and auth.password == 'password':
+        token = jwt.encode({'user': auth.username, 'exp' : datetime.utcnow() + timedelta(minutes=30)}, app.config['SECRET_KEY'])
+
+        return jsonify({'token' : token})
+    return make_response('Could not verify!', 401, {'WWW-Authenticate' : 'Basic realm="Login Required""'})
 
 # 로그아웃 API
 @app.route('/logout', methods=['POST'])
