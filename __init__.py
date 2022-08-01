@@ -12,6 +12,7 @@ import bcrypt   # Password hash encrypt and decrypt
 import pymysql.cursors # python과 mysql(mariadb) 연동
 from datetime import datetime, timedelta # Time generator
 import db_auth # Database login info
+import jwt
 
 
 app = Flask(__name__)
@@ -70,7 +71,7 @@ def register():
     return render_template("/member/register.html") # 회원가입 화면으로 redirect
 
 
-# 로그인 API
+# 웹 로그인
 @app.route('/member/login.html', methods=['GET', 'POST'])
 def login():
     if request.method == "POST": # post 방식으로 받아옴
@@ -90,6 +91,29 @@ def login():
             flash("아이디 또는 비밀번호가 잘못 입력 되었습니다.") # 알림
             return render_template("/member/login.html") # 로그인 창으로 redirect
     return render_template("/member/login.html") # 로그인 페이지로 redirect
+
+# 앱 로그인
+from flask_jwt_extended import *
+from flask_jwt_extended import JWTManager
+
+app.config.update(
+			DEBUG = True,
+			JWT_SECRET_KEY = "adswoern!@#rwlenf@#$13rweT#^DSfsrtwer"
+		)
+jwt = JWTManager(app)
+
+@app.route('/loginbyapp', methods=['POST'])
+def loginByApp():
+    # 클라이언트로부터 요청된 값
+    input_data = request.get_json()
+    user_id = input_data['id']
+    user_pw = input_data['password']
+
+    if(check_userId(user_id) and check_userPassword(user_id, user_pw)):
+        return jsonify(result = "success",
+                       access_token = create_access_token(identity = user_id, expires_delta = False))
+    else:
+        return jsonify(result = "Invalid Params!")
 
 # 로그아웃 API
 @app.route('/logout', methods=['POST'])
