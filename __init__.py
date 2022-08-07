@@ -304,6 +304,25 @@ def setCookie():
     resp.set_cookie("userid", user)
     return resp
 
+#TODO posting 시 사진만 넘어오는 게 아니라 많은 정보가 넘어옴
+#  posting 모듈을 만들어서 그곳에 데이터를 넘겨줘야할 듯 싱글톤 객체를 생성하는 방식으로 구현해보자
+@app.route('/uploader', methods=['POST'])
+def uploaderFile():
+    # token_receive = request.cookies.get('mytoken')
+    # user = db.citista_users.find_one({'token': token_receive})
+    # user_id = user['username']
+    user_id = 'donghyeon'
+    date = datetime.now()
+
+    if request.method =='POST':
+        f = request.files['image']
+        save_to = f'static/images/aramMenu/{user_id}{date}.png'
+        # save_to = f'static/img/profiles/{user_id}'
+        f.save(save_to)
+        #TODO DB에도 save_to 넣어주기
+        return f.filename
+
+
 if __name__ == '__main__':
     app.run('0.0.0.0',port=5000,debug=False, threaded=True)
 

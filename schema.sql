@@ -65,16 +65,16 @@ CREATE TABLE `menudata`(
     `reviewcount` INT(10)
 );
 
-ALTER TABLE menudata DROP PRIMARY KEY;
-ALTER TABLE menudata MODIFY COLUMN id INT(10) NOT NULL;
-ALTER TABLE menudata DROP PRIMARY KEY;
-ALTER TABLE menudata CHANGE COLUMN id menu_id INT(10) NOT NULL AUTO_INCREMENT PRIMARY KEY;
-
 CREATE TABLE `users` (
     `user_id` varchar(320) NOT NULL UNIQUE PRIMARY KEY,
     `user_pw` TEXT NOT NULL,
     `nickname` TEXT NOT NULL
 );
+
+ALTER TABLE menudata DROP PRIMARY KEY;
+ALTER TABLE menudata MODIFY COLUMN id INT(10) NOT NULL;
+ALTER TABLE menudata DROP PRIMARY KEY;
+ALTER TABLE menudata CHANGE COLUMN id menu_id INT(10) NOT NULL AUTO_INCREMENT PRIMARY KEY;
 
 ALTER TABLE users MODIFY COLUMN user_id VARCHAR(320);
 ALTER TABLE users MODIFY COLUMN id INT(10) NOT NULL;
@@ -83,6 +83,8 @@ ALTER TABLE users ADD PRIMARY KEY (user_id);
 ALTER TABLE users DROP COLUMN id;
 ALTER TABLE users ADD COLUMN `nickname` TEXT NOT NULL;
 
+DROP TABLE review;
+ 
 CREATE TABLE `review` (
     `user_id` varchar(320) NOT NULL,
     `menu_id` INT(10) NOT NULL,
@@ -92,19 +94,17 @@ CREATE TABLE `review` (
     FOREIGN KEY (`menu_id` ) REFERENCES `menudata`(`menu_id`)
 );
 
-DROP TABLE review;
 -------------------------------
 ---- 추가해야할 테이블
 CREATE TABLE `post` (
-    `post_id` INT(10) PRIMARY KEY,
+    `post_id` INT(10) PRIMARY KEY AUTO_INCREMENT,
     `user_id` VARCHAR(320) NOT NULL,
     `title` TEXT NOT NULL,
-    `contents` TEXT NOT NULL,
+    `content` TEXT NOT NULL,
     `date` DATE NOT NULL,
     `category` TEXT NOT NULL,
     `score` INT NOT NULL,
     `meal_time` TEXT NOT NULL,
-    `photo` TEXT,
+    `image` TEXT,
     FOREIGN KEY (`user_id`) REFERENCES `users`(`user_id`)
 );
-
