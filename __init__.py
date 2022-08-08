@@ -306,22 +306,37 @@ def setCookie():
 
 #TODO posting 시 사진만 넘어오는 게 아니라 많은 정보가 넘어옴
 #  posting 모듈을 만들어서 그곳에 데이터를 넘겨줘야할 듯 싱글톤 객체를 생성하는 방식으로 구현해보자
-@app.route('/uploader', methods=['POST'])
-def uploaderFile():
+import posting_service
+
+@app.route('/posting', methods=['POST'])
+def posting():
+    # 토큰 존재 여부 확인, 만약 존재하면 토큰에서 user_id 로 
     # token_receive = request.cookies.get('mytoken')
     # user = db.citista_users.find_one({'token': token_receive})
     # user_id = user['username']
-    user_id = 'donghyeon'
-    date = datetime.now()
+    user_id = 'qwe123'
+    f = request.files['image']
+    reqData = request.form
 
-    if request.method =='POST':
-        f = request.files['image']
-        save_to = f'static/images/aramMenu/{user_id}{date}.png'
-        # save_to = f'static/img/profiles/{user_id}'
-        f.save(save_to)
-        #TODO DB에도 save_to 넣어주기
-        return f.filename
+    # 객체 생성 이미지 저장 및 저장 path 생성   
+    postingService = posting_service.postingService()
+    path = postingService.saveImage(f, user_id)
 
+    # 저장할 data 생성
+    now = datetime.now()
+    data = []
+    data.append(user_id)
+    data.append(reqData['title'])    
+    data.append(reqData['content'])    
+    data.append(now.strftime('%Y-%m-%d %H:%M:%S'))    
+    data.append(reqData['category'])    
+    data.append(reqData['score'])    
+    data.append(reqData['meal_time'])    
+    data.append(path)
+
+    # 저장
+    result = postingService.insertData(path, data)
+    return jsonify({'result': 'success'}) # success or fail
 
 if __name__ == '__main__':
     app.run('0.0.0.0',port=5000,debug=False, threaded=True)
