@@ -7,7 +7,7 @@ def slackCommit(msg):
     return resp
 
 def sendData(day_mornings, day_lunches, day_dinners):
-    sendData("******************* 이번주 식단 *******************")
+    slackCommit("******************* 이번주 식단 *******************")
     text_morning = []
     text_lunch = []
     text_dinner = []
