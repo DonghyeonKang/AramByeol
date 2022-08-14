@@ -225,6 +225,15 @@ def week(): # 한 주의 메뉴를 리턴.
     connection.close()
     return jsonify({'days':days, 'morning':morning, 'lunch':lunch, 'dinner':dinner}) # js와 매칭
 
+import src.menu.menu_service as menu_service
+
+# 메뉴 API
+@app.route('/menu', methods=['GET'])
+def get_menu():
+    menuService = menu_service.MenuService()
+    data = menuService.selectMenuList()
+    return data
+
 # 별점주기 API
 @app.route('/api/score', methods=['POST'])
 def save_score():
@@ -306,7 +315,7 @@ def setCookie():
 
 #TODO posting 시 사진만 넘어오는 게 아니라 많은 정보가 넘어옴
 #  posting 모듈을 만들어서 그곳에 데이터를 넘겨줘야할 듯 싱글톤 객체를 생성하는 방식으로 구현해보자
-import posting_service
+import src.posting.posting_service as posting_service
 
 @app.route('/posting', methods=['POST'])
 def posting():
@@ -315,11 +324,15 @@ def posting():
     # user = db.citista_users.find_one({'token': token_receive})
     # user_id = user['username']
     user_id = 'qwe123'
-    f = request.files['image']
+    try:
+        f = request.files['image']
+        print(f)
+    except Exception as e:  #TODO image 가 없으면 400 에러 나는데, 예외 처리 해줘야함 files에 데이터 존재하는 지 확인 하는 메서드 찾아봐야할 듯
+        print(e)
     reqData = request.form
 
     # 객체 생성 이미지 저장 및 저장 path 생성   
-    postingService = posting_service.postingService()
+    postingService = posting_service.PostingService()
     path = postingService.saveImage(f, user_id)
 
     # 저장할 data 생성
@@ -330,13 +343,13 @@ def posting():
     data.append(reqData['content'])    
     data.append(now.strftime('%Y-%m-%d %H:%M:%S'))    
     data.append(reqData['category'])    
-    data.append(reqData['score'])    
+    data.append(int(reqData['score']))    
     data.append(reqData['meal_time'])    
     data.append(path)
 
     # 저장
-    result = postingService.insertData(path, data)
-    return jsonify({'result': 'success'}) # success or fail
+    result = postingService.insertData(data)
+    return jsonify({'result': result}) # success or fail
 
 if __name__ == '__main__':
     app.run('0.0.0.0',port=5000,debug=False, threaded=True)
