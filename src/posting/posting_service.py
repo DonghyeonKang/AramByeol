@@ -13,7 +13,7 @@ class PostingService:
         return filePath
 
     def insertData(self, data):
-        # edit data like [user_id, title, content, date, category, score, meal_time, image]
+        # edit data like [user_id, title, content, date, score, meal_time, image]
         try:
             res = self.postingRepo.insertPosting(data)
             return res
