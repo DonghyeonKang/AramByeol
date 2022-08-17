@@ -69,35 +69,77 @@ class MenuRepository:
         finally:
             self.closeConnection()
 
-    def selectMenuReview(self):
+    #TODO TESTING
+    def selectMenuReview(self, menu_id):
+        self.getConnection()
+        try:
+            self.cursor = self.connection.cursor()
+            self.cursor.execute(
+                "SELECT score FROM review WHERE menu_id=%s", menu_id
+            )
+            score = self.cursor.fetchall()
+            return score
+        except Exception as e:
+            print(e)
+            return "Error: Database Select Error"
+        finally:
+            self.closeConnection()
+
+    #TODO TESTING
+    def updateMenuReview(self, menu_id, score, lastScore):
         self.getConnection()
 
         try:
-            pass
-        except:
-            pass
+            self.cursor = self.connection.cursor()
+            # score 를 가져온다. 
+            self.cursor.execute(
+                "SELECT score, review_count FROM review WHERE menu_id=%s", menu_id
+            )
+            # TODO 여기 fetchall 로 가져온 데이터 받는 거 수정 필요
+            scoreInDb, review_count = self.cursor.fetchall()
+
+            # lastScore를 뺀 다음 score 를 더한다.
+            arr = []
+            arr.append(scoreInDb - lastScore + score)
+            arr.append(review_count)
+            arr.append(menu_id)
+            self.cursor.execute(
+                "UPDATE review SET score=%s, review_count=%s WHERE menu_id=%s", arr
+            )
+            # TODO 리턴 값 어떻게 처리할 건지
+            return "SUCCESS"
+        except Exception as e:
+            print(e)
+            return "Error: Database UPDATE Error"
         finally:
             self.closeConnection()
-        pass
 
-    def updateMenuReview(self):
+    #TODO TESTING
+    def insertMenuReview(self, menu_id, score):
         self.getConnection()
 
         try:
-            pass
-        except:
-            pass
+            # 리뷰 카운트를 가져온다. 
+            self.cursor = self.connection.cursor()
+
+
+            self.cursor.execute(
+                "SELECT score, review_count FROM review WHERE menu_id=%s", menu_id
+            )
+            # TODO 여기 fetchall 로 가져온 데이터 받는 거 수정 필요
+            scoreInDb, review_count =  self.cursor.fetchall()
+            # 리뷰 카운트를 1올려 score와 함께 저장한다. 
+            arr = []
+            arr.append(score + scoreInDb)
+            arr.append(review_count + 1)
+            arr.append(menu_id)
+            self.cursor.execute(
+                "UPDATE review SET score=%s, review_count=%s WHERE menu_id=%s", arr
+            )
+            
+            return "success"
+        except Exception as e:
+            print(e)
+            return "Error: Database INSERT Error"
         finally:
             self.closeConnection()
-        pass
-
-    def insertMenuReview(self):
-        self.getConnection()
-
-        try:
-            pass
-        except:
-            pass
-        finally:
-            self.closeConnection()
-        pass

@@ -1,3 +1,4 @@
+from ..auth.auth_repository import MenuRepository
 import src.menu.menu_repository as menu_repository
 import json
 
@@ -23,5 +24,14 @@ class MenuService:
             dictData[i] = tmpDict # 하나로 합친 tmpDict 를 요일 안에 value로 넣음
         return json.dumps(dictData, ensure_ascii=False)
 
-    def selectMenuReview(menu_id):
-        pass
+    def selectMenuReview(self, menu_id):
+        data = self.menuRepository.selectMenuReview(menu_id)
+        return data
+    
+    def insertMenuReview(self, menu_id, score):
+        data = self.menuRepository.insertMenuReview(menu_id, score)
+        return data
+
+    def updateMenuReview(self, menu_id, score, lastScore):
+        data = self.menuRepository.insertMenuReview(menu_id, score, lastScore)
+        return data

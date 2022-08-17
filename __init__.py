@@ -56,6 +56,7 @@ def home():
 #    return render_template("/error/index.html")
     return render_template("index.html")
 
+#--------------------------------------- 회원가입, 로그인 ---------------------------------------#
 # 회원가입 API
 @app.route('/member/register.html', methods=['GET', 'POST'])
 def register():
@@ -102,7 +103,7 @@ app.config.update(
 		)
 jwt = JWTManager(app)
 
-@app.route('/loginbyapp', methods=['POST'])
+@app.route('/login/app', methods=['POST'])
 def loginByApp():
     # 클라이언트로부터 요청된 값
     input_data = request.get_json()
@@ -114,6 +115,25 @@ def loginByApp():
                        access_token = create_access_token(identity = user_id, expires_delta = False))
     else:
         return jsonify(result = "Invalid Params!")
+
+def createAccessToken():
+    # create_access_token
+    # return token
+    pass
+
+def createRefreshToken():
+    # 생성 후 데이터베이스 저장
+    # create_refresh_token
+    # userId, refreshToken
+    # return token
+    pass
+
+def verifyToken():
+    # decode_token() 으로 access token 유효성 체크하고 refresh token 유효성을 체크한다.
+    # access token, refresh token 모두 만료되면 재로그인 하도록 함 그러면 어떤식으로 클라이언트로 넘겨줘야하나
+    # access token 유효 통과
+    # access token 무효 refresh token 유효 access token 재발급. 여기서 재발급은 그냥 다시 생성하는 것을 의미하는 걸까? 아마도 그런 것 같다.
+    pass
 
 # 로그아웃 API
 @app.route('/logout', methods=['POST'])
@@ -128,7 +148,7 @@ def session_check():
         return '1'
     return '0'
 
-# 메뉴 API
+#--------------------------------------- 메뉴, 리뷰 ---------------------------------------#
 @app.route('/api/list', methods=['GET'])
 def week(): # 한 주의 메뉴를 리턴.
     connection = db_connection()
@@ -227,12 +247,39 @@ def week(): # 한 주의 메뉴를 리턴.
 
 import src.menu.menu_service as menu_service
 
-# 메뉴 API
+# 웹 메뉴 API
 @app.route('/menu', methods=['GET'])
 def get_menu():
     menuService = menu_service.MenuService()
     data = menuService.selectMenuList()
     return data
+
+# 메뉴 별점 가져오기
+@app.route('menu/review', methods=['GET'])
+def select_review():
+    menuService = menu_service.MenuService()
+    menu_id = request.form['menu_id']
+    resData = menuService.selectMenuReview(menu_id)
+    return resData
+
+# 메뉴 별점 등록
+@app.route('menu/review', methods=['POST'])
+def insert_review():
+    menuService = menu_service.MenuService()
+    menu_id = request.form['menu_id']
+    score =  request.form['score']
+    resData = menuService.insertMenuReview(menu_id, score)
+    return resData
+
+# 메뉴 별점 변경
+@app.route('menu/review', methods=['PUT'])
+def update_review():
+    menuService = menu_service.MenuService()
+    menu_id = request.form['menu_id']
+    score =  request.form['score']
+    lastScore =  request.form['lastScore']
+    resData = menuService.updateMenuReview(menu_id, score, lastScore)
+    return resData
 
 # 별점주기 API
 @app.route('/api/score', methods=['POST'])
@@ -287,6 +334,7 @@ def get_score():
     connection.close()
     return jsonify({'score':score})
 
+#--------------------------------------- 조회수 ---------------------------------------#
 @app.route('/api/views', methods=['GET'])
 def getViews():
     connection = db_connection()
@@ -313,12 +361,21 @@ def setCookie():
     resp.set_cookie("userid", user)
     return resp
 
+#--------------------------------------- 포스팅 ---------------------------------------#
 #TODO posting 시 사진만 넘어오는 게 아니라 많은 정보가 넘어옴
 #  posting 모듈을 만들어서 그곳에 데이터를 넘겨줘야할 듯 싱글톤 객체를 생성하는 방식으로 구현해보자
 import src.posting.posting_service as posting_service
 
-@app.route('/posting', methods=['POST'])
-def posting():
+@app.route('/posting', methods=['GET']) # 출력
+def getPosting():
+    postingService = posting_service.PostingService()
+
+    reqData = request.form
+    postId = reqData['postId']
+    return postingService.selectData(postId)
+
+@app.route('/posting', methods=['POST']) # 삽입
+def insertPosting():
     # 토큰 존재 여부 확인, 만약 존재하면 토큰에서 user_id 로 
     # token_receive = request.cookies.get('mytoken')
     # user = db.citista_users.find_one({'token': token_receive})
@@ -341,8 +398,7 @@ def posting():
     data.append(user_id)
     data.append(reqData['title'])    
     data.append(reqData['content'])    
-    data.append(now.strftime('%Y-%m-%d %H:%M:%S'))    
-    data.append(reqData['category'])    
+    data.append(now.strftime('%Y-%m-%d %H:%M:%S'))
     data.append(int(reqData['score']))    
     data.append(reqData['meal_time'])    
     data.append(path)
@@ -350,6 +406,15 @@ def posting():
     # 저장
     result = postingService.insertData(data)
     return jsonify({'result': result}) # success or fail
+
+@app.route('/posting', methods=['PUT']) # 수정
+def updatePosting():
+    pass
+
+@app.route('/posting', methods=['DELETE'])  # 삭제
+def deletePosting():
+    pass
+
 
 if __name__ == '__main__':
     app.run('0.0.0.0',port=5000,debug=False, threaded=True)
