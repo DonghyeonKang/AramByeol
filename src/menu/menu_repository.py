@@ -49,15 +49,15 @@ class MenuRepository:
         try:
             self.cursor = self.connection.cursor()
             self.cursor.execute(
-                "SELECT course, menu FROM morning WHERE day=%s", day
+                "SELECT menudata.menu_id, menu, score, course FROM menudata, morning, review WHERE menudata.menu_id = morning.menu_id AND morning.menu_id = review.menu_id AND day=%s", day
             )
             data.append(self.cursor.fetchall())
             self.cursor.execute(
-                "SELECT course, menu FROM lunch WHERE day=%s", day
+                "SELECT menudata.menu_id, menu, score, course FROM menudata, lunch, review WHERE menudata.menu_id = lunch.menu_id AND lunch.menu_id = review.menu_id AND day=%s", day
             )
             data.append(self.cursor.fetchall())
             self.cursor.execute(
-                "SELECT course, menu FROM dinner WHERE day=%s", day
+                "SELECT menudata.menu_id, menu, score, course FROM menudata, dinner, review WHERE menudata.menu_id = dinner.menu_id AND dinner.menu_id = review.menu_id AND day=%s", day
             )
             data.append(self.cursor.fetchall())
 
