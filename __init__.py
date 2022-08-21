@@ -269,7 +269,7 @@ def get_menu():
     data = menuService.selectMenuList()
     return data
 
-# 메뉴 별점 가져오기
+# 앱 메뉴 별점 가져오기
 @app.route('/menu/review', methods=['GET'])
 def select_review():
     menuService = menu_service.MenuService()
@@ -277,23 +277,13 @@ def select_review():
     resData = menuService.selectMenuReview(menu_id)
     return resData
 
-# 메뉴 별점 등록
+# 앱 메뉴 별점 등록
 @app.route('/menu/review', methods=['POST'])
-def insert_review():
-    menuService = menu_service.MenuService()
-    menu_id = request.form['menu_id']
-    score =  request.form['score']
-    resData = menuService.insertMenuReview(menu_id, score)
-    return resData
-
-# 메뉴 별점 변경
-@app.route('/menu/review', methods=['PUT'])
 def update_review():
     menuService = menu_service.MenuService()
-    menu_id = request.form['menu_id']
-    score =  request.form['score']
-    lastScore =  request.form['lastScore']
-    resData = menuService.updateMenuReview(menu_id, score, lastScore)
+    params = request.get_json()
+    reviewData = params['reviewData']
+    resData = menuService.updateMenuReview(reviewData)
     return resData
 
 # 별점주기 API

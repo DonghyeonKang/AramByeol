@@ -61,8 +61,8 @@ CREATE TABLE `morning`(
 CREATE TABLE `menudata`(
     `menu_id` INT(10) NOT NULL AUTO_INCREMENT PRIMARY KEY,
     `menu` varchar(50) UNIQUE,
-    `score` INT(10),
-    `reviewcount` INT(10)
+    `score`  FLOAT NOT NULL DEFAULT 0,
+    `reviewcount` INT(10) NOT NULL DEFAULT 0
 );
 
 CREATE TABLE `users` (
@@ -88,8 +88,7 @@ DROP TABLE review;
 CREATE TABLE `review` (
     `user_id` varchar(320) NOT NULL,
     `menu_id` INT(10) NOT NULL UNIQUE,
-    `score` INT(10) NOT NULL DEFAULT 0,
-    `review_count` INT(10) NOT NULL DEFAULT 0,
+    `score`  FLOAT NOT NULL DEFAULT 0,
     FOREIGN KEY (`user_id` ) REFERENCES `users`(`user_id`),
     FOREIGN KEY (`menu_id` ) REFERENCES `menudata`(`menu_id`)
 );
