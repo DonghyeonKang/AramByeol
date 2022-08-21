@@ -1,24 +1,5 @@
 ----------------------------
 ---- 이상 없는 테이블
-CREATE TABLE `dinner`(
-    `day` varchar(2) NOT NULL,
-    `cource` varchar(50),
-    `menu` varchar(50) NOT NULL
-);
-
-
-CREATE TABLE `lunch`(
-    `day` varchar(2) NOT NULL,
-    `cource` varchar(50),
-    `menu` varchar(50) NOT NULL
-);
-
-CREATE TABLE `morning`(
-    `day` varchar(2) NOT NULL,
-    `cource` varchar(50),
-    `menu` varchar(50) NOT NULL
-);
-
 CREATE TABLE `week`(
     `day` varchar(2) NOT NULL PRIMARY KEY,
     `date` varchar(11) NOT NULL
@@ -57,12 +38,31 @@ CREATE TABLE `review` (
     `score` INT(10) NOT NULL
 );
 
+CREATE TABLE `dinner`(
+    `day` varchar(2) NOT NULL,
+    `cource` varchar(50),
+    `menu` varchar(50) NOT NULL
+);
+
+
+CREATE TABLE `lunch`(
+    `day` varchar(2) NOT NULL,
+    `cource` varchar(50),
+    `menu` varchar(50) NOT NULL
+);
+
+CREATE TABLE `morning`(
+    `day` varchar(2) NOT NULL,
+    `cource` varchar(50),
+    `menu` varchar(50) NOT NULL
+);
+
 ---- 아래로 변경
 CREATE TABLE `menudata`(
     `menu_id` INT(10) NOT NULL AUTO_INCREMENT PRIMARY KEY,
     `menu` varchar(50) UNIQUE,
-    `score` INT(10),
-    `reviewcount` INT(10)
+    `score`  FLOAT NOT NULL DEFAULT 0,
+    `reviewcount` INT(10) NOT NULL DEFAULT 0
 );
 
 CREATE TABLE `users` (
@@ -87,10 +87,33 @@ DROP TABLE review;
  
 CREATE TABLE `review` (
     `user_id` varchar(320) NOT NULL,
-    `menu_id` INT(10) NOT NULL,
-    `score` INT NOT NULL,
-    `date` DATE NOT NULL,
+    `menu_id` INT(10) NOT NULL UNIQUE,
+    `score`  FLOAT NOT NULL DEFAULT 0,
     FOREIGN KEY (`user_id` ) REFERENCES `users`(`user_id`),
+    FOREIGN KEY (`menu_id` ) REFERENCES `menudata`(`menu_id`)
+);
+
+DROP TABLE dinner;
+CREATE TABLE `dinner`(
+    `day` varchar(2) NOT NULL,
+    `cource` varchar(50),
+    `menu_id` INT(10) NOT NULL,
+    FOREIGN KEY (`menu_id` ) REFERENCES `menudata`(`menu_id`)
+);
+
+DROP TABLE lunch;
+CREATE TABLE `lunch`(
+    `day` varchar(2) NOT NULL,
+    `cource` varchar(50),
+    `menu_id` INT(10) NOT NULL,
+    FOREIGN KEY (`menu_id` ) REFERENCES `menudata`(`menu_id`)
+);
+
+DROP TABLE morning;
+CREATE TABLE `morning`(
+    `day` varchar(2) NOT NULL,
+    `cource` varchar(50),
+    `menu_id` INT(10) NOT NULL,
     FOREIGN KEY (`menu_id` ) REFERENCES `menudata`(`menu_id`)
 );
 
@@ -108,3 +131,13 @@ CREATE TABLE `post` (
     `image` TEXT,
     FOREIGN KEY (`user_id`) REFERENCES `users`(`user_id`)
 );
+
+CREATE TABLE `token` (
+    `refresh_token` TEXT,
+    `user_id` VARCHAR(320) NOT NULL,
+    FOREIGN KEY (`user_id`) REFERENCES `users`(`user_id`)
+);
+
+SELECT menudata.menu_id, menu, score, course
+FROM menudata, morning, review
+WHERE menudata.menu_id = morning.menu_id AND morning.menu_id = review.menu_id AND day='월';

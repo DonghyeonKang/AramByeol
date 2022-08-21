@@ -95,6 +95,9 @@ def login():
 
 # 앱 로그인
 from flask_jwt_extended import *
+from flask_jwt_extended import create_access_token
+from flask_jwt_extended import create_refresh_token
+from flask_jwt_extended import decode_token
 from flask_jwt_extended import JWTManager
 
 app.config.update(
@@ -112,27 +115,38 @@ def loginByApp():
 
     if(check_userId(user_id) and check_userPassword(user_id, user_pw)):
         return jsonify(result = "success",
-                       access_token = create_access_token(identity = user_id, expires_delta = False))
+                       access_token = createAccessToken(user_id),
+                       refresh_token = createRefreshToken(user_id))
     else:
         return jsonify(result = "Invalid Params!")
 
-def createAccessToken():
-    # create_access_token
-    # return token
-    pass
+def createAccessToken(user_id):
+    token = create_access_token(identity = user_id, expires_delta = datetime.timedelta(minutes=10))
+    return token
 
-def createRefreshToken():
-    # 생성 후 데이터베이스 저장
-    # create_refresh_token
-    # userId, refreshToken
-    # return token
-    pass
+def createRefreshToken(user_id):
+    token = create_refresh_token(identity = user_id, expires_delta = datetime.timedelta(days=30))
+    connection = db_connection()
+    cursor = connection.cursor()
+    arr = [token, user_id]
+    cursor.execute("INSERT INTO token(refresh_token, user_id) VALUES (%s, %s)", arr)
+    return token
 
-def verifyToken():
+def verifyToken(user_id, accessToken, refreshToken):
     # decode_token() 으로 access token 유효성 체크하고 refresh token 유효성을 체크한다.
     # access token, refresh token 모두 만료되면 재로그인 하도록 함 그러면 어떤식으로 클라이언트로 넘겨줘야하나
     # access token 유효 통과
     # access token 무효 refresh token 유효 access token 재발급. 여기서 재발급은 그냥 다시 생성하는 것을 의미하는 걸까? 아마도 그런 것 같다.
+
+    # TODO 에러 어떻게 나는 지 확인. 
+    decodedAccessToken = decode_token(accessToken)
+    # 만약 만료 되었다면 refreshToken을 db에서 찾는다. 
+
+    # 만약 있는데 만료되지 않았다면 , accessToken 과 refreshToken을 재발급 받는다. 만료 되었따면 재로그인 절차를 진행한다. 
+    createAccessToken(user_id)
+    createRefreshToken(user_id)
+    decodedRefreshToken = decode_token(refreshToken)
+    # 없다면 토큰이 탈취된 것으로 판단하고 재로그인 절차를 진행한다. 
     pass
 
 # 로그아웃 API
@@ -243,6 +257,7 @@ def week(): # 한 주의 메뉴를 리턴.
                 temp.append(test[0]['score'])
                 dinner.append(temp)
     connection.close()
+    print(morning)
     return jsonify({'days':days, 'morning':morning, 'lunch':lunch, 'dinner':dinner}) # js와 매칭
 
 import src.menu.menu_service as menu_service
@@ -254,31 +269,21 @@ def get_menu():
     data = menuService.selectMenuList()
     return data
 
-# 메뉴 별점 가져오기
-@app.route('menu/review', methods=['GET'])
+# 앱 메뉴 별점 가져오기
+@app.route('/menu/review', methods=['GET'])
 def select_review():
     menuService = menu_service.MenuService()
     menu_id = request.form['menu_id']
     resData = menuService.selectMenuReview(menu_id)
     return resData
 
-# 메뉴 별점 등록
-@app.route('menu/review', methods=['POST'])
-def insert_review():
-    menuService = menu_service.MenuService()
-    menu_id = request.form['menu_id']
-    score =  request.form['score']
-    resData = menuService.insertMenuReview(menu_id, score)
-    return resData
-
-# 메뉴 별점 변경
-@app.route('menu/review', methods=['PUT'])
+# 앱 메뉴 별점 등록
+@app.route('/menu/review', methods=['POST'])
 def update_review():
     menuService = menu_service.MenuService()
-    menu_id = request.form['menu_id']
-    score =  request.form['score']
-    lastScore =  request.form['lastScore']
-    resData = menuService.updateMenuReview(menu_id, score, lastScore)
+    params = request.get_json()
+    reviewData = params['reviewData']
+    resData = menuService.updateMenuReview(reviewData)
     return resData
 
 # 별점주기 API
@@ -417,5 +422,4 @@ def deletePosting():
 
 
 if __name__ == '__main__':
-    app.run('0.0.0.0',port=5000,debug=False, threaded=True)
-
+    app.run('0.0.0.0',port=5000,debug=True, threaded=True)

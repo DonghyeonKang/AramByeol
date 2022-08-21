@@ -14,6 +14,7 @@ class MenuService:
         for i in week: # week
             tmpDict = {}
             dayMenuData = self.menuRepository.selectMenuByDay(i)
+            print(dayMenuData)
             for num, j in enumerate(dayMenuData): # day, 아침 점심 저녁을 하나로 합침
                 if num == 0:
                     tmpDict["morning"] = j
@@ -27,11 +28,10 @@ class MenuService:
     def selectMenuReview(self, menu_id):
         data = self.menuRepository.selectMenuReview(menu_id)
         return data
-    
-    def insertMenuReview(self, menu_id, score):
-        data = self.menuRepository.insertMenuReview(menu_id, score)
-        return data
 
-    def updateMenuReview(self, menu_id, score, lastScore):
-        data = self.menuRepository.insertMenuReview(menu_id, score, lastScore)
-        return data
+    def updateMenuReview(self, reviewData):
+        data = []
+        for i in reviewData:
+            arr = self.menuRepository.updateMenuReview(i['menu_id'], i['score'], i['user_id'])
+            data.append(arr[0])
+        return json.dumps(data, ensure_ascii=False)
