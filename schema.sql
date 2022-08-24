@@ -89,7 +89,7 @@ CREATE TABLE `review` (
     `user_id` varchar(320) NOT NULL,
     `menu_id` INT(10) NOT NULL UNIQUE,
     `score`  FLOAT NOT NULL DEFAULT 0,
-    FOREIGN KEY (`user_id` ) REFERENCES `users`(`user_id`),
+    FOREIGN KEY (`user_id` ) REFERENCES `users`(`user_id`) ON DELETE CASCADE,
     FOREIGN KEY (`menu_id` ) REFERENCES `menudata`(`menu_id`)
 );
 
@@ -129,13 +129,13 @@ CREATE TABLE `post` (
     `score` INT NOT NULL,
     `meal_time` TEXT NOT NULL,
     `image` TEXT,
-    FOREIGN KEY (`user_id`) REFERENCES `users`(`user_id`)
+    FOREIGN KEY (`user_id`) REFERENCES `users`(`user_id`) ON DELETE CASCADE
 );
 
 CREATE TABLE `token` (
     `refresh_token` TEXT,
     `user_id` VARCHAR(320) NOT NULL,
-    FOREIGN KEY (`user_id`) REFERENCES `users`(`user_id`)
+    FOREIGN KEY (`user_id`) REFERENCES `users`(`user_id`) ON DELETE CASCADE
 );
 
 SELECT menudata.menu_id, menu, score, course

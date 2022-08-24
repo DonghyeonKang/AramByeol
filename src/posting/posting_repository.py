@@ -23,7 +23,7 @@ class PostingRepository:
         try:
             self.cursor = self.connection.cursor()
             self.cursor.execute(
-                "INSERT INTO post(user_id, title, content, date, category, score, meal_time, image) values(%s, %s, %s, %s, %s, %s, %s, %s)", data
+                "INSERT INTO post(user_id, title, content, date, score, meal_time, image) values(%s, %s, %s, %s, %s, %s, %s)", data
             )
     
             self.connection.commit()  # 실행한 문장들 적용
