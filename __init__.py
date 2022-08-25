@@ -205,6 +205,20 @@ def renewToken():
     result = authService.renewToken(user_id, reqRefreshToken)
     return result
 
+from src.mail import mail_service
+
+# 이메일 인증
+@app.route('/member/mail', methods=['POST'])
+def sendMail():
+    input_data = request.get_json()
+    receiver = input_data['mail']
+    print(receiver)
+    print(receiver)
+    print(receiver)
+    mailService = mail_service.MailService(app)
+    result = mailService.send_email(receiver)
+    return result
+
 # 로그아웃 API
 @app.route('/logout', methods=['POST'])
 def logout():
