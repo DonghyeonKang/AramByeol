@@ -8,7 +8,7 @@ day = days
 day_morning = day_mornings
 day_lunch = day_lunches
 day_dinner = day_dinners
-
+ 
 # Connect to the DB
 login = db_auth.db_login
 connection = pymysql.connect(host=login['host'],
@@ -35,8 +35,10 @@ try:
                 "CREATE TABLE users(id INT(10) NOT NULL PRIMARY KEY AUTO_INCREMENT, user_id VARCHAR(50) NOT NULL, user_pw TEXT NOT NULL)")
 
     def week_update():
+        print(day)
         for i in range(0, len(day), 2):
             arr = (day[i], day[i+1])
+            print(arr)
             cursor.execute("INSERT INTO week (day, date) VALUES(%s, %s)", arr)
 
     def db_update():  # 이미 있는 테이블이면 지우고 다시 만들어라!

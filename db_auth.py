@@ -1,7 +1,7 @@
 db_login = {
-    'host':'localhost',
-    'user':'opc',
-    'password':'111111',
+    'host':'arambyeol-operation-mysql',
+    'user':'aram',
+    'password':'aramworrior',
     'db':'arambyeol',
     'charset':'utf8',
     'port':3306
