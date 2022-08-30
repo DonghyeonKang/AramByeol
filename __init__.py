@@ -213,8 +213,6 @@ def sendMail():
     input_data = request.get_json()
     receiver = input_data['mail']
     print(receiver)
-    print(receiver)
-    print(receiver)
     mailService = mail_service.MailService(app)
     result = mailService.send_email(receiver)
     return result
