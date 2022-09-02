@@ -39,7 +39,8 @@ CREATE TABLE `users` (
     `id` INT AUTO_INCREMENT PRIMARY KEY,
     `user_id` varchar(320) NOT NULL,
     `user_pw` TEXT NOT NULL,
-    `nickname` TEXT NOT NULL
+    `nickname` TEXT NOT NULL,
+    `verifing` INT DEFAULT 0
 );
  
 CREATE TABLE `review` (
@@ -66,4 +67,9 @@ CREATE TABLE `post` (
 CREATE TABLE `token` (
     `refresh_token` TEXT,
     `user_id` VARCHAR(320) NOT NULL
+);
+
+CREATE TABLE `mail` (
+    `user_id` VARCHAR(320) NOT NULL,
+    `token` TEXT NOT NULL
 );

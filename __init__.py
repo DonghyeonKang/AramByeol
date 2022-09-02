@@ -110,6 +110,19 @@ def login():
             return render_template("/member/login.html") # 로그인 창으로 redirect
     return render_template("/member/login.html") # 로그인 페이지로 redirect
 
+# 웹 로그아웃 API
+@app.route('/logout', methods=['POST'])
+def logout():
+    session.pop('username', None) # 서버에 있는 'username'세션 제거
+    return "1"
+
+# 세션 확인 API
+@app.route('/api/session_check', methods=['POST'])
+def session_check():
+    if session.get('username'):     # session에 'username' id 를 가진 session이 존재하면
+        return '1'
+    return '0'
+
 # 토큰 유효성 검사
 def token_required(f):
     @wraps(f)
@@ -160,14 +173,6 @@ def updateNickname():
     result = authService.updateNickname(user_id, nickname)
     return result
 
-# 앱 이메일 중복 확인
-@app.route('/member/id', methods=['GET'])
-def checkUserId():
-    authService = auth_service.AuthService()
-    userId = request.args.get('user_id')
-    result = authService.checkUserId(userId)
-    return result
-
 # 앱 회원 탈퇴
 @app.route('/member', methods=['DELETE'])
 @token_required
@@ -206,28 +211,36 @@ def renewToken():
     return result
 
 from src.mail import mail_service
+# 앱 이메일 중복 확인
+@app.route('/member/id', methods=['GET'])
+def checkUserId():
+    authService = auth_service.AuthService()
+    userId = request.args.get('user_id')
+    result = authService.checkUserId(userId)
+    return result
 
 # 이메일 인증
 @app.route('/member/mail', methods=['POST'])
 def sendMail():
     input_data = request.get_json()
     receiver = input_data['mail']
-    mailService = mail_service.MailService(app)
-    result = mailService.send_email(receiver)
+    mailService = mail_service.MailService()
+    
+    if mailService.verify_email(receiver):
+        result = mailService.send_email(receiver)
+        return result
+    else:
+        return jsonify({"result" : "error"})
+
+# 앱 메일 인증 번호 확인
+@app.route('/member/mail/number', methods=['POST'])
+def authenticateMailNumber():
+    input_data = request.get_json()
+    mail = input_data['mail']
+    number =  input_data['number']
+    mailService = mail_service.MailService()
+    result = mailService.authenticate(mail, number)
     return result
-
-# 로그아웃 API
-@app.route('/logout', methods=['POST'])
-def logout():
-    session.pop('username', None) # 서버에 있는 'username'세션 제거
-    return "1"
-
-# 세션 확인 API
-@app.route('/api/session_check', methods=['POST'])
-def session_check():
-    if session.get('username'):     # session에 'username' id 를 가진 session이 존재하면
-        return '1'
-    return '0'
 
 #--------------------------------------- 메뉴, 리뷰 ---------------------------------------#
 @app.route('/api/list', methods=['GET'])
