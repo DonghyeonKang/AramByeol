@@ -458,6 +458,7 @@ def setCookie():
 #  posting 모듈을 만들어서 그곳에 데이터를 넘겨줘야할 듯 싱글톤 객체를 생성하는 방식으로 구현해보자
 import src.posting.posting_service as posting_service
 import base64
+import PIL
 from PIL import Image
 from io import BytesIO
 
@@ -490,7 +491,7 @@ def insertPost():
         data = [uid, inputData['title'], inputData['content'], now.strftime('%Y-%m-%d %H:%M:%S'), int(inputData['score']), inputData['meal_time'], path]
         # 저장
         result = postingService.insertPost(data)
-    except KeyError:  
+    except PIL.UnidentifiedImageError:
         uid = authService.getUid(user_id)
         now = datetime.now()
         data = [uid, inputData['title'], inputData['content'], now.strftime('%Y-%m-%d %H:%M:%S'), int(inputData['score']), inputData['meal_time']]

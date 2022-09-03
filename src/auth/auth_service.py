@@ -88,6 +88,7 @@ class AuthService:
         else:
             return jsonify(result = "Invalid Params!")
 
+    # TODO userid 가 메일이 아닌 경우 예외 처리
     def getUid(self, user_id):
         authRepository = auth_repository.AuthRepository()
         result = authRepository.getUid(user_id)

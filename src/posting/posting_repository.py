@@ -84,8 +84,9 @@ class PostingRepository:
             )
             self.connection.commit()  # 실행한 문장들 적용
             return "success"
-        except:
-            pass
+        except Exception as e:
+            print(e)
+            return "Database Delete Error"
         finally:
             self.closeConnection()
     
