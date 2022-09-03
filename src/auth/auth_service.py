@@ -23,13 +23,13 @@ class AuthService:
         pass
 
     def createAccessToken(self, user_id): # 로그인 시 토큰 생성, access token 재생성. 
-        token = create_access_token(identity = user_id, expires_delta = timedelta(minutes=1))
+        token = create_access_token(identity = user_id, expires_delta = timedelta(minutes=1440))
         return token
 
     def createRefreshToken(self, user_id): # 로그인 시 토큰 생성
         authRepository = auth_repository.AuthRepository()
         
-        token = create_refresh_token(identity = user_id, expires_delta = timedelta(minutes=10))
+        token = create_refresh_token(identity = user_id, expires_delta = timedelta(minutes=1440))
         # TODO 아래 insert의 결과를 어떻게 처리해야할까, 이미 있는 refresh token 에 대해서는 어떻게 처리할까. 
         authRepository.insertRefreshToken(user_id, token)
         return token
@@ -62,26 +62,36 @@ class AuthService:
     #--------- /auth/member
     def addUser(self, user_id, user_pw, nickname): # 회원 가입
         authRepository = auth_repository.AuthRepository()
-        print(authRepository.checkUserId(user_id))
-        if(authRepository.checkUserId(user_id) == "Available"):
-            pw = (bcrypt.hashpw(user_pw.encode('UTF-8'), bcrypt.gensalt())).decode('utf-8')  # 해싱 처리
-            result = authRepository.insertUser(user_id, pw, nickname)
-            return jsonify({"result" : result})
+        # 학교 메일 검증
+        id = user_id.split("@")
+        if len(id) < 2 or id[len(id) - 1] == 'gnu.ac.kr': # split 이 되지 않으면
+                return jsonify({"result":"Id is not gnuEmail"})
         else:
-            return jsonify({"result" : "Id is already exists"})
+            if(authRepository.checkUserId(user_id) == "Available"):
+                pw = (bcrypt.hashpw(user_pw.encode('UTF-8'), bcrypt.gensalt())).decode('utf-8')  # 해싱 처리
+                result = authRepository.insertUser(user_id, pw, nickname)
+                return jsonify({"result" : result})
+            else:
+                return jsonify({"result" : "Id is already exists"})
 
     def webLogin(self): # 웹 로그인
         pass
 
     def appLogin(self, user_id, user_pw): # 앱 로그인
         authRepository = auth_repository.AuthRepository()
-        
+        nickname = authRepository.getNickname(user_id)
         if(authRepository.checkUserId(user_id) == "Already exists" and self.checkUserPassword(user_id, user_pw)):
             return jsonify(result = "success",
+                           nickname = nickname,
                            access_token = self.createAccessToken(user_id),
                            refresh_token = self.createRefreshToken(user_id))
         else:
             return jsonify(result = "Invalid Params!")
+
+    def getUid(self, user_id):
+        authRepository = auth_repository.AuthRepository()
+        result = authRepository.getUid(user_id)
+        return result
 
     def deleteUser(self, userId, accessToken, refreshToken): # 회원 탈퇴
         authRepository = auth_repository.AuthRepository()
@@ -105,7 +115,6 @@ class AuthService:
             return jsonify({"result" : result})
         else:
             return jsonify({"result" : "Already exists"})
-
 
     # 아이디가 존재하는 지 체크함
     def checkUserId(self, userid):

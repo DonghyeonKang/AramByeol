@@ -1,5 +1,5 @@
 import pymysql.cursors
-import db_auth
+import src.security.db_auth as db_auth
 
 class AuthRepository:
     def __init__(self) -> None:
@@ -100,12 +100,26 @@ class AuthRepository:
             cursor = self.connection.cursor() # control structure of database SQL 문장을 DB 서버에 전송하기 위한 객체
             arr = [nickname]
             cursor.execute("SELECT user_id FROM users WHERE nickname=%s", arr) # 쿼리 실행 
-            self.connection.commit() # 쿼리 적용
             rows = cursor.fetchall()
             if len(rows) == 0:
                 return "Available"
             else:
                 return "Already exists"
+        except Exception as e:
+            print(e)
+            return ""
+        finally:
+            self.closeConnection()
+
+    def getNickname(self, user_id):
+        self.getConnection()
+
+        try:
+            cursor = self.connection.cursor() # control structure of database SQL 문장을 DB 서버에 전송하기 위한 객체
+            arr = [user_id]
+            cursor.execute("SELECT nickname FROM users WHERE user_id=%s", arr) # 쿼리 실행 
+            rows = cursor.fetchall()
+            return rows[0]['nickname']
         except Exception as e:
             print(e)
             return ""
@@ -138,6 +152,21 @@ class AuthRepository:
             cursor.execute("DELETE FROM token WHERE user_id=%s", arr) # 쿼리 실행 
             self.connection.commit() # 쿼리 적용
             return "success"
+        except Exception as e:
+            print(e)
+            return ""
+        finally:
+            self.closeConnection()
+    
+    def getUid(self, userId):
+        self.getConnection()
+
+        try:
+            cursor = self.connection.cursor() # control structure of database SQL 문장을 DB 서버에 전송하기 위한 객체
+            arr = [userId]
+            cursor.execute("SELECT id FROM users WHERE user_id=%s", arr) # 쿼리 실행 
+            result = cursor.fetchall()
+            return result[0]['id']
         except Exception as e:
             print(e)
             return ""

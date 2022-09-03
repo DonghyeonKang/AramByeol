@@ -1,6 +1,6 @@
 import pymysql
 import bcrypt
-import db_auth
+import src.security.db_auth as db_auth
 
 
 login = db_auth.db_login

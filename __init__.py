@@ -13,7 +13,7 @@ from user import * # Login and Register
 import bcrypt   # Password hash encrypt and decrypt
 import pymysql.cursors # python과 mysql(mariadb) 연동
 from datetime import datetime, timedelta # Time generator
-import db_auth # Database login info
+import src.security.db_auth as db_auth # Database login info
 import jwt
 from jwt import ExpiredSignatureError
 from flask_jwt_extended import *
@@ -56,7 +56,7 @@ def unauthorized_error(error):
     return render_template('/error/error.html'), 401
 
 def db_connection(): # Database Connection
-    login = db_auth.db_login
+    login = security.db_auth.db_login
     connection = pymysql.connect(host=login['host'],
                             user=login['user'],
                             password=login['password'],
@@ -128,16 +128,24 @@ def token_required(f):
     @wraps(f)
     def decorated(*args, **kwargs): # *args, **kwargs 정해지지 않은 인자
         token = None
-        input_data = request.get_json()
+        inputData = request.get_json(silent=True)
 
-        if 'access_token' in input_data: # 토근이 존재하면,
-            token = input_data['access_token']
-            authService = auth_service.AuthService()
-
-            if authService.verifyToken(token) == False:
-                return jsonify({'result' : 'EXPIRED_TOKEN'}), 401
+        if inputData == None: # json 데이터가 없다면
+            if 'access_token' in request.form:
+                token = request.form['access_token']
+                authService = auth_service.AuthService()
+                if authService.verifyToken(token) == False:
+                    return jsonify({'result' : 'EXPIRED_TOKEN'}), 401
+            else:
+                return jsonify({'result' : 'Token is missing!'}), 401
         else:
-            return jsonify({'result' : 'Token is missing!'}), 401
+            if 'access_token' in inputData: # 토큰이 존재하면,
+                token = inputData['access_token']
+                authService = auth_service.AuthService()
+                if authService.verifyToken(token) == False:
+                    return jsonify({'result' : 'EXPIRED_TOKEN'}), 401
+            else:
+                return jsonify({'result' : 'Token is missing!'}), 401
         return f(*args, **kwargs)
     return decorated
 
@@ -155,7 +163,6 @@ def registerByApp():
 
 # 앱 닉네임 중복 확인
 @app.route('/member/nickname', methods=['GET'])
-@token_required
 def checkNickname():
     authService = auth_service.AuthService()
     nickname = request.args.get('nickname')
@@ -351,17 +358,18 @@ def get_menu():
 @app.route('/menu/review', methods=['GET'])
 def select_review():
     menuService = menu_service.MenuService()
-    menu_id = request.form['menu_id']
-    resData = menuService.selectMenuReview(menu_id)
-    return resData
+    inputList = request.get_json()
+    menu_id = inputList['reviewData']
+    result = menuService.selectMenuReview(menu_id)
+    return result
 
 # 앱 메뉴 별점 등록
 @app.route('/menu/review', methods=['POST'])
 @token_required
 def update_review():
     menuService = menu_service.MenuService()
-    params = request.get_json()
-    reviewData = params['reviewData']
+    inputList = request.get_json()
+    reviewData = inputList['reviewData']
     resData = menuService.updateMenuReview(reviewData)
     return resData
 
@@ -449,43 +457,76 @@ def setCookie():
 #TODO posting 시 사진만 넘어오는 게 아니라 많은 정보가 넘어옴
 #  posting 모듈을 만들어서 그곳에 데이터를 넘겨줘야할 듯 싱글톤 객체를 생성하는 방식으로 구현해보자
 import src.posting.posting_service as posting_service
+import base64
+from PIL import Image
+from io import BytesIO
 
-@app.route('/posting', methods=['GET']) # 출력
+@app.route('/post/detail', methods=['GET']) # 출력
 @token_required
-def getPosting():
+def getPost():
     postingService = posting_service.PostingService()
 
-    reqData = request.form
-    postId = reqData['postId']
-    return postingService.selectData(postId)
+    inputData = request.get_json()
+    postId = inputData['post_id']
+    return postingService.selectPost(postId)
 
-@app.route('/posting', methods=['POST']) # 삽입
+@app.route('/post/detail', methods=['POST']) # 삽입
 @token_required
-def insertPosting():
-    try:
-        f = request.files['image']
-    except Exception as e:  #TODO image 가 없으면 400 에러 나는데, 예외 처리 해줘야함 files에 데이터 존재하는 지 확인 하는 메서드 찾아봐야할 듯
-        print(e)
-    reqData = request.form
+def insertPost():
+    inputData = request.get_json()
+    postingService = posting_service.PostingService()
+    authService = auth_service.AuthService()
+    user_id = inputData['user_id']
 
     # 객체 생성 이미지 저장 및 저장 path 생성   
-    postingService = posting_service.PostingService()
-    path = postingService.saveImage(f, reqData['user_id'])
-    # 저장할 data 생성
-    now = datetime.now()
-    data = [reqData['user_id'], reqData['title'], reqData['content'], now.strftime('%Y-%m-%d %H:%M:%S'), int(reqData['score']), reqData['meal_time'], path]
-    # 저장
-    result = postingService.insertData(data)
+    # TODO image 가 없으면 400 에러 난다. 이미지가 없어도 동작하도록
+    try:
+        strImage = inputData['image']
+        img = Image.open(BytesIO(base64.b64decode(strImage)))
+        path = postingService.saveImage(img, user_id)
+        # 저장할 data 생성
+        uid = authService.getUid(user_id)
+        now = datetime.now()
+        data = [uid, inputData['title'], inputData['content'], now.strftime('%Y-%m-%d %H:%M:%S'), int(inputData['score']), inputData['meal_time'], path]
+        # 저장
+        result = postingService.insertPost(data)
+    except KeyError:  
+        uid = authService.getUid(user_id)
+        now = datetime.now()
+        data = [uid, inputData['title'], inputData['content'], now.strftime('%Y-%m-%d %H:%M:%S'), int(inputData['score']), inputData['meal_time']]
+        result = postingService.insertPost(data)
     return jsonify({'result': result}) # success or fail
 
-@app.route('/posting', methods=['PUT']) # 수정
-def updatePosting():
+@app.route('/post/detail', methods=['PUT']) # 수정
+def updatePost():
     pass
 
-@app.route('/posting', methods=['DELETE'])  # 삭제
-def deletePosting():
-    pass
+@app.route('/post/detail', methods=['DELETE'])  # 삭제
+def deletePost():
+    inputData = request.get_json()
+    postId = inputData['post_id']
 
+    postingService = posting_service.PostingService()
+    result = postingService.deletePost(postId)
+    return result
+
+@app.route('/post/list', methods=['GET']) # 포스팅 리스트를 가져옴
+def getPostList():
+    inputData = request.get_json()
+    times = inputData['times']
+
+    postingService = posting_service.PostingService()
+    result = postingService.getPostList(times)
+    return result
+
+@app.route('/posting/img', methods=['POST'])
+def img():
+    inputData = request.get_json()
+    image = inputData['image']
+    img = Image.open(BytesIO(base64.b64decode(image)))
+    postingService = posting_service.PostingService()
+    postingService.saveImage(img, "gaeun")
+    return jsonify({"result" : "success"})
 
 if __name__ == '__main__':
     app.run('0.0.0.0',port=5000,debug=True, threaded=True)
