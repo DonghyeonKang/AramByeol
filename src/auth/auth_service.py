@@ -64,7 +64,7 @@ class AuthService:
         authRepository = auth_repository.AuthRepository()
         # 학교 메일 검증
         id = user_id.split("@")
-        if len(id) < 2 or id[len(id) - 1] == 'gnu.ac.kr': # split 이 되지 않으면
+        if len(id) < 2 or id[len(id) - 1] != 'gnu.ac.kr': # split 이 되지 않으면
                 return jsonify({"result":"Id is not gnuEmail"})
         else:
             if(authRepository.checkUserId(user_id) == "Available"):
