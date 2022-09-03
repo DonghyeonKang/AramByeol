@@ -163,7 +163,6 @@ def registerByApp():
 
 # 앱 닉네임 중복 확인
 @app.route('/member/nickname', methods=['GET'])
-@token_required
 def checkNickname():
     authService = auth_service.AuthService()
     nickname = request.args.get('nickname')
@@ -359,17 +358,18 @@ def get_menu():
 @app.route('/menu/review', methods=['GET'])
 def select_review():
     menuService = menu_service.MenuService()
-    menu_id = request.form['menu_id']
-    resData = menuService.selectMenuReview(menu_id)
-    return resData
+    inputList = request.get_json()
+    menu_id = inputList['reviewData']
+    result = menuService.selectMenuReview(menu_id)
+    return result
 
 # 앱 메뉴 별점 등록
 @app.route('/menu/review', methods=['POST'])
 @token_required
 def update_review():
     menuService = menu_service.MenuService()
-    params = request.get_json()
-    reviewData = params['reviewData']
+    inputList = request.get_json()
+    reviewData = inputList['reviewData']
     resData = menuService.updateMenuReview(reviewData)
     return resData
 
@@ -458,10 +458,11 @@ def setCookie():
 #  posting 모듈을 만들어서 그곳에 데이터를 넘겨줘야할 듯 싱글톤 객체를 생성하는 방식으로 구현해보자
 import src.posting.posting_service as posting_service
 import base64
+import PIL
 from PIL import Image
 from io import BytesIO
 
-@app.route('/posting', methods=['GET']) # 출력
+@app.route('/post/detail', methods=['GET']) # 출력
 @token_required
 def getPost():
     postingService = posting_service.PostingService()
@@ -470,14 +471,13 @@ def getPost():
     postId = inputData['post_id']
     return postingService.selectPost(postId)
 
-@app.route('/posting', methods=['POST']) # 삽입
+@app.route('/post/detail', methods=['POST']) # 삽입
 @token_required
 def insertPost():
     inputData = request.get_json()
     postingService = posting_service.PostingService()
     authService = auth_service.AuthService()
     user_id = inputData['user_id']
-
     # 객체 생성 이미지 저장 및 저장 path 생성   
     # TODO image 가 없으면 400 에러 난다. 이미지가 없어도 동작하도록
     try:
@@ -490,16 +490,18 @@ def insertPost():
         data = [uid, inputData['title'], inputData['content'], now.strftime('%Y-%m-%d %H:%M:%S'), int(inputData['score']), inputData['meal_time'], path]
         # 저장
         result = postingService.insertPost(data)
-    except Exception as e:  
-        print(e)
-
+    except PIL.UnidentifiedImageError:
+        uid = authService.getUid(user_id)
+        now = datetime.now()
+        data = [uid, inputData['title'], inputData['content'], now.strftime('%Y-%m-%d %H:%M:%S'), int(inputData['score']), inputData['meal_time']]
+        result = postingService.insertPost(data)
     return jsonify({'result': result}) # success or fail
 
-@app.route('/posting', methods=['PUT']) # 수정
+@app.route('/post/detail', methods=['PUT']) # 수정
 def updatePost():
     pass
 
-@app.route('/posting', methods=['DELETE'])  # 삭제
+@app.route('/post/detail', methods=['DELETE'])  # 삭제
 def deletePost():
     inputData = request.get_json()
     postId = inputData['post_id']
@@ -508,7 +510,14 @@ def deletePost():
     result = postingService.deletePost(postId)
     return result
 
+@app.route('/post/list', methods=['GET']) # 포스팅 리스트를 가져옴
+def getPostList():
+    inputData = request.get_json()
+    times = inputData['times']
 
+    postingService = posting_service.PostingService()
+    result = postingService.getPostList(times)
+    return result
 
 @app.route('/posting/img', methods=['POST'])
 def img():
@@ -518,7 +527,6 @@ def img():
     postingService = posting_service.PostingService()
     postingService.saveImage(img, "gaeun")
     return jsonify({"result" : "success"})
-
 
 if __name__ == '__main__':
     app.run('0.0.0.0',port=5000,debug=True, threaded=True)

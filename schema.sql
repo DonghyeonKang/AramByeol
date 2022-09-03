@@ -40,7 +40,6 @@ CREATE TABLE `users` (
     `user_id` varchar(320) NOT NULL,
     `user_pw` TEXT NOT NULL,
     `nickname` TEXT NOT NULL,
-    `verifing` INT DEFAULT 0
 );
  
 CREATE TABLE `review` (
@@ -57,10 +56,10 @@ CREATE TABLE `post` (
     `title` TEXT NOT NULL,
     `content` TEXT NOT NULL,
     `date` DATE NOT NULL,
-    `category` TEXT NOT NULL,
     `score` INT NOT NULL,
     `meal_time` TEXT NOT NULL,
     `image` TEXT,
+    `like` INT DEFAULT 0,
     FOREIGN KEY (`uid`) REFERENCES `users`(`id`) ON DELETE CASCADE
 );
 

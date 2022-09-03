@@ -100,12 +100,26 @@ class AuthRepository:
             cursor = self.connection.cursor() # control structure of database SQL 문장을 DB 서버에 전송하기 위한 객체
             arr = [nickname]
             cursor.execute("SELECT user_id FROM users WHERE nickname=%s", arr) # 쿼리 실행 
-            self.connection.commit() # 쿼리 적용
             rows = cursor.fetchall()
             if len(rows) == 0:
                 return "Available"
             else:
                 return "Already exists"
+        except Exception as e:
+            print(e)
+            return ""
+        finally:
+            self.closeConnection()
+
+    def getNickname(self, user_id):
+        self.getConnection()
+
+        try:
+            cursor = self.connection.cursor() # control structure of database SQL 문장을 DB 서버에 전송하기 위한 객체
+            arr = [user_id]
+            cursor.execute("SELECT nickname FROM users WHERE user_id=%s", arr) # 쿼리 실행 
+            rows = cursor.fetchall()
+            return rows[0]['nickname']
         except Exception as e:
             print(e)
             return ""

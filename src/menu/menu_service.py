@@ -1,5 +1,6 @@
 import src.menu.menu_repository as menu_repository
 import json
+from flask import jsonify # Return json form to client
 
 class MenuService:
     menuRepository = menu_repository.MenuRepository()
@@ -24,12 +25,12 @@ class MenuService:
         return json.dumps(dictData, ensure_ascii=False)
 
     def selectMenuReview(self, menu_id):
-        data = self.menuRepository.selectMenuReview(menu_id)
-        return data
+        result = self.menuRepository.selectMenuReview(menu_id)
+        return jsonify({"result" : result})
 
     def updateMenuReview(self, reviewData):
         data = []
         for i in reviewData:
-            arr = self.menuRepository.updateMenuReview(i['menu_id'], i['score'], i['user_id'])
-            data.append(arr[0])
+            result = self.menuRepository.updateMenuReview(i['menu_id'], i['score'], i['user_id'])
+            data.append(result)
         return json.dumps(data, ensure_ascii=False)

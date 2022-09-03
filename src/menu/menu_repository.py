@@ -78,7 +78,7 @@ class MenuRepository:
                 "SELECT score FROM review WHERE menu_id=%s", menu_id
             )
             score = self.cursor.fetchall()
-            return score
+            return score[0]
         except Exception as e:
             print(e)
             return "Error: Database Select Error"
@@ -113,13 +113,13 @@ class MenuRepository:
                 "INSERT INTO `review` (user_id, menu_id, score) VALUES (%s, %s, %s) ON DUPLICATE KEY UPDATE score=%s", arr
             )
             self.connection.commit()
-            # 리뷰를 입력한 메뉴의 데이터를 반환한다. 
 
+            # 리뷰를 입력한 메뉴의 데이터를 반환한다. 
             self.cursor.execute(
                 "SELECT menu_id, score FROM review WHERE menu_id=%s", menu_id
             )
-            resData = self.cursor.fetchall()
-            return resData
+            result = self.cursor.fetchall()
+            return result[0]
         except Exception as e:
             print(e)
             return "Error: Database UPDATE Error"

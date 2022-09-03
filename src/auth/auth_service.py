@@ -62,27 +62,33 @@ class AuthService:
     #--------- /auth/member
     def addUser(self, user_id, user_pw, nickname): # 회원 가입
         authRepository = auth_repository.AuthRepository()
-        print(authRepository.checkUserId(user_id))
-        if(authRepository.checkUserId(user_id) == "Available"):
-            pw = (bcrypt.hashpw(user_pw.encode('UTF-8'), bcrypt.gensalt())).decode('utf-8')  # 해싱 처리
-            result = authRepository.insertUser(user_id, pw, nickname)
-            return jsonify({"result" : result})
+        # 학교 메일 검증
+        id = user_id.split("@")
+        if len(id) < 2 or id[len(id) - 1] != 'gnu.ac.kr': # split 이 되지 않으면
+                return jsonify({"result":"Id is not gnuEmail"})
         else:
-            return jsonify({"result" : "Id is already exists"})
+            if(authRepository.checkUserId(user_id) == "Available"):
+                pw = (bcrypt.hashpw(user_pw.encode('UTF-8'), bcrypt.gensalt())).decode('utf-8')  # 해싱 처리
+                result = authRepository.insertUser(user_id, pw, nickname)
+                return jsonify({"result" : result})
+            else:
+                return jsonify({"result" : "Id is already exists"})
 
     def webLogin(self): # 웹 로그인
         pass
 
     def appLogin(self, user_id, user_pw): # 앱 로그인
         authRepository = auth_repository.AuthRepository()
-        
+        nickname = authRepository.getNickname(user_id)
         if(authRepository.checkUserId(user_id) == "Already exists" and self.checkUserPassword(user_id, user_pw)):
             return jsonify(result = "success",
+                           nickname = nickname,
                            access_token = self.createAccessToken(user_id),
                            refresh_token = self.createRefreshToken(user_id))
         else:
             return jsonify(result = "Invalid Params!")
 
+    # TODO userid 가 메일이 아닌 경우 예외 처리
     def getUid(self, user_id):
         authRepository = auth_repository.AuthRepository()
         result = authRepository.getUid(user_id)
@@ -110,7 +116,6 @@ class AuthService:
             return jsonify({"result" : result})
         else:
             return jsonify({"result" : "Already exists"})
-
 
     # 아이디가 존재하는 지 체크함
     def checkUserId(self, userid):

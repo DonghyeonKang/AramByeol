@@ -19,21 +19,36 @@ class PostingRepository:
 
     def insertPosting(self, data):
         self.getConnection()
-        
-        try:
-            self.cursor = self.connection.cursor()
-            self.cursor.execute(
-                "INSERT INTO post(uid, title, content, date, score, meal_time, image) values(%s, %s, %s, %s, %s, %s, %s)", data
-            )
-    
-            self.connection.commit()  # 실행한 문장들 적용
-            return 'success'
-        except Exception as e:
-            print(e)
-            return "Error: Database Insert Error"
-        finally:
-            self.closeConnection()
-    
+
+        if len(data) == 7:
+            try:
+                self.cursor = self.connection.cursor()
+                self.cursor.execute(
+                    "INSERT INTO post(uid, title, content, date, score, meal_time, image) values(%s, %s, %s, %s, %s, %s, %s)", data
+                )
+
+                self.connection.commit()  # 실행한 문장들 적용
+                return 'success'
+            except Exception as e:
+                print(e)
+                return "Error: Database Insert Error"
+            finally:
+                self.closeConnection()
+        else:
+            try:
+                self.cursor = self.connection.cursor()
+                self.cursor.execute(
+                    "INSERT INTO post(uid, title, content, date, score, meal_time) values(%s, %s, %s, %s, %s, %s)", data
+                )
+
+                self.connection.commit()  # 실행한 문장들 적용
+                return 'success'
+            except Exception as e:
+                print(e)
+                return "Error: Database Insert Error"
+            finally:
+                self.closeConnection()
+
     def selectPosting(self, post_id):
         self.getConnection()
 
@@ -69,8 +84,9 @@ class PostingRepository:
             )
             self.connection.commit()  # 실행한 문장들 적용
             return "success"
-        except:
-            pass
+        except Exception as e:
+            print(e)
+            return "Database Delete Error"
         finally:
             self.closeConnection()
     
@@ -84,6 +100,22 @@ class PostingRepository:
             )
             result = self.cursor.fetchall()
             return result[0]['image']
+        except:
+            pass
+        finally:
+            self.closeConnection()
+
+    def getPostList(self, times):
+        self.getConnection()
+
+        try:
+            self.cursor = self.connection.cursor()
+            arr = [20 * times, 20 * (1 + times)]
+            self.cursor.execute(
+                "SELECT post_id, user_id, title, content, `date`, score, meal_time, `image`, `like` FROM post, users WHERE users.id = post.uid ORDER BY post_id DESC LIMIT %s, %s", arr
+            )
+            result = self.cursor.fetchall()
+            return result
         except:
             pass
         finally:

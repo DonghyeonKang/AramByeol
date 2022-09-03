@@ -28,8 +28,9 @@ class PostingService:
 
     def selectPost(self, post_id):
         try:
-            res = self.postingRepo.selectPosting(post_id)
-            return res
+            result = self.postingRepo.selectPosting(post_id)
+            print(result)
+            return jsonify({"result":result})
         except:
             return "Error: posting_service SelectData Error"
 
@@ -53,3 +54,9 @@ class PostingService:
         except:
             return "Error: posting_service DeletePost Error"
 
+    def getPostList(self, times):
+        try:
+            result = self.postingRepo.getPostList(times)
+            return jsonify({"result" : result})
+        except:
+            return "Error: posting_service DeletePost Error"
