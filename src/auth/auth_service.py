@@ -23,13 +23,13 @@ class AuthService:
         pass
 
     def createAccessToken(self, user_id): # 로그인 시 토큰 생성, access token 재생성. 
-        token = create_access_token(identity = user_id, expires_delta = timedelta(minutes=1))
+        token = create_access_token(identity = user_id, expires_delta = timedelta(minutes=1440))
         return token
 
     def createRefreshToken(self, user_id): # 로그인 시 토큰 생성
         authRepository = auth_repository.AuthRepository()
         
-        token = create_refresh_token(identity = user_id, expires_delta = timedelta(minutes=10))
+        token = create_refresh_token(identity = user_id, expires_delta = timedelta(minutes=1440))
         # TODO 아래 insert의 결과를 어떻게 처리해야할까, 이미 있는 refresh token 에 대해서는 어떻게 처리할까. 
         authRepository.insertRefreshToken(user_id, token)
         return token
@@ -82,6 +82,11 @@ class AuthService:
                            refresh_token = self.createRefreshToken(user_id))
         else:
             return jsonify(result = "Invalid Params!")
+
+    def getUid(self, user_id):
+        authRepository = auth_repository.AuthRepository()
+        result = authRepository.getUid(user_id)
+        return result
 
     def deleteUser(self, userId, accessToken, refreshToken): # 회원 탈퇴
         authRepository = auth_repository.AuthRepository()
