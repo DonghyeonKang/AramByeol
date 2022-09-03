@@ -1,5 +1,5 @@
 import pymysql.cursors
-import db_auth
+import src.security.db_auth as db_auth
 
 class MailRepository():
     def __init__(self) -> None:

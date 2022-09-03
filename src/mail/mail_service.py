@@ -12,6 +12,7 @@ from flask_jwt_extended import decode_token
 from flask_jwt_extended import JWTManager
 from jwt import ExpiredSignatureError
 from datetime import timedelta # Time generator
+import src.auth.auth_service as auth_service
 
 class MailService:
     mailRepository = mail_repository.MailRepository()
