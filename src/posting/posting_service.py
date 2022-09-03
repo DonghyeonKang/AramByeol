@@ -1,5 +1,8 @@
+from unittest import result
 import src.posting.posting_repository as posting_repository
 import datetime
+from flask import jsonify # Return json form to client
+import os # 파일 삭제
 
 class PostingService:
     postingRepo = posting_repository.PostingRepository()
@@ -12,7 +15,10 @@ class PostingService:
         file.save(filePath)
         return filePath
 
-    def insertData(self, data):
+    def deleteImage(self, path):
+        os.remove(path)
+
+    def insertPost(self, data):
         # edit data like [user_id, title, content, date, score, meal_time, image]
         try:
             res = self.postingRepo.insertPosting(data)
@@ -20,25 +26,37 @@ class PostingService:
         except:
             return "Error: posting_service InsertData Error"
 
-    def selectData(self, post_id):
+    def selectPost(self, post_id):
         try:
-            res = self.postingRepo.selectPosting()
-            return res
+            result = self.postingRepo.selectPosting(post_id)
+            print(result)
+            return jsonify({"result":result})
         except:
             return "Error: posting_service SelectData Error"
 
-    def updateData(self, post_id, data):
+    def updatePost(self, post_id, data):
         try:
             res = self.postingRepo.updatePosting(data)
+            # 이미지 업데이트라면 기존 이미지 삭제
             return res
         except:
             return "Error: posting_service UpdateData Error"
 
 
-    def deleteData(self, post_id):
+    def deletePost(self, post_id):
         try:
-            res = self.postingRepo.deletePosting()
-            return res
+            # 이미지 삭제
+            path = self.postingRepo.getImagePath(post_id)
+            self.deleteImage(path)
+            # 포스팅 데이터 삭제
+            result = self.postingRepo.deletePosting(post_id)
+            return jsonify({"result" : result})
         except:
-            return "Error: posting_service DeleteData Error"
+            return "Error: posting_service DeletePost Error"
 
+    def getPostList(self, times):
+        try:
+            result = self.postingRepo.getPostList(times)
+            return jsonify({"result" : result})
+        except:
+            return "Error: posting_service DeletePost Error"
