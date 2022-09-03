@@ -1,3 +1,5 @@
+
+from functools import wraps
 from flask import Flask # Flask start 
 from flask import request # Html request 
 from flask import render_template # Rendering
@@ -11,12 +13,25 @@ from user import * # Login and Register
 import bcrypt   # Password hash encrypt and decrypt
 import pymysql.cursors # python과 mysql(mariadb) 연동
 from datetime import datetime, timedelta # Time generator
-import db_auth # Database login info
+import src.security.db_auth as db_auth # Database login info
 import jwt
+from jwt import ExpiredSignatureError
+from flask_jwt_extended import *
+from flask_jwt_extended import create_access_token
+from flask_jwt_extended import create_refresh_token
+from flask_jwt_extended import decode_token
+from flask_jwt_extended import JWTManager
 
+import src.auth.auth_service as auth_service
+import src.menu.menu_service as menu_service
 
 app = Flask(__name__)
 app.secret_key = 'asd1inldap123jwaw'        # 세션을 암호화하기 위해 비밀키가 서명된 쿠키 사용
+app.config.update(
+			DEBUG = True,
+			JWT_SECRET_KEY = "adswoern!@#rwlenf@#$13rweT#^DSfsrtwer"
+		)
+jwt = JWTManager(app)
 
 if not app.debug: # 디버그 모드가 아니면
     import logging  # 로깅을 하기위한 모듈
@@ -41,7 +56,7 @@ def unauthorized_error(error):
     return render_template('/error/error.html'), 401
 
 def db_connection(): # Database Connection
-    login = db_auth.db_login
+    login = security.db_auth.db_login
     connection = pymysql.connect(host=login['host'],
                             user=login['user'],
                             password=login['password'],
@@ -57,8 +72,10 @@ def home():
     return render_template("index.html")
 
 #--------------------------------------- 회원가입, 로그인 ---------------------------------------#
+import src.auth.auth_service as auth_service
+
 # 회원가입 API
-@app.route('/member/register.html', methods=['GET', 'POST'])
+@app.route('/member/register.html', methods=['POST'])
 def register():
     if request.method == 'POST': # post 방식으로 받아옴
         id = request.form['id'] # id input 값 받아오기
@@ -73,7 +90,7 @@ def register():
 
 
 # 웹 로그인
-@app.route('/member/login.html', methods=['GET', 'POST'])
+@app.route('/member/login.html', methods=['POST'])
 def login():
     if request.method == "POST": # post 방식으로 받아옴
         id = request.form['id'] # id input 값 받아오기
@@ -93,63 +110,7 @@ def login():
             return render_template("/member/login.html") # 로그인 창으로 redirect
     return render_template("/member/login.html") # 로그인 페이지로 redirect
 
-# 앱 로그인
-from flask_jwt_extended import *
-from flask_jwt_extended import create_access_token
-from flask_jwt_extended import create_refresh_token
-from flask_jwt_extended import decode_token
-from flask_jwt_extended import JWTManager
-
-app.config.update(
-			DEBUG = True,
-			JWT_SECRET_KEY = "adswoern!@#rwlenf@#$13rweT#^DSfsrtwer"
-		)
-jwt = JWTManager(app)
-
-@app.route('/login/app', methods=['POST'])
-def loginByApp():
-    # 클라이언트로부터 요청된 값
-    input_data = request.get_json()
-    user_id = input_data['id']
-    user_pw = input_data['password']
-
-    if(check_userId(user_id) and check_userPassword(user_id, user_pw)):
-        return jsonify(result = "success",
-                       access_token = createAccessToken(user_id),
-                       refresh_token = createRefreshToken(user_id))
-    else:
-        return jsonify(result = "Invalid Params!")
-
-def createAccessToken(user_id):
-    token = create_access_token(identity = user_id, expires_delta = datetime.timedelta(minutes=10))
-    return token
-
-def createRefreshToken(user_id):
-    token = create_refresh_token(identity = user_id, expires_delta = datetime.timedelta(days=30))
-    connection = db_connection()
-    cursor = connection.cursor()
-    arr = [token, user_id]
-    cursor.execute("INSERT INTO token(refresh_token, user_id) VALUES (%s, %s)", arr)
-    return token
-
-def verifyToken(user_id, accessToken, refreshToken):
-    # decode_token() 으로 access token 유효성 체크하고 refresh token 유효성을 체크한다.
-    # access token, refresh token 모두 만료되면 재로그인 하도록 함 그러면 어떤식으로 클라이언트로 넘겨줘야하나
-    # access token 유효 통과
-    # access token 무효 refresh token 유효 access token 재발급. 여기서 재발급은 그냥 다시 생성하는 것을 의미하는 걸까? 아마도 그런 것 같다.
-
-    # TODO 에러 어떻게 나는 지 확인. 
-    decodedAccessToken = decode_token(accessToken)
-    # 만약 만료 되었다면 refreshToken을 db에서 찾는다. 
-
-    # 만약 있는데 만료되지 않았다면 , accessToken 과 refreshToken을 재발급 받는다. 만료 되었따면 재로그인 절차를 진행한다. 
-    createAccessToken(user_id)
-    createRefreshToken(user_id)
-    decodedRefreshToken = decode_token(refreshToken)
-    # 없다면 토큰이 탈취된 것으로 판단하고 재로그인 절차를 진행한다. 
-    pass
-
-# 로그아웃 API
+# 웹 로그아웃 API
 @app.route('/logout', methods=['POST'])
 def logout():
     session.pop('username', None) # 서버에 있는 'username'세션 제거
@@ -161,6 +122,133 @@ def session_check():
     if session.get('username'):     # session에 'username' id 를 가진 session이 존재하면
         return '1'
     return '0'
+
+# 토큰 유효성 검사
+def token_required(f):
+    @wraps(f)
+    def decorated(*args, **kwargs): # *args, **kwargs 정해지지 않은 인자
+        token = None
+        inputData = request.get_json(silent=True)
+
+        if inputData == None: # json 데이터가 없다면
+            if 'access_token' in request.form:
+                token = request.form['access_token']
+                authService = auth_service.AuthService()
+                if authService.verifyToken(token) == False:
+                    return jsonify({'result' : 'EXPIRED_TOKEN'}), 401
+            else:
+                return jsonify({'result' : 'Token is missing!'}), 401
+        else:
+            if 'access_token' in inputData: # 토큰이 존재하면,
+                token = inputData['access_token']
+                authService = auth_service.AuthService()
+                if authService.verifyToken(token) == False:
+                    return jsonify({'result' : 'EXPIRED_TOKEN'}), 401
+            else:
+                return jsonify({'result' : 'Token is missing!'}), 401
+        return f(*args, **kwargs)
+    return decorated
+
+# 앱 회원가입
+@app.route('/member', methods=['POST'])
+def registerByApp():
+    authService = auth_service.AuthService()
+    # 클라이언트로부터 요청된 값
+    input_data = request.get_json()
+    user_id = input_data['user_id']
+    user_pw = input_data['user_pw']
+    nickname = input_data['nickname']
+    result = authService.addUser(user_id, user_pw, nickname)
+    return result
+
+# 앱 닉네임 중복 확인
+@app.route('/member/nickname', methods=['GET'])
+@token_required
+def checkNickname():
+    authService = auth_service.AuthService()
+    nickname = request.args.get('nickname')
+    result = authService.checkNickname(nickname)
+    return result
+
+# 앱 닉네임 변경
+@app.route('/member/nickname', methods=['PUT'])
+@token_required
+def updateNickname():
+    authService = auth_service.AuthService()
+    input_data = request.get_json()
+    nickname = input_data['nickname']
+    user_id = input_data['user_id']
+    result = authService.updateNickname(user_id, nickname)
+    return result
+
+# 앱 회원 탈퇴
+@app.route('/member', methods=['DELETE'])
+@token_required
+def deleteUser():
+    authService = auth_service.AuthService()
+    input_data = request.get_json()
+    userId = input_data['user_id']
+    accessToken = input_data['access_token']
+    refreshToken = input_data['refresh_token']
+
+    result = authService.deleteUser(userId, accessToken, refreshToken)
+    return result
+
+# 앱 로그인
+@app.route('/login/app', methods=['POST'])
+def loginByApp():
+    authService = auth_service.AuthService()
+    # 클라이언트로부터 요청된 값
+    input_data = request.get_json()
+    user_id = input_data['user_id']
+    user_pw = input_data['user_pw']
+
+    resData = authService.appLogin(user_id, user_pw)
+    return resData
+
+# 토큰 갱신
+@app.route('/member/auth', methods=['PUT'])
+def renewToken():
+    authService = auth_service.AuthService()
+    # 클라이언트로부터 요청된 값
+    input_data = request.get_json()
+    user_id = input_data['user_id']
+    reqRefreshToken = input_data['refresh_token']
+
+    result = authService.renewToken(user_id, reqRefreshToken)
+    return result
+
+from src.mail import mail_service
+# 앱 이메일 중복 확인
+@app.route('/member/id', methods=['GET'])
+def checkUserId():
+    authService = auth_service.AuthService()
+    userId = request.args.get('user_id')
+    result = authService.checkUserId(userId)
+    return result
+
+# 이메일 인증
+@app.route('/member/mail', methods=['POST'])
+def sendMail():
+    input_data = request.get_json()
+    receiver = input_data['mail']
+    mailService = mail_service.MailService()
+    
+    if mailService.verify_email(receiver):
+        result = mailService.send_email(receiver)
+        return result
+    else:
+        return jsonify({"result" : "error"})
+
+# 앱 메일 인증 번호 확인
+@app.route('/member/mail/number', methods=['POST'])
+def authenticateMailNumber():
+    input_data = request.get_json()
+    mail = input_data['mail']
+    number =  input_data['number']
+    mailService = mail_service.MailService()
+    result = mailService.authenticate(mail, number)
+    return result
 
 #--------------------------------------- 메뉴, 리뷰 ---------------------------------------#
 @app.route('/api/list', methods=['GET'])
@@ -260,8 +348,6 @@ def week(): # 한 주의 메뉴를 리턴.
     print(morning)
     return jsonify({'days':days, 'morning':morning, 'lunch':lunch, 'dinner':dinner}) # js와 매칭
 
-import src.menu.menu_service as menu_service
-
 # 웹 메뉴 API
 @app.route('/menu', methods=['GET'])
 def get_menu():
@@ -279,6 +365,7 @@ def select_review():
 
 # 앱 메뉴 별점 등록
 @app.route('/menu/review', methods=['POST'])
+@token_required
 def update_review():
     menuService = menu_service.MenuService()
     params = request.get_json()
@@ -370,55 +457,67 @@ def setCookie():
 #TODO posting 시 사진만 넘어오는 게 아니라 많은 정보가 넘어옴
 #  posting 모듈을 만들어서 그곳에 데이터를 넘겨줘야할 듯 싱글톤 객체를 생성하는 방식으로 구현해보자
 import src.posting.posting_service as posting_service
+import base64
+from PIL import Image
+from io import BytesIO
 
 @app.route('/posting', methods=['GET']) # 출력
-def getPosting():
+@token_required
+def getPost():
     postingService = posting_service.PostingService()
 
-    reqData = request.form
-    postId = reqData['postId']
-    return postingService.selectData(postId)
+    inputData = request.get_json()
+    postId = inputData['post_id']
+    return postingService.selectPost(postId)
 
 @app.route('/posting', methods=['POST']) # 삽입
-def insertPosting():
-    # 토큰 존재 여부 확인, 만약 존재하면 토큰에서 user_id 로 
-    # token_receive = request.cookies.get('mytoken')
-    # user = db.citista_users.find_one({'token': token_receive})
-    # user_id = user['username']
-    user_id = 'qwe123'
-    try:
-        f = request.files['image']
-        print(f)
-    except Exception as e:  #TODO image 가 없으면 400 에러 나는데, 예외 처리 해줘야함 files에 데이터 존재하는 지 확인 하는 메서드 찾아봐야할 듯
-        print(e)
-    reqData = request.form
+@token_required
+def insertPost():
+    inputData = request.get_json()
+    postingService = posting_service.PostingService()
+    authService = auth_service.AuthService()
+    user_id = inputData['user_id']
 
     # 객체 생성 이미지 저장 및 저장 path 생성   
-    postingService = posting_service.PostingService()
-    path = postingService.saveImage(f, user_id)
+    # TODO image 가 없으면 400 에러 난다. 이미지가 없어도 동작하도록
+    try:
+        strImage = inputData['image']
+        img = Image.open(BytesIO(base64.b64decode(strImage)))
+        path = postingService.saveImage(img, user_id)
+        # 저장할 data 생성
+        uid = authService.getUid(user_id)
+        now = datetime.now()
+        data = [uid, inputData['title'], inputData['content'], now.strftime('%Y-%m-%d %H:%M:%S'), int(inputData['score']), inputData['meal_time'], path]
+        # 저장
+        result = postingService.insertPost(data)
+    except Exception as e:  
+        print(e)
 
-    # 저장할 data 생성
-    now = datetime.now()
-    data = []
-    data.append(user_id)
-    data.append(reqData['title'])    
-    data.append(reqData['content'])    
-    data.append(now.strftime('%Y-%m-%d %H:%M:%S'))
-    data.append(int(reqData['score']))    
-    data.append(reqData['meal_time'])    
-    data.append(path)
-
-    # 저장
-    result = postingService.insertData(data)
     return jsonify({'result': result}) # success or fail
 
 @app.route('/posting', methods=['PUT']) # 수정
-def updatePosting():
+def updatePost():
     pass
 
 @app.route('/posting', methods=['DELETE'])  # 삭제
-def deletePosting():
-    pass
+def deletePost():
+    inputData = request.get_json()
+    postId = inputData['post_id']
+
+    postingService = posting_service.PostingService()
+    result = postingService.deletePost(postId)
+    return result
+
+
+
+@app.route('/posting/img', methods=['POST'])
+def img():
+    inputData = request.get_json()
+    image = inputData['image']
+    img = Image.open(BytesIO(base64.b64decode(image)))
+    postingService = posting_service.PostingService()
+    postingService.saveImage(img, "gaeun")
+    return jsonify({"result" : "success"})
 
 
 if __name__ == '__main__':

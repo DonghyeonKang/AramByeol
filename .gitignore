@@ -2,3 +2,4 @@
 *.out
 nohup.out
 static/images/aramMenu
+src/security

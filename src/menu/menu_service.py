@@ -1,4 +1,3 @@
-from ..auth.auth_repository import MenuRepository
 import src.menu.menu_repository as menu_repository
 import json
 
@@ -14,7 +13,6 @@ class MenuService:
         for i in week: # week
             tmpDict = {}
             dayMenuData = self.menuRepository.selectMenuByDay(i)
-            print(dayMenuData)
             for num, j in enumerate(dayMenuData): # day, 아침 점심 저녁을 하나로 합침
                 if num == 0:
                     tmpDict["morning"] = j

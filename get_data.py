@@ -4,6 +4,7 @@ from pyvirtualdisplay import Display # 가상 디스플레이
 import subprocess   # OS 명령어 연동
 import test
 from send_to_slack import *
+from webdriver_manager.chrome import ChromeDriverManager
 
 display = Display(visible=0, size=(1920, 1080))
 display.start()
@@ -14,8 +15,7 @@ chrome_options.add_argument('--headless')
 chrome_options.add_argument('--no-sandbox')
 chrome_options.add_argument("--single-process")
 chrome_options.add_argument("--disable-dev-shm-usage")
-path='/home/opc/arambyeol/chromedriver'
-driver = webdriver.Chrome(path, chrome_options=chrome_options)
+driver = webdriver.Chrome(ChromeDriverManager().install(), chrome_options=chrome_options)
 driver.get('https://www.gnu.ac.kr/dorm/ad/fm/foodmenu/selectFoodMenuView.do') # 스크래핑할 동적 웹사이트 주소
 html = driver.page_source   # 드라이버로 긁어온 정보를 html에 담음
 driver.close()
@@ -78,7 +78,7 @@ def split_menu_data(args):
         day_count = 0   # 요일 카운트 [요일][메뉴]
 
         for element in args:
-            if count >= 4 and element != '' in element:  # 공백 개수가 연속으로 4 이상이고, 5번째가 공백이 아니라면
+            if count >= 4:  # 공백 개수가 연속으로 4 이상이면
                 day.append([])  # 요일 바뀜
                 day_count += 1  # 요일 바꾸기
                 count = 0   # 공백 개수 초기화
@@ -102,9 +102,17 @@ morning = data_blocking(morning)
 lunch = data_blocking(lunch)
 dinner = data_blocking(dinner)
 
+print(morning)
+print(lunch)
+print(dinner)
+
 day_mornings = split_menu_data(morning)
 day_lunches = split_menu_data(lunch)
 day_dinners = split_menu_data(dinner)
+
+print(day_mornings)
+print(day_lunches)
+print(day_dinners)
 
 # slack 으로 데이터 전송
 sendData(day_mornings, day_lunches, day_dinners)

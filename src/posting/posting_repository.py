@@ -1,5 +1,5 @@
 import pymysql.cursors  # python과 mysql(mariadb) 연동
-import db_auth
+import src.security.db_auth as db_auth
 
 class PostingRepository:
     def __init__(self) -> None:
@@ -23,7 +23,7 @@ class PostingRepository:
         try:
             self.cursor = self.connection.cursor()
             self.cursor.execute(
-                "INSERT INTO post(user_id, title, content, date, category, score, meal_time, image) values(%s, %s, %s, %s, %s, %s, %s, %s)", data
+                "INSERT INTO post(uid, title, content, date, score, meal_time, image) values(%s, %s, %s, %s, %s, %s, %s)", data
             )
     
             self.connection.commit()  # 실행한 문장들 적용
@@ -42,9 +42,8 @@ class PostingRepository:
             self.cursor.execute(
                 "SELECT * FROM post WHERE post_id = %s", post_id
             )
-    
-            self.connection.commit()  # 실행한 문장들 적용 
-            return "d"
+            result = self.cursor.fetchall()
+            return result[0]
         except:
             pass
         finally:
@@ -64,7 +63,27 @@ class PostingRepository:
         self.getConnection()
 
         try:
+            self.cursor = self.connection.cursor()
+            self.cursor.execute(
+                "DELETE FROM post WHERE post_id = %s", post_id
+            )
+            self.connection.commit()  # 실행한 문장들 적용
+            return "success"
+        except:
             pass
+        finally:
+            self.closeConnection()
+    
+    def getImagePath(self, post_id):
+        self.getConnection()
+
+        try:
+            self.cursor = self.connection.cursor()
+            self.cursor.execute(
+                "SELECT image FROM post WHERE post_id = %s", post_id
+            )
+            result = self.cursor.fetchall()
+            return result[0]['image']
         except:
             pass
         finally:
