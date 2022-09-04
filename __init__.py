@@ -56,7 +56,7 @@ def unauthorized_error(error):
     return render_template('/error/error.html'), 401
 
 def db_connection(): # Database Connection
-    login = security.db_auth.db_login
+    login = db_auth.db_login
     connection = pymysql.connect(host=login['host'],
                             user=login['user'],
                             password=login['password'],
@@ -478,7 +478,6 @@ def insertPost():
     postingService = posting_service.PostingService()
     authService = auth_service.AuthService()
     user_id = inputData['user_id']
-
     # 객체 생성 이미지 저장 및 저장 path 생성   
     # TODO image 가 없으면 400 에러 난다. 이미지가 없어도 동작하도록
     try:
