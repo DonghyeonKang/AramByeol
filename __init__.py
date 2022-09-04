@@ -490,7 +490,7 @@ def insertPost():
         data = [uid, inputData['title'], inputData['content'], now.strftime('%Y-%m-%d %H:%M:%S'), int(inputData['score']), inputData['meal_time'], path]
         # 저장
         result = postingService.insertPost(data)
-    except PIL.UnidentifiedImageError:
+    except KeyError:
         uid = authService.getUid(user_id)
         now = datetime.now()
         data = [uid, inputData['title'], inputData['content'], now.strftime('%Y-%m-%d %H:%M:%S'), int(inputData['score']), inputData['meal_time']]
@@ -499,7 +499,25 @@ def insertPost():
 
 @app.route('/post/detail', methods=['PUT']) # 수정
 def updatePost():
-    pass
+    inputData = request.get_json()    
+    postId = inputData['post_id']
+    postingService = posting_service.PostingService()
+    user_id = inputData['user_id']
+    # TODO image 가 없으면 400 에러 난다. 이미지가 없어도 동작하도록
+    try:
+        strImage = inputData['image']
+        img = Image.open(BytesIO(base64.b64decode(strImage)))
+        path = postingService.saveImage(img, user_id)
+        # 저장할 data 생성
+        now = datetime.now()
+        data = [inputData['title'], inputData['content'], now.strftime('%Y-%m-%d %H:%M:%S'), int(inputData['score']), inputData['meal_time'], path]
+        # 저장
+        result = postingService.updatePost(postId, data)
+    except KeyError:
+        now = datetime.now()
+        data = [inputData['title'], inputData['content'], now.strftime('%Y-%m-%d %H:%M:%S'), int(inputData['score']), inputData['meal_time']]
+        result = postingService.updatePost(postId, data)
+    return jsonify({'result': result}) # success or fail
 
 @app.route('/post/detail', methods=['DELETE'])  # 삭제
 def deletePost():

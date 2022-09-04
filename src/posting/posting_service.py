@@ -36,8 +36,9 @@ class PostingService:
 
     def updatePost(self, post_id, data):
         try:
-            res = self.postingRepo.updatePosting(data)
+            res = self.postingRepo.updatePosting(post_id, data)
             # 이미지 업데이트라면 기존 이미지 삭제
+            # edit data like [user_id, title, content, date, score, meal_time, image]
             return res
         except:
             return "Error: posting_service UpdateData Error"
