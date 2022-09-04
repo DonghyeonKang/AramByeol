@@ -67,12 +67,36 @@ class PostingRepository:
     def updatePosting(self, post_id, data):
         self.getConnection()
 
-        try:
-            pass
-        except:
-            pass
-        finally:
-            self.closeConnection()
+        if len(data) == 6:
+            try:
+                self.cursor = self.connection.cursor()
+                arr = data
+                arr.append(post_id)
+                self.cursor.execute(
+                    "UPDATE post SET title=%s, content=%s, date=%s, score=%s, meal_time=%s, image=%s WHERE post_id=%s", arr
+                )
+                self.connection.commit()  # 실행한 문장들 적용
+                return 'success'
+            except Exception as e:
+                print(e)
+                return "Error: Database Insert Error"
+            finally:
+                self.closeConnection()
+        else:
+            try:
+                self.cursor = self.connection.cursor()
+                arr = data
+                arr.append(post_id)
+                self.cursor.execute(
+                    "UPDATE post SET title=%s, content=%s, date=%s, score=%s, meal_time=%s WHERE post_id=%s", arr
+                )
+                self.connection.commit()  # 실행한 문장들 적용
+                return 'success'
+            except Exception as e:
+                print(e)
+                return "Error: Database Insert Error"
+            finally:
+                self.closeConnection()
 
     def deletePosting(self, post_id):
         self.getConnection()
