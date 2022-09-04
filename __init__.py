@@ -56,7 +56,7 @@ def unauthorized_error(error):
     return render_template('/error/error.html'), 401
 
 def db_connection(): # Database Connection
-    login = security.db_auth.db_login
+    login = db_auth.db_login
     connection = pymysql.connect(host=login['host'],
                             user=login['user'],
                             password=login['password'],
