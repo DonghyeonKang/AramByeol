@@ -47,12 +47,15 @@ class PostingService:
         try:
             # 이미지 삭제
             path = self.postingRepo.getImagePath(post_id)
-            self.deleteImage(path)
+            if path == None:
+                pass
+            else:
+                self.deleteImage(path)
             # 포스팅 데이터 삭제
             result = self.postingRepo.deletePosting(post_id)
             return jsonify({"result" : result})
         except:
-            return "Error: posting_service DeletePost Error"
+            return "Error: posting_service DeletePostImg Error"
 
     def getPostList(self, times):
         try:
