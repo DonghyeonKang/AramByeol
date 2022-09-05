@@ -205,6 +205,18 @@ def loginByApp():
     resData = authService.appLogin(user_id, user_pw)
     return resData
 
+# 앱 로그아웃
+@app.route('/logout/app', methods=['POST'])
+@token_required
+def logoutByApp():
+    authService = auth_service.AuthService()
+    # 클라이언트로부터 요청된 값
+    input_data = request.get_json()
+    user_id = input_data['user_id']
+
+    result = authService.appLogout(user_id)
+    return result
+
 # 토큰 갱신
 @app.route('/member/auth', methods=['PUT'])
 def renewToken():

@@ -88,6 +88,11 @@ class AuthService:
         else:
             return jsonify(result = "Invalid Params!")
 
+    def appLogout(self, user_id):
+        authRepository = auth_repository.AuthRepository()
+        result = authRepository.deleteRefreshToken(user_id)
+        return jsonify({"result" : result})
+
     # TODO userid 가 메일이 아닌 경우 예외 처리
     def getUid(self, user_id):
         authRepository = auth_repository.AuthRepository()

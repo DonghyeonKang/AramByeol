@@ -30,6 +30,20 @@ class AuthRepository:
         finally:
             self.closeConnection()
 
+    def deleteRefreshToken(self, user_id):
+        self.getConnection()
+        try:
+            cursor = self.connection.cursor()
+            arr = [user_id]
+            cursor.execute("DELETE FROM token WHERE user_id=%s", arr)
+            self.connection.commit()
+            return "success"
+        except Exception as e:
+            print(e)
+            return "DB Insert Error"
+        finally:
+            self.closeConnection()
+
     def checkRefreshToken(self, refreshToken):
         self.getConnection()
         try:
