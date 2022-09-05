@@ -161,6 +161,19 @@ def registerByApp():
     result = authService.addUser(user_id, user_pw, nickname)
     return result
 
+# 앱 회원가입
+@app.route('/member/password', methods=['POST'])
+@token_required
+def changePassword():
+    authService = auth_service.AuthService()
+    # 클라이언트로부터 요청된 값
+    input_data = request.get_json()
+    user_id = input_data['user_id']
+    user_pw = input_data['user_pw']
+    result = authService.changePassword(user_id, user_pw)
+    return result
+
+
 # 앱 닉네임 중복 확인
 @app.route('/member/nickname', methods=['GET'])
 def checkNickname():
