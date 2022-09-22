@@ -79,5 +79,3 @@ CREATE TABLE `user_likes` (
     FOREIGN KEY (`uid`) REFERENCES `users`(`id`) ON DELETE CASCADE,
     FOREIGN KEY (`post_id`) REFERENCES `post`(`post_id`) ON DELETE CASCADE
 );
-
-select post_id from user_likes where uid=1;
