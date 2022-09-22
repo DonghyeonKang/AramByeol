@@ -55,7 +55,7 @@ class PostingRepository:
         try:
             self.cursor = self.connection.cursor()
             self.cursor.execute(
-                "SELECT * FROM post WHERE post_id = %s", post_id
+                "SELECT post_id, nickname, title, score, meal_time, image, date, content, `like` FROM post, users WHERE users.id = post.uid AND post_id = %s", post_id
             )
             result = self.cursor.fetchall()
             return result[0]
@@ -67,12 +67,36 @@ class PostingRepository:
     def updatePosting(self, post_id, data):
         self.getConnection()
 
-        try:
-            pass
-        except:
-            pass
-        finally:
-            self.closeConnection()
+        if len(data) == 6:
+            try:
+                self.cursor = self.connection.cursor()
+                arr = data
+                arr.append(post_id)
+                self.cursor.execute(
+                    "UPDATE post SET title=%s, content=%s, date=%s, score=%s, meal_time=%s, image=%s WHERE post_id=%s", arr
+                )
+                self.connection.commit()  # 실행한 문장들 적용
+                return 'success'
+            except Exception as e:
+                print(e)
+                return "Error: Database Insert Error"
+            finally:
+                self.closeConnection()
+        else:
+            try:
+                self.cursor = self.connection.cursor()
+                arr = data
+                arr.append(post_id)
+                self.cursor.execute(
+                    "UPDATE post SET title=%s, content=%s, date=%s, score=%s, meal_time=%s WHERE post_id=%s", arr
+                )
+                self.connection.commit()  # 실행한 문장들 적용
+                return 'success'
+            except Exception as e:
+                print(e)
+                return "Error: Database Insert Error"
+            finally:
+                self.closeConnection()
 
     def deletePosting(self, post_id):
         self.getConnection()
@@ -112,11 +136,41 @@ class PostingRepository:
             self.cursor = self.connection.cursor()
             arr = [20 * times, 20 * (1 + times)]
             self.cursor.execute(
-                "SELECT post_id, user_id, title, content, `date`, score, meal_time, `image`, `like` FROM post, users WHERE users.id = post.uid ORDER BY post_id DESC LIMIT %s, %s", arr
+                "SELECT post_id, nickname, title, score, meal_time FROM post, users WHERE users.id = post.uid ORDER BY post_id DESC LIMIT %s, %s", arr
             )
             result = self.cursor.fetchall()
             return result
         except:
             pass
+        finally:
+            self.closeConnection()
+        
+    def addPostLikes(self, post_id):
+        self.getConnection()
+
+        try:
+            self.cursor = self.connection.cursor()
+            self.cursor.execute(
+                "UPDATE post SET `like`=`like` + 1 WHERE post_id=%s", post_id
+            )
+            self.connection.commit()            
+            return "success"
+        except:
+            return "Database Update Error"
+        finally:
+            self.closeConnection()
+
+    def minusPostLikes(self, post_id):
+        self.getConnection()
+
+        try:
+            self.cursor = self.connection.cursor()
+            self.cursor.execute(
+                "UPDATE post SET `like`=`like` - 1 WHERE post_id=%s", post_id
+            )
+            self.connection.commit()            
+            return "success"
+        except:
+            return "Database Update Error"
         finally:
             self.closeConnection()
