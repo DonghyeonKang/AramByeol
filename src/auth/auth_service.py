@@ -74,6 +74,17 @@ class AuthService:
             else:
                 return jsonify({"result" : "Id is already exists"})
 
+    def changePassword(self, user_id, user_pw):
+        authRepository = auth_repository.AuthRepository()
+        # 기존 password와 확인
+        decoded_user_pw = (bcrypt.hashpw(user_pw.encode('UTF-8'), bcrypt.gensalt())).decode('utf-8')  # 해싱 처리
+        if self.checkUserPassword(user_id, user_pw):
+            return jsonify({"result": "Same Password"})            
+        else:
+            # password 변경
+            result = authRepository.updateUserPw(user_id, decoded_user_pw)
+            return jsonify({"result": result})
+
     def webLogin(self): # 웹 로그인
         pass
 
@@ -87,6 +98,11 @@ class AuthService:
                            refresh_token = self.createRefreshToken(user_id))
         else:
             return jsonify(result = "Invalid Params!")
+
+    def appLogout(self, user_id):
+        authRepository = auth_repository.AuthRepository()
+        result = authRepository.deleteRefreshToken(user_id)
+        return jsonify({"result" : result})
 
     # TODO userid 가 메일이 아닌 경우 예외 처리
     def getUid(self, user_id):

@@ -59,7 +59,7 @@ CREATE TABLE `post` (
     `score` INT NOT NULL,
     `meal_time` TEXT NOT NULL,
     `image` TEXT,
-    `like` INT DEFAULT 0,
+    `like` INT UNSIGNED DEFAULT 0,
     FOREIGN KEY (`uid`) REFERENCES `users`(`id`) ON DELETE CASCADE
 );
 
@@ -71,4 +71,11 @@ CREATE TABLE `token` (
 CREATE TABLE `mail` (
     `user_id` VARCHAR(320) NOT NULL,
     `token` TEXT NOT NULL
+);
+
+CREATE TABLE `user_likes` (
+    `uid` INT NOT NULL,
+    `post_id` INT(10),
+    FOREIGN KEY (`uid`) REFERENCES `users`(`id`) ON DELETE CASCADE,
+    FOREIGN KEY (`post_id`) REFERENCES `post`(`post_id`) ON DELETE CASCADE
 );

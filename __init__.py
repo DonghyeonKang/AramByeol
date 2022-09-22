@@ -161,6 +161,19 @@ def registerByApp():
     result = authService.addUser(user_id, user_pw, nickname)
     return result
 
+# 앱 회원가입
+@app.route('/member/password', methods=['POST'])
+@token_required
+def changePassword():
+    authService = auth_service.AuthService()
+    # 클라이언트로부터 요청된 값
+    input_data = request.get_json()
+    user_id = input_data['user_id']
+    user_pw = input_data['user_pw']
+    result = authService.changePassword(user_id, user_pw)
+    return result
+
+
 # 앱 닉네임 중복 확인
 @app.route('/member/nickname', methods=['GET'])
 def checkNickname():
@@ -204,6 +217,18 @@ def loginByApp():
 
     resData = authService.appLogin(user_id, user_pw)
     return resData
+
+# 앱 로그아웃
+@app.route('/logout/app', methods=['POST'])
+@token_required
+def logoutByApp():
+    authService = auth_service.AuthService()
+    # 클라이언트로부터 요청된 값
+    input_data = request.get_json()
+    user_id = input_data['user_id']
+
+    result = authService.appLogout(user_id)
+    return result
 
 # 토큰 갱신
 @app.route('/member/auth', methods=['PUT'])
@@ -463,12 +488,9 @@ from PIL import Image
 from io import BytesIO
 
 @app.route('/post/detail', methods=['GET']) # 출력
-@token_required
 def getPost():
     postingService = posting_service.PostingService()
-
-    inputData = request.get_json()
-    postId = inputData['post_id']
+    postId = request.args.get('post_id')
     return postingService.selectPost(postId)
 
 @app.route('/post/detail', methods=['POST']) # 삽입
@@ -490,7 +512,7 @@ def insertPost():
         data = [uid, inputData['title'], inputData['content'], now.strftime('%Y-%m-%d %H:%M:%S'), int(inputData['score']), inputData['meal_time'], path]
         # 저장
         result = postingService.insertPost(data)
-    except PIL.UnidentifiedImageError:
+    except KeyError:
         uid = authService.getUid(user_id)
         now = datetime.now()
         data = [uid, inputData['title'], inputData['content'], now.strftime('%Y-%m-%d %H:%M:%S'), int(inputData['score']), inputData['meal_time']]
@@ -499,7 +521,25 @@ def insertPost():
 
 @app.route('/post/detail', methods=['PUT']) # 수정
 def updatePost():
-    pass
+    inputData = request.get_json()    
+    postId = inputData['post_id']
+    postingService = posting_service.PostingService()
+    user_id = inputData['user_id']
+    # TODO image 가 없으면 400 에러 난다. 이미지가 없어도 동작하도록
+    try:
+        strImage = inputData['image']
+        img = Image.open(BytesIO(base64.b64decode(strImage)))
+        path = postingService.saveImage(img, user_id)
+        # 저장할 data 생성
+        now = datetime.now()
+        data = [inputData['title'], inputData['content'], now.strftime('%Y-%m-%d %H:%M:%S'), int(inputData['score']), inputData['meal_time'], path]
+        # 저장
+        result = postingService.updatePost(postId, data)
+    except KeyError:
+        now = datetime.now()
+        data = [inputData['title'], inputData['content'], now.strftime('%Y-%m-%d %H:%M:%S'), int(inputData['score']), inputData['meal_time']]
+        result = postingService.updatePost(postId, data)
+    return jsonify({'result': result}) # success or fail
 
 @app.route('/post/detail', methods=['DELETE'])  # 삭제
 def deletePost():
@@ -510,7 +550,7 @@ def deletePost():
     result = postingService.deletePost(postId)
     return result
 
-@app.route('/post/list', methods=['GET']) # 포스팅 리스트를 가져옴
+@app.route('/post/list', methods=['POST']) # 포스팅 리스트를 가져옴
 def getPostList():
     inputData = request.get_json()
     times = inputData['times']
@@ -519,14 +559,26 @@ def getPostList():
     result = postingService.getPostList(times)
     return result
 
-@app.route('/posting/img', methods=['POST'])
-def img():
+@app.route('/post/my', methods=['POST']) # 포스팅 리스트를 가져옴
+@token_required
+def getMyPost():
     inputData = request.get_json()
-    image = inputData['image']
-    img = Image.open(BytesIO(base64.b64decode(image)))
+    user_id = inputData['user_id']
+
     postingService = posting_service.PostingService()
-    postingService.saveImage(img, "gaeun")
-    return jsonify({"result" : "success"})
+    result = postingService.getMyPost(user_id)
+    return result
+
+@app.route('/post/likes', methods=['POST']) # 포스팅 리스트를 가져옴
+@token_required
+def updateLikes():
+    inputData = request.get_json()
+    post_id = inputData['post_id']
+    status = inputData['status']
+
+    postingService = posting_service.PostingService()
+    result = postingService.updateLikes(post_id, status)
+    return result
 
 if __name__ == '__main__':
     app.run('0.0.0.0',port=5000,debug=True, threaded=True)
