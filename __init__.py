@@ -9,7 +9,6 @@ from flask import jsonify # Return json form to client
 from flask import url_for # Return defined route link to client
 from flask import flash
 from flask import make_response
-from user import * # Login and Register
 import bcrypt   # Password hash encrypt and decrypt
 import pymysql.cursors # python과 mysql(mariadb) 연동
 from datetime import datetime, timedelta # Time generator

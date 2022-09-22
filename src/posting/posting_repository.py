@@ -76,7 +76,11 @@ class PostingRepository:
                     "UPDATE post SET title=%s, content=%s, date=%s, score=%s, meal_time=%s, image=%s WHERE post_id=%s", arr
                 )
                 self.connection.commit()  # 실행한 문장들 적용
-                return 'success'
+                self.cursor.execute(
+                    "SELECT post_id, nickname, title, score, meal_time, image, date, content, `like` FROM post, users WHERE users.id = post.uid AND post_id = %s", post_id
+                )
+                result = self.cursor.fetchall()
+                return result[0]
             except Exception as e:
                 print(e)
                 return "Error: Database Insert Error"
@@ -91,7 +95,11 @@ class PostingRepository:
                     "UPDATE post SET title=%s, content=%s, date=%s, score=%s, meal_time=%s WHERE post_id=%s", arr
                 )
                 self.connection.commit()  # 실행한 문장들 적용
-                return 'success'
+                self.cursor.execute(
+                    "SELECT post_id, nickname, title, score, meal_time, image, date, content, `like` FROM post, users WHERE users.id = post.uid AND post_id = %s", post_id
+                )
+                result = self.cursor.fetchall()
+                return result[0]
             except Exception as e:
                 print(e)
                 return "Error: Database Insert Error"
