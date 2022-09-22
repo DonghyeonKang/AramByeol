@@ -55,7 +55,7 @@ class PostingRepository:
         try:
             self.cursor = self.connection.cursor()
             self.cursor.execute(
-                "SELECT * FROM post WHERE post_id = %s", post_id
+                "SELECT post_id, nickname, title, score, meal_time, image, date, content, `like` FROM post, users WHERE users.id = post.uid AND post_id = %s", post_id
             )
             result = self.cursor.fetchall()
             return result[0]
@@ -136,11 +136,41 @@ class PostingRepository:
             self.cursor = self.connection.cursor()
             arr = [20 * times, 20 * (1 + times)]
             self.cursor.execute(
-                "SELECT post_id, user_id, title, content, `date`, score, meal_time, `image`, `like` FROM post, users WHERE users.id = post.uid ORDER BY post_id DESC LIMIT %s, %s", arr
+                "SELECT post_id, nickname, title, score, meal_time FROM post, users WHERE users.id = post.uid ORDER BY post_id DESC LIMIT %s, %s", arr
             )
             result = self.cursor.fetchall()
             return result
         except:
             pass
+        finally:
+            self.closeConnection()
+        
+    def addPostLikes(self, post_id):
+        self.getConnection()
+
+        try:
+            self.cursor = self.connection.cursor()
+            self.cursor.execute(
+                "UPDATE post SET `like`=`like` + 1 WHERE post_id=%s", post_id
+            )
+            self.connection.commit()            
+            return "success"
+        except:
+            return "Database Update Error"
+        finally:
+            self.closeConnection()
+
+    def minusPostLikes(self, post_id):
+        self.getConnection()
+
+        try:
+            self.cursor = self.connection.cursor()
+            self.cursor.execute(
+                "UPDATE post SET `like`=`like` - 1 WHERE post_id=%s", post_id
+            )
+            self.connection.commit()            
+            return "success"
+        except:
+            return "Database Update Error"
         finally:
             self.closeConnection()
