@@ -1,5 +1,5 @@
 db_login = {
-    'host':'arambyeol-operation-mysql',
+    'host':'localhost',
     'user':'aram',
     'password':'aramworrior',
     'db':'arambyeol',

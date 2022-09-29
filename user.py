@@ -18,7 +18,7 @@ def db_connection():
 def useradd(id, pw):
     connection = db_connection() # db 연결
     cursor = connection.cursor() # control structure of database SQL 문장을 DB 서버에 전송하기 위한 객체
-    sql = "INSERT INTO users(user_id, user_pw) VALUES ('%s', '%s')" % (id,pw)  # 쿼리문 작성
+    sql = "INSERT INTO users(user_id, user_pw, nickname) VALUES ('%s', '%s', 'WebUser')" % (id,pw)  # 쿼리문 작성
     cursor.execute(sql) # 쿼리 실행 
     connection.commit() # 쿼리 적용
     connection.close() # db 연결해제

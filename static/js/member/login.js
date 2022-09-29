@@ -8,22 +8,22 @@ function password_chk(pwd) {
   return pwd_chk.test(pwd);
 }
 
-function playsignup() {
+function login() {
   const id = document.getElementById("nameInput").value;
   const pwd = document.getElementById("pwdInput").value;
-  const pwdchk = document.getElementById("pwdInput_chk").value;
-  const pwd_chkbtn = document.querySelector(".pwdchk_button");
-  const signup_btn = document.querySelector(".signup_button");
 
   if (idchk(id)) {
-    if (password_chk(pwd)) {
-      if (pwd == pwdchk) {
-        pwd_chkbtn.style.display = "none";
-        signup_btn.style.display = "inline-block";
-      } else {
-        alert("비밀번호가 일치하지 않습니다.");
-      }
-    } else {
+    if (password_chk(pwd) ) {
+      $.ajax({
+        type: "POST",
+        url: "/member/login.html",
+        async: false,
+        data: {},
+        success: function (response) {     
+        },
+      });
+    }
+    else {
       alert("비밀번호 형식이 올바르지 않습니다.");
     }
   } else {

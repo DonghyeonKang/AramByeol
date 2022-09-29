@@ -12,7 +12,7 @@ import bcrypt   # Password hash encrypt and decrypt
 import pymysql.cursors # python과 mysql(mariadb) 연동
 from datetime import datetime, timedelta # Time generator
 import db_auth # Database login info
-
+import re # 정규 표현식
 
 app = Flask(__name__)
 app.secret_key = 'asd1inldap123jwaw'        # 세션을 암호화하기 위해 비밀키가 서명된 쿠키 사용
@@ -61,6 +61,14 @@ def register():
     if request.method == 'POST': # post 방식으로 받아옴
         id = request.form['id'] # id input 값 받아오기
         pw = request.form['password'] # pw input 값 받아오기
+
+        if len(pw) < 5 or len(pw) > 15 and not re.findall('[0-9]+', pw) and re.findall('[a-zA-Z]', pw):
+            flash("비밀번호 기준에 맞지 않습니다.")
+            return render_template("/member/register.html")
+        elif not re.findall('[~!@#$%^&*]', pw):
+            flash("비밀번호 기준에 맞지 않습니다.")
+            return render_template("/member/register.html")
+
         pw = (bcrypt.hashpw(pw.encode('UTF-8'), bcrypt.gensalt())).decode('utf-8')  # 해싱 처리
         if(check_userId(id) != True):   # id 가 이미 존재하면 true
             useradd(id, pw) # id와 pw를 
