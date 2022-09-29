@@ -62,6 +62,10 @@ def register():
         id = request.form['id'] # id input 값 받아오기
         pw = request.form['password'] # pw input 값 받아오기
 
+        if len(id) < 2 or len(id) > 10 and not re.findall('[a-zA-Z0-9]+', id):
+            flash("아이디 기준에 맞지 않습니다.")
+            return render_template("/member/register.html")
+
         if len(pw) < 5 or len(pw) > 15 and not re.findall('[0-9]+', pw) and re.findall('[a-zA-Z]', pw):
             flash("비밀번호 기준에 맞지 않습니다.")
             return render_template("/member/register.html")
@@ -84,6 +88,18 @@ def login():
     if request.method == "POST": # post 방식으로 받아옴
         id = request.form['id'] # id input 값 받아오기
         pw = request.form['password'] # pw input 값 받아오기
+
+        if len(id) < 2 or len(id) > 10 and not re.findall('[a-zA-Z0-9]+', id):
+            flash("아이디 기준에 맞지 않습니다.")
+            return render_template("/member/login.html")
+
+        if len(pw) < 5 or len(pw) > 15 and not re.findall('[0-9]+', pw) and re.findall('[a-zA-Z]', pw):
+            flash("비밀번호 기준에 맞지 않습니다.")
+            return render_template("/member/login.html")
+        elif not re.findall('[~!@#$%^&*]', pw):
+            flash("비밀번호 기준에 맞지 않습니다.")
+            return render_template("/member/login.html")
+
         check_id = check_userId(id) # 아이디가 있으면 true
         check_password = check_userPassword(id, pw) # 비밀번호가 틀리면 false
         if check_id:
