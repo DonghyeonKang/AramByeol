@@ -62,11 +62,11 @@ def register():
         id = request.form['id'] # id input 값 받아오기
         pw = request.form['password'] # pw input 값 받아오기
 
-        if len(id) < 2 or len(id) > 10 and not re.findall('[a-zA-Z0-9]+', id):
+        if len(id) < 2 or len(id) > 10 and not re.findall('[a-zA-Z0-9]+', id) or re.findall('[-\'=]', id):
             flash("아이디 기준에 맞지 않습니다.")
             return render_template("/member/register.html")
 
-        if len(pw) < 5 or len(pw) > 15 and not re.findall('[0-9]+', pw) and re.findall('[a-zA-Z]', pw):
+        if len(pw) < 5 or len(pw) > 15 and not re.findall('[0-9]+', pw) and re.findall('[a-zA-Z]', pw) or re.findall('[-\'=]', pw):
             flash("비밀번호 기준에 맞지 않습니다.")
             return render_template("/member/register.html")
         elif not re.findall('[~!@#$%^&*]', pw):
@@ -89,11 +89,10 @@ def login():
         id = request.form['id'] # id input 값 받아오기
         pw = request.form['password'] # pw input 값 받아오기
 
-        if len(id) < 2 or len(id) > 10 and not re.findall('[a-zA-Z0-9]+', id):
+        if len(id) < 2 or len(id) > 10 and not re.findall('[a-zA-Z0-9]+', id) or re.findall('[-\'=]', id):
             flash("아이디 기준에 맞지 않습니다.")
             return render_template("/member/login.html")
-
-        if len(pw) < 5 or len(pw) > 15 and not re.findall('[0-9]+', pw) and re.findall('[a-zA-Z]', pw):
+        if len(pw) < 5 or len(pw) > 15 and not re.findall('[0-9]+', pw) and re.findall('[a-zA-Z]', pw) or re.findall('[-\'=]', pw):
             flash("비밀번호 기준에 맞지 않습니다.")
             return render_template("/member/login.html")
         elif not re.findall('[~!@#$%^&*]', pw):
