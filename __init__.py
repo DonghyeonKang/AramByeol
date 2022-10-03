@@ -89,6 +89,16 @@ def login():
         id = request.form['id'] # id input 값 받아오기
         pw = request.form['password'] # pw input 값 받아오기
 
+        try:
+            attempt = session['attempt']
+            if attempt < 1:
+                flash("로그인 횟수를 초과하였습니다.")
+                return render_template("/member/login.html")
+            else:
+                session['attempt'] -= 1
+        except KeyError:
+            attempt = session['attempt'] = 10
+
         if len(id) < 2 or len(id) > 10 and not re.findall('[a-zA-Z0-9]+', id) or re.findall('[-\'=]', id):
             flash("아이디 기준에 맞지 않습니다.")
             return render_template("/member/login.html")
@@ -103,6 +113,7 @@ def login():
         check_password = check_userPassword(id, pw) # 비밀번호가 틀리면 false
         if check_id:
             if check_password:
+                session.pop('attempt', None)
                 session.permanent = True # 브라우저가 종료되어도 session이 사라지지 않도록 설정. 시간을 설정하지 않으면, default 값은 31일.
                 session['username'] = request.form['id'] # session 에 userid 넣기
                 return redirect(url_for('home')) # index.html로 redirect 한다. 
