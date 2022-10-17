@@ -13,12 +13,14 @@ chrome_options = webdriver.ChromeOptions()
 chrome_options.add_argument('--incognito')
 chrome_options.add_argument('--headless')
 chrome_options.add_argument('--no-sandbox')
+chrome_options.add_argument("--disable-setuid-sandbox")
 chrome_options.add_argument("--single-process")
 chrome_options.add_argument("--disable-dev-shm-usage")
+chrome_options.add_experimental_option('excludeSwitches', ['enable-logging'])
 driver = webdriver.Chrome(ChromeDriverManager().install(), chrome_options=chrome_options)
 driver.get('https://www.gnu.ac.kr/dorm/ad/fm/foodmenu/selectFoodMenuView.do') # 스크래핑할 동적 웹사이트 주소
 html = driver.page_source   # 드라이버로 긁어온 정보를 html에 담음
-driver.close()
+driver.quit()
 display.stop()
 subprocess.call("pkill -9 chrome", shell=True) # chrome driver 제대로 안꺼지면 꺼야함
 soup = BeautifulSoup(html, 'html.parser') # Beautifulsoup로 1차 가공
@@ -77,6 +79,7 @@ def split_menu_data(args):
         day.append([])
         day_count = 0   # 요일 카운트 [요일][메뉴]
 
+        
         for element in args:
             if count >= 4:  # 공백 개수가 연속으로 4 이상이면
                 day.append([])  # 요일 바뀜
@@ -88,11 +91,17 @@ def split_menu_data(args):
             else:
                 day[day_count].append(element)
                 count = 0   # 공백 개수 초기화
+                
+        if [] in day:
+            print("발견! ")
+        while [] in day:
+            day.remove([])
+
         return day
 
 def data_blocking(args):
     data = []
-    blockingList = ["공지", "어플연동시", "당일 메뉴 오류가 빈번하게 발생합니다. 학생생활관 홈페이지에서 메뉴를 확인해주세요"]
+    blockingList = ["공지", "어플연동시", "당일 메뉴 오류가 빈번하게 발생합니다. 학생생활관 홈페이지에서 메뉴를 확인해주세요", "내부 사정으로 인해", "당분간 외부인의 식사를 제한합니다.", "재개시 공지하도록 하겠습니다."]
     for i in args:
         if i not in blockingList:
             data.append(i)
