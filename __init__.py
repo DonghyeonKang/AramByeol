@@ -314,6 +314,15 @@ def setCookie():
     resp.set_cookie("userid", user)
     return resp
 
+# 앱 메뉴
+import src.service.MenuService as MenuService
+
+@app.route('/menu', methods=['GET'])
+def getMenu():
+    menuService = MenuService.MenuService()
+    resp = menuService.selectMenuList()
+    return resp
+
 if __name__ == '__main__':
     app.run('0.0.0.0',port=5000,debug=False, threaded=True)
 
