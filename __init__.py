@@ -316,11 +316,12 @@ def setCookie():
 
 # 앱 메뉴
 import src.service.MenuService as MenuService
+from flask import Response
 
 @app.route('/menu', methods=['GET'])
 def getMenu():
     menuService = MenuService.MenuService()
-    resp = menuService.selectMenuList()
+    resp = Response(response=menuService.selectMenuList(), mimetype="application/json")    
     return resp
 
 if __name__ == '__main__':
