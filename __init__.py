@@ -63,14 +63,14 @@ def register():
         pw = request.form['password'] # pw input 값 받아오기
 
         if len(id) < 2 or len(id) > 10 and not re.findall('[a-zA-Z0-9]+', id) or re.findall('[-\'=]', id):
-            flash("아이디 기준에 맞지 않습니다.")
+            flash("아이디 기준에 맞지 않습니다.")   # 웹 페이지에 알림으로 경고 전송
             return render_template("/member/register.html")
 
-        if len(pw) < 5 or len(pw) > 15 and not re.findall('[0-9]+', pw) and re.findall('[a-zA-Z]', pw) or re.findall('[-\'=]', pw):
-            flash("비밀번호 기준에 맞지 않습니다.")
+        if len(pw) < 5 or len(pw) > 15 and not re.findall('[0-9]+', pw) and re.findall('[a-zA-Z]', pw) or re.findall('[-\'=]', pw): # 비밀번호 
+            flash("비밀번호 기준에 맞지 않습니다.") # 웹 페이지에 알림으로 경고 전송
             return render_template("/member/register.html")
         elif not re.findall('[~!@#$%^&*]', pw):
-            flash("비밀번호 기준에 맞지 않습니다.")
+            flash("비밀번호 기준에 맞지 않습니다.") # 웹 페이지에 알림으로 경고 전송
             return render_template("/member/register.html")
 
         pw = (bcrypt.hashpw(pw.encode('UTF-8'), bcrypt.gensalt())).decode('utf-8')  # 해싱 처리
@@ -233,6 +233,8 @@ def week(): # 한 주의 메뉴를 리턴.
                 temp.append(test[0]['score'])
                 dinner.append(temp)
     connection.close()
+    print(days)
+    print(morning)
     return jsonify({'days':days, 'morning':morning, 'lunch':lunch, 'dinner':dinner}) # js와 매칭
 
 # 별점주기 API
@@ -324,6 +326,10 @@ def getMenu():
     resp = Response(response=menuService.selectMenuList(), mimetype="application/json")    
     return resp
 
-if __name__ == '__main__':
-    app.run('0.0.0.0',port=5000,debug=False, threaded=True)
 
+# flask 를 실행한다. 
+# 5000번 포트로 동작하겠다. debug 모드는 false, 멀티스레드 기능 = true
+# debug mode 는 코드 수정 후 저장시 flask 가 자동으로 재실행되고, 서버에서 error 발생시 front 측에 그 내용을 전달하여, 웹페이지에 에러 로그가 고스란히 찍힌다.
+# 멀티스레드 기능. flask 는 기본적으로 싱글 스레드로 동작하는데, 그럼 동시에 하나의 요청만 처리할 수 있게 된다. 
+if __name__ == '__main__':
+    app.run('0.0.0.0', port=5000, debug=False, threaded=True)
