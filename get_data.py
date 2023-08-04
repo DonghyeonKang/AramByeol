@@ -38,7 +38,6 @@ except Exception as e:  # 데이터를 가져옴에 있어서 에러가 발생�
     sendData(str(e))
 
 
-
 def first_index_del(arg, repeat=1):   # 첫번째 인덱스를 삭제. ('아침', '점심', '저녁')
         for i in range(repeat):
             del arg[0]

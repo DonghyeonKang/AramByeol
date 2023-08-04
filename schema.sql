@@ -1,3 +1,6 @@
+-- db table 의 스키마이다.
+-- er-diagram 이 수정되어 스키마를 변경해야하면 이 파일도 수정해준다. 
+
 CREATE TABLE `menudata`(
     `id` INT(10) NOT NULL AUTO_INCREMENT PRIMARY KEY,
     `menu` varchar(50) UNIQUE,
