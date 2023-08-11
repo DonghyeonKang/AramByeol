@@ -2,22 +2,8 @@ import slack
 import json
 import requests
 
-def post_to_slack(message):
-    webhookUrl = 'https://hooks.slack.com/services/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'
-    print(message)
-    data = [{'type': 'section', 'text': {'type': 'mrkdwn', 'text': message}}]
-    slackData = json.dumps({'blocks': data})
+slack_token = "xoxb-3707654943089-3694992446515-cbQby5Jbak2KoQUM1dxKH85b" # 발급받은 Token 값
+client = slack.WebClient(token=slack_token)
 
-    response = requests.post(
-        webhookUrl, data=slackData,
-        headers={'Content-Type':'application/json'}
-    )
-    if response.status_code != 200:
-        raise ValueError(
-            'Request to slack returned an error %s, the response is:\n%s'
-            % (response.status_code, response.text)
-        )
-
-
-
-post_to_slack("asdfahsdudsfuhafaihusfiuasdniufsadniufdsn")
+def sendToSlack(message):
+    client.chat_postMessage(channel="#menu_scraping_log", text=message)
