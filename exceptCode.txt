@@ -1,0 +1,17 @@
+#Chrmoe 웹 드라이버 초기화(웹 브라우저 자동화 위해)
+# driver = webdriver.Chrome() 
+# driver.get('https://www.gnu.ac.kr/dorm/ad/fm/foodmenu/selectFoodMenuView.do')
+#200초 동안 프로그램 일시중단
+# time.sleep(200) 
+
+# week_element = wait.until(EC.presence_of_element_located((By.TAG_NAME, 'thead'))).text
+# morning_element = wait.until(EC.presence_of_element_located((By.XPATH, '//*[@id="detailForm"]/div/table/tbody/tr[1]'))).text
+# lunch_element = wait.until(EC.presence_of_element_located((By.XPATH, '//*[@id="detailForm"]/div/table/tbody/tr[2]'))).text
+# dinner_element = wait.until(EC.presence_of_element_located((By.XPATH, '//*[@id="detailForm"]/div/table/tbody/tr[3]'))).text
+
+
+#selenium 사용하여 데이터 추출
+# week = driver.find_element(By.TAG_NAME,'thead')
+# morning = driver.find_element(By.XPATH,'//*[@id="detailForm"]/div/table/tbody/tr[1]')
+# lunch = driver.find_element(By.XPATH,'//*[@id="detailForm"]/div/table/tbody/tr[2]')
+# dinner = driver.find_element(By.XPATH,'//*[@id="detailForm"]/div/table/tbody/tr[3]')
