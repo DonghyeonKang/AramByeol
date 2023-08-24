@@ -64,6 +64,7 @@ dinner_html = all_menulist[2].find_all('td')
 #     return course_menu
 
 #메뉴 요일별 매칭 
+
 # def get_menu_for_week(menu_html, days_list):
 #     menus = {}
 
