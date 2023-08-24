@@ -50,7 +50,7 @@ morning_html = all_menulist[0].find_all('td')
 lunch_html = all_menulist[1].find_all('td')
 dinner_html = all_menulist[2].find_all('td')
 
-#일주일치 요일별 아침 메뉴 
+#일주일치 요일별 메뉴 추출 
 #아래의 중복 코드 함수로 생성 
 def get_course_menu(course_html):
     course_menu = {}
@@ -63,6 +63,7 @@ def get_course_menu(course_html):
 
     return course_menu
 
+#메뉴 요일별 매칭 
 def get_menu_for_week(menu_html, days_list):
     menus = {}
 
