@@ -50,88 +50,89 @@ morning_html = all_menulist[0].find_all('td')
 lunch_html = all_menulist[1].find_all('td')
 dinner_html = all_menulist[2].find_all('td')
 
-#일주일치 요일별 아침 메뉴 
+#일주일치 요일별 메뉴 추출 
 #아래의 중복 코드 함수로 생성 
-def get_course_menu(course_html):
-    course_menu = {}
-    course_items = course_html.find_all('div')
+# def get_course_menu(course_html):
+#     course_menu = {}
+#     course_items = course_html.find_all('div')
 
-    for one_course in course_items:
+#     for one_course in course_items:
+#         course = one_course.find('p', class_='fm_tit_p mgt15').get_text(strip=True)
+#         menu = one_course.find('p', class_='').get_text('\n')
+#         course_menu[course] = menu
+
+#     return course_menu
+
+#메뉴 요일별 매칭 
+# def get_menu_for_week(menu_html, days_list):
+#     menus = {}
+
+#     for day_menu in menu_html:
+#         course_menu = get_course_menu(day_menu)
+        
+#         for day in days_list:
+#             menus[day] = course_menu
+
+#     return menus
+
+# morning = get_menu_for_week(morning_html, days)
+# print("아침:", morning, "\n")
+
+# lunch = get_menu_for_week(lunch_html, days)
+# print("점심:", lunch, '\n')
+
+# dinner = get_menu_for_week(dinner_html, days)
+# print("저녁:", dinner)
+
+
+morning = {}
+morning_courseMenu = {}
+
+for day_morning in morning_html:
+    morning_course = day_morning.find_all('div')
+
+    for one_course in morning_course:
         course = one_course.find('p', class_='fm_tit_p mgt15').get_text(strip=True)
         menu = one_course.find('p', class_='').get_text('\n')
-        course_menu[course] = menu
-
-    return course_menu
-
-def get_menu_for_week(menu_html, days_list):
-    menus = {}
-
-    for day_menu in menu_html:
-        course_menu = get_course_menu(day_menu)
-        
-        for day in days_list:
-            menu_dict[day] = course_menu
-
-    return menus
-
-morning = get_menu_for_week(morning_html, days)
-print("아침:", morning, "\n")
-
-lunch = get_menu_for_week(lunch_html, days)
-print("점심:", lunch, '\n')
-
-dinner = get_menu_for_week(dinner_html, days)
-print("저녁:", dinner)
-
-
-# morning = {}
-# morning_courseMenu = {}
-
-# for day_morning in morning_html:
-#     morning_course = day_morning.find_all('div')
-
-#     for one_course in morning_course:
-#         course = one_course.find('p', class_='fm_tit_p mgt15').get_text(strip=True)
-#         menu = one_course.find('p', class_='').get_text('\n')
-#         morning_courseMenu[course] = menu
+        morning_courseMenu[course] = menu
     
-#     for day in days:
-#         morning[day] = morning_courseMenu
+    for day in days:
+        morning[day] = morning_courseMenu
 
-# print("아침:",morning,"\n") 
+print("아침:",morning,"\n") 
 
 
-# #일주일치 요일별 점심 메뉴 
-# lunch = {}
-# lunch_courseMenu = {}
+#일주일치 요일별 점심 메뉴 
+lunch = {}
+lunch_courseMenu = {}
 
-# for day_lunch in lunch_html:
-#     lunch_course = day_lunch.find_all('div')
+for day_lunch in lunch_html:
+    lunch_course = day_lunch.find_all('div')
 
-#     for one_course in lunch_course:
-#         course = one_course.find('p', class_='fm_tit_p mgt15').get_text(strip=True)
-#         menu = one_course.find('p', class_='').get_text('\n')
-#         lunch_courseMenu[course] = menu
+    for one_course in lunch_course:
+        course = one_course.find('p', class_='fm_tit_p mgt15').get_text(strip=True)
+        menu = one_course.find('p', class_='').get_text('\n')
+        lunch_courseMenu[course] = menu
     
-#     for day in days:
-#         lunch[day] = lunch_courseMenu
+    for day in days:
+        lunch[day] = lunch_courseMenu
 
 # print("점심:",lunch, "\n") 
 
-# #일주일치 요일별 저녁 메뉴 
-# dinner = {}
-# dinner_courseMenu = {}
+#일주일치 요일별 저녁 메뉴 
+dinner = {}
+dinner_courseMenu = {}
 
-# for day_dinner in dinner_html:
-#     dinner_course = day_dinner.find_all('div')
+for day_dinner in dinner_html:
+    dinner_course = day_dinner.find_all('div')
 
-#     for one_course in dinner_course:
-#         course = one_course.find('p', class_='fm_tit_p mgt15').get_text(strip=True)
-#         menu = one_course.find('p', class_='').get_text('\n')
-#         dinner_courseMenu[course] = menu
+    for one_course in dinner_course:
+        course = one_course.find('p', class_='fm_tit_p mgt15').get_text(strip=True)
+        menu = one_course.find('p', class_='').get_text('\n')
+        dinner_courseMenu[course] = menu
     
-#     for day in days:
-#         dinner[day] = dinner_courseMenu
+    for day in days:
+        dinner[day] = dinner_courseMenu
 
 # print("저녁:",dinner) 
 
