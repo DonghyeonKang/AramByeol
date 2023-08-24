@@ -15,3 +15,87 @@
 # morning = driver.find_element(By.XPATH,'//*[@id="detailForm"]/div/table/tbody/tr[1]')
 # lunch = driver.find_element(By.XPATH,'//*[@id="detailForm"]/div/table/tbody/tr[2]')
 # dinner = driver.find_element(By.XPATH,'//*[@id="detailForm"]/div/table/tbody/tr[3]')
+
+
+
+
+all_menu = menu.find_all('tr')
+#print(all_menu) #아침,점심,저녁 html 리스트로 출력
+
+#아침,점심,저녁 각각 변수에 html 저장
+for i in range(3):
+    if(i==0):
+        mornings = all_menu[i]
+    elif(i==1):
+        lunches = all_menu[i]
+    else:
+        dinners = all_menu[i]
+
+#print(mornings)
+
+#아침
+daily_morning = mornings.find_all('td')
+morning_text = [morning.get_text(strip=True) for morning in daily_morning]
+#print(morning_text) #A코스,B코스,테이크아웃 출력
+
+#점심
+daily_lunch = lunches.find_all('td')
+lunch_text = [lunch.get_text(strip=True) for lunch in daily_lunch]
+
+#저녁
+daily_dinner = dinners.find_all('td')
+dinner_text = [dinner.get_text(strip=True) for dinner in daily_dinner]
+
+
+-----------------------------------------------------------------------------------
+week = soup.find('thead')
+# 월요일부터 일요일까지의 요일 텍스트 추출
+day_date = week.find_all('th', scope='col')[1:]
+day_date_text = [day.get_text(strip=True) for day in day_date]
+
+#print(day_date_text) #월2023-08-14
+
+menu = soup.find('tbody')
+
+# 아침,점심,저녁 나타내는 th 태그 추출하여 리스트로 저장 
+meal_times = menu.find_all('th', scope='row')
+#print(meal_times) #[<th scope="row">아침</th>, <th scope="row">점심</th>, <th scope="row">저녁</th>]
+
+# 각 메뉴들 담을 리스트 생성
+menus = []
+
+# 아침,점심,저녁 메뉴를 추출하여 리스트에 추가
+for time in meal_times:
+
+    meal_time = time.get_text(strip=True) #공백 제거 
+    
+    # 메뉴 담을 리스트
+    menu_list = []
+    
+    # 해당 시간대에 해당하는 td 태그의 하위 요소들 추출
+    menu_courses = time.find_next('td').find_all('div') #코스들을 리스트로 저장 
+
+    for div in menu_courses:
+        course_type = div.find('p', class_='fm_tit_p mgt15').get_text(strip=True)  # 코스 종류
+        menu_items = div.find('p', class_='').get_text(strip=True).split('<br>')  # 각 메뉴 항목
+        
+        # 메뉴 항목을 분리하여 개별적으로 출력
+        for item in menu_items:
+            menu_list.append({'title': course_type, 'item': item})
+    
+    # 메뉴 리스트에 추가
+    menus.append({'time': meal_time, 'menu_list': menu_list})
+    
+#print(menus) -> 하루치의 아침,점심,저녁 메뉴만 담겨있음 
+
+morning = menus[0]
+lunch = menus[1]
+dinner = menus[2]
+
+# 결과 출력
+for meal in menus:
+    print(meal['time'])
+    for menu in meal['menu_list']:
+        print('  -', menu['title'])
+        print('    *', menu['item'])
+    print()

@@ -25,8 +25,8 @@ CREATE TABLE `morning`(
 );
 
 CREATE TABLE `week`(
-    `day` varchar(2) NOT NULL PRIMARY KEY,
-    `date` varchar(11) NOT NULL
+    `day` varchar(2) NOT NULL PRIMARY KEY, --키
+    `date` varchar(11) NOT NULL --값
 );
 
 CREATE TABLE `users` (
