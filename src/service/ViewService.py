@@ -5,5 +5,5 @@ class ViewService:
     viewRepository = ViewRepository.ViewRepository()
 
     def getView(self):
-        result = ViewRepository.selectView()
+        result = self.viewRepository.selectView()
         return result

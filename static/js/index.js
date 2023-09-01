@@ -17,11 +17,11 @@ $(document).ready(function () {
 const get_views = () => {
   $.ajax({
     type: "GET",
-    url: "/api/views",
+    url: "views",
     async: false,
     data: {},
     success: function (response) {
-      $(".views").append(`Total Views ${response["views"][0]["views"]}`)
+      $(".views").append(`Total Views ${response["views"]}`)
     },
   });
 }
@@ -34,7 +34,7 @@ const session_check = () => {
   let sessionExist;
   $.ajax({
     type: "POST",
-    url: "/api/session_check",
+    url: "session",
     async: false, // 세션 체크 후 반환되는 값에 따라 페이지 로딩을 달리해야하므로 동기식으로 처리
     data: {},
     success: function (response) {
@@ -42,7 +42,7 @@ const session_check = () => {
       if (response == "0") {
         // 세션 없음
         $("#login").append(
-          '<a href="/member/login.html" class="login-button" id="login-button">로그인</a>'
+          '<a href="/login" class="login-button" id="login-button">로그인</a>'
         );
         sessionExist = 0;
       } else {

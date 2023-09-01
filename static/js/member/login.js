@@ -16,7 +16,7 @@ function login() {
     if (password_chk(pwd) ) {
       $.ajax({
         type: "POST",
-        url: "/member/login.html",
+        url: "login",
         async: false,
         data: {},
         success: function (response) {     
