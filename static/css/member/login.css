@@ -12,11 +12,38 @@
 
   .header {
     background-color: #393b37;
-    font-size: 3rem;
-    display: flex;
+    font-size: 2rem;
+    display: grid;
+    grid-template-columns: 3rem 1fr 3rem;
     justify-content: center;
     align-items: center;
     font-family: "Quicksand", sans-serif;
+  }
+
+  .back_logo {
+    background-color: #393b37;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 30px;
+  }
+
+  .logo {
+    background-color: #393b37;
+    color: white;
+    align-items: center;
+    font-size: 2rem;
+    justify-content: center;
+    display: flex;
+    font-family: "Quicksand", sans-serif;
+  }
+
+  .home_logo {
+    background-color: #393b37;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-right: 30px;
   }
 
   .header a {
@@ -103,10 +130,37 @@
   .header {
     background-color: #393b37;
     font-size: 2rem;
-    display: flex;
+    display: grid;
+    grid-template-columns: 3rem 1fr 3rem;
     justify-content: center;
     align-items: center;
     font-family: "Quicksand", sans-serif;
+  }
+  
+  .back_logo {
+    background-color: #393b37;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 30px;
+  }
+
+  .logo {
+    background-color: #393b37;
+    color: white;
+    align-items: center;
+    font-size: 2rem;
+    justify-content: center;
+    display: flex;
+    font-family: "Quicksand", sans-serif;
+  }
+
+  .home_logo {
+    background-color: #393b37;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-right: 30px;
   }
 
   .header a {
@@ -196,10 +250,37 @@
   .header {
     background-color: #393b37;
     font-size: 3rem;
-    display: flex;
+    display: grid;
+    grid-template-columns: 3rem 1fr 3rem;
     justify-content: center;
     align-items: center;
     font-family: "Quicksand", sans-serif;
+  }
+
+  .back_logo {
+    background-color: #393b37;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 30px;
+  }
+
+  .logo {
+    background-color: #393b37;
+    color: white;
+    align-items: center;
+    font-size: 2rem;
+    justify-content: center;
+    display: flex;
+    font-family: "Quicksand", sans-serif;
+  }
+
+  .home_logo {
+    background-color: #393b37;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-right: 30px;
   }
 
   .header a {
