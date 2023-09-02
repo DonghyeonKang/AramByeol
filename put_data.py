@@ -1,6 +1,5 @@
 from get_data import *
 import pymysql.cursors  # python과 mysql(mariadb) 연동
-import db_auth
 ## 일주일에 한 번 씩 실행될 것임. ##
 
 # Connect to the DB
