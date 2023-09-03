@@ -7,20 +7,20 @@ CREATE TABLE `menudata`(
 
 CREATE TABLE `dinner`(
     `day` varchar(2) NOT NULL,
-    `cource` varchar(50),
+    `course` varchar(50),
     `menu` varchar(50) NOT NULL
 );
 
 
 CREATE TABLE `lunch`(
     `day` varchar(2) NOT NULL,
-    `cource` varchar(50),
+    `course` varchar(50),
     `menu` varchar(50) NOT NULL
 );
 
 CREATE TABLE `morning`(
     `day` varchar(2) NOT NULL,
-    `cource` varchar(50),
+    `course` varchar(50),
     `menu` varchar(50) NOT NULL
 );
 

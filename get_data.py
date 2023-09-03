@@ -70,7 +70,7 @@ for day_morning in morning_html:
 for i, day in enumerate(days):
     morning[day] = morning_list[i]
 
-print("아침:",morning,"\n")
+# print("아침:",morning,"\n")
 
 
 # 점심 메뉴 요일별 딕셔너리 형태로 추출
@@ -93,7 +93,7 @@ for day_lunch in lunch_html:
 for i, day in enumerate(days):
     lunch[day] = lunch_list[i]
 
-print("점심:",lunch,'\n') 
+# print("점심:",lunch,'\n') 
 
 # 저녁 메뉴 요일별 딕셔너리 형태로 추출
 dinner_list = []
@@ -115,7 +115,7 @@ for day_dinner in dinner_html:
 for i, day in enumerate(days):
     dinner[day] = dinner_list[i]
 
-print("저녁:",dinner)
+# print("저녁:",dinner)
 
 
 
