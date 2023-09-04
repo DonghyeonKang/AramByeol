@@ -29,11 +29,11 @@ def db_update():  # 이미 있는 테이블이면 지우고 다시 생성하는 
         cursor.execute(
             "CREATE TABLE week(day VARCHAR(2) NOT NULL primary key,date VARCHAR(11) NOT NULL)")
         cursor.execute(
-            "CREATE TABLE morning(day VARCHAR(2) NOT NULL,course VARCHAR(50),menu VARCHAR(50) NOT NULL)")
+            "CREATE TABLE morning(day VARCHAR(2) NOT NULL,course VARCHAR(50),menu VARCHAR(100) NOT NULL)")
         cursor.execute(
-            "CREATE TABLE lunch(day VARCHAR(2) NOT NULL,course VARCHAR(50),menu VARCHAR(50) NOT NULL)")
+            "CREATE TABLE lunch(day VARCHAR(2) NOT NULL,course VARCHAR(50),menu VARCHAR(100) NOT NULL)")
         cursor.execute(
-            "CREATE TABLE dinner(day VARCHAR(2) NOT NULL,course VARCHAR(50),menu VARCHAR(50) NOT NULL)")
+            "CREATE TABLE dinner(day VARCHAR(2) NOT NULL,course VARCHAR(50),menu VARCHAR(100) NOT NULL)")
 
 
 # morning 테이블 대입 query문

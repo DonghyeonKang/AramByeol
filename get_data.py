@@ -8,25 +8,23 @@ import subprocess
 
 
 # 크롬 디버그 모드로 실행 
-# subprocess.Popen(r'C:\Program Files\Google\Chrome\Application\chrome.exe --remote-debugging-port=9222 --user-data-dir="C:\Users\heizl\chromeCookie"')
-# url = "https://www.gnu.ac.kr/dorm/ad/fm/foodmenu/selectFoodMenuView.do"
+subprocess.Popen(r'C:\Program Files\Google\Chrome\Application\chrome.exe --remote-debugging-port=9222 --user-data-dir="C:\Users\heizl\chromeCookie"')
+url = "https://www.gnu.ac.kr/dorm/ad/fm/foodmenu/selectFoodMenuView.do"
 
-# options = webdriver.ChromeOptions()
-# options.add_argument('--no-sandbox') #보안 기능 비활성화(샌드박스라는 공간을 비활성화 시킴)
-# options.add_argument('--disable-dev-shm-usage') #/dev/shm 공유메모리 디렉토리를 사용하지 않음 
-# options.add_experimental_option("debuggerAddress", "127.0.0.1:9222")
-# driver = webdriver.Chrome(options=options)
+options = webdriver.ChromeOptions()
+options.add_argument('--no-sandbox') #보안 기능 비활성화(샌드박스라는 공간을 비활성화 시킴)
+options.add_argument('--disable-dev-shm-usage') #/dev/shm 공유메모리 디렉토리를 사용하지 않음 
+options.add_experimental_option("debuggerAddress", "127.0.0.1:9222")
+driver = webdriver.Chrome(options=options)
 
-# driver.get(url)
-# wait = WebDriverWait(driver, 10)  # 10초 동안 대기
-# aram_html = driver.page_source # 웹 페이지의 전체 HTML 소스 코드 가져오기
-#file = open("html_code.txt","w",encoding="utf-8")
-#file.write(aram_html)
-# driver.quit()
-# subprocess.call("pkill -9 chrome", shell=True) # chrome driver 제대로 안꺼지면 꺼야함
+driver.get(url)
+wait = WebDriverWait(driver, 10)  # 10초 동안 대기
+aram_html = driver.page_source # 웹 페이지의 전체 HTML 소스 코드 가져오기
+file = open("html_code.txt","w",encoding="utf-8")
+file.write(aram_html)
+driver.quit()
 
 
-aram_html = open('html_code.txt','rt',encoding='utf-8').read()
 # soup에 넣어주기
 soup = BeautifulSoup(aram_html, 'html.parser')
 
@@ -60,17 +58,26 @@ for day_morning in morning_html:
 
     # 코스별 메뉴 딕셔너리 형태로 저장 
     for one_course in morning_course:
-        course = one_course.find('p', class_='fm_tit_p mgt15').get_text(strip=True)
-        menu = one_course.find('p', class_='').get_text('\n')
-        morning_courseMenu[course] = menu
+        try:
+            course_element = one_course.find('p', class_='fm_tit_p mgt15')
+            if course_element:
+                course = course_element.get_text(strip=True)
+            else:
+                print("morning 요소 찾지 못함")
+                continue
+
+            menu = one_course.find('p', class_='').get_text(separator=', ')
+            morning_courseMenu[course] = menu
+
+        # 요소를 찾지 못한 경우 예외 처리
+        except AttributeError as e:
+            print("morning 요소 찾지 못함")
         
     morning_list.append(morning_courseMenu)
 
 # 요일이랑 메뉴 매칭
 for i, day in enumerate(days):
     morning[day] = morning_list[i]
-
-# print("아침:",morning,"\n")
 
 
 # 점심 메뉴 요일별 딕셔너리 형태로 추출
@@ -83,17 +90,27 @@ for day_lunch in lunch_html:
 
     # 코스별 메뉴 딕셔너리 형태로 저장 
     for one_course in lunch_course:
-        course = one_course.find('p', class_='fm_tit_p mgt15').get_text(strip=True)
-        menu = one_course.find('p', class_='').get_text('\n')
-        lunch_courseMenu[course] = menu
-        
+        try:
+            course_element = one_course.find('p', class_='fm_tit_p mgt15')
+            if course_element:
+                course = course_element.get_text(strip=True)
+            else:
+                print("lunch 요소 찾지 못함")
+                continue
+
+            menu = one_course.find('p', class_='').get_text(separator=', ')
+            lunch_courseMenu[course] = menu
+
+        # 요소를 찾지 못한 경우 예외 처리
+        except AttributeError as e:
+            print("lunch 요소 찾지 못함")
+    
     lunch_list.append(lunch_courseMenu)
 
 # 요일이랑 메뉴 매칭
 for i, day in enumerate(days):
     lunch[day] = lunch_list[i]
 
-# print("점심:",lunch,'\n') 
 
 # 저녁 메뉴 요일별 딕셔너리 형태로 추출
 dinner_list = []
@@ -105,17 +122,26 @@ for day_dinner in dinner_html:
 
     # 코스별 메뉴 딕셔너리 형태로 저장 
     for one_course in dinner_course:
-        course = one_course.find('p', class_='fm_tit_p mgt15').get_text(strip=True)
-        menu = one_course.find('p', class_='').get_text('\n')
-        dinner_courseMenu[course] = menu
+        try:
+            course_element = one_course.find('p', class_='fm_tit_p mgt15')
+            if course_element:
+                course = course_element.get_text(strip=True)
+            else:
+                print("dinner 요소 찾지 못함")
+                continue
+
+            menu = one_course.find('p', class_='').get_text(separator=', ')
+            dinner_courseMenu[course] = menu
+
+        # 요소를 찾지 못한 경우 예외 처리
+        except AttributeError as e:
+            print("dinner 요소 찾지 못함")
         
     dinner_list.append(dinner_courseMenu)
 
 # 요일이랑 메뉴 매칭
 for i, day in enumerate(days):
     dinner[day] = dinner_list[i]
-
-# print("저녁:",dinner)
 
 
 
