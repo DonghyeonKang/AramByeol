@@ -21,7 +21,7 @@ CREATE TABLE `lunch`(
 CREATE TABLE `morning`(
     `day` varchar(2) NOT NULL,
     `course` varchar(50),
-    `menu` varchar(50) NOT NULL
+    `menu` varchar(100) NOT NULL
 );
 
 CREATE TABLE `week`(
