@@ -1,21 +1,20 @@
 from selenium import webdriver 
 from bs4 import BeautifulSoup
-from selenium.webdriver.common.by import By
-import time
 from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
 import subprocess
-
+from webdriver_manager.chrome import ChromeDriverManager
 
 # 크롬 디버그 모드로 실행 
-subprocess.Popen(r'C:\Program Files\Google\Chrome\Application\chrome.exe --remote-debugging-port=9222 --user-data-dir="C:\Users\heizl\chromeCookie"')
+chrome_options = webdriver.ChromeOptions()
+chrome_options.add_argument('--incognito')
+chrome_options.add_argument('--headless')
+chrome_options.add_argument('--no-sandbox')
+chrome_options.add_argument("--disable-setuid-sandbox")
+chrome_options.add_argument("--single-process")
+chrome_options.add_argument("--disable-dev-shm-usage")
+chrome_options.add_experimental_option('excludeSwitches', ['enable-logging'])
+driver = webdriver.Chrome(ChromeDriverManager().install(), chrome_options=chrome_options)
 url = "https://www.gnu.ac.kr/dorm/ad/fm/foodmenu/selectFoodMenuView.do"
-
-options = webdriver.ChromeOptions()
-options.add_argument('--no-sandbox') #보안 기능 비활성화(샌드박스라는 공간을 비활성화 시킴)
-options.add_argument('--disable-dev-shm-usage') #/dev/shm 공유메모리 디렉토리를 사용하지 않음 
-options.add_experimental_option("debuggerAddress", "127.0.0.1:9222")
-driver = webdriver.Chrome(options=options)
 
 driver.get(url)
 wait = WebDriverWait(driver, 10)  # 10초 동안 대기
@@ -23,7 +22,6 @@ aram_html = driver.page_source # 웹 페이지의 전체 HTML 소스 코드 가�
 file = open("html_code.txt","w",encoding="utf-8")
 file.write(aram_html)
 driver.quit()
-
 
 # soup에 넣어주기
 soup = BeautifulSoup(aram_html, 'html.parser')
