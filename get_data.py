@@ -63,7 +63,6 @@ for day_morning in morning_html:
             if course_element:
                 course = course_element.get_text(strip=True)
             else:
-                print("morning 요소 찾지 못함")
                 continue
 
             menu = one_course.find('p', class_='').get_text(separator=', ')
@@ -78,6 +77,8 @@ for day_morning in morning_html:
 # 요일이랑 메뉴 매칭
 for i, day in enumerate(days):
     morning[day] = morning_list[i]
+
+print("morning:",morning,"\n")
 
 
 # 점심 메뉴 요일별 딕셔너리 형태로 추출
@@ -95,7 +96,6 @@ for day_lunch in lunch_html:
             if course_element:
                 course = course_element.get_text(strip=True)
             else:
-                print("lunch 요소 찾지 못함")
                 continue
 
             menu = one_course.find('p', class_='').get_text(separator=', ')
@@ -110,6 +110,8 @@ for day_lunch in lunch_html:
 # 요일이랑 메뉴 매칭
 for i, day in enumerate(days):
     lunch[day] = lunch_list[i]
+
+print("lunch:",lunch,"\n")
 
 
 # 저녁 메뉴 요일별 딕셔너리 형태로 추출
@@ -127,7 +129,6 @@ for day_dinner in dinner_html:
             if course_element:
                 course = course_element.get_text(strip=True)
             else:
-                print("dinner 요소 찾지 못함")
                 continue
 
             menu = one_course.find('p', class_='').get_text(separator=', ')
@@ -143,6 +144,7 @@ for day_dinner in dinner_html:
 for i, day in enumerate(days):
     dinner[day] = dinner_list[i]
 
+print("dinner:",dinner,"\n")
 
 
 
