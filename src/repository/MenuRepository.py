@@ -1,4 +1,4 @@
-from crawlingService import *
+from service.CrawlingService import *
 import db_auth
 import pymysql.cursors  # python과 mysql(mariadb) 연동
 ## 일주일에 한 번 씩 실행될 것임. ##

@@ -1,4 +1,4 @@
-from crawlingService import *
+from CrawlingService import *
 from src.repository.MenuRepository import *
 ## 일주일에 한 번 씩 실행될 것임. ##
 
