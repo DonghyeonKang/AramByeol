@@ -144,6 +144,12 @@ for i, day in enumerate(days):
 
 print("dinner:",dinner,"\n")
 
+# 스크래핑한 데이터 저장 --------------------
+import MenuService as MenuService
+menuService = MenuService.MenuService()
 
-
-
+menuService.clearData()
+menuService.weekData(day_date)
+menuService.morningData(morning)
+menuService.lunchData(lunch)
+menuService.dinnerData(dinner)

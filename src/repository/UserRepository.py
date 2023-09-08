@@ -1,4 +1,4 @@
-import db_auth
+import repository.db_auth as db_auth
 import pymysql
 
 
