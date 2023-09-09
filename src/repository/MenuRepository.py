@@ -6,20 +6,20 @@ class MenuRepository:
     def __init__(self) -> None:
         self.login = db_auth.db_login
 
-    # db 연결
-    def db_connection(self):
-        login = db_auth.db_login
-        connection = pymysql.connect(host=login['host'],
-                                user=login['user'],
-                                password=login['password'],
-                                db=login['db'],
-                                charset=login['charset'],
-                                cursorclass=pymysql.cursors.DictCursor)
-        return connection
-    
+    def getConnection(self):
+        self.connection = pymysql.connect(host=self.login['host'],
+                                     user=self.login['user'],
+                                     password=self.login['password'],
+                                     db=self.login['db'],
+                                     charset=self.login['charset'],
+                                     cursorclass=pymysql.cursors.DictCursor)
+
+    def closeConnection(self):
+        self.connection.close()
+
     # 이미 있는 테이블이면 지우고 다시 생성하는 query문
     def db_update(self):  
-        connection = self.db_connection() # db 연결
+        connection = self.getConnection() # db 연결
         cursor = connection.cursor() # SQL 문장을 DB 서버에 전송하기 위한 객체
 
         if cursor.execute("SHOW TABLES LIKE %s", 'week') or cursor.execute("SHOW TABLES LIKE %s", 'morning') or cursor.execute("SHOW TABLES LIKE %s", 'lunch') or cursor.execute("SHOW TABLES LIKE %s", 'dinner'):
@@ -42,7 +42,7 @@ class MenuRepository:
 
     # week 테이블에 day,date 값 넣는 query문 반환 함수
     def db_week(self, day, date):
-        connection = self.db_connection() # db 연결
+        connection = self.getConnection() # db 연결
         cursor = connection.cursor() # control structure of database SQL 문장을 DB 서버에 전송하기 위한 객체
 
         week_sql = "INSERT INTO week (day, date) VALUES ('%s', '%s')" % (day, date)
@@ -54,7 +54,7 @@ class MenuRepository:
 
     # morning 테이블 대입 query문 반환 함수
     def db_morning(self, day, course, menu):
-        connection = self.db_connection() # db 연결
+        connection = self.getConnection() # db 연결
         cursor = connection.cursor() # control structure of database SQL 문장을 DB 서버에 전송하기 위한 객체
     
         morning_sql = "INSERT INTO morning (day, course, menu) VALUES ('%s', '%s', '%s')" % (day, course, menu)
@@ -66,7 +66,7 @@ class MenuRepository:
 
     # lunch 테이블 대입 query문 반환 함수
     def db_lunch(self, day, course, menu):
-        connection = self.db_connection() # db 연결
+        connection = self.getConnection() # db 연결
         cursor = connection.cursor() # control structure of database SQL 문장을 DB 서버에 전송하기 위한 객체
 
         lunch_sql = "INSERT INTO lunch (day, course, menu) VALUES ('%s', '%s', '%s')" % (day, course, menu)
@@ -77,7 +77,7 @@ class MenuRepository:
     
     # dinner 테이블 대입 query문 반환 함수
     def db_dinner(self, day, course, menu):
-        connection = self.db_connection() # db 연결
+        connection = self.getConnection() # db 연결
         cursor = connection.cursor() # control structure of database SQL 문장을 DB 서버에 전송하기 위한 객체
 
         dinner_sql = "INSERT INTO dinner (day, course, menu) VALUES ('%s', '%s', '%s')" % (day, course, menu)
@@ -86,3 +86,28 @@ class MenuRepository:
         connection.commit() # 쿼리 적용
         connection.close() # db 연결해제
 
+    def selectMenuByDay(self, day):
+            self.getConnection()
+            data = []
+            try:
+                self.cursor = self.connection.cursor()
+                self.cursor.execute(
+                    "SELECT menu, course FROM morning WHERE day=%s", day
+                )
+                data.append(self.cursor.fetchall())
+                self.cursor.execute(
+                    "SELECT menu, course FROM lunch WHERE day=%s", day
+                )
+                data.append(self.cursor.fetchall())
+                self.cursor.execute(
+                    "SELECT menu, course FROM dinner WHERE day=%s", day
+                )
+                data.append(self.cursor.fetchall())
+
+                self.connection.commit()
+                return data
+            except Exception as e:
+                print(e)
+                return "Error: Database Select Error"
+            finally:
+                self.closeConnection()

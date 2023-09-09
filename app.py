@@ -4,7 +4,7 @@ from flask import redirect # Move page
 from flask import url_for # Return defined route link to client
 from flask import request
 from flask import session
-
+from flask import Response
 
 app = Flask(__name__)
 app.secret_key = 'asd1inldap123jwaw'     # 세션을 암호화하기 위해 비밀키가 서명된 쿠키 사용
@@ -91,6 +91,21 @@ def getView():
     return response
 
 # 메뉴 ---------------------------------------------------------
+import src.service.MenuService as MenuService
+
+@app.route('/menu/web', methods=['GET'])
+def getMenuWeb():
+    menuService = MenuService.MenuService()
+    resp = Response(response=menuService.getMenuWeb(), mimetype="application/json")    
+    return resp
+
+@app.route('/menu', methods=['GET'])
+def getMenuApp():
+    menuService = MenuService.MenuService()
+    resp = Response(response=menuService.getMenuApp(), mimetype="application/json")    
+    return resp
+
+# 별점 ---------------------------------------------------------
 
 
 # 실행 ---------------------------------------------------------
