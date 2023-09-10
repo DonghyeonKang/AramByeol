@@ -111,3 +111,43 @@ class MenuRepository:
                 return "Error: Database Select Error"
             finally:
                 self.closeConnection()
+    
+    def selectWeekData(self):
+        self.getConnection() # db 연결
+        cursor = self.connection.cursor() # control structure of database SQL 문장을 DB 서버에 전송하기 위한 객체
+
+        sql = "select * from week" # week 테이블의 모든 데이터
+        cursor.execute(sql)
+        return cursor.fetchall()
+    
+    def selectMorning(self):
+        self.getConnection() # db 연결
+        cursor = self.connection.cursor() # control structure of database SQL 문장을 DB 서버에 전송하기 위한 객체
+
+        sql = "select * from morning"
+        cursor.execute(sql)
+        return cursor.fetchall()
+    
+    def selectLunch(self):
+        self.getConnection() # db 연결
+        cursor = self.connection.cursor() # control structure of database SQL 문장을 DB 서버에 전송하기 위한 객체
+
+        sql = "select * from lunch"
+        cursor.execute(sql)
+        return cursor.fetchall()
+
+    def selectDinner(self):
+        self.getConnection() # db 연결
+        cursor = self.connection.cursor() # control structure of database SQL 문장을 DB 서버에 전송하기 위한 객체
+
+        sql = "select * from dinner"
+        cursor.execute(sql)
+        return cursor.fetchall()
+    
+    def getMenuScore(self, menuName):
+        self.getConnection() # db 연결
+        cursor = self.connection.cursor() # control structure of database SQL 문장을 DB 서버에 전송하기 위한 객체
+
+        cursor.execute('SELECT score from menudata where menu=%s', menuName)
+        return cursor.fetchall()
+    

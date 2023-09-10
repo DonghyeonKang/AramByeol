@@ -5,8 +5,8 @@ sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
 from repository.MenuRepository import *
 import repository.MenuRepository as MenuRepository
 import json
-from flask import jsonify
-from datetime import datetime
+from flask import jsonify # Return json form to client
+from datetime import datetime, timedelta # Time generator
 ## 일주일에 한 번 씩 실행될 것임. ##
 
 class MenuService:
@@ -88,4 +88,80 @@ class MenuService:
         return json.dumps(dictData, ensure_ascii=False)
 
     def getMenuWeb(self):
-        return 1
+        # 이번 주의 요일, 날짜 데이터
+        rows = self.menuRepository.selectWeekData()
+
+        days = []
+        # 한 주의 날짜를 리스트 딕셔너리 형식으로 DB에서 추출
+        for i in range(len(rows)):
+            temp = []
+            day = rows[i]['day'] # db에서 불러올 때 [배열][딕셔너리] 형식으로 들고옴.
+            date = rows[i]['date']
+            temp.append(day)
+            temp.append(date)
+            days.append(temp)
+        # 오늘, 내일, 모레 날짜를 계산
+        day = []
+        now = datetime.today().strftime("%Y-%m-%d")
+        tomorrow = (datetime.today() + timedelta(1)).strftime("%Y-%m-%d")
+        after = (datetime.today() + timedelta(2)).strftime("%Y-%m-%d")
+        # 오늘, 내일, 모레에 해당하는 날짜만 추출
+        today_temp = ""
+        tomorrow_temp = ""
+        after_temp = ""
+        for i in range(len(rows)):
+            if (now == rows[i]['date']):
+                today_temp = rows[i]['day']
+            if (tomorrow == rows[i]['date']):
+                tomorrow_temp = rows[i]['day']
+            if (after == rows[i]['date']):
+                after_temp = rows[i]['day']
+        day.append(today_temp)
+        day.append(tomorrow_temp)
+        day.append(after_temp)
+
+        # 아침 메뉴 데이터 가져오기
+        rows = self.menuRepository.selectMorning()
+
+        # 오늘, 내일, 모레에 해당하는 메뉴들만 추출
+        morning = [] # 아침 정보를 제공해줄거얌
+        for i in range(len(rows)):
+            temp=[]
+            for j in range(len(day)):
+                if day[j] == rows[i]['day'] :
+                    temp.append(rows[i]['day'])
+                    temp.append(rows[i]['course'])
+                    temp.append(rows[i]['menu'])                
+                    test = self.menuRepository.getMenuScore(temp[2])
+                    temp.append(test[0]['score'])
+                    morning.append(temp)
+
+
+        rows = self.menuRepository.selectLunch()
+        
+        lunch = []  # 점심 정보를 제공해 줄거얌
+        for i in range(len(rows)):
+            temp=[]
+            for j in range(len(day)):
+                if day[j] == rows[i]['day'] :
+                    temp.append(rows[i]['day'])
+                    temp.append(rows[i]['course'])
+                    temp.append(rows[i]['menu'])
+                    test = self.menuRepository.getMenuScore(temp[2])
+                    temp.append(test[0]['score'])
+                    lunch.append(temp)
+
+        rows = self.menuRepository.selectDinner()
+
+        dinner = [] # 저녁 정보를 제공해 줄거얌
+        for i in range(len(rows)):
+            temp=[]
+            for j in range(len(day)):
+                if day[j] == rows[i]['day'] :
+                    temp.append(rows[i]['day'])
+                    temp.append(rows[i]['course'])
+                    temp.append(rows[i]['menu'])
+                    test = self.menuRepository.getMenuScore(temp[2])
+                    temp.append(test[0]['score'])
+                    dinner.append(temp)
+        return json.dumps({'days':days, 'morning':morning, 'lunch':lunch, 'dinner':dinner}, ensure_ascii=False)

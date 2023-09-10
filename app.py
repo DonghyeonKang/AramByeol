@@ -106,7 +106,9 @@ def getMenuApp():
     return resp
 
 # 별점 ---------------------------------------------------------
-
+@app.route('/menu/score', methods=['POST'])
+def setMenuScore():
+    return 1
 
 # 실행 ---------------------------------------------------------
 if __name__ == '__main__':
