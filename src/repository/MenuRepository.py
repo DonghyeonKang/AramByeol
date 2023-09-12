@@ -126,7 +126,10 @@ class MenuRepository:
 
         sql = "select * from week" # week 테이블의 모든 데이터
         cursor.execute(sql)
-        return cursor.fetchall()
+        result = cursor.fetchall()
+
+        self.closeConnection()
+        return result
     
     def selectMorning(self):
         self.getConnection() # db 연결
@@ -134,7 +137,10 @@ class MenuRepository:
 
         sql = "select * from morning"
         cursor.execute(sql)
-        return cursor.fetchall()
+        result = cursor.fetchall()
+
+        self.closeConnection()
+        return result
     
     def selectLunch(self):
         self.getConnection() # db 연결
@@ -142,7 +148,10 @@ class MenuRepository:
 
         sql = "select * from lunch"
         cursor.execute(sql)
-        return cursor.fetchall()
+        result = cursor.fetchall()
+
+        self.closeConnection()
+        return result
 
     def selectDinner(self):
         self.getConnection() # db 연결
@@ -150,12 +159,40 @@ class MenuRepository:
 
         sql = "select * from dinner"
         cursor.execute(sql)
-        return cursor.fetchall()
+        result = cursor.fetchall()
+
+        self.closeConnection()
+        return result
     
+    def selectMenuData(self, menu):
+        self.getConnection() # db 연결
+        cursor = self.connection.cursor() # control structure of database SQL 문장을 DB 서버에 전송하기 위한 객체
+
+        cursor.execute("SELECT * from menudata where menu=%s", menu)
+        result = cursor.fetchone()
+
+        self.closeConnection()
+        return result
+
     def getMenuScore(self, menuName):
         self.getConnection() # db 연결
         cursor = self.connection.cursor() # control structure of database SQL 문장을 DB 서버에 전송하기 위한 객체
 
         cursor.execute("SELECT score from menudata where menu=%s", menuName)
-        return cursor.fetchall()
-    
+        result = cursor.fetchall()
+
+        self.closeConnection()
+        return result
+
+    def updateMenuScore(self, menu, reviewCount, score):
+        self.getConnection() # db 연결
+        cursor = self.connection.cursor() # control structure of database SQL 문장을 DB 서버에 전송하기 위한 객체
+        
+        sql = "UPDATE menudata SET score='%s', reviewcount='%s' WHERE menu='%s'" % (score, reviewCount, menu)   
+        print(sql)     
+        cursor.execute(sql)
+        self.connection.commit() # 쿼리 적용
+        result = cursor.fetchone()
+
+        self.closeConnection()
+        return result

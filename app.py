@@ -108,7 +108,13 @@ def getMenuApp():
 # 별점 ---------------------------------------------------------
 @app.route('/menu/score', methods=['POST'])
 def setMenuScore():
-    return 1
+    menuService = MenuService.MenuService()
+
+    # 클라이언트로부터 메뉴와 점수를 전달받음
+    menu = request.form['menu_name']
+    score = request.form['menu_score']
+    result = menuService.setMenuScore(menu, score)
+    return result    
 
 # 실행 ---------------------------------------------------------
 if __name__ == '__main__':

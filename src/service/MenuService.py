@@ -175,3 +175,33 @@ class MenuService:
                         dinner.append(temp)
 
         return json.dumps({'days':days, 'morning':morning, 'lunch':lunch, 'dinner':dinner}, ensure_ascii=False)
+
+    def setMenuScore(self, menu, score):
+        data = self.menuRepository.selectMenuData(menu)
+
+        # 가져온 메뉴를 DB의 메뉴와 비교하여 누적 점수를 가져옴
+        reviewCount = 0
+        db_score = 0
+        avg = 0
+
+        # 점수가 하나도 없었다면 None이므로 0이라고 해줌.
+        if data['reviewcount'] == None:
+            reviewCount = 0
+        else:
+            reviewCount = data['reviewcount']
+        if data['score'] == None:
+            db_score = 0
+        else: 
+            db_score = data['score']
+
+        # 계산 방식 : 1. DB -> (누적점수 / 별점준 사용자 수) = 총점
+        # 2. DB <- ((총점 + 부여 점수) / 별점준 사용자 수 + 1)
+        db_score = (db_score * reviewCount) + int(score)
+        reviewCount = reviewCount + 1
+        avg = int(round(db_score / reviewCount))
+
+        try:
+            self.menuRepository.updateMenuScore(menu, reviewCount, avg)
+            return jsonify({'msg': menu + " 메뉴에 " + str(score) + "점 주셨습니다."})
+        except:
+            return jsonify({'msg': "Fail"})
