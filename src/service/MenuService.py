@@ -47,6 +47,13 @@ class MenuService:
             for course, menu in dinner_course.items():
                 self.menuRepository.db_dinner(day, course, menu)
 
+    def setMenuData(self, menuData):
+        try:
+            self.menuRepository.insertMenuData(menuData)
+        except: # duplicated key error 시 pass
+            pass
+        return
+
     def getMenuApp(self):
         dictData = {}
         cnt = 0
@@ -122,46 +129,49 @@ class MenuService:
 
         # 아침 메뉴 데이터 가져오기
         rows = self.menuRepository.selectMorning()
-
         # 오늘, 내일, 모레에 해당하는 메뉴들만 추출
         morning = [] # 아침 정보를 제공해줄거얌
         for i in range(len(rows)):
-            temp=[]
             for j in range(len(day)):
-                if day[j] == rows[i]['day'] :
-                    temp.append(rows[i]['day'])
-                    temp.append(rows[i]['course'])
-                    temp.append(rows[i]['menu'])                
-                    test = self.menuRepository.getMenuScore(temp[2])
-                    temp.append(test[0]['score'])
-                    morning.append(temp)
+                if day[j] == rows[i]['day']:
+                    for k in rows[i]['menu'].split(", "):
+                        temp = []
+                        temp.append(rows[i]['day'])
+                        temp.append(rows[i]['course'])
+                        temp.append(k)                
+                        test = self.menuRepository.getMenuScore(k)
+                        temp.append(test[0]['score'])
+                        morning.append(temp)
 
 
         rows = self.menuRepository.selectLunch()
         
         lunch = []  # 점심 정보를 제공해 줄거얌
         for i in range(len(rows)):
-            temp=[]
             for j in range(len(day)):
                 if day[j] == rows[i]['day'] :
-                    temp.append(rows[i]['day'])
-                    temp.append(rows[i]['course'])
-                    temp.append(rows[i]['menu'])
-                    test = self.menuRepository.getMenuScore(temp[2])
-                    temp.append(test[0]['score'])
-                    lunch.append(temp)
+                    for k in rows[i]['menu'].split(", "):
+                        temp = []
+                        temp.append(rows[i]['day'])
+                        temp.append(rows[i]['course'])
+                        temp.append(k)                
+                        test = self.menuRepository.getMenuScore(k)
+                        temp.append(test[0]['score'])
+                        lunch.append(temp)
 
         rows = self.menuRepository.selectDinner()
 
         dinner = [] # 저녁 정보를 제공해 줄거얌
         for i in range(len(rows)):
-            temp=[]
             for j in range(len(day)):
                 if day[j] == rows[i]['day'] :
-                    temp.append(rows[i]['day'])
-                    temp.append(rows[i]['course'])
-                    temp.append(rows[i]['menu'])
-                    test = self.menuRepository.getMenuScore(temp[2])
-                    temp.append(test[0]['score'])
-                    dinner.append(temp)
+                    for k in rows[i]['menu'].split(", "):
+                        temp = []
+                        temp.append(rows[i]['day'])
+                        temp.append(rows[i]['course'])
+                        temp.append(k)                
+                        test = self.menuRepository.getMenuScore(k)
+                        temp.append(test[0]['score'])
+                        dinner.append(temp)
+
         return json.dumps({'days':days, 'morning':morning, 'lunch':lunch, 'dinner':dinner}, ensure_ascii=False)
