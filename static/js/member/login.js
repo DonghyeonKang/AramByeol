@@ -10,15 +10,20 @@ function password_chk(pwd) {
 
 function login() {
   const id = document.getElementById("nameInput").value;
-  const pwd = document.getElementById("pwdInput").value;
-
+  const pwd = document.getElementById("passwordInput").value;
   if (idchk(id)) {
-    if (password_chk(pwd) ) {
+      if (password_chk(pwd) ) {
+      let data = {
+        'id': id,
+        'password': pwd
+      }
       $.ajax({
         type: "POST",
         url: "login",
         async: false,
-        data: {},
+        dataType : "json",
+        contentType: 'application/json; charset=utf-8',
+        data: JSON.stringify(data),
         success: function (response) {     
         },
       });

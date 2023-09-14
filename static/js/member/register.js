@@ -1,10 +1,10 @@
 function idchk(id) {
-  const id_chk = /^(?=.*[a-zA-Z])[a-zA-Z0-9]{2,10}$/g;
+  const id_chk = /^(?=.*[a-zA-Z])[a-zA-Z0-9]{8,12}$/g;
   return id_chk.test(id);
 }
 
 function password_chk(pwd) {
-  const pwd_chk = /^(?=.*[a-zA-Z])(?=.*[!@#$%~])(?=.*[0-9]).{6,16}/;
+  const pwd_chk = /^(?=.*[a-zA-Z])(?=.*[!@#$%~])(?=.*[0-9]).{8,15}/;
   return pwd_chk.test(pwd);
 }
 

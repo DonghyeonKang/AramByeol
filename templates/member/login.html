@@ -21,6 +21,7 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Gaegu&family=Quicksand:wght@500&family=Roboto:wght@100&display=swap"
     rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -42,18 +43,15 @@
   <div class="container">
     <ul id="input_info">
       <li class="input_info_head">이미 아람전사라면? 로그인</li>
-
-      <form action="/login" method="post">
-        <li>
-          <input type="text" placeholder="아이디" name="id" class="nameInput" />
-        </li>
-        <li>
-          <input type="password" placeholder="비밀번호" name="password" class="passwordInput" />
-        </li>
-        <li>
-          <input type="button" id="loginInput" value="로그인" onclick="login()"/>
-        </li>
-      </form>
+      <li>
+        <input type="text" placeholder="아이디" name="id" class="nameInput" id="nameInput"/>
+      </li>
+      <li>
+        <input type="password" placeholder="비밀번호" name="password" class="passwordInput" id="passwordInput"/>
+      </li>
+      <li>
+        <input type="button" id="loginInput" value="로그인" onclick="login()"/>
+      </li>
     </ul>
     <ul class="signup">
       <li class="signup_head">아람관이 처음이시라면?</li>

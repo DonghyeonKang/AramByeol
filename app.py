@@ -61,8 +61,9 @@ def getLoginPage():
 
 @app.route('/login', methods=['POST'])
 def login():
-    id = request.form['id'] # id input 값 받아오기
-    pw = request.form['password'] # pw input 값 받아오기
+    id = request.json['id']
+    pw = request.json['password']
+
         
     userService = UserService.UserService()
     loginUser = userService.login(id,pw)
@@ -87,7 +88,6 @@ import src.service.ViewService as  ViewService
 def getView():
     viewService = ViewService.ViewService()
     response = viewService.getView()
-    print(response)
     return response
 
 # 메뉴 ---------------------------------------------------------

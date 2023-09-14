@@ -21,7 +21,7 @@ class UserService:
             flash("아이디 기준에 맞지 않습니다.")     
 
         #비밀번호 기준
-        if len(pw) < 8 or len(pw) > 15 and not re.findall("[a-zA-Z0-9]",pw) or not re.findall("[~!@#$%^&*()_,.]",pw):
+        if len(pw) < 8 or len(pw) > 15 and not re.findall("[a-zA-Z0-9]",pw) or not re.findall("[!@#$%~]",pw):
             flash("비밀번호 기준에 맞지 않습니다.")
 
         pw = (bcrypt.hashpw(pw.encode('utf-8'),bcrypt.gensalt())).decode('utf-8')
@@ -58,7 +58,7 @@ class UserService:
             flash("비밀번호 기준에 맞지 않습니다.")
             #return render_template("/templates/member/login.html")
         
-        userRepository = UserRepository.UserRepository() 
+        userRepository = UserRepository.UserRepository()
 
         #아이디 존재하는지
         check_id = self.check_userId(id) 
@@ -70,8 +70,7 @@ class UserService:
         if check_id:
             if check_idpw:
                 # 사용자 명으로 세션을 생성한다
-                session['username'] = request.form['id']
-                return redirect(url_for('home'))
+                session['username'] = request.json['id']
     
     def check_userId(self, userid):
         userRepository = UserRepository.UserRepository() 

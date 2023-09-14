@@ -81,7 +81,7 @@ const logout = () => {
 const get_daytable = () => {
   $.ajax({
     type: "GET",
-    url: "/api/list",
+    url: "/menu/web",
     async: false,
     data: {},
     success: function (response) {
