@@ -1,3 +1,7 @@
+import os
+import sys
+sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
+
 from flask import request
 from flask import render_template
 from flask import url_for
@@ -6,7 +10,7 @@ from flask import redirect
 from flask import session
 import bcrypt
 import re
-import src.repository.UserRepository as UserRepository
+import repository.UserRepository as UserRepository
 
 class UserService:
     #회원가입

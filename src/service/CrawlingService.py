@@ -33,7 +33,7 @@ days = ['월', '화', '수', '목', '금', '토', '일']
 th_tags = soup.find_all('th')  # <th> 태그 찾기
 
 for th_tag in th_tags[1:8]:
-    day = th_tag.contents[0]  # 요일 
+    day = th_tag.contents[0].strip()  # 요일 
     date = th_tag.find('br').next_sibling  # <br> 태그 다음 텍스트 노드 추출
     if date is not None:
         date = date.strip()
@@ -47,6 +47,8 @@ lunch_html = all_menulist[1].find_all('td')
 dinner_html = all_menulist[2].find_all('td')
 
 # 아침 메뉴 요일별 딕셔너리 형태로 추출
+import MenuService as MenuService
+menuService = MenuService.MenuService()
 morning_list = []
 morning = {}
 
@@ -64,6 +66,8 @@ for day_morning in morning_html:
                 continue
 
             menu = one_course.find('p', class_='').get_text(separator=', ')
+            for i in menu.split(", "):
+                menuService.setMenuData(i)
             morning_courseMenu[course] = menu
 
         # 요소를 찾지 못한 경우 예외 처리
@@ -97,6 +101,8 @@ for day_lunch in lunch_html:
                 continue
 
             menu = one_course.find('p', class_='').get_text(separator=', ')
+            for i in menu.split(", "):
+                menuService.setMenuData(i)
             lunch_courseMenu[course] = menu
 
         # 요소를 찾지 못한 경우 예외 처리
@@ -130,6 +136,8 @@ for day_dinner in dinner_html:
                 continue
 
             menu = one_course.find('p', class_='').get_text(separator=', ')
+            for i in menu.split(", "):
+                menuService.setMenuData(i)
             dinner_courseMenu[course] = menu
 
         # 요소를 찾지 못한 경우 예외 처리
@@ -145,9 +153,6 @@ for i, day in enumerate(days):
 print("dinner:",dinner,"\n")
 
 # 스크래핑한 데이터 저장 --------------------
-import MenuService as MenuService
-menuService = MenuService.MenuService()
-
 menuService.clearData()
 menuService.weekData(day_date)
 menuService.morningData(morning)
