@@ -8,6 +8,7 @@ from flask import url_for
 from flask import flash
 from flask import redirect
 from flask import session
+from flask import make_response
 import bcrypt
 import re
 import repository.UserRepository as UserRepository
@@ -29,15 +30,13 @@ class UserService:
 
         #아이디 존재여부 체크 false이면 유저 추가
         userRepository = UserRepository.UserRepository()
-        #db_user = userRepository.db_connection()
         add_user = userRepository.useradd(id,pw)
 
-        return add_user
+        return redirect(url_for('home')) # index.html로 redirect 한다. 
         
 
     #로그인
     def login(self,id,pw):
-
         #로그인 시도 횟수 
         try:
             attempt = session['attempt']
@@ -53,24 +52,23 @@ class UserService:
         # 데이터 유효성 체크
         if len(id) < 8 or len(id) > 12 and not re.findall("[a-zA-Z0-9]+",id):
             flash("아이디 기준에 맞지 않습니다.")
-            #return render_template("/templates/member/login.html")
+            return render_template("/templates/member/login.html")
         if len(pw) < 8 or len(pw) > 15 and not re.findall("[a-zA-Z0-9]",pw) or not re.findall("[~!@#$%^&*()_,.]",pw):
             flash("비밀번호 기준에 맞지 않습니다.")
-            #return render_template("/templates/member/login.html")
+            return render_template("/templates/member/login.html")
         
-        userRepository = UserRepository.UserRepository()
-
         #아이디 존재하는지
         check_id = self.check_userId(id) 
         #비밀번호가 맞는지
         check_idpw = self.check_userIdPw(id,pw)
-        
        
         # 성공
         if check_id:
             if check_idpw:
                 # 사용자 명으로 세션을 생성한다
                 session['username'] = request.json['id']
+        return "success", 200
+
     
     def check_userId(self, userid):
         userRepository = UserRepository.UserRepository() 
@@ -85,19 +83,14 @@ class UserService:
         userRepository = UserRepository.UserRepository()
         # DB 비밀번호 조회
         password = userRepository.findByUserId(input_username)
-
         # DB에 계정 정보가 없으면 password == None
         if password == None: 
             return False
-        
+
         # 사용자가 입력한 비밀번호와  DB에 있는 비밀번호와 비교
-        if input_password == password:
+        if bcrypt.checkpw(input_password.encode('utf-8'), password['user_pw'].encode('utf-8')): # 해싱된 비밀번호 비교
             return True
         else:
             return False
-
-
-        
-      
 
 

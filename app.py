@@ -38,6 +38,10 @@ def unauthorized_error(error):
 def home():
     return render_template("index.html")
 
+@app.route('/login', methods=['GET'])
+def getLoginPage():
+    return render_template("/member/login.html")
+
 # 회원관리 ----------------------------------------------------
 import src.service.UserService as UserService
 
@@ -49,14 +53,9 @@ def getRegistPage():
 def register():
     id = request.form['id'] # id input 값 받아오기
     pw = request.form['password'] # pw input 값 받아오기
-    print("회원가입 실행됨!")
     userService = UserService.UserService()
     registerUser = userService.regist(id, pw)
 
-    return render_template("/member/login.html")
-
-@app.route('/login', methods=['GET'])
-def getLoginPage():
     return render_template("/member/login.html")
 
 @app.route('/login', methods=['POST'])
@@ -64,11 +63,9 @@ def login():
     id = request.json['id']
     pw = request.json['password']
 
-        
     userService = UserService.UserService()
-    loginUser = userService.login(id,pw)
-
-    return redirect(url_for('home'))
+    result = userService.login(id,pw)
+    return result
 
 @app.route('/logout', methods=['POST'])
 def logout():
@@ -118,4 +115,4 @@ def setMenuScore():
 
 # 실행 ---------------------------------------------------------
 if __name__ == '__main__':
-    app.run('0.0.0.0',port=5000,debug=False, threaded=True)
+    app.run('0.0.0.0',port=5000,debug=True, threaded=True)

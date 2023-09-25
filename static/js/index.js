@@ -7,7 +7,6 @@ $(document).ready(function () {
     get_daytable(); // 데이터 로딩 후
     event_modal(sessionExist); // 모달 이벤트 처리
     get_views();
-    set_cookie();
   }
   else{
     console.log("");
@@ -24,10 +23,6 @@ const get_views = () => {
       $(".views").append(`Total Views ${response["views"]}`)
     },
   });
-}
-
-const set_cookie = () => {
-  
 }
 
 const session_check = () => {
