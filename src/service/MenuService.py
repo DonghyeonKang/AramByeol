@@ -32,7 +32,6 @@ class MenuService:
             for course, menu in morning_course.items():
                 self.menuRepository.db_morning(day, course, menu)
 
-
     # lunch 테이블에 day,cource,menu 값 넣기  
     def lunchData(self, day_lunch):
         for day, course_data in day_lunch.items():
@@ -40,8 +39,9 @@ class MenuService:
             for course, menu in lunch_course.items():
                 self.menuRepository.db_lunch(day, course, menu)
 
-     # dinner 테이블에 day,cource,menu 값 넣기
+    # dinner 테이블에 day,cource,menu 값 넣기
     def dinnerData(self, day_dinner):
+        print(day_dinner)
         for day, course_data in day_dinner.items():
             dinner_course = course_data
             for course, menu in dinner_course.items():
@@ -138,7 +138,8 @@ class MenuService:
                         temp = []
                         temp.append(rows[i]['day'])
                         temp.append(rows[i]['course'])
-                        temp.append(k)                
+                        temp.append(k)           
+                        print(k)     
                         test = self.menuRepository.getMenuScore(k)
                         temp.append(test[0]['score'])
                         morning.append(temp)
@@ -160,12 +161,13 @@ class MenuService:
                         lunch.append(temp)
 
         rows = self.menuRepository.selectDinner()
-
+        print(rows)
         dinner = [] # 저녁 정보를 제공해 줄거얌
         for i in range(len(rows)):
             for j in range(len(day)):
                 if day[j] == rows[i]['day'] :
                     for k in rows[i]['menu'].split(", "):
+                        print(k)
                         temp = []
                         temp.append(rows[i]['day'])
                         temp.append(rows[i]['course'])

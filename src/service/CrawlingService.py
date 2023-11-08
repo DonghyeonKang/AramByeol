@@ -49,6 +49,8 @@ dinner_html = all_menulist[2].find_all('td')
 # 아침 메뉴 요일별 딕셔너리 형태로 추출
 import MenuService as MenuService
 menuService = MenuService.MenuService()
+
+# 아침 메뉴 요일별 딕셔너리 형태로 추출 ------------
 morning_list = []
 morning = {}
 
@@ -63,12 +65,17 @@ for day_morning in morning_html:
             if course_element:
                 course = course_element.get_text(strip=True)
             else:
-                continue
+                course = None
 
             menu = one_course.find('p', class_='').get_text(separator=', ')
+
             for i in menu.split(", "):
                 menuService.setMenuData(i)
-            morning_courseMenu[course] = menu
+
+            if (course == None):
+                morning_courseMenu[course] = menu
+            else:
+                morning_courseMenu[course] = menu
 
         # 요소를 찾지 못한 경우 예외 처리
         except AttributeError as e:
@@ -80,10 +87,8 @@ for day_morning in morning_html:
 for i, day in enumerate(days):
     morning[day] = morning_list[i]
 
-print("morning:",morning,"\n")
 
-
-# 점심 메뉴 요일별 딕셔너리 형태로 추출
+# 점심 메뉴 요일별 딕셔너리 형태로 추출 ----------
 lunch_list = []
 lunch = {}
 
@@ -98,12 +103,17 @@ for day_lunch in lunch_html:
             if course_element:
                 course = course_element.get_text(strip=True)
             else:
-                continue
+                course = None
 
             menu = one_course.find('p', class_='').get_text(separator=', ')
+
             for i in menu.split(", "):
                 menuService.setMenuData(i)
-            lunch_courseMenu[course] = menu
+
+            if (course == None):
+                lunch_courseMenu[course] = menu
+            else:
+                lunch_courseMenu[course] = menu
 
         # 요소를 찾지 못한 경우 예외 처리
         except AttributeError as e:
@@ -115,10 +125,8 @@ for day_lunch in lunch_html:
 for i, day in enumerate(days):
     lunch[day] = lunch_list[i]
 
-print("lunch:",lunch,"\n")
 
-
-# 저녁 메뉴 요일별 딕셔너리 형태로 추출
+# 저녁 메뉴 요일별 딕셔너리 형태로 추출 ---------
 dinner_list = []
 dinner = {}
 
@@ -133,12 +141,17 @@ for day_dinner in dinner_html:
             if course_element:
                 course = course_element.get_text(strip=True)
             else:
-                continue
+                course = None
 
             menu = one_course.find('p', class_='').get_text(separator=', ')
+
             for i in menu.split(", "):
                 menuService.setMenuData(i)
-            dinner_courseMenu[course] = menu
+
+            if (course == None):
+                dinner_courseMenu[course] = menu
+            else:
+                dinner_courseMenu[course] = menu
 
         # 요소를 찾지 못한 경우 예외 처리
         except AttributeError as e:
@@ -149,7 +162,6 @@ for day_dinner in dinner_html:
 # 요일이랑 메뉴 매칭
 for i, day in enumerate(days):
     dinner[day] = dinner_list[i]
-
 print("dinner:",dinner,"\n")
 
 # 스크래핑한 데이터 저장 --------------------
