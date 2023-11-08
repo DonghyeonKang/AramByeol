@@ -140,7 +140,7 @@ class MenuService:
                         temp.append(rows[i]['course'])
                         temp.append(k)           
                         print(k)     
-                        test = self.menuRepository.getMenuScore(k)
+                        test = self.menuRepository.selectMenuScore(k)
                         temp.append(test[0]['score'])
                         morning.append(temp)
 
@@ -156,7 +156,7 @@ class MenuService:
                         temp.append(rows[i]['day'])
                         temp.append(rows[i]['course'])
                         temp.append(k)                
-                        test = self.menuRepository.getMenuScore(k)
+                        test = self.menuRepository.selectMenuScore(k)
                         temp.append(test[0]['score'])
                         lunch.append(temp)
 
@@ -172,11 +172,19 @@ class MenuService:
                         temp.append(rows[i]['day'])
                         temp.append(rows[i]['course'])
                         temp.append(k)                
-                        test = self.menuRepository.getMenuScore(k)
+                        test = self.menuRepository.selectMenuScore(k)
                         temp.append(test[0]['score'])
                         dinner.append(temp)
 
         return json.dumps({'days':days, 'morning':morning, 'lunch':lunch, 'dinner':dinner}, ensure_ascii=False)
+
+    def getMenuScore(self, menu):
+        try:
+            data = self.menuRepository.selectMenuScore(menu)
+            print(data[0]['score'])
+            return jsonify({'menu_score': data[0]['score']})
+        except:
+            return 0
 
     def setMenuScore(self, menu, score):
         data = self.menuRepository.selectMenuData(menu)

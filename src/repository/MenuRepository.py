@@ -174,7 +174,7 @@ class MenuRepository:
         self.closeConnection()
         return result
 
-    def getMenuScore(self, menuName):
+    def selectMenuScore(self, menuName):
         self.getConnection() # db 연결
         cursor = self.connection.cursor() # control structure of database SQL 문장을 DB 서버에 전송하기 위한 객체
 

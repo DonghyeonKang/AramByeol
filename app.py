@@ -103,6 +103,16 @@ def getMenuApp():
     return resp
 
 # 별점 ---------------------------------------------------------
+@app.route('/menu/score', methods=['GET'])
+def getMenuScore():
+    menuService = MenuService.MenuService()
+
+    # 클라이언트로부터 메뉴와 점수를 전달받음
+    menu = request.args.get('menu_name')
+    result = menuService.getMenuScore(menu)
+    return result
+
+
 @app.route('/menu/score', methods=['POST'])
 def setMenuScore():
     menuService = MenuService.MenuService()

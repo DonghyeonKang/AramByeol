@@ -300,7 +300,7 @@ const event_modal = (sessionExist) => {
     if (score_result > 0) {
       $.ajax({
         type: "POST", // post 방식 
-        url: "/api/score", // url
+        url: "/menu/score", // url
         data: { menu_name: name, menu_score: score_result }, //데이터 전송
         success: function (response) { // 성공하면
           alert(response["msg"]); // 메세지 출력
@@ -333,12 +333,12 @@ const set_modal_inner_header = (open_today) => {
   name = open_today.innerHTML.replace("&amp;", "&");
   // DB에서 누적 별점 가져오기
   $.ajax({
-    type: "POST",
-    url: "/api/menu_score",
+    type: "GET",
+    url: "/menu/score",
     data: { menu_name: name },
     success: function (response) {
       $(".menu-score").empty();
-      const score = response["score"];
+      const score = response["menu_score"];
       for (let i = 1; i <= 5; i++) {
         if (i <= score) $(".menu-score").append(`★`);
         else $(".menu-score").append(`☆`);

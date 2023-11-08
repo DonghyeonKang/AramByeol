@@ -824,7 +824,7 @@ function goSns(shareTy){
 							</a>
 							<a href="javascript:;" class="date" tabindex="-1">
 			    				<span class="txt_p">2023-09-25 ~ 2023-10-01</span>
-			    				<input type="hidden" class="dtpic1 hasDatepicker" value="" id="dp1695618707975"><img class="ui-datepicker-trigger" src="/images/btn_calendar.png" alt="" title="날짜선택">
+			    				<input type="hidden" class="dtpic1 hasDatepicker" value="" id="dp1695711642108"><img class="ui-datepicker-trigger" src="/images/btn_calendar.png" alt="" title="날짜선택">
 							</a>
 							<a href="javascript:;" onclick="fn_selectView(document.getElementById('detailForm'), '2023-10-02', '');" class="bt_calr_next">
 								<i class="xi-angle-right" aria-hidden="true"></i>
@@ -860,7 +860,7 @@ function goSns(shareTy){
 			<input type="hidden" id="mi" value="">
 			<input type="hidden" id="sysId" value="dorm">
 			<input type="hidden" name="restSeq" value="47">
-			<input type="hidden" name="schDt" value="2023-09-25">
+			<input type="hidden" name="schDt" value="2023-09-26">
 			<input type="hidden" name="schSysId" value="">	<!-- 메인 포털의 경우 캠퍼스 별 조회가 가능해야되서 추가된 값 -->
 			<div class="BD_table scroll_gr dorm">
 				<table>
@@ -1012,7 +1012,7 @@ function goSns(shareTy){
 															
 																<p class="fm_tit_p mgt15">A코스/한식</p>
 															
-															<p class="">쌀밥 / 누룽지<br>순두부찌개<br>스모크햄전*케찹<br>양반김<br>양배추찹샐러드<br>배추김치<br>모듬음료</p>
+															<p class="">쌀밥 / 누룽지<br>순두부찌개<br>스모크햄전*케찹<br>오이무침<br>양배추찹샐러드<br>배추김치<br>모듬음료</p>
 														</div>
 														
 													
@@ -1032,7 +1032,7 @@ function goSns(shareTy){
 															
 																<p class="fm_tit_p mgt15">C코스/죽식</p>
 															
-															<p class="">게살계란죽<br>양반김<br>양배추찹샐러드<br>배추김치<br>모듬음료</p>
+															<p class="">게살계란죽<br>오이무침<br>양배추찹샐러드<br>배추김치<br>모듬음료</p>
 														</div>
 														
 													
@@ -2594,7 +2594,7 @@ function goSns(shareTy){
 		</form>
 		
 		<div class="btns">
-			<a href="javascript:;" class="btn_line_style1" onclick="fn_selectView(document.getElementById('detailForm'), '2023-09-25', '');">오늘</a>
+			<a href="javascript:;" class="btn_line_style1" onclick="fn_selectView(document.getElementById('detailForm'), '2023-09-26', '');">오늘</a>
 			
 		</div>
 	</div>

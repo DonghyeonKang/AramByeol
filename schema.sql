@@ -1,8 +1,8 @@
 CREATE TABLE `menudata`(
     `id` INT(10) NOT NULL AUTO_INCREMENT PRIMARY KEY,
     `menu` varchar(50) UNIQUE,
-    `score` INT(10),
-    `reviewcount` INT(10)
+    `score` INT(10) default 0,
+    `reviewcount` INT(10) default 0
 );
 
 CREATE TABLE `dinner`(
@@ -33,12 +33,6 @@ CREATE TABLE `users` (
     `id` INT(10) NOT NULL AUTO_INCREMENT PRIMARY KEY,
     `user_id` varchar(50) NOT NULL,
     `user_pw` TEXT NOT NULL
-);
-
-CREATE TABLE `review` (
-    `user_id` varchar(50) NOT NULL,
-    `menu` varchar(50) NOT NULL,
-    `score` INT(10) NOT NULL
 );
 
 CREATE TABLE `views` (
