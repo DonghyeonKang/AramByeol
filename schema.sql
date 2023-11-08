@@ -28,8 +28,8 @@ CREATE TABLE `morning`(
 );
 
 CREATE TABLE `week`(
-    `day` varchar(2) NOT NULL PRIMARY KEY, --키
-    `date` varchar(11) NOT NULL --값
+    `day` varchar(2) NOT NULL PRIMARY KEY,
+    `date` varchar(11) NOT NULL
 );
 
 CREATE TABLE `users` (
@@ -39,5 +39,8 @@ CREATE TABLE `users` (
 );
 
 CREATE TABLE `views` (
+    `id` INT(10) NOT NULL AUTO_INCREMENT PRIMARY KEY,
     `views` BIGINT(5) default 0
 );
+
+INSERT INTO views value(17129);

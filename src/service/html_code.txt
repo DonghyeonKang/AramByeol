@@ -65,7 +65,7 @@
 		<script type="text/javascript" src="/js/jquery.bpopup.min.js"></script>
 		<!-- //추가된 js -->
 	</head>
-	<body class="shOn">
+	<body>
 		<!-- 바로가기 -->
 		<div id="skipArea"><a href="#gnb">메인메뉴 바로가기</a><a href="#sub_content">본문으로 바로가기</a></div>
 		<!-- //바로가기 -->
@@ -824,7 +824,7 @@ function goSns(shareTy){
 							</a>
 							<a href="javascript:;" class="date" tabindex="-1">
 			    				<span class="txt_p">2023-11-06 ~ 2023-11-12</span>
-			    				<input type="hidden" class="dtpic1 hasDatepicker" value="" id="dp1699420935437"><img class="ui-datepicker-trigger" src="/images/btn_calendar.png" alt="" title="날짜선택">
+			    				<input type="hidden" class="dtpic1 hasDatepicker" value="" id="dp1699448792423"><img class="ui-datepicker-trigger" src="/images/btn_calendar.png" alt="" title="날짜선택">
 							</a>
 							<a href="javascript:;" onclick="fn_selectView(document.getElementById('detailForm'), '2023-11-13', '');" class="bt_calr_next">
 								<i class="xi-angle-right" aria-hidden="true"></i>
@@ -3612,7 +3612,7 @@ function goSns(shareTy){
 			<!-- //sns quick menu -->
 			<!-- //sns quick menu -->
 
-			<a href="#none" class="btn_top" style="display: none;">
+			<a href="#none" class="btn_top" style="opacity: 0.0009;">
 				<span><i class="xi-angle-up-min" aria-hidden="true"></i>Top</span>
 			</a>
 		</footer>

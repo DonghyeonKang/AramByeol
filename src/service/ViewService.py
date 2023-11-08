@@ -7,3 +7,6 @@ class ViewService:
     def getView(self):
         result = self.viewRepository.selectView()
         return result
+
+    def updateView(self):
+        self.viewRepository.updateView()
