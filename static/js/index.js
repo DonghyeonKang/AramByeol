@@ -7,7 +7,6 @@ $(document).ready(function () {
     get_daytable(); // 데이터 로딩 후
     event_modal(sessionExist); // 모달 이벤트 처리
     get_views();
-    set_cookie();
   }
   else{
     console.log("");
@@ -17,24 +16,20 @@ $(document).ready(function () {
 const get_views = () => {
   $.ajax({
     type: "GET",
-    url: "/api/views",
+    url: "views",
     async: false,
     data: {},
     success: function (response) {
-      $(".views").append(`Total Views ${response["views"][0]["views"]}`)
+      $(".views").append(`Total Views ${response["views"]}`)
     },
   });
-}
-
-const set_cookie = () => {
-  
 }
 
 const session_check = () => {
   let sessionExist;
   $.ajax({
     type: "POST",
-    url: "/api/session_check",
+    url: "session",
     async: false, // 세션 체크 후 반환되는 값에 따라 페이지 로딩을 달리해야하므로 동기식으로 처리
     data: {},
     success: function (response) {
@@ -42,7 +37,7 @@ const session_check = () => {
       if (response == "0") {
         // 세션 없음
         $("#login").append(
-          '<a href="/member/login.html" class="login-button" id="login-button">로그인</a>'
+          '<a href="/login" class="login-button" id="login-button">로그인</a>'
         );
         sessionExist = 0;
       } else {
@@ -81,7 +76,7 @@ const logout = () => {
 const get_daytable = () => {
   $.ajax({
     type: "GET",
-    url: "/api/list",
+    url: "/menu/web",
     async: false,
     data: {},
     success: function (response) {
@@ -305,7 +300,7 @@ const event_modal = (sessionExist) => {
     if (score_result > 0) {
       $.ajax({
         type: "POST", // post 방식 
-        url: "/api/score", // url
+        url: "/menu/score", // url
         data: { menu_name: name, menu_score: score_result }, //데이터 전송
         success: function (response) { // 성공하면
           alert(response["msg"]); // 메세지 출력
@@ -338,12 +333,12 @@ const set_modal_inner_header = (open_today) => {
   name = open_today.innerHTML.replace("&amp;", "&");
   // DB에서 누적 별점 가져오기
   $.ajax({
-    type: "POST",
-    url: "/api/menu_score",
+    type: "GET",
+    url: "/menu/score",
     data: { menu_name: name },
     success: function (response) {
       $(".menu-score").empty();
-      const score = response["score"];
+      const score = response["menu_score"];
       for (let i = 1; i <= 5; i++) {
         if (i <= score) $(".menu-score").append(`★`);
         else $(".menu-score").append(`☆`);

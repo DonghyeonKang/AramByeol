@@ -4,32 +4,32 @@
 CREATE TABLE `menudata`(
     `id` INT(10) NOT NULL AUTO_INCREMENT PRIMARY KEY,
     `menu` varchar(50) UNIQUE,
-    `score` INT(10),
-    `reviewcount` INT(10)
+    `score` INT(10) default 0,
+    `reviewcount` INT(10) default 0
 );
 
 CREATE TABLE `dinner`(
     `day` varchar(2) NOT NULL,
-    `cource` varchar(50),
+    `course` varchar(50),
     `menu` varchar(50) NOT NULL
 );
 
 
 CREATE TABLE `lunch`(
     `day` varchar(2) NOT NULL,
-    `cource` varchar(50),
+    `course` varchar(50),
     `menu` varchar(50) NOT NULL
 );
 
 CREATE TABLE `morning`(
     `day` varchar(2) NOT NULL,
-    `cource` varchar(50),
-    `menu` varchar(50) NOT NULL
+    `course` varchar(50),
+    `menu` varchar(100) NOT NULL
 );
 
 CREATE TABLE `week`(
-    `day` varchar(2) NOT NULL PRIMARY KEY,
-    `date` varchar(11) NOT NULL
+    `day` varchar(2) NOT NULL PRIMARY KEY, --키
+    `date` varchar(11) NOT NULL --값
 );
 
 CREATE TABLE `users` (
@@ -38,14 +38,6 @@ CREATE TABLE `users` (
     `user_pw` TEXT NOT NULL
 );
 
-CREATE TABLE `review` (
-    `user_id` varchar(50) NOT NULL,
-    `menu` varchar(50) NOT NULL,
-    `score` INT(10) NOT NULL
-);
-
 CREATE TABLE `views` (
-    `views` BIGINT(5)
+    `views` BIGINT(5) default 0
 );
-
-INSERT INTO views(views) VALUE(0);
