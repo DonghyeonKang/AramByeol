@@ -1,5 +1,5 @@
 function idchk(id) {
-  const id_chk = /^(?=.*[a-zA-Z])[a-zA-Z0-9]{2,10}$/g;
+  const id_chk = /^[a-zA-Z0-9]+$/g;
   return id_chk.test(id);
 }
 

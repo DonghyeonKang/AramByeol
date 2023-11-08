@@ -28,3 +28,17 @@ class ViewRepository:
             self.closeConnection()
 
         return data
+    
+    def updateView(self):
+        self.getConnection()
+
+        try:
+            self.cursor = self.connection.cursor()
+            self.cursor.execute(
+                "UPDATE views SET views =views.views+1 where id = 1"
+            )
+            self.connection.commit()
+        except Exception as e:
+            print(e)
+        finally:
+            self.closeConnection()
