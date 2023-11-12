@@ -76,19 +76,19 @@ class MenuService:
                     for k in j:
                         courseDict['course'] = k['course'] # 코스 생성
                         courseDict['menu'] = k['menu'].split(", ") # 메뉴 생성
-                    menuList.append(courseDict) 
+                        menuList.append(courseDict.copy()) 
                     tmpDict["morning"] = menuList
                 if num == 1:
                     for k in j:
                         courseDict['course'] = k['course'] # 코스 생성
                         courseDict['menu'] = k['menu'].split(", ") # 메뉴 생성
-                    menuList.append(courseDict) 
+                        menuList.append(courseDict.copy()) 
                     tmpDict["lunch"] = menuList
                 if num == 2:
                     for k in j:
                         courseDict['course'] = k['course'] # 코스 생성
                         courseDict['menu'] = k['menu'].split(", ") # 메뉴 생성
-                    menuList.append(courseDict) 
+                        menuList.append(courseDict.copy()) 
                     tmpDict["dinner"] = menuList
             dictData[self.day[cnt - 1]] = tmpDict # 하나로 합친 tmpDict 를 'today', 'tomorrow', 'theDayAfterTomorrow' 안에 value로 넣음
         return json.dumps(dictData, ensure_ascii=False)
