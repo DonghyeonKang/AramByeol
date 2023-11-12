@@ -36,6 +36,8 @@ def unauthorized_error(error):
 # 페이지 라우팅 --------------------------------------
 @app.route('/')
 def home():
+    viewService = ViewService.ViewService()
+    viewService.updateView()
     return render_template("index.html")
 
 @app.route('/login', methods=['GET'])
@@ -81,6 +83,7 @@ def session_check():
 
 # 조회수 ---------------------------------------------------------
 import src.service.ViewService as  ViewService
+
 @app.route('/views', methods=['GET'])
 def getView():
     viewService = ViewService.ViewService()

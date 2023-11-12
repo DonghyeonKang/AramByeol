@@ -38,6 +38,10 @@ Recent Update: 2022-04-13
 2022-04-13 - release version 1.1.5
 - 메인화면 메뉴에 별점도 동시에 출력하도록 수정
 
+2023-11-08 - release version 1.2.0
+- 아람별 백엔드 코드 RESTful API로 리팩토링
+- Service, Repository를 이용하여 좀 더 객체지향적으로 코드 리팩토링
+
 # Usage
 - 페이지 접속 시 아람관 식단을 확인 할 수 있습니다
 - 메뉴 클릭시 메뉴의 별점을 확인할 수 있습니다 
