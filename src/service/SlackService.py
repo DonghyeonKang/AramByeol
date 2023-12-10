@@ -2,7 +2,7 @@ import slack
 import json
 import requests
 
-slack_token = "xoxb-3707654943089-3694992446515-cbQby5Jbak2KoQUM1dxKH85b" # 발급받은 Token 값
+slack_token = "xoxb-3707654943089-3694992446515-oC2DqO6xCkeA4EMfEODoSlsj" # 발급받은 Token 값
 client = slack.WebClient(token=slack_token)
 
 def sendToSlack(message):

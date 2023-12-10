@@ -1,4 +1,3 @@
 *.pyc
 *.out
-nohup.out
-html_code.txt
+*.txt

@@ -3,6 +3,8 @@ from bs4 import BeautifulSoup
 from selenium.webdriver.support.ui import WebDriverWait
 import subprocess
 from webdriver_manager.chrome import ChromeDriverManager
+from SlackService import sendToSlack
+import json
 
 # 크롬 디버그 모드로 실행 
 chrome_options = webdriver.ChromeOptions()
@@ -162,7 +164,6 @@ for day_dinner in dinner_html:
 # 요일이랑 메뉴 매칭
 for i, day in enumerate(days):
     dinner[day] = dinner_list[i]
-print("dinner:",dinner,"\n")
 
 # 스크래핑한 데이터 저장 --------------------
 menuService.clearData()
@@ -170,3 +171,10 @@ menuService.weekData(day_date)
 menuService.morningData(morning)
 menuService.lunchData(lunch)
 menuService.dinnerData(dinner)
+
+# 슬랙으로 메뉴 데이터 전송 ------------------
+sendToSlack(json.dumps(morning, ensure_ascii = False)) # ensure_ascii = False 는 json으로 변환시 unicode 로 저장되지 않도록 함
+sendToSlack(json.dumps(lunch, ensure_ascii = False))
+sendToSlack(json.dumps(dinner, ensure_ascii = False))
+
+print("complete.")
