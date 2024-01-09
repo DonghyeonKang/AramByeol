@@ -1,7 +1,7 @@
 import slack 
-import token
+import slackToken
 
-slack_token = token # 발급받은 Token 값
+slack_token = slackToken.token # 발급받은 Token 값
 client = slack.WebClient(token=slack_token)
 
 def sendToSlack(message):

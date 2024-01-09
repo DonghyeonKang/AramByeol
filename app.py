@@ -126,6 +126,31 @@ def setMenuScore():
     result = menuService.setMenuScore(menu, score)
     return result    
 
+# 스케줄러 ---------------------------------------------------------
+from apscheduler.schedulers.background import BackgroundScheduler
+import subprocess
+
+def run_script():
+    # 실행할 스크립트나 명령어를 여기에 추가
+    subprocess.run(['python3', '/home/ubuntu/arambyeol/src/service/CrawlingService.py'])
+
+# 백그라운드 스케줄러 생성
+scheduler = BackgroundScheduler()
+
+# 월요일 01시에 실행하도록 설정 (cron 형식 사용)
+scheduler.add_job(run_script, 'cron', hour=1)
+scheduler.add_job(run_script, 'cron', day_of_week='sun', hour=0)
+
+# Flask 애플리케이션이 실행되면 스케줄러도 시작
+def start_scheduler():
+    print("스케줄링 시작")
+    scheduler.start()
+
+# 애플리케이션이 종료될 때 스케줄러도 종료
+def shutdown_scheduler(exception=None):
+    scheduler.shutdown()
+
 # 실행 ---------------------------------------------------------
 if __name__ == '__main__':
+    start_scheduler()
     app.run('0.0.0.0',port=5000,debug=False, threaded=True)

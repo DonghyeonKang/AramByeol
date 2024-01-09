@@ -130,7 +130,7 @@
 					<!--gnb-->
 					<!-- 풀다운 클래스 : fullDown / 하나씩 : oneDown-->
 					<!-- 새창일경우 a태그에 target="_blank" title="새창" 넣어주세요 -->
-					<div id="nav" class="oneDown" style="height: 70px;">
+					<div id="nav" class="oneDown" style="">
 						<div id="blind"></div>
 						<div id="gnb">
 							<div class="wrap">
@@ -799,7 +799,7 @@ function goSns(shareTy){
 							
 								
 								
-								<li>급식일 : 2023년 12월 11일 ~ 2023년 12월 17일</li>
+								<li>급식일 : 2024년 01월 08일 ~ 2024년 01월 14일</li>
 							
 						
 						
@@ -818,15 +818,15 @@ function goSns(shareTy){
 					
 					<div class="calr_tit">
 						<div class="calr_tit_ctrl">
-							<a href="javascript:;" onclick="fn_selectView(document.getElementById('detailForm'), '2023-12-09', '');" class="bt_calr_pre">
+							<a href="javascript:;" onclick="fn_selectView(document.getElementById('detailForm'), '2024-01-06', '');" class="bt_calr_pre">
 								<i class="xi-angle-left" aria-hidden="true"></i>
 								<span class="sr-only">이전</span>
 							</a>
 							<a href="javascript:;" class="date" tabindex="-1">
-			    				<span class="txt_p">2023-12-11 ~ 2023-12-17</span>
-			    				<input type="hidden" class="dtpic1 hasDatepicker" value="" id="dp1702217114384"><img class="ui-datepicker-trigger" src="/images/btn_calendar.png" alt="" title="날짜선택">
+			    				<span class="txt_p">2024-01-08 ~ 2024-01-14</span>
+			    				<input type="hidden" class="dtpic1 hasDatepicker" value="" id="dp1704804489503"><img class="ui-datepicker-trigger" src="/images/btn_calendar.png" alt="" title="날짜선택">
 							</a>
-							<a href="javascript:;" onclick="fn_selectView(document.getElementById('detailForm'), '2023-12-18', '');" class="bt_calr_next">
+							<a href="javascript:;" onclick="fn_selectView(document.getElementById('detailForm'), '2024-01-15', '');" class="bt_calr_next">
 								<i class="xi-angle-right" aria-hidden="true"></i>
 								<span class="sr-only">다음</span>
 							</a>
@@ -860,7 +860,7 @@ function goSns(shareTy){
 			<input type="hidden" id="mi" value="">
 			<input type="hidden" id="sysId" value="dorm">
 			<input type="hidden" name="restSeq" value="47">
-			<input type="hidden" name="schDt" value="2023-12-10">
+			<input type="hidden" name="schDt" value="2024-01-09">
 			<input type="hidden" name="schSysId" value="">	<!-- 메인 포털의 경우 캠퍼스 별 조회가 가능해야되서 추가된 값 -->
 			<div class="BD_table scroll_gr dorm">
 				<table>
@@ -878,13 +878,13 @@ function goSns(shareTy){
 					<thead>
 						<tr>
 							<th scope="col">구분</th>
-							<th scope="col">월 <br>2023-12-11</th>
-							<th scope="col">화 <br>2023-12-12</th>
-							<th scope="col">수 <br>2023-12-13</th>
-							<th scope="col">목 <br>2023-12-14</th>
-							<th scope="col">금 <br>2023-12-15</th>
-							<th scope="col">토 <br>2023-12-16</th>
-							<th scope="col">일 <br>2023-12-17</th>
+							<th scope="col">월 <br>2024-01-08</th>
+							<th scope="col">화 <br>2024-01-09</th>
+							<th scope="col">수 <br>2024-01-10</th>
+							<th scope="col">목 <br>2024-01-11</th>
+							<th scope="col">금 <br>2024-01-12</th>
+							<th scope="col">토 <br>2024-01-13</th>
+							<th scope="col">일 <br>2024-01-14</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -903,7 +903,7 @@ function goSns(shareTy){
 															
 																<p class="fm_tit_p mgt15">A코스/한식</p>
 															
-															<p class="">쌀밥 / 누룽지<br>사골우거지국<br>두부조림<br>호박볶음<br>돌나물겉절이<br>배추김치<br>모듬음료</p>
+															<p class="">쌀밥/누룽지<br>북엇국<br>생선까스*타르S<br>알감자구이<br>얼갈이겉절이<br>깍두기<br>모듬음료<br></p>
 														</div>
 														
 													
@@ -913,17 +913,7 @@ function goSns(shareTy){
 															
 																<p class="fm_tit_p mgt15">B코스/베이커리</p>
 															
-															<p class="">수제마늘빵<br>옥수수스프<br>테이터펍스*케찹<br>샐러드*포도D<br>모듬음료</p>
-														</div>
-														
-													
-												
-													
-														<div>
-															
-																<p class="fm_tit_p mgt15">C코스/죽식</p>
-															
-															<p class="">갱시기죽<br>호박볶음<br>돌나물겉절이<br>배추김치<br>모듬음료</p>
+															<p class="">수제마늘빵<br>크림스프<br>알감자구이<br>샐러드*키위D<br>모듬음료</p>
 														</div>
 														
 													
@@ -933,17 +923,9 @@ function goSns(shareTy){
 															
 																<p class="fm_tit_p mgt15">테이크아웃</p>
 															
-															<p class="">스위트딸기케익<br>미니사과잼쿠키<br>모듬음료</p>
+															<p class="">파운드케익<br>바나나맛호두<br>모듬음료</p>
 														</div>
 														
-													
-												
-													
-												
-													
-												
-													
-												
 													
 												
 													
@@ -1022,13 +1004,11 @@ function goSns(shareTy){
 													
 												
 													
-												
-													
 														<div>
 															
 																<p class="fm_tit_p mgt15">A코스/한식</p>
 															
-															<p class="">쌀밥 / 누룽지<br>고추장찌개<br>오징어야채볶음<br>건파래볶음<br>짜사이무침<br>배추김치<br>모듬음료</p>
+															<p class="">쌀밥/누룽지<br>호박감자국<br>메밀전병<br>알어묵조림<br>숙주나물<br>배추김치<br>모듬음료</p>
 														</div>
 														
 													
@@ -1038,17 +1018,7 @@ function goSns(shareTy){
 															
 																<p class="fm_tit_p mgt15">B코스/베이커리</p>
 															
-															<p class="">브라운브레드*버터<br>크림스프<br>소시지구이*케찹<br>샐러드*오리엔탈D<br>모듬음료</p>
-														</div>
-														
-													
-												
-													
-														<div>
-															
-																<p class="fm_tit_p mgt15">C코스/죽식</p>
-															
-															<p class="">게살부추죽<br>오징어야채볶음<br>짜사이무침<br>배추김치<br>모듬음료</p>
+															<p class="">식빵*계란후라이*딸기잼<br>시리얼<br>해쉬브라운<br>샐러드*사우전D<br>모듬음료</p>
 														</div>
 														
 													
@@ -1058,15 +1028,9 @@ function goSns(shareTy){
 															
 																<p class="fm_tit_p mgt15">테이크아웃</p>
 															
-															<p class="">달콤허니빵<br>삶은계란<br>모듬음료</p>
+															<p class="">투투호떡<br>삶은계란<br>모듬음료</p>
 														</div>
 														
-													
-												
-													
-												
-													
-												
 													
 												
 													
@@ -1145,15 +1109,11 @@ function goSns(shareTy){
 													
 												
 													
-												
-													
-												
-													
 														<div>
 															
 																<p class="fm_tit_p mgt15">A코스/한식</p>
 															
-															<p class="">쌀밥 / 누룽지<br>근대된장국<br>고추참치볶음<br>우엉조림<br>오이지무침<br>배추김치<br>모듬음료</p>
+															<p class="">쌀밥/누룽지<br>어묵탕<br>후랑크야채볶음<br>가지나물<br>세발나물겉절이<br>배추김치<br>모듬음료</p>
 														</div>
 														
 													
@@ -1163,17 +1123,7 @@ function goSns(shareTy){
 															
 																<p class="fm_tit_p mgt15">B코스/베이커리</p>
 															
-															<p class="">식빵*계란후라이*딸기잼<br>씨리얼<br>해쉬브라운<br>샐러드*사우전D<br>모듬음료</p>
-														</div>
-														
-													
-												
-													
-														<div>
-															
-																<p class="fm_tit_p mgt15">C코스/죽식</p>
-															
-															<p class="">단호박죽<br>우엉조림<br>오이지무침<br>배추김치<br>모듬음료</p>
+															<p class="">프렌치토스트<br>양송이스프<br>후랑크야채볶음<br>샐러드*포도D<br>모듬음료</p>
 														</div>
 														
 													
@@ -1183,13 +1133,9 @@ function goSns(shareTy){
 															
 																<p class="fm_tit_p mgt15">테이크아웃</p>
 															
-															<p class="">꼬마꿀호떡<br>하루견과<br>모듬음료</p>
+															<p class="">모카케익<br>콘시리얼바<br>모듬음료</p>
 														</div>
 														
-													
-												
-													
-												
 													
 												
 													
@@ -1268,17 +1214,11 @@ function goSns(shareTy){
 													
 												
 													
-												
-													
-												
-													
-												
-													
 														<div>
 															
 																<p class="fm_tit_p mgt15">A코스/한식</p>
 															
-															<p class="">쌀밥 / 누룽지<br>떡국<br>미트볼토마토조림<br>그린빈스볶음<br>고들빼기지<br>배추김치<br>모듬음료</p>
+															<p class="">쌀밥/누룽지<br>순두부찌개<br>스크램블에그<br>멸치볶음<br>병아리콩조림<br>배추김치<br>모듬음료</p>
 														</div>
 														
 													
@@ -1288,17 +1228,7 @@ function goSns(shareTy){
 															
 																<p class="fm_tit_p mgt15">B코스/베이커리</p>
 															
-															<p class="">베이글*버터*딸기잼<br>양송이스프<br>토마토미트볼조림<br>샐러드*참깨D<br>모듬음료</p>
-														</div>
-														
-													
-												
-													
-														<div>
-															
-																<p class="fm_tit_p mgt15">C코스/죽식</p>
-															
-															<p class="">소고기야채죽<br>그린빈스볶음<br>고들빼기지<br>배추김치<br>모듬음료</p>
+															<p class="">단팥꼬마호빵<br>시리얼<br>스크램블에그<br>샐러드*망고D<br>모듬음료</p>
 														</div>
 														
 													
@@ -1308,11 +1238,9 @@ function goSns(shareTy){
 															
 																<p class="fm_tit_p mgt15">테이크아웃</p>
 															
-															<p class="">파운드케익<br>삶은계란<br>모듬음료</p>
+															<p class="">둥근달화이트크림<br>삶은계란<br>모듬음료</p>
 														</div>
 														
-													
-												
 													
 												
 													
@@ -1391,19 +1319,11 @@ function goSns(shareTy){
 													
 												
 													
-												
-													
-												
-													
-												
-													
-												
-													
 														<div>
 															
 																<p class="fm_tit_p mgt15">A코스/한식</p>
 															
-															<p class="">쌀밥 / 누룽지<br>계란탕<br>후랑크야채볶음<br>온두부*양념장<br>양념마늘쫑무침<br>배추김치<br>모듬음료</p>
+															<p class="">쌀밥/누룽지<br>된장찌개<br>물만두찜<br>도토리묵무침<br>마카로니샐러드<br>배추김치<br>모듬음료</p>
 														</div>
 														
 													
@@ -1413,17 +1333,7 @@ function goSns(shareTy){
 															
 																<p class="fm_tit_p mgt15">B코스/베이커리</p>
 															
-															<p class="">대파토스트<br>씨리얼<br>후랑크야채볶음<br>샐러드*키위D<br>모듬음료</p>
-														</div>
-														
-													
-												
-													
-														<div>
-															
-																<p class="fm_tit_p mgt15">C코스/죽식</p>
-															
-															<p class="">참치미역죽<br>온두부*양념장<br>양념마늘쫑무침<br>배추김치<br>모듬음료</p>
+															<p class="">브라운브레드*버터<br>옥수수스프<br>새우볼꼬지튀김<br>샐러드*오리엔탈D<br>모듬음료</p>
 														</div>
 														
 													
@@ -1433,7 +1343,7 @@ function goSns(shareTy){
 															
 																<p class="fm_tit_p mgt15">테이크아웃</p>
 															
-															<p class="">둥근달화이트크림<br>콘시리얼바<br>모듬음료</p>
+															<p class="">달콤허니빵<br>미니딸기잼쿠키<br>모듬음료</p>
 														</div>
 														
 													
@@ -1514,21 +1424,11 @@ function goSns(shareTy){
 													
 												
 													
-												
-													
-												
-													
-												
-													
-												
-													
-												
-													
 														<div>
 															
 																<p class="fm_tit_p mgt15">A코스/한식</p>
 															
-															<p class="">쌀밥 / 누룽지<br>물만둣국<br>분홍소시지전*케찹<br>멸치볶음<br>병아리콩조림<br>배추김치<br>모듬음료</p>
+															<p class="">쌀밥/누룽지<br>계란탕<br>돈육모듬장조림<br>양배추쌈*양념장<br>치커리생채<br>배추김치<br>모듬음료</p>
 														</div>
 														
 													
@@ -1609,21 +1509,11 @@ function goSns(shareTy){
 													
 												
 													
-												
-													
-												
-													
-												
-													
-												
-													
-												
-													
 														<div>
 															
 																<p class="fm_tit_p mgt15">A코스/한식</p>
 															
-															<p class="">쌀밥 / 누룽지<br>닭곰탕<br>스크램블에그*케찹<br>청포묵김무침<br>부추겉절이<br>배추김치<br>모듬음료</p>
+															<p class="">쌀밥/누룽지<br>콩나물국<br>햄전*케찹<br>꼬시래기두부무침<br>콘샐러드<br>배추김치<br>모듬음료</p>
 														</div>
 														
 													
@@ -1709,21 +1599,11 @@ function goSns(shareTy){
 													
 												
 													
-												
-													
-												
-													
-												
-													
-												
-													
-												
-													
 														<div>
 															
 																<p class="fm_tit_p mgt15">A코스/한식</p>
 															
-															<p class="">쌀밥<br>콩비지찌개<br>야채계란찜<br>연근조림<br>푸실리샐러드<br>깍두기<br>키위주스</p>
+															<p class="">쌀밥<br>콩가루배추국<br>오징어야채볶음<br>건파래볶음<br>겨울초겉절이<br>배추김치<br>망고주스</p>
 														</div>
 														
 													
@@ -1733,7 +1613,7 @@ function goSns(shareTy){
 															
 																<p class="fm_tit_p mgt15">B코스/일품</p>
 															
-															<p class="">닭고기부추쌀국수<br>춘권튀김*초간장<br>단무지<br>깍두기<br>키위주스</p>
+															<p class="">닭칼국수<br>핫도그*케찹<br>단무지<br>배추김치<br>망고주스</p>
 														</div>
 														
 													
@@ -1814,21 +1694,11 @@ function goSns(shareTy){
 													
 												
 													
-												
-													
-												
-													
-												
-													
-												
-													
-												
-													
 														<div>
 															
 																<p class="fm_tit_p mgt15">A코스/한식</p>
 															
-															<p class="">계란볶음밥<br>짬뽕탕<br>치킨탕수육<br>단무지<br>배추김치<br>감귤</p>
+															<p class="">쌀밥<br>우동장국<br>순살돈까스*브라운S<br>먹물크림파스타<br>오리엔탈샐러드<br>배추김치<br>식혜<br><br>♥특식♥</p>
 														</div>
 														
 													
@@ -1909,21 +1779,11 @@ function goSns(shareTy){
 													
 												
 													
-												
-													
-												
-													
-												
-													
-												
-													
-												
-													
 														<div>
 															
 																<p class="fm_tit_p mgt15">A코스/한식</p>
 															
-															<p class="">쌀밥<br>소고기미역국<br>한입떡갈비조림<br>콩나물무침<br>무말랭이지<br>배추김치<br>살구주스</p>
+															<p class="">쌀밥<br>미소된장국<br>함박야채볶음<br>콩나물무침<br>오복지<br>배추김치<br>오렌지주스</p>
 														</div>
 														
 													
@@ -1933,7 +1793,7 @@ function goSns(shareTy){
 															
 																<p class="fm_tit_p mgt15">B코스/일품</p>
 															
-															<p class="">짜장면<br>교자만두*유린기S<br>단무지<br>배추김치<br>살구주스</p>
+															<p class="">꼬지어묵국수<br>김말이튀김*초간장<br>단무지<br>배추김치<br>오렌지주스</p>
 														</div>
 														
 													
@@ -2014,21 +1874,11 @@ function goSns(shareTy){
 													
 												
 													
-												
-													
-												
-													
-												
-													
-												
-													
-												
-													
 														<div>
 															
 																<p class="fm_tit_p mgt15">A코스/한식</p>
 															
-															<p class="">쌀밥<br>시래기국<br>제육볶음<br>새송이조림<br>열무겉절이<br>배추김치<br>포도주스</p>
+															<p class="">쌀밥<br>미역국<br>순살닭갈비<br>호박볶음<br>돌나물생채<br>배추김치<br>키위주스</p>
 														</div>
 														
 													
@@ -2038,7 +1888,7 @@ function goSns(shareTy){
 															
 																<p class="fm_tit_p mgt15">B코스/일품</p>
 															
-															<p class="">얼큰버섯칼국수<br>설탕꽈배기<br>단무지<br>배추김치<br>포도주스</p>
+															<p class="">불고기우동<br>고로케*케찹<br>단무지<br>배추김치<br>키위주스</p>
 														</div>
 														
 													
@@ -2119,21 +1969,11 @@ function goSns(shareTy){
 													
 												
 													
-												
-													
-												
-													
-												
-													
-												
-													
-												
-													
 														<div>
 															
 																<p class="fm_tit_p mgt15">A코스/한식</p>
 															
-															<p class="">쌀밥<br>된장찌개<br>동그랑땡전*케찹<br>유부겨자냉채<br>깻잎지<br>깍두기<br>수정과</p>
+															<p class="">쌀밥<br>소고기무국<br>야채계란찜<br>연근조림<br>참나물겉절이<br>배추김치<br>바나나</p>
 														</div>
 														
 													
@@ -2143,7 +1983,7 @@ function goSns(shareTy){
 															
 																<p class="fm_tit_p mgt15">B코스/일품</p>
 															
-															<p class="">김치말이온국수<br>김말이*초간장<br>단무지<br>깍두기<br>수정과</p>
+															<p class="">중화울면<br>설탕꽈배기<br>단무지<br>배추김치<br>바나나</p>
 														</div>
 														
 													
@@ -2224,21 +2064,11 @@ function goSns(shareTy){
 													
 												
 													
-												
-													
-												
-													
-												
-													
-												
-													
-												
-													
 														<div>
 															
 																<p class="fm_tit_p mgt15">A코스/한식</p>
 															
-															<p class="">쌀밥<br>김칫국<br>오징어까스*칠리S<br>숙주나물<br>참나물생채<br>깍두기<br>오미자주스</p>
+															<p class="">쌀밥<br>닭곰탕<br>동그랑땡전*케찹<br>충무식오징어무침<br>무생채<br>배추김치<br>살구주스</p>
 														</div>
 														
 													
@@ -2319,21 +2149,11 @@ function goSns(shareTy){
 													
 												
 													
-												
-													
-												
-													
-												
-													
-												
-													
-												
-													
 														<div>
 															
 																<p class="fm_tit_p mgt15">A코스/한식</p>
 															
-															<p class="">쌀밥<br>맑은소고기무국<br>백순대볶음<br>빨간알어묵조림<br>양파초절임<br>배추김치<br>매실주스</p>
+															<p class="">쌀밥<br>감자수제비국<br>궁중식너비아니<br>청포묵김무침<br>청경채겉절이<br>배추김치<br>포도주스</p>
 														</div>
 														
 													
@@ -2419,21 +2239,11 @@ function goSns(shareTy){
 													
 												
 													
-												
-													
-												
-													
-												
-													
-												
-													
-												
-													
 														<div>
 															
 																<p class="fm_tit_p mgt15">A코스/한식</p>
 															
-															<p class="">쌀밥<br>수제비국<br>너비아니계란전<br>알감자조림<br>청경채겉절이<br>배추김치<br>미숫가루</p>
+															<p class="">햄김치볶음밥<br>버섯두부장국<br>고기산적조림<br>사우전드레싱샐러드<br>깍두기<br>매실주스</p>
 														</div>
 														
 													
@@ -2514,21 +2324,11 @@ function goSns(shareTy){
 													
 												
 													
-												
-													
-												
-													
-												
-													
-												
-													
-												
-													
 														<div>
 															
 																<p class="fm_tit_p mgt15">A코스/한식</p>
 															
-															<p class="">쌀밥<br>육개장<br>비엔나야채볶음<br>연두부*양념장<br>치커리생채<br>배추김치<br>오렌지주스</p>
+															<p class="">쌀밥<br>온도토리묵국<br>돈육짜장불고기<br>명엽채볶음<br>무말랭이지<br>깍두기<br>오미자주스</p>
 														</div>
 														
 													
@@ -2609,21 +2409,11 @@ function goSns(shareTy){
 													
 												
 													
-												
-													
-												
-													
-												
-													
-												
-													
-												
-													
 														<div>
 															
 																<p class="fm_tit_p mgt15">A코스/한식</p>
 															
-															<p class="">중화덮밥<br>우동장국<br>도토리묵참나물무침<br>마카로니샐러드<br>배추김치<br>식혜</p>
+															<p class="">쌀밥<br>소고기떡국<br>해물완자전*케찹<br>야채비빔국수<br>깻잎지<br>배추김치<br>미숫가루</p>
 														</div>
 														
 													
@@ -2704,21 +2494,11 @@ function goSns(shareTy){
 													
 												
 													
-												
-													
-												
-													
-												
-													
-												
-													
-												
-													
 														<div>
 															
 																<p class="fm_tit_p mgt15">A코스/한식</p>
 															
-															<p class="">쌀밥<br>돼지김치찌개<br>동태엿장조림<br>양배추진미채무침<br>겨울초겉절이<br>깍두기<br>매실주스</p>
+															<p class="">쌀밥<br>순대국밥*소면사리<br>온두부*양념장<br>우엉조림<br>양파장아찌<br>배추김치<br>수정과</p>
 														</div>
 														
 													
@@ -2799,21 +2579,11 @@ function goSns(shareTy){
 													
 												
 													
-												
-													
-												
-													
-												
-													
-												
-													
-												
-													
 														<div>
 															
 																<p class="fm_tit_p mgt15">A코스/한식</p>
 															
-															<p class="">카레라이스<br>콩나물국<br>미니돈까스*케찹<br>오리엔탈샐러드<br>배추김치<br>망고주스</p>
+															<p class="">쌀밥<br>부대찌개<br>미니돈까스*케찹<br>새송이볶음<br>겨자냉채<br>배추김치<br>망고주스</p>
 														</div>
 														
 													
@@ -2894,21 +2664,11 @@ function goSns(shareTy){
 													
 												
 													
-												
-													
-												
-													
-												
-													
-												
-													
-												
-													
 														<div>
 															
 																<p class="fm_tit_p mgt15">A코스/한식</p>
 															
-															<p class="">참치마파두부덮밥<br>유부장국<br>핫도그*케찹<br>실곤약샐러드<br>배추김치<br>키위주스</p>
+															<p class="">하이라이스<br>유부장국<br>간장만두강정<br>푸실리샐러드<br>배추김치<br>매실주스</p>
 														</div>
 														
 													
@@ -2989,21 +2749,11 @@ function goSns(shareTy){
 													
 												
 													
-												
-													
-												
-													
-												
-													
-												
-													
-												
-													
 														<div>
 															
 																<p class="fm_tit_p mgt15">A코스/한식</p>
 															
-															<p class="">쌀밥<br>순두부찌개<br>고등어구이*양념장<br>맛살떡볶음<br>해초샐러드<br>배추김치<br>망고주스</p>
+															<p class="">쌀밥<br>돼지김치찌개<br>토마토미트볼조림<br>그린빈스볶음<br>실곤약샐러드<br>깍두기<br>키위주스</p>
 														</div>
 														
 													
@@ -3020,7 +2770,7 @@ function goSns(shareTy){
 		</form>
 		
 		<div class="btns">
-			<a href="javascript:;" class="btn_line_style1" onclick="fn_selectView(document.getElementById('detailForm'), '2023-12-10', '');">오늘</a>
+			<a href="javascript:;" class="btn_line_style1" onclick="fn_selectView(document.getElementById('detailForm'), '2024-01-09', '');">오늘</a>
 			
 		</div>
 	</div>
@@ -3612,7 +3362,7 @@ function goSns(shareTy){
 			<!-- //sns quick menu -->
 			<!-- //sns quick menu -->
 
-			<a href="#none" class="btn_top" style="opacity: 0.0064;">
+			<a href="#none" class="btn_top" style="opacity: 0.0289;">
 				<span><i class="xi-angle-up-min" aria-hidden="true"></i>Top</span>
 			</a>
 		</footer>
