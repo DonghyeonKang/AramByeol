@@ -1,4 +1,4 @@
 *.pyc
 *.out
 *.txt
-token.py
+slackToken.py
