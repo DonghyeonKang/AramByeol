@@ -18,11 +18,11 @@ class UserService:
     def regist(self, id, pw):
 
         #아이디 기준
-        if len(id) < 8 or len(id) > 12 and not re.findall("[a-zA-Z0-9]+",id):
+        if len(id) < 8 or len(id) > 16 and not re.findall("[a-zA-Z0-9]+", id):
             flash("아이디 기준에 맞지 않습니다.")     
 
         #비밀번호 기준
-        if len(pw) < 8 or len(pw) > 15 and not re.findall("[a-zA-Z0-9]",pw) or not re.findall("[!@#$%~]",pw):
+        if len(pw) < 8 or len(pw) > 16 and not re.findall("[a-zA-Z0-9]", pw) or not re.findall("[!@#$%~]", pw):
             flash("비밀번호 기준에 맞지 않습니다.")
 
         pw = (bcrypt.hashpw(pw.encode('utf-8'),bcrypt.gensalt())).decode('utf-8')
@@ -41,7 +41,7 @@ class UserService:
         try:
             attempt = session['attempt']
             if attempt == 0:
-                flash("로그인 시도 횟수를 초과하였습니다.")
+                flash("로그인 시도 횟수를 초과하였습니다. 잠시 후에 시도해주세요.")
                 return render_template("/member/login.html")
             else:
                 session['attempt'] -= 1
@@ -53,7 +53,7 @@ class UserService:
         if len(id) < 8 or len(id) > 12 and not re.findall("[a-zA-Z0-9]+",id):
             flash("아이디 기준에 맞지 않습니다.")
             return render_template("/templates/member/login.html")
-        if len(pw) < 8 or len(pw) > 15 and not re.findall("[a-zA-Z0-9]",pw) or not re.findall("[~!@#$%^&*()_,.]",pw):
+        if len(pw) < 8 or len(pw) > 15 and not re.findall("[a-zA-Z0-9]",pw) or not re.findall("[!@#$%~]",pw):
             flash("비밀번호 기준에 맞지 않습니다.")
             return render_template("/templates/member/login.html")
         
