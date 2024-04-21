@@ -136,12 +136,8 @@ def run_script():
 
 # 백그라운드 스케줄러 생성
 scheduler = BackgroundScheduler()
+scheduler.add_job(run_script, 'cron', day_of_week='mon-fri', hour=1)
 
-# 월요일 01시에 실행하도록 설정 (cron 형식 사용)
-scheduler.add_job(run_script, 'cron', hour=1)
-scheduler.add_job(run_script, 'cron', day_of_week='sun', hour=0)
-
-# Flask 애플리케이션이 실행되면 스케줄러도 시작
 def start_scheduler():
     print("스케줄링 시작")
     scheduler.start()
