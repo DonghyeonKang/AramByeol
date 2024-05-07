@@ -5,6 +5,8 @@ from flask import url_for # Return defined route link to client
 from flask import request
 from flask import session
 from flask import Response
+import requests
+from datetime import datetime
 
 app = Flask(__name__)
 app.secret_key = 'asd1inldap123jwaw'     # 세션을 암호화하기 위해 비밀키가 서명된 쿠키 사용
@@ -97,6 +99,8 @@ import src.service.MenuService as MenuService
 def getMenuWeb():
     menuService = MenuService.MenuService()
     resp = Response(response=menuService.getMenuWeb(), mimetype="application/json")    
+
+    sendLogstash_userAccess('WEB')
     return resp
 
 @app.route('/menu', methods=['GET'])
@@ -145,6 +149,42 @@ def start_scheduler():
 # 애플리케이션이 종료될 때 스케줄러도 종료
 def shutdown_scheduler(exception=None):
     scheduler.shutdown()
+
+# logstash 전송_사용자 접속 로그 
+def sendLogstash_userAccess(platformType):
+    url = 'http://was-alb-692266129.ap-northeast-2.elb.amazonaws.com:8080/loggingAccessTime'
+    now = datetime.now()
+
+    data = {
+        'accessTime': str(now.date()) + 'T' + str(now.strftime('%H:%M:%S')),
+        'platformType': platformType
+    }
+
+    # POST 요청 보내기
+    response = requests.post(url, json=data)
+
+    # 응답 확인
+    if response.status_code == 200:
+        print("요청이 성공적으로 보내졌습니다.")
+    else:
+        print("요청 실패. 응답 코드:", response.status_code)
+
+# logstash 전송_에러로그
+def sendLogstash_error(platformType):
+    url = 'http://123.123.123.12:5000'
+
+    data = {
+        'platformType': platformType
+    }
+
+    # POST 요청 보내기
+    response = requests.post(url, data=data)
+
+    # 응답 확인
+    if response.status_code == 200:
+        print("요청이 성공적으로 보내졌습니다.")
+    else:
+        print("요청 실패. 응답 코드:", response.status_code)
 
 # 실행 ---------------------------------------------------------
 if __name__ == '__main__':

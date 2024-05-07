@@ -10,21 +10,21 @@ CREATE TABLE `menudata`(
 
 CREATE TABLE `dinner`(
     `day` varchar(2) NOT NULL,
-    `course` varchar(50),
-    `menu` varchar(50) NOT NULL
+    `course` varchar(100),
+    `menu` text NOT NULL
 );
 
 
 CREATE TABLE `lunch`(
     `day` varchar(2) NOT NULL,
-    `course` varchar(50),
-    `menu` varchar(50) NOT NULL
+    `course` varchar(100),
+    `menu` text NOT NULL
 );
 
 CREATE TABLE `morning`(
     `day` varchar(2) NOT NULL,
-    `course` varchar(50),
-    `menu` varchar(100) NOT NULL
+    `course` varchar(100),
+    `menu` text NOT NULL
 );
 
 CREATE TABLE `week`(

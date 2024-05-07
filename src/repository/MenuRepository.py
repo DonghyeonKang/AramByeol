@@ -31,11 +31,11 @@ class MenuRepository:
         cursor.execute(
             "CREATE TABLE week(day VARCHAR(2) NOT NULL primary key,date VARCHAR(11) NOT NULL)")
         cursor.execute(
-            "CREATE TABLE morning(day VARCHAR(2) NOT NULL,course VARCHAR(50),menu VARCHAR(100) NOT NULL)")
+            "CREATE TABLE morning(day VARCHAR(2) NOT NULL,course VARCHAR(50),menu text NOT NULL)")
         cursor.execute(
-            "CREATE TABLE lunch(day VARCHAR(2) NOT NULL,course VARCHAR(50),menu VARCHAR(100) NOT NULL)")
+            "CREATE TABLE lunch(day VARCHAR(2) NOT NULL,course VARCHAR(50),menu text NOT NULL)")
         cursor.execute(
-            "CREATE TABLE dinner(day VARCHAR(2) NOT NULL,course VARCHAR(50),menu VARCHAR(100) NOT NULL)")
+            "CREATE TABLE dinner(day VARCHAR(2) NOT NULL,course VARCHAR(50),menu text NOT NULL)")
         self.connection.commit() # 쿼리 적용
         self.connection.close() # db 연결해제
 
