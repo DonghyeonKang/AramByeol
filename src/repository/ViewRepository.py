@@ -1,12 +1,14 @@
 import pymysql
+import repository.db_auth as db_auth
 
 class ViewRepository:
     def getConnection(self):
-        self.connection = pymysql.connect(host='localhost',
-                                     user='aram',
-                                     password='aramworrior',
-                                     db='arambyeol',
-                                     charset='utf8',
+        self.login = db_auth.db_login
+        self.connection = pymysql.connect(host=self.login['host'],
+                                     user=self.login['user'],
+                                     password=self.login['password'],
+                                     db=self.login['db'],
+                                     charset=self.login['charset'],
                                      cursorclass=pymysql.cursors.DictCursor)
 
     def closeConnection(self):

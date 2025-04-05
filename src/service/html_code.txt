@@ -823,7 +823,7 @@ function goSns(shareTy){
 							</a>
 							<a href="javascript:;" class="date" tabindex="-1">
 			    				<span class="txt_p">2025-03-31 ~ 2025-04-06</span>
-			    				<input type="hidden" class="dtpic1 hasDatepicker" value="" id="dp1743834962203"><img class="ui-datepicker-trigger" src="/images/btn_calendar.png" alt="" title="날짜선택">
+			    				<input type="hidden" class="dtpic1 hasDatepicker" value="" id="dp1743835845249"><img class="ui-datepicker-trigger" src="/images/btn_calendar.png" alt="" title="날짜선택">
 							</a>
 							<a href="javascript:;" onclick="fn_selectView(document.getElementById('detailForm'), '2025-04-07', '');" class="bt_calr_next">
 								<i class="xi-angle-right" aria-hidden="true"></i>

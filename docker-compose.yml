@@ -3,14 +3,46 @@ version: '3.8'
 services:
   arambyeol:
     build: .
+    container_name: arambyeol-web
     volumes:
       - .:/app/
       - /log/:/app/log/
     environment:
-      - VIRTUAL_HOST=arambyeol.com  # 도메인 연결을 위한 환경 변수 설정
+      - VIRTUAL_HOST=www.arambyeol.com  # 도메인 연결을 위한 환경 변수 설정
+    depends_on:
+      arambyeol-mysql:
+        condition: service_healthy
     networks:
       - reverse-proxy_proxy  # nginx-proxy 네트워크와 연결
+      - arambyeol
+  
+  arambyeol-mysql:
+    image: mysql:8.0
+    container_name: arambyeol-mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: aramworrior
+      MYSQL_DATABASE: arambyeol
+      MYSQL_USER: aram
+      MYSQL_PASSWORD: aramworrior
+    volumes:
+      - mysql:/var/lib/mysql
+      - ./schema.sql:/docker-entrypoint-initdb.d/schema.sql:ro
+    networks:
+      - arambyeol
+    ports:
+      - "3306:3306"
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
 networks:
   reverse-proxy_proxy:
     external: true
+  arambyeol:
+    driver: bridge
+
+volumes:
+  mysql:
