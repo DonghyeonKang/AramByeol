@@ -43,4 +43,4 @@ CREATE TABLE `views` (
     `views` BIGINT(5) default 0
 );
 
-INSERT INTO views value(57427);
+INSERT INTO views(views) value(57427);
