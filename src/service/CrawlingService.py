@@ -1,31 +1,40 @@
-from selenium import webdriver 
-from bs4 import BeautifulSoup
+from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.support.ui import WebDriverWait
-import subprocess
-from webdriver_manager.chrome import ChromeDriverManager
-from SlackService import sendToSlack
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.by import By
+from selenium.webdriver.chrome.options import Options
+from bs4 import BeautifulSoup
 import json
+import time
 
-# 크롬 디버그 모드로 실행 
-chrome_options = webdriver.ChromeOptions()
-chrome_options.add_argument('--incognito')
-chrome_options.add_argument('--headless')
+chrome_options = Options()
+chrome_options.add_argument('--headless=new')
 chrome_options.add_argument('--no-sandbox')
-chrome_options.add_argument("--disable-setuid-sandbox")
-chrome_options.add_argument("--single-process")
-chrome_options.add_argument("--disable-dev-shm-usage")
-chrome_options.add_experimental_option('excludeSwitches', ['enable-logging'])
-driver = webdriver.Chrome(ChromeDriverManager().install(), chrome_options=chrome_options)
-url = "https://www.gnu.ac.kr/dorm/ad/fm/foodmenu/selectFoodMenuView.do"
+chrome_options.add_argument('--disable-dev-shm-usage')
+chrome_options.add_argument('--disable-setuid-sandbox')
+chrome_options.add_argument('--disable-gpu')
+chrome_options.add_argument('--remote-debugging-pipe')
+chrome_options.binary_location = '/usr/bin/google-chrome'
 
+service = Service(executable_path="/usr/local/bin/chromedriver")
+driver = webdriver.Chrome(service=service, options=chrome_options)
+
+# 페이지 요청
+url = "https://www.gnu.ac.kr/dorm/ad/fm/foodmenu/selectFoodMenuView.do"
 driver.get(url)
-wait = WebDriverWait(driver, 10)  # 10초 동안 대기
-aram_html = driver.page_source # 웹 페이지의 전체 HTML 소스 코드 가져오기
-file = open("html_code.txt","w",encoding="utf-8")
-file.write(aram_html)
+
+# ✅ 무조건 5초 대기 (렌더링 여유 확보)
+time.sleep(5)
+
+# 이후 처리
+aram_html = driver.page_source
+with open("html_code.txt", "w", encoding="utf-8") as file:
+    file.write(aram_html)
+
 driver.quit()
 
-# soup에 넣어주기
+# BeautifulSoup 파싱
 soup = BeautifulSoup(aram_html, 'html.parser')
 
 # 날짜 정보 추출 및 딕셔너리로 변환

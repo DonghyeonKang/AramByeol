@@ -92,3 +92,23 @@ Recent Update: 2022-04-13
 ```
     
 # Requirements
+```
+bcrypt
+flask
+requests
+selenium
+bs4
+webdriver_manager
+slack
+slackToken
+pymysql
+apscheduler
+```
+
+# Development
+```
+리눅스 시스템 라이브러리를 쓰는 Python 패키지가 있어서, 가상환경 개발(venv)는 힘듦
+도커로 개발환경을 세팅할 수 있음
+
+docker-compose up --build 
+```
