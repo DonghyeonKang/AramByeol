@@ -2,3 +2,6 @@
 *.out
 *.txt
 slackToken.py
+.vscode/
+__pycache__
+log/*

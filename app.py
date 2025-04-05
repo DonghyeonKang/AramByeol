@@ -16,7 +16,7 @@ if not app.debug: # 디버그 모드가 아니면
     import logging  # 로깅을 하기위한 모듈
     from logging.handlers import RotatingFileHandler
     file_handler = RotatingFileHandler( # 2000바이트가 넘어가면 로테이팅 백업 진행. 최대 파일 10개
-        '../log/arambyeol_error.log', maxBytes=2000, backupCount=10)
+        'log/arambyeol_error.log', maxBytes=2000, backupCount=10)
     file_handler.setLevel(logging.WARNING) # WARNING 수준의 레벨들을 로깅
     app.logger.addHandler(file_handler)
 
@@ -189,4 +189,4 @@ def sendLogstash_error(platformType):
 # 실행 ---------------------------------------------------------
 if __name__ == '__main__':
     start_scheduler()
-    app.run('0.0.0.0',port=5000,debug=False, threaded=True)
+    app.run('0.0.0.0',port=80,debug=False, threaded=True)
