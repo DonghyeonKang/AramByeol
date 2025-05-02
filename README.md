@@ -6,9 +6,15 @@
 
 Developer: [DonghyeonKang](https://github.com/DonghyeonKang), [SanghyeonKim](https://github.com/limetimeline), [JEONJEYUN](https://github.com/JEONJEYUN), [CooAnt](https://github.com/CooAnt)
 
-Release Version 1.1.5
+**Release Version 1.1.5**  
+**Recent Update: 2022-04-13**  
 
-Recent Update: 2022-04-13
+# Developing now 2025-04-28~
+1. 스크래핑 서버, 웹 API 서버 분리 설계
+2. DB ERD 설계
+3. 도커라이징 후 홈서버 실행
+4. 
+
 # UpdateNotes
 2021-11-26 - release version 1.0.0
 - 초기 버전 완성 및 배포
