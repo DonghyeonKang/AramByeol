@@ -1,7 +1,3 @@
-*.pyc
-*.out
-*.txt
-slackToken.py
-.vscode/
-__pycache__
-log/*
+__pycache__/
+.DS_Store
+/mysql/data/

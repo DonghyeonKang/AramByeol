@@ -1,48 +1,56 @@
 version: '3.8'
 
 services:
-  arambyeol:
-    build: .
-    container_name: arambyeol-web
-    volumes:
-      - .:/app/
-      - /log/:/app/log/
+  app:
+    build:
+      context: ./web
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    container_name: arambyeol-app
     environment:
-      - VIRTUAL_HOST=www.arambyeol.com  # 도메인 연결을 위한 환경 변수 설정
+      SPRING_PROFILES_ACTIVE: docker
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/arambyeol?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: root
     depends_on:
-      arambyeol-mysql:
+      mysql:
         condition: service_healthy
-    networks:
-      - reverse-proxy_proxy  # nginx-proxy 네트워크와 연결
-      - arambyeol
-  
-  arambyeol-mysql:
-    image: mysql:8.0
-    container_name: arambyeol-mysql
-    restart: always
-    environment:
-      MYSQL_ROOT_PASSWORD: aramworrior
-      MYSQL_DATABASE: arambyeol
-      MYSQL_USER: aram
-      MYSQL_PASSWORD: aramworrior
+    restart: unless-stopped
+
+  scraper:
+    container_name: arambyeol-scraper
+    build:
+      context: ./scraper
+      dockerfile: Dockerfile
+    env_file:
+      - ./scraper/.env
     volumes:
-      - mysql:/var/lib/mysql
-      - ./schema.sql:/docker-entrypoint-initdb.d/schema.sql:ro
-    networks:
-      - arambyeol
+      - ./scraper/html_files:/app/html_files
+      - ./scraper/logs:/app/logs
+    depends_on:
+      mysql:
+        condition: service_healthy
+    restart: always
+
+  mysql:
+    image: mysql:8.0
     ports:
       - "3306:3306"
+    container_name: arambyeol-mysql
+    environment:
+      MYSQL_DATABASE: arambyeol
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_CHARACTER_SET_SERVER: utf8mb4
+      MYSQL_COLLATION_SERVER: utf8mb4_unicode_ci
+    volumes:
+      - ./mysql/data:/var/lib/mysql
+      - ./mysql/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
     healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-p${MYSQL_ROOT_PASSWORD}"]
       interval: 10s
       timeout: 5s
       retries: 5
+      start_period: 30s
 
-networks:
-  reverse-proxy_proxy:
-    external: true
-  arambyeol:
-    driver: bridge
-
-volumes:
-  mysql:
+# volumes 섹션 제거 (named volume을 사용하지 않으므로) 
