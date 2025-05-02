@@ -14,7 +14,7 @@ import java.util.List;
 public class Menu {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long menuId;
+    private Integer menuId;
 
     @Column(nullable = false, unique = true)
     private String menu;

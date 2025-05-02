@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 @Builder
 public class ReviewResponseDto {
     private Long reviewId;
-    private Long menuId;
+    private Integer menuId;
     private String menuName;
     private String imgPath;
     private Integer score;

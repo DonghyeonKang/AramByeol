@@ -26,7 +26,7 @@ public class ReviewService {
     private final MenuRepository menuRepository;
 
     @Transactional(readOnly = true)
-    public PageResponseDto<ReviewResponseDto> getUserReviews(Long userId, Pageable pageable) {
+    public PageResponseDto<ReviewResponseDto> getUserReviews(Integer userId, Pageable pageable) {
         Page<Review> reviewPage = reviewRepository.findByUserIdWithMenu(userId, pageable);
 
         List<ReviewResponseDto> reviews = reviewPage.getContent().stream()
@@ -55,7 +55,7 @@ public class ReviewService {
     }
 
     @Transactional
-    public ReviewResponseDto createReview(Long userId, Long menuId, ReviewRequestDto requestDto) {
+    public ReviewResponseDto createReview(Integer userId, Integer menuId, ReviewRequestDto requestDto) {
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new IllegalArgumentException("사용자를 찾을 수 없습니다: " + userId));
         
@@ -78,7 +78,7 @@ public class ReviewService {
     }
 
     @Transactional
-    public ReviewResponseDto updateReview(Long userId, Long reviewId, ReviewRequestDto requestDto) {
+    public ReviewResponseDto updateReview(Integer userId, Long reviewId, ReviewRequestDto requestDto) {
         Review review = reviewRepository.findById(reviewId)
                 .orElseThrow(() -> new IllegalArgumentException("리뷰를 찾을 수 없습니다: " + reviewId));
 

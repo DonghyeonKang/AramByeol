@@ -12,32 +12,21 @@ public class ViewsService {
     private final ViewsRepository viewsRepository;
 
     @Transactional(readOnly = true)
-    public Long getViews(Long id) {
-        return viewsRepository.findById(id)
+    public Long getViews() {
+        return viewsRepository.findById(1L)
                 .map(Views::getViews)
                 .orElse(0L);
     }
 
     @Transactional
-    public void incrementViews(Long id) {
+    public void incrementViews() {
         // 해당 ID의 레코드가 없으면 생성
-        if (!viewsRepository.existsById(id)) {
+        if (!viewsRepository.existsById(1L)) {
             Views views = new Views();
-            views.setId(id);
+            views.setId(1L);
             views.setViews(0L);
             viewsRepository.save(views);
         }
-        viewsRepository.incrementViews(id);
-    }
-
-    @Transactional(readOnly = true)
-    public Views getViewsEntity(Long id) {
-        return viewsRepository.findById(id)
-                .orElseGet(() -> {
-                    Views views = new Views();
-                    views.setId(id);
-                    views.setViews(0L);
-                    return viewsRepository.save(views);
-                });
+        viewsRepository.incrementViews(1L);
     }
 } 

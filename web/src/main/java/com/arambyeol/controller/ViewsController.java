@@ -14,9 +14,9 @@ import org.springframework.web.bind.annotation.*;
 public class ViewsController {
     private final ViewsService viewsService;
 
-    @Operation(summary = "조회수 조회", description = "특정 ID의 조회수를 조회합니다.")
-    @GetMapping("/{id}")
-    public ResponseEntity<Long> getViews(@PathVariable Long id) {
-        return ResponseEntity.ok(viewsService.getViews(id));
+    @Operation(summary = "조회수 조회", description = "조회수를 조회합니다.")
+    @GetMapping("/")
+    public ResponseEntity<?> getViews() {
+        return ResponseEntity.ok(viewsService.getViews());
     }
 }

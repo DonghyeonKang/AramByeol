@@ -13,7 +13,7 @@ public interface ReviewRepository extends JpaRepository<Review, Long> {
     @Query("SELECT r FROM Review r " +
            "JOIN FETCH r.menu m " +
            "WHERE r.user.userId = :userId")
-    Page<Review> findByUserIdWithMenu(@Param("userId") Long userId, Pageable pageable);
+    Page<Review> findByUserIdWithMenu(@Param("userId") Integer userId, Pageable pageable);
 
     boolean existsByUserAndMenu(User user, Menu menu);
 } 

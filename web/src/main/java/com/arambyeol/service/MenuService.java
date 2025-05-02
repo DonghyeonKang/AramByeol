@@ -16,7 +16,7 @@ public class MenuService {
     private final MenuRepository menuRepository;
 
     @Transactional(readOnly = true)
-    public double getAverageScore(Long menuId) {
+    public double getAverageScore(Integer menuId) {
         Menu menu = menuRepository.findById(menuId)
                 .orElseThrow(() -> new IllegalArgumentException("메뉴를 찾을 수 없습니다: " + menuId));
 
@@ -28,7 +28,7 @@ public class MenuService {
     }
 
     @Transactional(readOnly = true)
-    public MenuScoreDto getMenuWithScore(Long menuId) {
+    public MenuScoreDto getMenuWithScore(Integer menuId) {
         Menu menu = menuRepository.findById(menuId)
                 .orElseThrow(() -> new IllegalArgumentException("메뉴를 찾을 수 없습니다: " + menuId));
 

@@ -6,7 +6,7 @@ import lombok.Getter;
 @Getter
 @Builder
 public class MenuScoreDto {
-    private Long menuId;
+    private Integer menuId;
     private String menuName;
     private double averageScore;
     private long reviewCount;

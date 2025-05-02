@@ -7,7 +7,7 @@ import lombok.Getter;
 @Getter
 @Builder
 public class DailyMenuDto {
-    private Long menuId;
+    private Integer menuId;
     private String menuName;
     private MealType mealType;
     private String course;

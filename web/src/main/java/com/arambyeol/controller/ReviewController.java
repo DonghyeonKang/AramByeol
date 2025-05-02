@@ -44,7 +44,7 @@ public class ReviewController {
         PageRequest pageRequest = PageRequest.of(page, size, Sort.by(sortDirection, sort));
         
         // 현재 로그인한 사용자의 ID를 가져오는 로직은 보안 설정에 따라 다를 수 있습니다.
-        Long userId = getCurrentUserId();
+        Integer userId = getCurrentUserId();
         
         return ResponseEntity.ok(reviewService.getUserReviews(userId, pageRequest));
     }
@@ -59,9 +59,9 @@ public class ReviewController {
     @PostMapping("/menus/{menuId}")
     public ResponseEntity<ReviewResponseDto> createReview(
             @Parameter(description = "메뉴 ID", example = "1")
-            @PathVariable Long menuId,
+            @PathVariable Integer menuId,
             @Valid @RequestBody ReviewRequestDto requestDto) {
-        Long userId = getCurrentUserId();
+        Integer userId = getCurrentUserId();
         return ResponseEntity.ok(reviewService.createReview(userId, menuId, requestDto));
     }
 
@@ -78,12 +78,12 @@ public class ReviewController {
             @Parameter(description = "리뷰 ID", example = "1")
             @PathVariable Long reviewId,
             @Valid @RequestBody ReviewRequestDto requestDto) {
-        Long userId = getCurrentUserId();
+        Integer userId = getCurrentUserId();
         return ResponseEntity.ok(reviewService.updateReview(userId, reviewId, requestDto));
     }
 
     // 임시 메서드: 실제 구현에서는 Spring Security의 인증 정보를 사용해야 합니다.
-    private Long getCurrentUserId() {
+    private Integer getCurrentUserId() {
         // Spring Security 구현에 따라 실제 로직으로 대체해야 합니다.
         throw new UnsupportedOperationException("Security 구현이 필요합니다.");
     }
