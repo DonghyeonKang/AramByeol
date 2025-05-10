@@ -1,0 +1,125 @@
+.footer {
+  background-color: var(--color-footer-background);
+  padding: 3rem 0;
+  border-top: 1px solid var(--color-border);
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 4rem;
+  margin-bottom: 2rem;
+}
+
+.footer-left {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.footer-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.footer-section h4 {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  color: var(--color-text);
+}
+
+.footer-section p {
+  margin: 0;
+  color: var(--color-text-light);
+  font-size: 0.9rem;
+}
+
+.schedule-section {
+  text-align: center;
+}
+
+.schedule-section h3 {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+  color: var(--color-text);
+}
+
+.schedules {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+}
+
+.schedule-group {
+  text-align: left;
+}
+
+.schedule-group h4 {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  color: var(--color-text);
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.schedule-group ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.schedule-group li {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+  color: var(--color-text-light);
+  font-size: 0.9rem;
+}
+
+.footer-bottom {
+  text-align: center;
+  padding-top: 2rem;
+  border-top: 1px solid var(--color-border);
+  color: var(--color-text-light);
+  font-size: 0.9rem;
+}
+
+@media (max-width: 1024px) {
+  .schedules {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .footer-content {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .footer-left {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .schedules {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .schedule-group {
+    text-align: center;
+  }
+
+  .schedule-group li {
+    justify-content: center;
+    gap: 1rem;
+  }
+} 

@@ -1,0 +1,104 @@
+.signup-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding-top: 64px;
+}
+
+.signup-content {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+.signup-card {
+  width: 100%;
+  max-width: 400px;
+}
+
+.signup-card h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: var(--color-text);
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.signup-button {
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.error-message {
+  color: var(--color-error);
+  text-align: center;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+}
+
+.signup-footer {
+  margin-top: 2rem;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+.signup-footer a {
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+.signup-footer a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .signup-content {
+    padding: 1rem;
+  }
+}
+
+.email-verification-group {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.email-verification-group .input-wrapper {
+  flex: 1;
+}
+
+.verification-status {
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+}
+
+.verification-status.success {
+  color: var(--color-success);
+}
+
+.verification-status.pending {
+  color: var(--color-warning);
+}
+
+/* 로딩 상태 스타일 */
+button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* 이메일 인증 완료 표시 */
+.input-wrapper.verified input {
+  border-color: var(--color-success);
+}
+
+.input-wrapper.verified::after {
+  content: '✓';
+  color: var(--color-success);
+  position: absolute;
+  right: 0.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+} 

@@ -1,0 +1,139 @@
+.weekly-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.hero-section {
+  background-color: #ffd966;
+  color: #373C3F;
+  padding: 8rem 2rem 4rem 2rem;
+  text-align: center;
+}
+
+.hero-section h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: #373C3F;
+}
+
+.hero-section p {
+  color: #373C3F;
+  font-size: 1.2rem;
+}
+
+.weekly-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.weekly-header h1 {
+  font-size: 2rem;
+  color: var(--color-text);
+  margin-bottom: 1.5rem;
+}
+
+.date-navigation {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  overflow-x: auto;
+  padding: 0.5rem;
+}
+
+.date-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  background: var(--color-card-background);
+  cursor: pointer;
+  min-width: 100px;
+  transition: all 0.2s ease;
+}
+
+.date-button.active {
+  background: var(--color-primary);
+  color: white;
+  border-color: var(--color-primary);
+}
+
+.date-button .day {
+  font-weight: bold;
+  margin-bottom: 0.25rem;
+}
+
+.date-button .date {
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+.meals-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  padding: 1rem;
+}
+
+.meal-card {
+  height: 100%;
+}
+
+.meal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.meal-time {
+  font-size: 0.9rem;
+  color: var(--color-text);
+  opacity: 0.7;
+}
+
+.menu-list {
+  list-style: none;
+  padding: 0;
+}
+
+.menu-list li {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.menu-list li:last-child {
+  border-bottom: none;
+}
+
+@media (max-width: 768px) {
+  .hero-section {
+    padding: 6rem 1rem 2rem 1rem;
+  }
+
+  .hero-section h1 {
+    font-size: 2rem;
+  }
+
+  .weekly-page {
+    padding: 1rem;
+    padding-top: 4rem;
+  }
+
+  .date-navigation {
+    gap: 0.5rem;
+  }
+
+  .date-button {
+    padding: 0.75rem;
+    min-width: 80px;
+  }
+
+  .meals-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+} 

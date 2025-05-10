@@ -1,0 +1,54 @@
+:root {
+  /* 전역 트랜지션 설정 */
+  --transition-speed: 0.2s;
+}
+
+:root[data-theme="light"] {
+  --color-background: #ffffff;
+  --color-text: #213547;
+  --color-primary: #646cff;
+  --color-secondary: #535bf2;
+  --color-border: #ddd;
+  --color-error: #dc3545;
+  --color-success: #28a745;
+  --color-warning: #ffc107;
+  --color-info: #17a2b8;
+  --color-card-background: #ffffff;
+  --color-input-background: #ffffff;
+  --color-header-background: #ffffff;
+  --color-footer-background: #f9f9f9;
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+:root[data-theme="dark"] {
+  --color-background: #242424;
+  --color-text: #ffffff;
+  --color-primary: #747bff;
+  --color-secondary: #535bf2;
+  --color-border: #333;
+  --color-error: #ff4d4d;
+  --color-success: #2dd36f;
+  --color-warning: #ffd534;
+  --color-info: #2dd3d7;
+  --color-card-background: #1a1a1a;
+  --color-input-background: #1a1a1a;
+  --color-header-background: #1a1a1a;
+  --color-footer-background: #1a1a1a;
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+/* 전역 트랜지션 적용 */
+* {
+  transition: background-color var(--transition-speed) ease,
+              color var(--transition-speed) ease,
+              border-color var(--transition-speed) ease,
+              box-shadow var(--transition-speed) ease;
+}
+
+/* 특정 요소는 트랜지션에서 제외 (성능 최적화) */
+.no-transition,
+.no-transition * {
+  transition: none !important;
+} 
