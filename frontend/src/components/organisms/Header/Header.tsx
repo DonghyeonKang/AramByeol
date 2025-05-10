@@ -58,7 +58,7 @@ export const Header = () => {
             <li><Link to="/">오늘의 식단</Link></li>
             <li><Link to="/weekly">주간 식단</Link></li>
             <li><Link to="/reviews">내 후기</Link></li>
-            <li><Link to="/roommate">룸메찾기</Link></li>
+            <li><Link to="/roommate">룸메이트</Link></li>
             <li><Link to="/chat">채팅</Link></li>
           </ul>
         </nav>
