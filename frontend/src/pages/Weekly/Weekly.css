@@ -22,6 +22,14 @@
   font-size: 1.2rem;
 }
 
+.main-content {
+  flex: 1;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
 .weekly-header {
   text-align: center;
   margin-bottom: 2rem;
@@ -36,10 +44,34 @@
 .date-navigation {
   display: flex;
   justify-content: center;
-  gap: 1rem;
+  align-items: center;
+  gap: 0.5rem;
   margin-bottom: 2rem;
   overflow-x: auto;
   padding: 0.5rem;
+}
+
+.arrow-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  background: var(--color-card-background);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: var(--color-text);
+}
+
+.arrow-button:hover:not(:disabled) {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.arrow-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
 .date-button {
@@ -51,8 +83,12 @@
   border-radius: 8px;
   background: var(--color-card-background);
   cursor: pointer;
-  min-width: 100px;
+  min-width: 80px;
   transition: all 0.2s ease;
+}
+
+.date-button:hover {
+  border-color: var(--color-primary);
 }
 
 .date-button.active {
@@ -75,11 +111,10 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
-  padding: 1rem;
 }
 
 .meal-card {
-  height: 100%;
+  height: fit-content;
 }
 
 .meal-header {
@@ -110,16 +145,15 @@
 
 @media (max-width: 768px) {
   .hero-section {
-    padding: 6rem 1rem 2rem 1rem;
+    padding: 6rem 1rem 3rem 1rem;
   }
 
   .hero-section h1 {
     font-size: 2rem;
   }
 
-  .weekly-page {
+  .main-content {
     padding: 1rem;
-    padding-top: 4rem;
   }
 
   .date-navigation {
@@ -128,11 +162,25 @@
 
   .date-button {
     padding: 0.75rem;
-    min-width: 80px;
+    min-width: 60px;
   }
 
   .meals-grid {
     grid-template-columns: 1fr;
     gap: 1rem;
   }
+}
+
+.no-menu-message {
+  text-align: center;
+  padding: 2rem;
+  background: var(--color-card-background);
+  border-radius: 8px;
+  color: var(--color-text-light);
+  grid-column: 1 / -1;
+}
+
+.no-menu-message p {
+  font-size: 1.1rem;
+  margin: 0;
 } 

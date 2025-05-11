@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { MealCard } from '../../components/organisms/MealCard/MealCard';
 import { ProcessedMeal } from '@/types/menu';
 import './Home.css';
+import { MealList } from '@/components/organisms/MealList/MealList';
 
 // 목업 데이터
 const mockMeals: ProcessedMeal[] = [
@@ -56,18 +57,17 @@ export const Home = () => {
 
   return (
     <div className="home">
+      <section className="hero-section">
+        <h1>오늘의 식단</h1>
+        <p>{formatDate()} 경상국립대학교 아람관 메뉴</p>
+      </section>
+      
       <main className="main-content">
-        <section className="hero-section">
-          <h1>오늘의 식단</h1>
-          <p>{formatDate()} 경상국립대학교 아람관 메뉴</p>
-        </section>
         <section className="meals-section">
           {isLoading ? (
             <div className="loading">로딩 중...</div>
           ) : (
-            meals.map((meal, index) => (
-              <MealCard key={index} meal={meal} />
-            ))
+            <MealList meals={meals} layout="row" />
           )}
         </section>
       </main>

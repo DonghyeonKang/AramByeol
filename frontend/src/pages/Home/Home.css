@@ -28,16 +28,12 @@
 
 .meals-section {
   padding: 2rem;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2rem;
-  justify-content: center;
   background-color: var(--color-background);
 }
 
 @media (max-width: 768px) {
   .hero-section {
-    padding: 6rem 1rem 2rem 1rem; /* 모바일에서도 상단 패딩 증가 */
+    padding: 6rem 1rem 2rem 1rem;
   }
 
   .hero-section h1 {
@@ -46,6 +42,5 @@
 
   .meals-section {
     padding: 1rem;
-    flex-direction: column;
   }
 } 
