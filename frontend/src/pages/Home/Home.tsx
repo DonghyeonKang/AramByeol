@@ -1,94 +1,47 @@
 import { useState, useEffect } from 'react';
 import { MealCard } from '../../components/organisms/MealCard/MealCard';
+import { ProcessedMeal } from '@/types/menu';
 import './Home.css';
 
-interface Meal {
-  type: '조식' | '중식' | '석식';
-  menu: string[];
-  time: string;
-}
-
 // 목업 데이터
-const mockMeals: Meal[] = [
+const mockMeals: ProcessedMeal[] = [
   {
     type: '조식',
-    time: '08:00 - 09:30',
-    menu: [
-      '흰쌀밥',
-      '미역국',
-      '계란말이',
-      '김치',
-      '깍두기'
-    ]
+    time: '07:30 - 09:00',
+    courses: {
+      '한식': ['흰쌀밥', '미역국', '계란말이', '김치', '깍두기'],
+      '일품': ['토스트', '스크램블에그', '샐러드', '우유']
+    }
   },
   {
     type: '중식',
-    time: '11:00 - 14:00',
-    menu: [
-      '흰쌀밥',
-      '된장찌개',
-      '제육볶음',
-      '김치',
-      '깍두기',
-      '단무지'
-    ]
+    time: '11:30 - 13:30',
+    courses: {
+      '한식': ['흰쌀밥', '된장찌개', '제육볶음', '김치', '깍두기'],
+      '일품': ['돈까스', '양배추샐러드', '우동'],
+      '양식': ['치킨버거', '감자튀김', '콜라']
+    }
   },
   {
     type: '석식',
-    time: '17:00 - 19:00',
-    menu: [
-      '흰쌀밥',
-      '김치찌개',
-      '고등어구이',
-      '김치',
-      '깍두기',
-      '단무지'
-    ]
+    time: '17:30 - 19:00',
+    courses: {
+      '한식': ['흰쌀밥', '김치찌개', '고등어구이', '김치', '깍두기'],
+      '일품': ['비빔밥', '계란후라이', '미소국']
+    }
   }
 ];
 
 export const Home = () => {
-  const [meals, setMeals] = useState<Meal[]>([
-    {
-      type: '조식',
-      time: '08:00 - 09:30',
-      menu: ['로딩중...']
-    },
-    {
-      type: '중식',
-      time: '11:00 - 14:00',
-      menu: ['로딩중...']
-    },
-    {
-      type: '석식',
-      time: '17:00 - 19:00',
-      menu: ['로딩중...']
-    }
-  ]);
+  const [meals, setMeals] = useState<ProcessedMeal[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const fetchMeals = async () => {
-      try {
-        // 개발 환경에서는 목업 데이터 사용
-        if (import.meta.env.DEV) {
-          setMeals(mockMeals);
-          return;
-        }
-
-        const response = await fetch('/api/meals/today');
-        if (!response.ok) {
-          throw new Error('서버 응답 오류');
-        }
-        const data = await response.json();
-        setMeals(data);
-      } catch (error) {
-        console.error('식단 정보를 불러오는데 실패했습니다:', error);
-        // 에러 발생 시 목업 데이터로 대체
-        setMeals(mockMeals);
-      }
-    };
-
-    fetchMeals();
+    // 목업 데이터 사용
+    setTimeout(() => {
+      setMeals(mockMeals);
+      setIsLoading(false);
+    }, 500); // 로딩 효과를 보기 위한 지연
   }, []);
 
   const formatDate = () => {
@@ -109,9 +62,13 @@ export const Home = () => {
           <p>{formatDate()} 경상국립대학교 아람관 메뉴</p>
         </section>
         <section className="meals-section">
-          {meals.map((meal, index) => (
-            <MealCard key={index} meal={meal} />
-          ))}
+          {isLoading ? (
+            <div className="loading">로딩 중...</div>
+          ) : (
+            meals.map((meal, index) => (
+              <MealCard key={index} meal={meal} />
+            ))
+          )}
         </section>
       </main>
     </div>

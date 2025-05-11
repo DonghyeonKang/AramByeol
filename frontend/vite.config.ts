@@ -9,5 +9,6 @@ export default defineConfig({
     alias: {
       '@': resolve(__dirname, 'src')
     }
-  }
+  },
+  publicDir: 'public'  // public 디렉토리 명시적 지정
 })

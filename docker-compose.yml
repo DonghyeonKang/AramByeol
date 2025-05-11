@@ -56,15 +56,15 @@ services:
       retries: 5
       start_period: 30s
 
-  frontend:
-    build:
-      context: ./frontend
-      dockerfile: Dockerfile
-    container_name: arambyeol-frontend
-    ports:
-      - "80:80"
-    depends_on:
-      - app
-    environment:
-      - VITE_API_URL=http://localhost:8080/api
-    restart: unless-stopped
+  # frontend:
+  #   build:
+  #     context: ./frontend
+  #     dockerfile: Dockerfile
+  #   container_name: arambyeol-frontend
+  #   ports:
+  #     - "80:80"
+  #   depends_on:
+  #     - app
+  #   environment:
+  #     - VITE_API_URL=http://localhost:8080/api
+  #   restart: unless-stopped
