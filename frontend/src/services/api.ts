@@ -22,4 +22,20 @@ export const api = {
     }
     return response.json();
   },
+
+  async getWeeklyPlan(date: string) {
+    const response = await fetch(`${BASE_URL}/plans/weekly/${date}`);
+    if (!response.ok) {
+      throw new Error('Failed to fetch weekly plan');
+    }
+    return response.json();
+  },
+
+  async getDailyPlan(date: string) {
+    const response = await fetch(`${BASE_URL}/plans/${date}`);
+    if (!response.ok) {
+      throw new Error('Failed to fetch daily plan');
+    }
+    return response.json();
+  }
 }; 

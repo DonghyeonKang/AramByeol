@@ -20,4 +20,14 @@ public interface PlanRepository extends JpaRepository<Plan, Long> {
            "WHERE p.date = :date " +
            "ORDER BY p.course ASC")
     List<Plan> findByDateWithMenuAndReviews(@Param("date") String date);
+
+    @Query("SELECT p FROM Plan p " +
+           "LEFT JOIN FETCH p.menu m " +
+           "LEFT JOIN FETCH m.reviews " +
+           "WHERE p.date BETWEEN :startDate AND :endDate " +
+           "ORDER BY p.date ASC, p.course ASC")
+    List<Plan> findByDateBetweenWithMenuAndReviews(
+        @Param("startDate") String startDate,
+        @Param("endDate") String endDate
+    );
 } 

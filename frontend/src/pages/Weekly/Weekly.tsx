@@ -1,6 +1,6 @@
-import { useState } from 'react';
-import { MealCard } from '../../components/organisms/MealCard/MealCard';
+import { useState, useEffect } from 'react';
 import { ProcessedMeal } from '@/types/menu';
+import { api } from '@/services/api';
 import './Weekly.css';
 import { MealList } from '@/components/organisms/MealList/MealList';
 
@@ -10,242 +10,145 @@ interface DateButton {
   fullDate: string;
 }
 
+interface MenuItem {
+  menuId: number;
+  menuName: string;
+  mealType: 'BREAKFAST' | 'LUNCH' | 'DINNER';
+  course: string;
+  imgPath: string;
+  averageScore: number;
+  reviewCount: number;
+}
+
+interface DailyMenu {
+  date: string;
+  menusByMealType: {
+    BREAKFAST?: MenuItem[];
+    LUNCH?: MenuItem[];
+    DINNER?: MenuItem[];
+  };
+}
+
 export const Weekly = () => {
-  const [weekOffset, setWeekOffset] = useState(0); // 0: 이번주, 1: 다음주
+  const today = new Date().toISOString().split('T')[0];  // 오늘 날짜
+  const [weekOffset, setWeekOffset] = useState(0);
+  const [selectedDate, setSelectedDate] = useState(today);  // 초기값을 오늘 날짜로
+  const [weekDates, setWeekDates] = useState<DateButton[]>([]);
+  const [meals, setMeals] = useState<ProcessedMeal[]>([]);
+  const [weeklyData, setWeeklyData] = useState<DailyMenu[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const initializeWeek = async () => {
+      setIsLoading(true);
+      const newDates = getWeekDates(0);  // 현재 주차
+      setWeekDates(newDates);
+    
+      try {
+        const weeklyPlan = await api.getWeeklyPlan(newDates[1].fullDate); // ✅ 두 번째 날짜(화요일) 기준 요청
+        setWeeklyData(weeklyPlan);
+    
+        // ✅ 두 번째 날짜를 기준으로 렌더링
+        const processedMeals = convertApiResponseToProcessedMeals(weeklyPlan, newDates[1].fullDate);
+        setMeals(processedMeals);
+        setSelectedDate(newDates[1].fullDate); // 두 번째 날짜 선택
+      } catch (error) {
+        console.error('Failed to fetch weekly plan:', error);
+      } finally {
+        setIsLoading(false);
+      }
+    };    
+
+    initializeWeek();
+  }, []);
 
   // 주차별 날짜 버튼 생성
   const getWeekDates = (offset: number): DateButton[] => {
-    const days = ['일', '월', '화', '수', '목', '금', '토'];
+    const days = ['월', '화', '수', '목', '금', '토', '일'];  // 월요일부터 시작
     const today = new Date();
     const monday = new Date(today);
-    monday.setDate(today.getDate() - today.getDay() + 1 + (offset * 7));
+    
+    // 이번 주 월요일로 설정 (정확한 계산)
+    monday.setHours(0, 0, 0, 0);  // 시간을 00:00:00으로 설정
+    monday.setDate(today.getDate() - ((today.getDay() + 6) % 7));
+    monday.setDate(monday.getDate() + (offset * 7));
     
     return Array.from({ length: 7 }, (_, i) => {
       const date = new Date(monday);
       date.setDate(monday.getDate() + i);
+      // UTC 기준으로 날짜 문자열 생성
+      const fullDate = new Date(date.getTime() - (date.getTimezoneOffset() * 60000))
+        .toISOString()
+        .split('T')[0];
+      
       return {
-        day: days[date.getDay()],
+        day: days[i],
         date: `${date.getMonth() + 1}/${date.getDate()}`,
-        fullDate: date.toISOString().split('T')[0],
+        fullDate: fullDate,
       };
     });
   };
 
-  const [selectedDate, setSelectedDate] = useState(new Date().toISOString().split('T')[0]);
-  const [weekDates, setWeekDates] = useState(getWeekDates(0));
-
   // 주차 변경 처리
-  const handleWeekChange = (newOffset: number) => {
+  const handleWeekChange = async (newOffset: number) => {
+    setIsLoading(true);
     setWeekOffset(newOffset);
     const newDates = getWeekDates(newOffset);
     setWeekDates(newDates);
-    setSelectedDate(newDates[1].fullDate); // 월요일 선택
+    
+    try {
+      const weeklyPlan = await api.getWeeklyPlan(today);  // 오늘 날짜로 요청
+      setWeeklyData(weeklyPlan);
+      handleDateSelect(newDates[0].fullDate);  // 첫 번째 날짜 선택
+    } catch (error) {
+      console.error('Failed to fetch weekly plan:', error);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
-  // 요일별 목업 데이터
-  const mockMealsByDay: { [key: string]: ProcessedMeal[] } = {
-    '월': [
-      {
-        type: '조식',
-        time: '07:30 - 09:00',
-        courses: {
-          '한식': ['흰쌀밥', '된장국', '고등어구이', '김치'],
-          '일품': ['토스트', '스크램블에그', '샐러드']
-        }
-      },
-      {
-        type: '중식',
-        time: '11:30 - 13:30',
-        courses: {
-          '한식': ['흰쌀밥', '김치찌개', '제육볶음', '김치'],
-          '일품': ['돈까스', '양배추샐러드'],
-          '양식': ['치킨버거', '감자튀김']
-        }
-      },
-      {
-        type: '석식',
-        time: '17:30 - 19:00',
-        courses: {
-          '한식': ['흰쌀밥', '순대국', '닭갈비', '김치'],
-          '일품': ['돈까스덮밥', '유부된장국'],
-          '양식': ['치킨까스', '샐러드']
-        }
-      }
-    ],
-    '화': [
-      {
-        type: '조식',
-        time: '07:30 - 09:00',
-        courses: {
-          '한식': ['흰쌀밥', '미역국', '계란말이', '김치'],
-          '일품': ['샌드위치', '요구르트', '과일']
-        }
-      },
-      {
-        type: '중식',
-        time: '11:30 - 13:30',
-        courses: {
-          '한식': ['흰쌀밥', '순두부찌개', '불고기', '김치'],
-          '일품': ['우동', '튀김'],
-          '양식': ['파스타', '샐러드']
-        }
-      },
-      {
-        type: '석식',
-        time: '17:30 - 19:00',
-        courses: {
-          '한식': ['흰쌀밥', '김치찌개', '고등어구이', '김치'],
-          '일품': ['비빔밥', '계란후라이'],
-          '양식': ['스파게티', '마늘빵']
-        }
-      }
-    ],
-    '수': [
-      {
-        type: '조식',
-        time: '07:30 - 09:00',
-        courses: {
-          '한식': ['흰쌀밥', '콩나물국', '동그랑땡', '김치'],
-          '일품': ['핫도그', '우유', '씨리얼']
-        }
-      },
-      {
-        type: '중식',
-        time: '11:30 - 13:30',
-        courses: {
-          '한식': ['흰쌀밥', '육개장', '코다리조림', '김치'],
-          '일품': ['카레라이스', '계란후라이'],
-          '양식': ['피자', '콜라']
-        }
-      },
-      {
-        type: '석식',
-        time: '17:30 - 19:00',
-        courses: {
-          '한식': ['흰쌀밥', '된장찌개', '제육볶음', '김치'],
-          '일품': ['김치볶음밥', '계란국'],
-          '양식': ['치즈돈까스', '샐러드']
-        }
-      }
-    ],
-    '목': [
-      {
-        type: '조식',
-        time: '07:30 - 09:00',
-        courses: {
-          '한식': ['흰쌀밥', '북어국', '두부조림', '김치'],
-          '일품': ['프렌치토스트', '딸기잼', '우유']
-        }
-      },
-      {
-        type: '중식',
-        time: '11:30 - 13:30',
-        courses: {
-          '한식': ['흰쌀밥', '청국장', '닭갈비', '김치'],
-          '일품': ['짜장면', '단무지'],
-          '양식': ['함박스테이크', '샐러드']
-        }
-      },
-      {
-        type: '석식',
-        time: '17:30 - 19:00',
-        courses: {
-          '한식': ['흰쌀밥', '육개장', '코다리조림', '김치'],
-          '일품': ['야채볶음밥', '미소국'],
-          '양식': ['포크커틀릿', '감자튀김']
-        }
-      }
-    ],
-    '금': [
-      {
-        type: '조식',
-        time: '07:30 - 09:00',
-        courses: {
-          '한식': ['흰쌀밥', '어묵국', '김치볶음', '김치'],
-          '일품': ['베이글', '크림치즈', '과일']
-        }
-      },
-      {
-        type: '중식',
-        time: '11:30 - 13:30',
-        courses: {
-          '한식': ['흰쌀밥', '감자탕', '갈치구이', '김치'],
-          '일품': ['냉면', '만두'],
-          '양식': ['오므라이스', '샐러드']
-        }
-      },
-      {
-        type: '석식',
-        time: '17:30 - 19:00',
-        courses: {
-          '한식': ['흰쌀밥', '청국장', '불고기', '김치'],
-          '일품': ['잔치국수', '김밥'],
-          '양식': ['치킨버거', '콜라']
-        }
-      }
-    ],
-    '토': [
-      {
-        type: '조식',
-        time: '08:00 - 09:30',
-        courses: {
-          '한식': ['흰쌀밥', '순두부찌개', '메추리알장조림', '김치'],
-          '일품': ['크로와상', '딸기잼', '우유']
-        }
-      },
-      {
-        type: '중식',
-        time: '11:30 - 13:30',
-        courses: {
-          '한식': ['흰쌀밥', '부대찌개', '오징어볶음', '김치'],
-          '일품': ['라면', '김밥'],
-          '양식': ['핫도그', '감자튀김']
-        }
-      },
-      {
-        type: '석식',
-        time: '17:30 - 19:00',
-        courses: {
-          '한식': ['흰쌀밥', '삼겹살김치찌개', '계란말이', '김치'],
-          '일품': ['우동', '튀김'],
-          '양식': ['피자', '콜라']
-        }
-      }
-    ],
-    '일': [
-      {
-        type: '조식',
-        time: '08:00 - 09:30',
-        courses: {
-          '한식': ['흰쌀밥', '된장국', '계란후라이', '김치'],
-          '일품': ['토스트', '딸기잼', '우유']
-        }
-      },
-      {
-        type: '중식',
-        time: '11:30 - 13:30',
-        courses: {
-          '한식': ['흰쌀밥', '김치찌개', '제육볶음', '김치'],
-          '일품': ['우동', '튀김'],
-          '양식': ['햄버거', '콜라']
-        }
-      },
-      {
-        type: '석식',
-        time: '17:30 - 19:00',
-        courses: {
-          '한식': ['흰쌀밥', '부대찌개', '동그랑땡', '김치'],
-          '일품': ['볶음우동', '군만두'],
-          '양식': ['치즈버거', '감자튀김']
-        }
-      }
-    ]
+  // 날짜 선택 처리
+  const handleDateSelect = (date: string) => {
+    setSelectedDate(date);  // CSS 활성화를 위한 날짜 선택
+    const processedMeals = convertApiResponseToProcessedMeals(weeklyData, date);
+    setMeals(processedMeals);
   };
 
-  // 선택된 날짜의 요일에 해당하는 메뉴 가져오기
-  const getSelectedDayMeals = () => {
-    const selectedDay = weekDates.find(date => date.fullDate === selectedDate)?.day;
-    return mockMealsByDay[selectedDay || '월'] || [];
+  // API 응답을 ProcessedMeal 형식으로 변환하는 함수
+  const convertApiResponseToProcessedMeals = (apiResponse: DailyMenu[], date: string): ProcessedMeal[] => {
+    const selectedDayMenu = apiResponse.find(menu => menu.date === date);
+    
+    if (!selectedDayMenu || !selectedDayMenu.menusByMealType) {
+      return [];
+    }
+
+    // 식사 타입 순서 정의
+    const mealTypeOrder = ['BREAKFAST', 'LUNCH', 'DINNER'];
+    
+    return mealTypeOrder
+      .map(mealType => {
+        const menus = selectedDayMenu.menusByMealType[mealType as keyof typeof selectedDayMenu.menusByMealType];
+        if (!menus) return null;
+
+        // 코스별로 메뉴 그룹화
+        const courseMenus = menus.reduce((acc: { [key: string]: string[] }, menu) => {
+          const courseName = menu.course.split('/')[1];
+          if (!acc[courseName]) {
+            acc[courseName] = [];
+          }
+          acc[courseName].push(menu.menuName);
+          return acc;
+        }, {});
+
+        return {
+          type: mealType === 'BREAKFAST' ? '조식' : 
+                mealType === 'LUNCH' ? '중식' : '석식',
+          time: mealType === 'BREAKFAST' ? '07:30 - 09:00' :
+                mealType === 'LUNCH' ? '11:30 - 13:30' : '17:30 - 19:00',
+          courses: courseMenus
+        };
+      })
+      .filter((meal): meal is ProcessedMeal => meal !== null);
   };
 
   return (
@@ -259,7 +162,7 @@ export const Weekly = () => {
         <nav className="date-navigation">
           <button 
             className="arrow-button"
-            onClick={() => handleWeekChange(0)}
+            onClick={() => handleWeekChange(weekOffset - 1)}
             disabled={weekOffset === 0}
           >
             <span className="material-icons">chevron_left</span>
@@ -269,7 +172,7 @@ export const Weekly = () => {
             <button
               key={dateBtn.fullDate}
               className={`date-button ${selectedDate === dateBtn.fullDate ? 'active' : ''}`}
-              onClick={() => setSelectedDate(dateBtn.fullDate)}
+              onClick={() => handleDateSelect(dateBtn.fullDate)}
             >
               <span className="day">{dateBtn.day}</span>
               <span className="date">{dateBtn.date}</span>
@@ -278,14 +181,22 @@ export const Weekly = () => {
 
           <button 
             className="arrow-button"
-            onClick={() => handleWeekChange(1)}
+            onClick={() => handleWeekChange(weekOffset + 1)}
             disabled={weekOffset === 1}
           >
             <span className="material-icons">chevron_right</span>
           </button>
         </nav>
 
-        <MealList meals={getSelectedDayMeals()} layout="grid" />
+        {isLoading ? (
+          <div className="loading">로딩 중...</div>
+        ) : meals.length > 0 ? (
+          <MealList meals={meals} layout="grid" />
+        ) : (
+          <div className="no-menu">
+            <p>해당 날짜의 메뉴가 없습니다.</p>
+          </div>
+        )}
       </main>
     </div>
   );

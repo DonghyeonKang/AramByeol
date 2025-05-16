@@ -1,49 +1,79 @@
 import { useState, useEffect } from 'react';
-import { MealCard } from '../../components/organisms/MealCard/MealCard';
+// import { MealCard } from '../../components/organisms/MealCard/MealCard';  // 사용하지 않는 import 제거
 import { ProcessedMeal } from '@/types/menu';
+import { api } from '@/services/api';
 import './Home.css';
 import { MealList } from '@/components/organisms/MealList/MealList';
 
-// 목업 데이터
-const mockMeals: ProcessedMeal[] = [
-  {
-    type: '조식',
-    time: '07:30 - 09:00',
-    courses: {
-      '한식': ['흰쌀밥', '미역국', '계란말이', '김치', '깍두기'],
-      '일품': ['토스트', '스크램블에그', '샐러드', '우유']
-    }
-  },
-  {
-    type: '중식',
-    time: '11:30 - 13:30',
-    courses: {
-      '한식': ['흰쌀밥', '된장찌개', '제육볶음', '김치', '깍두기'],
-      '일품': ['돈까스', '양배추샐러드', '우동'],
-      '양식': ['치킨버거', '감자튀김', '콜라']
-    }
-  },
-  {
-    type: '석식',
-    time: '17:30 - 19:00',
-    courses: {
-      '한식': ['흰쌀밥', '김치찌개', '고등어구이', '김치', '깍두기'],
-      '일품': ['비빔밥', '계란후라이', '미소국']
-    }
-  }
-];
+interface MenuItem {
+  menuId: number;
+  menuName: string;
+  mealType: 'BREAKFAST' | 'LUNCH' | 'DINNER';
+  course: string;
+  imgPath: string;
+  averageScore: number;
+  reviewCount: number;
+}
+
+interface ApiResponse {
+  date: string;
+  menusByMealType: {
+    BREAKFAST: MenuItem[];
+    LUNCH: MenuItem[];
+    DINNER: MenuItem[];
+  };
+}
 
 export const Home = () => {
+  // 오늘 날짜 계산 (UTC 기준)
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);  // 시간을 00:00:00으로 설정
+  const todayString = new Date(today.getTime() - (today.getTimezoneOffset() * 60000))
+    .toISOString()
+    .split('T')[0];
+
   const [meals, setMeals] = useState<ProcessedMeal[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // 목업 데이터 사용
-    setTimeout(() => {
-      setMeals(mockMeals);
-      setIsLoading(false);
-    }, 500); // 로딩 효과를 보기 위한 지연
+    const fetchTodayMenu = async () => {
+      setIsLoading(true);
+      try {
+        const dailyPlan = await api.getDailyPlan(todayString);
+        const processedMeals = convertApiResponseToProcessedMeals(dailyPlan);
+        setMeals(processedMeals);
+      } catch (error) {
+        console.error('Failed to fetch today menu:', error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchTodayMenu();
   }, []);
+
+  // API 응답을 ProcessedMeal 형식으로 변환하는 함수
+  const convertApiResponseToProcessedMeals = (apiResponse: ApiResponse): ProcessedMeal[] => {
+    return Object.entries(apiResponse.menusByMealType).map(([mealType, menus]) => {
+      // 코스별로 메뉴 그룹화
+      const courseMenus = menus.reduce((acc: { [key: string]: string[] }, menu) => {
+        const courseName = menu.course.split('/')[1];  // "A코스/한식" -> "한식"
+        if (!acc[courseName]) {
+          acc[courseName] = [];
+        }
+        acc[courseName].push(menu.menuName);
+        return acc;
+      }, {});
+
+      return {
+        type: mealType === 'BREAKFAST' ? '조식' : 
+              mealType === 'LUNCH' ? '중식' : '석식',
+        time: mealType === 'BREAKFAST' ? '07:30 - 09:00' :
+              mealType === 'LUNCH' ? '11:30 - 13:30' : '17:30 - 19:00',
+        courses: courseMenus
+      };
+    });
+  };
 
   const formatDate = () => {
     const date = new Date();

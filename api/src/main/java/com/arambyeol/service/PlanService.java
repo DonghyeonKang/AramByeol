@@ -95,4 +95,35 @@ public class PlanService {
             throw new IllegalArgumentException("날짜 형식이 올바르지 않습니다. 형식: yyyy-MM-dd");
         }
     }
+
+    @Transactional(readOnly = true)
+    public List<PlanResponseDto> getWeeklyPlan(String date) {
+        validateDateFormat(date);
+        
+        // 입력된 날짜를 기준으로 해당 주의 월요일과 일요일 구하기
+        LocalDate targetDate = LocalDate.parse(date);
+        LocalDate monday = targetDate.with(java.time.temporal.TemporalAdjusters.previousOrSame(java.time.DayOfWeek.MONDAY));
+        LocalDate sunday = targetDate.with(java.time.temporal.TemporalAdjusters.nextOrSame(java.time.DayOfWeek.SUNDAY));
+        
+        // 해당 주의 모든 식단 조회
+        List<Plan> weeklyPlans = planRepository.findByDateBetweenWithMenuAndReviews(
+            monday.format(DateTimeFormatter.ofPattern("yyyy-MM-dd")),
+            sunday.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"))
+        );
+        
+        if (weeklyPlans.isEmpty()) {
+            throw new IllegalArgumentException("해당 주의 식단이 없습니다: " + date);
+        }
+
+        // 날짜별로 그룹화
+        Map<String, List<Plan>> plansByDate = weeklyPlans.stream()
+                .sorted(Comparator.comparing(Plan::getDate))
+                .collect(Collectors.groupingBy(Plan::getDate));
+
+        // 각 날짜별 식단 정보 생성
+        return plansByDate.entrySet().stream()
+                .sorted(Map.Entry.comparingByKey())
+                .map(entry -> createPlanResponseDto(entry.getKey(), entry.getValue()))
+                .collect(Collectors.toList());
+    }
 } 

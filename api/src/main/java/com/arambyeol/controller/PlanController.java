@@ -38,4 +38,17 @@ public class PlanController {
             @PathVariable String date) {
         return ResponseEntity.ok(planService.getDailyPlan(date));
     }
+
+    @Operation(summary = "주간 식단 조회", description = "지정된 날짜가 포함된 주의 전체 식단을 조회합니다.")
+    @ApiResponses({
+        @ApiResponse(responseCode = "200", description = "주간 식단 조회 성공"),
+        @ApiResponse(responseCode = "400", description = "잘못된 날짜 형식"),
+        @ApiResponse(responseCode = "404", description = "해당 주의 식단이 없음")
+    })
+    @GetMapping("/weekly/{date}")
+    public ResponseEntity<List<PlanResponseDto>> getWeeklyPlan(
+            @Parameter(description = "조회할 기준 날짜 (형식: yyyy-MM-dd)", example = "2024-03-20")
+            @PathVariable String date) {
+        return ResponseEntity.ok(planService.getWeeklyPlan(date));
+    }
 } 

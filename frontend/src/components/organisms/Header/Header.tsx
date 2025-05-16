@@ -13,7 +13,7 @@ export const Header = () => {
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
   const { theme, toggleTheme } = useTheme();
   const navigate = useNavigate();
-  const { user, logout } = useAuth();
+  const { user } = useAuth();
   const [notifications, setNotifications] = useState([
     {
       id: '1',
@@ -90,7 +90,6 @@ export const Header = () => {
             <NotificationList
               notifications={notifications}
               isOpen={isNotificationsOpen}
-              onClose={() => setIsNotificationsOpen(false)}
               onMarkAsRead={handleMarkAsRead}
               onMarkAllAsRead={handleMarkAllAsRead}
             />

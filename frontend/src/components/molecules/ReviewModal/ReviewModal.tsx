@@ -42,7 +42,10 @@ export const ReviewModal = ({ isOpen, onClose, menuName, score, reviewCount }: R
 
   return (
     <div className="modal-overlay" onClick={onClose}>
-      <Card className="review-modal" onClick={e => e.stopPropagation()}>
+      <Card 
+        className="review-modal" 
+        onClick={(e: React.MouseEvent) => e.stopPropagation()}
+      >
         <div className="modal-header">
           <h3>{menuName}</h3>
           <button className="close-button" onClick={onClose}>

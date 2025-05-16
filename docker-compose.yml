@@ -1,6 +1,19 @@
 version: '3.8'
 
 services:
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: arambyeol-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - app
+    environment:
+      - VITE_API_URL=http://localhost:8080/api
+    restart: unless-stopped
+
   app:
     build:
       context: ./api
@@ -13,7 +26,7 @@ services:
       SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/arambyeol?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
       SPRING_DATASOURCE_USERNAME: root
       SPRING_DATASOURCE_PASSWORD: root
-      CORS_ALLOWED_ORIGINS: http://localhost
+      CORS_ALLOWED_ORIGINS: http://localhost:5173,http://localhost
     depends_on:
       mysql:
         condition: service_healthy
@@ -55,16 +68,3 @@ services:
       timeout: 5s
       retries: 5
       start_period: 30s
-
-  # frontend:
-  #   build:
-  #     context: ./frontend
-  #     dockerfile: Dockerfile
-  #   container_name: arambyeol-frontend
-  #   ports:
-  #     - "80:80"
-  #   depends_on:
-  #     - app
-  #   environment:
-  #     - VITE_API_URL=http://localhost:8080/api
-  #   restart: unless-stopped

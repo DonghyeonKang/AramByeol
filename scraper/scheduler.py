@@ -43,11 +43,14 @@ def run_scraper():
         logging.error(f"Unexpected error: {e}")
 
 def main():
+    # 스케줄러 시작시 즉시 1회 실행
+    current_time = datetime.now().strftime("%H:%M")
+    logging.info(f"Scheduler started at {current_time}. Running initial scraping...")
+    run_scraper()
+    
     # 스케줄러 설정 - 매일 01:00에 실행
     schedule.every().day.at("01:00").do(run_scraper)
-    
-    current_time = datetime.now().strftime("%H:%M")
-    logging.info(f"Scheduler started at {current_time}. Will run scraper daily at 01:00")
+    logging.info("Scheduled to run scraper daily at 01:00")
     
     # 스케줄러 실행
     while True:

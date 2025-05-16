@@ -10,7 +10,6 @@ interface Notification {
 interface NotificationListProps {
   notifications: Notification[];
   isOpen: boolean;
-  onClose: () => void;
   onMarkAsRead: (id: string) => void;
   onMarkAllAsRead: () => void;
 }
@@ -18,7 +17,6 @@ interface NotificationListProps {
 export const NotificationList = ({ 
   notifications, 
   isOpen, 
-  onClose, 
   onMarkAsRead,
   onMarkAllAsRead 
 }: NotificationListProps) => {
