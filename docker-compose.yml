@@ -6,13 +6,17 @@ services:
       context: ./frontend
       dockerfile: Dockerfile
     container_name: arambyeol-frontend
-    ports:
-      - "80:80"
     depends_on:
       - app
     environment:
-      - VITE_API_URL=http://localhost:8080/api
+      - VITE_API_URL=https://api.arambyeol.com
+      - VIRTUAL_HOST=www.arambyeol.com
+      - LETSENCRYPT_HOST=www.arambyeol.com
+      - LETSENCRYPT_EMAIL=donghyeon009@gmail.com
     restart: unless-stopped
+    networks:
+      - reverse-proxy_proxy
+      - arambyeol
 
   app:
     build:
@@ -26,11 +30,18 @@ services:
       SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/arambyeol?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
       SPRING_DATASOURCE_USERNAME: root
       SPRING_DATASOURCE_PASSWORD: root
-      CORS_ALLOWED_ORIGINS: http://localhost:5173,http://localhost
+      CORS_ALLOWED_ORIGINS: http://localhost:5173,http://localhost,https://www.arambyeol.com
+      VITE_API_URL: https://api.arambyeol.com
+      VIRTUAL_HOST: api.arambyeol.com
+      LETSENCRYPT_HOST: api.arambyeol.com
+      LETSENCRYPT_EMAIL: donghyeon009@gmail.com
     depends_on:
       mysql:
         condition: service_healthy
     restart: unless-stopped
+    networks:
+      - reverse-proxy_proxy
+      - arambyeol
 
   scraper:
     container_name: arambyeol-scraper
@@ -46,6 +57,8 @@ services:
       mysql:
         condition: service_healthy
     restart: always
+    networks:
+      - arambyeol
 
   mysql:
     image: mysql:8.0
@@ -68,3 +81,11 @@ services:
       timeout: 5s
       retries: 5
       start_period: 30s
+    networks:
+      - arambyeol
+
+networks:
+  reverse-proxy_proxy:
+    external: true
+  arambyeol:
+    driver: bridge
