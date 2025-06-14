@@ -149,7 +149,11 @@
   }
 
   .hero-section h1 {
-    font-size: 2rem;
+    font-size: 1.3rem;
+  }
+
+  .hero-section p {
+    font-size: 1rem;
   }
 
   .main-content {
@@ -168,6 +172,15 @@
   .meals-grid {
     grid-template-columns: 1fr;
     gap: 1rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero-section h1 {
+    font-size: 1.3rem;
+  }
+  .hero-section p {
+    font-size: 1rem;
   }
 }
 
