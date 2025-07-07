@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 @Tag(name = "Views", description = "조회수 관련 API")
 @RestController
-@RequestMapping("/api/views")
+@RequestMapping("/views")
 @RequiredArgsConstructor
 public class ViewsController {
     private final ViewsService viewsService;

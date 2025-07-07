@@ -15,7 +15,7 @@ import java.util.List;
 
 @Tag(name = "Plan", description = "식단표 관련 API")
 @RestController
-@RequestMapping("/api/plans")
+@RequestMapping("/plans")
 @RequiredArgsConstructor
 public class PlanController {
     private final PlanService planService;

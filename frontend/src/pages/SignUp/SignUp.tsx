@@ -37,7 +37,7 @@ export const SignUp = () => {
 
     setIsLoading(true);
     try {
-      const response = await fetch('/api/auth/send-verification', {
+      const response = await fetch('/auth/send-verification', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -61,7 +61,7 @@ export const SignUp = () => {
   const handleVerifyCode = async () => {
     setIsLoading(true);
     try {
-      const response = await fetch('/api/auth/verify-code', {
+      const response = await fetch('/auth/verify-code', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -100,7 +100,7 @@ export const SignUp = () => {
     }
 
     try {
-      const response = await fetch('/api/auth/signup', {
+      const response = await fetch('/auth/signup', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -45,14 +45,14 @@ docker-compose up --build
 ## API 엔드포인트
 
 ### 사용자 관리
-- 회원가입: `POST /api/users/register`
-- 로그인: `POST /api/users/login`
-- 사용자명 중복 확인: `GET /api/users/check/{username}`
-- 비밀번호 재설정: `POST /api/users/password/reset`
+- 회원가입: `POST /users/register`
+- 로그인: `POST /users/login`
+- 사용자명 중복 확인: `GET /users/check/{username}`
+- 비밀번호 재설정: `POST /users/password/reset`
 
 ### 조회수 관리
-- 조회수 확인: `GET /api/views/{id}`
-- 조회수 증가: `POST /api/views/{id}/increment`
+- 조회수 확인: `GET /views/{id}`
+- 조회수 증가: `POST /views/{id}/increment`
 
 ## 데이터베이스 스키마
 
