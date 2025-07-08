@@ -54,25 +54,31 @@ export const Home = () => {
 
   // API 응답을 ProcessedMeal 형식으로 변환하는 함수
   const convertApiResponseToProcessedMeals = (apiResponse: ApiResponse): ProcessedMeal[] => {
-    return Object.entries(apiResponse.menusByMealType).map(([mealType, menus]) => {
-      // 코스별로 메뉴 그룹화
-      const courseMenus = menus.reduce((acc: { [key: string]: string[] }, menu) => {
-        const courseName = menu.course.split('/')[1];  // "A코스/한식" -> "한식"
-        if (!acc[courseName]) {
-          acc[courseName] = [];
-        }
-        acc[courseName].push(menu.menuName);
-        return acc;
-      }, {});
+    const mealTypeOrder = ['BREAKFAST', 'LUNCH', 'DINNER'];
+    return mealTypeOrder
+      .map(mealType => {
+        const menus = apiResponse.menusByMealType[mealType as keyof typeof apiResponse.menusByMealType];
+        if (!menus) return null;
 
-      return {
-        type: mealType === 'BREAKFAST' ? '조식' : 
-              mealType === 'LUNCH' ? '중식' : '석식',
-        time: mealType === 'BREAKFAST' ? '07:30 - 09:00' :
-              mealType === 'LUNCH' ? '11:30 - 13:30' : '17:30 - 19:00',
-        courses: courseMenus
-      };
-    });
+        // 코스별로 메뉴 그룹화
+        const courseMenus = menus.reduce((acc: { [key: string]: string[] }, menu) => {
+          const courseName = menu.course.split('/')[1];  // "A코스/한식" -> "한식"
+          if (!acc[courseName]) {
+            acc[courseName] = [];
+          }
+          acc[courseName].push(menu.menuName);
+          return acc;
+        }, {});
+
+        return {
+          type: mealType === 'BREAKFAST' ? '조식' : 
+                mealType === 'LUNCH' ? '중식' : '석식',
+          time: mealType === 'BREAKFAST' ? '07:30 - 09:00' :
+                mealType === 'LUNCH' ? '11:30 - 13:30' : '17:30 - 19:00',
+          courses: courseMenus
+        };
+      })
+      .filter((meal): meal is ProcessedMeal => meal !== null);
   };
 
   const formatDate = () => {

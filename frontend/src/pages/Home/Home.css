@@ -27,7 +27,7 @@
 }
 
 .meals-section {
-  padding: 2rem;
+  padding: 2rem 0;
   background-color: var(--color-background);
 }
 
@@ -54,6 +54,6 @@
     font-size: 1.3rem;
   }
   .hero-section p {
-    font-size: 1rem;
+    font-size: 1rem 0;
   }
 } 
