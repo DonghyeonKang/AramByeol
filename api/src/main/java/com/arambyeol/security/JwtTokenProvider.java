@@ -24,10 +24,23 @@ public class JwtTokenProvider {
         this.jwtConfig = jwtConfig;
     }
 
-    public String createToken(String username) {
+    public String createAccessToken(String username) {
         Claims claims = Jwts.claims().setSubject(username);
         Date now = new Date();
         Date validity = new Date(now.getTime() + jwtConfig.getExpiration());
+
+        return Jwts.builder()
+                .setClaims(claims)
+                .setIssuedAt(now)
+                .setExpiration(validity)
+                .signWith(secretKey)
+                .compact();
+    }
+
+    public String createRefreshToken(String username) {
+        Claims claims = Jwts.claims().setSubject(username);
+        Date now = new Date();
+        Date validity = new Date(now.getTime() + jwtConfig.getRefreshExpiration());
 
         return Jwts.builder()
                 .setClaims(claims)

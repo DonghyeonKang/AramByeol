@@ -4,6 +4,7 @@ import com.arambyeol.dto.ReviewRequestDto;
 import com.arambyeol.dto.ReviewResponseDto;
 import com.arambyeol.dto.PageResponseDto;
 import com.arambyeol.service.ReviewService;
+import com.arambyeol.security.CustomUserDetails;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -38,15 +39,13 @@ public class ReviewController {
             @Parameter(description = "정렬 기준 (reviewId)", example = "reviewId")
             @RequestParam(defaultValue = "reviewId") String sort,
             @Parameter(description = "정렬 방향 (asc/desc)", example = "desc")
-            @RequestParam(defaultValue = "desc") String direction) {
+            @RequestParam(defaultValue = "desc") String direction,
+            @AuthenticationPrincipal CustomUserDetails userDetails) {
         
         Sort.Direction sortDirection = Sort.Direction.fromString(direction);
         PageRequest pageRequest = PageRequest.of(page, size, Sort.by(sortDirection, sort));
         
-        // 현재 로그인한 사용자의 ID를 가져오는 로직은 보안 설정에 따라 다를 수 있습니다.
-        Integer userId = getCurrentUserId();
-        
-        return ResponseEntity.ok(reviewService.getUserReviews(userId, pageRequest));
+        return ResponseEntity.ok(reviewService.getUserReviews(userDetails.getUserId(), pageRequest));
     }
 
     @Operation(summary = "리뷰 작성", description = "특정 메뉴에 대한 리뷰를 작성합니다.")
@@ -60,9 +59,9 @@ public class ReviewController {
     public ResponseEntity<ReviewResponseDto> createReview(
             @Parameter(description = "메뉴 ID", example = "1")
             @PathVariable Integer menuId,
-            @Valid @RequestBody ReviewRequestDto requestDto) {
-        Integer userId = getCurrentUserId();
-        return ResponseEntity.ok(reviewService.createReview(userId, menuId, requestDto));
+            @Valid @RequestBody ReviewRequestDto requestDto,
+            @AuthenticationPrincipal CustomUserDetails userDetails) {
+        return ResponseEntity.ok(reviewService.createReview(userDetails.getUserId(), menuId, requestDto));
     }
 
     @Operation(summary = "리뷰 수정", description = "작성한 리뷰를 수정합니다.")
@@ -77,14 +76,8 @@ public class ReviewController {
     public ResponseEntity<ReviewResponseDto> updateReview(
             @Parameter(description = "리뷰 ID", example = "1")
             @PathVariable Long reviewId,
-            @Valid @RequestBody ReviewRequestDto requestDto) {
-        Integer userId = getCurrentUserId();
-        return ResponseEntity.ok(reviewService.updateReview(userId, reviewId, requestDto));
-    }
-
-    // 임시 메서드: 실제 구현에서는 Spring Security의 인증 정보를 사용해야 합니다.
-    private Integer getCurrentUserId() {
-        // Spring Security 구현에 따라 실제 로직으로 대체해야 합니다.
-        throw new UnsupportedOperationException("Security 구현이 필요합니다.");
+            @Valid @RequestBody ReviewRequestDto requestDto,
+            @AuthenticationPrincipal CustomUserDetails userDetails) {
+        return ResponseEntity.ok(reviewService.updateReview(userDetails.getUserId(), reviewId, requestDto));
     }
 } 

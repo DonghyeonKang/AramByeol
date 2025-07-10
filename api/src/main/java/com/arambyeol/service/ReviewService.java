@@ -48,6 +48,7 @@ public class ReviewService {
         return ReviewResponseDto.builder()
                 .reviewId(review.getReviewId())
                 .menuId(review.getMenu().getMenuId())
+                .username(review.getUser().getUsername())
                 .menuName(review.getMenu().getMenu())
                 .imgPath(review.getMenu().getImgPath())
                 .score(review.getScore())

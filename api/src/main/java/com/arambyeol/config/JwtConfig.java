@@ -19,6 +19,9 @@ public class JwtConfig {
     @Value("${jwt.expiration}")
     private long expiration;
 
+    @Value("${jwt.refresh-expiration}")
+    private long refreshExpiration;
+
     @Bean
     public SecretKey secretKey() {
         // secret 값을 바이트 배열로 변환하여 적절한 크기의 키 생성

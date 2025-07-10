@@ -3,45 +3,33 @@ package com.arambyeol.config;
 import io.swagger.v3.oas.models.Components;
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Info;
-import io.swagger.v3.oas.models.info.Contact;
-import io.swagger.v3.oas.models.servers.Server;
 import io.swagger.v3.oas.models.security.SecurityRequirement;
 import io.swagger.v3.oas.models.security.SecurityScheme;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
-import java.util.List;
 
 @Configuration
 public class SwaggerConfig {
 
     @Bean
     public OpenAPI openAPI() {
-        SecurityScheme securityScheme = new SecurityScheme()
-                .type(SecurityScheme.Type.HTTP)
-                .scheme("bearer")
-                .bearerFormat("JWT")
-                .in(SecurityScheme.In.HEADER)
-                .name("Authorization");
-
-        SecurityRequirement securityRequirement = new SecurityRequirement().addList("bearerAuth");
-
-        Info info = new Info()
-                .title("Arambyeol API Documentation")
-                .version("v1.0")
-                .description("아람별 프로젝트의 API 문서입니다.")
-                .contact(new Contact()
-                        .name("Arambyeol Team")
-                        .email("your.email@example.com")
-                        .url("https://github.com/yourusername/arambyeol"));
-
         return new OpenAPI()
-                .components(new Components().addSecuritySchemes("bearerAuth", securityScheme))
-                .addSecurityItem(securityRequirement)
-                .info(info)
-                .servers(List.of(
-                    new Server().url("http://localhost:8080").description("Local Server"),
-                    new Server().url("http://your-production-url").description("Production Server")
-                ));
+                .info(new Info()
+                        .title("아람별 API")
+                        .description("아람별 식단 관리 시스템 API - Bearer 토큰 또는 쿠키 인증 지원")
+                        .version("1.0.0"))
+                .addSecurityItem(new SecurityRequirement().addList("bearerAuth"))
+                .addSecurityItem(new SecurityRequirement().addList("cookieAuth"))
+                .components(new Components()
+                        .addSecuritySchemes("bearerAuth", new SecurityScheme()
+                                .type(SecurityScheme.Type.HTTP)
+                                .scheme("bearer")
+                                .bearerFormat("JWT")
+                                .description("Authorization 헤더에 Bearer 토큰을 포함"))
+                        .addSecuritySchemes("cookieAuth", new SecurityScheme()
+                                .type(SecurityScheme.Type.APIKEY)
+                                .in(SecurityScheme.In.COOKIE)
+                                .name("access_token")
+                                .description("HTTP Only 쿠키로 설정된 Access Token")));
     }
 } 
