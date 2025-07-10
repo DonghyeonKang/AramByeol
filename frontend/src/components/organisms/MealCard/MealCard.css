@@ -2,9 +2,7 @@
   background: var(--color-card-background);
   border-radius: 8px;
   padding: 1.5rem;
-  margin: 1rem;
   flex: 1;
-  min-width: 280px;
 }
 
 .meal-header {
@@ -83,9 +81,23 @@
   cursor: pointer;
   transition: background-color 0.2s ease;
   border-radius: 4px;
-  padding: 0.5rem !important;
+  padding: 0.5rem 0 !important;
 }
 
 .menu-item:hover {
   background-color: var(--color-border);
 } 
+
+
+@media (min-width: 769px) {
+  .meal-card {
+    margin: 1rem;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .meal-card {
+    margin: o;
+  }
+}
