@@ -17,7 +17,8 @@ public class CorsConfig {
                     .allowedOrigins(
                         "http://localhost",
                         "http://localhost:5173",
-                        "https://www.arambyeol.com"
+                        "https://www.arambyeol.com",
+                        "https://api.arambyeol.com"
                     )
                     .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                     .allowedHeaders("*")

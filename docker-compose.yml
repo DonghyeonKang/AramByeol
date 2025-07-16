@@ -30,7 +30,7 @@ services:
       SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/arambyeol?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
       SPRING_DATASOURCE_USERNAME: root
       SPRING_DATASOURCE_PASSWORD: root
-      CORS_ALLOWED_ORIGINS: http://localhost:5173,http://localhost,https://www.arambyeol.com
+      CORS_ALLOWED_ORIGINS: http://localhost:5173,http://localhost,https://www.arambyeol.com, https://api.arambyeol.com
       VITE_API_URL: https://api.arambyeol.com
       VIRTUAL_HOST: api.arambyeol.com
       LETSENCRYPT_HOST: api.arambyeol.com

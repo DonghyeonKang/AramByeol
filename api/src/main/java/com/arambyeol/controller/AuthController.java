@@ -4,7 +4,10 @@ import com.arambyeol.dto.LoginRequestDto;
 import com.arambyeol.dto.TokenResponseDto;
 import com.arambyeol.dto.UserRequestDto;
 import com.arambyeol.dto.PasswordResetDto;
+import com.arambyeol.dto.EmailRequestDto;
+import com.arambyeol.dto.EmailVerifyDto;
 import com.arambyeol.service.AuthService;
+import com.arambyeol.service.EmailAuthService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.servlet.http.Cookie;
@@ -20,6 +23,7 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 public class AuthController {
     private final AuthService authService;
+    private final EmailAuthService emailAuthService;
 
     @Operation(summary = "회원 가입", description = "새로운 사용자를 등록합니다.")
     @PostMapping("/register")
@@ -108,5 +112,17 @@ public class AuthController {
     public ResponseEntity<?> resetPassword(@Valid @RequestBody PasswordResetDto resetDto) {
         authService.resetPassword(resetDto);
         return ResponseEntity.ok().body("비밀번호가 성공적으로 재설정되었습니다.");
+    }
+
+    @PostMapping("/send-verification")
+    public ResponseEntity<?> sendVerification(@RequestBody EmailRequestDto request) {
+        emailAuthService.sendVerificationCode(request.getEmail());
+        return ResponseEntity.ok().build();
+    }
+
+    @PostMapping("/verify-code")
+    public ResponseEntity<?> verifyCode(@RequestBody EmailVerifyDto request) {
+        boolean result = emailAuthService.verifyCode(request.getEmail(), request.getCode());
+        return ResponseEntity.ok(result);
     }
 } 

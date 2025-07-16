@@ -1,9 +1,10 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Input } from '../../components/atoms/Input/Input';
 import { Button } from '../../components/atoms/Button/Button';
 import { Card } from '../../components/molecules/Card/Card';
 import './SignUp.css';
+import { api } from '@/services/api';
 
 interface SignUpForm {
   email: string;
@@ -28,6 +29,31 @@ export const SignUp = () => {
   const [isEmailSent, setIsEmailSent] = useState(false);
   const [isEmailVerified, setIsEmailVerified] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [timer, setTimer] = useState(0); // 남은 시간(초)
+  const [timerId, setTimerId] = useState<NodeJS.Timeout | null>(null);
+
+  // 타이머 시작 함수
+  const startTimer = () => {
+    if (timerId) clearInterval(timerId);
+    setTimer(300); // 5분(300초)
+    const id = setInterval(() => {
+      setTimer(prev => {
+        if (prev <= 1) {
+          clearInterval(id);
+          return 0;
+        }
+        return prev - 1;
+      });
+    }, 1000);
+    setTimerId(id);
+  };
+
+  // 언마운트 시 타이머 정리
+  useEffect(() => {
+    return () => {
+      if (timerId) clearInterval(timerId);
+    };
+  }, [timerId]);
 
   const handleSendVerification = async () => {
     if (!formData.email.endsWith('@gnu.ac.kr')) {
@@ -37,20 +63,10 @@ export const SignUp = () => {
 
     setIsLoading(true);
     try {
-      const response = await fetch('/auth/send-verification', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ email: formData.email }),
-      });
-
-      if (!response.ok) {
-        throw new Error('인증 메일 발송에 실패했습니다.');
-      }
-
+      await api.sendVerification(formData.email);
       setIsEmailSent(true);
       setError('');
+      startTimer(); // 타이머 시작
     } catch (err) {
       setError('인증 메일 발송 중 오류가 발생했습니다.');
     } finally {
@@ -61,23 +77,14 @@ export const SignUp = () => {
   const handleVerifyCode = async () => {
     setIsLoading(true);
     try {
-      const response = await fetch('/auth/verify-code', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          email: formData.email,
-          code: formData.verificationCode,
-        }),
-      });
-
-      if (!response.ok) {
-        throw new Error('인증번호가 올바르지 않습니다.');
+      const result = await api.verifyCode(formData.email, formData.verificationCode);
+      if (result === true) {
+        setIsEmailVerified(true);
+        setError('');
+        if (timerId) clearInterval(timerId);
+      } else {
+        setError('인증번호가 올바르지 않습니다.');
       }
-
-      setIsEmailVerified(true);
-      setError('');
     } catch (err) {
       setError('인증번호 확인 중 오류가 발생했습니다.');
     } finally {
@@ -161,14 +168,20 @@ export const SignUp = () => {
                     value={formData.verificationCode}
                     onChange={(e) => setFormData({ ...formData, verificationCode: e.target.value })}
                     required
+                    disabled={timer === 0}
                   />
                   <Button
                     type="button"
                     onClick={handleVerifyCode}
-                    disabled={isLoading}
+                    disabled={isLoading || timer === 0}
                   >
                     확인
                   </Button>
+                  <span className="timer">
+                    {timer > 0
+                      ? `남은 시간: ${Math.floor(timer / 60)}:${(timer % 60).toString().padStart(2, '0')}`
+                      : '인증번호가 만료되었습니다'}
+                  </span>
                 </div>
               </div>
             )}

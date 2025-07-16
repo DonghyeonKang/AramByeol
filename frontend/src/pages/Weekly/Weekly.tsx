@@ -43,21 +43,25 @@ export const Weekly = () => {
       setIsLoading(true);
       const newDates = getWeekDates(0);  // 현재 주차
       setWeekDates(newDates);
-    
+
+      // 오늘 날짜가 weekDates에 있으면 그 날짜를 선택, 없으면 첫 번째 날짜
+      const todayBtn = newDates.find(d => d.fullDate === today);
+      const initialDate = todayBtn ? todayBtn.fullDate : newDates[0].fullDate;
+  
       try {
-        const weeklyPlan = await api.getWeeklyPlan(newDates[1].fullDate); // ✅ 두 번째 날짜(화요일) 기준 요청
+        const weeklyPlan = await api.getWeeklyPlan(initialDate); // 오늘 또는 첫 번째 날짜 기준 요청
         setWeeklyData(weeklyPlan);
-    
-        // ✅ 두 번째 날짜를 기준으로 렌더링
-        const processedMeals = convertApiResponseToProcessedMeals(weeklyPlan, newDates[1].fullDate);
+  
+        // 오늘 또는 첫 번째 날짜를 기준으로 렌더링
+        const processedMeals = convertApiResponseToProcessedMeals(weeklyPlan, initialDate);
         setMeals(processedMeals);
-        setSelectedDate(newDates[1].fullDate); // 두 번째 날짜 선택
+        setSelectedDate(initialDate); // 오늘 또는 첫 번째 날짜 선택
       } catch (error) {
         console.error('Failed to fetch weekly plan:', error);
       } finally {
         setIsLoading(false);
       }
-    };    
+    };
 
     initializeWeek();
   }, []);
